@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 自定义类型-->
+
+    <declare-styleable name="SMSTextView">
+        <attr name="sms_internal_time_second" format="integer"/>
+        <attr name="sms_sending_formatted_text" format="string"/>
+        <!--<attr name="sms_send_not_format_text" format="string"/>-->
+    </declare-styleable>
+</resources>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="#FFD700"
+    android:layout_gravity="bottom"
+    android:gravity="center"
+   android:padding="5dp">
+
+    <ImageButton
+        android:id="@+id/bottom_home"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="5dp"
+        android:background="@mipmap/ic_home"
+        android:layout_weight="1"
+
+        />
+
+    <ImageButton
+        android:id="@+id/button_list"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:background="@mipmap/ic_list"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        />
+    <ImageButton
+        android:id="@+id/button_date"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:layout_marginRight="10dp"
+        android:background="@mipmap/ic_list"
+        android:layout_weight="1"
+        />
+    <ImageButton
+        android:id="@+id/button_shopcar"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:layout_marginRight="10dp"
+        android:background="@mipmap/ic_shopcar"
+        android:layout_weight="1"
+        />
+
+    <ImageButton
+        android:id="@+id/button_me"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:layout_marginRight="10dp"
+        android:background="@mipmap/ic_me"
+        android:layout_weight="1"
+        />
+
+
+
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_margin="5dp"-->
+        <!--android:background="#FFD700"-->
+        <!--android:text="12345"-->
+        <!--android:textColor="#6A5ACD"/>-->
+
+
+</LinearLayout>

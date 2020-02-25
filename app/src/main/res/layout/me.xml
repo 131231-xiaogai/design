@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--tools:context=".MainActivity"-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- 顶部 -->
+        <LinearLayout
+            android:id="@+id/top1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#7b68ee">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="10dp"
+                android:paddingLeft="130dp"
+                android:text="叫了个衣服"
+                android:textSize="30sp"
+                android:textColor="#ffffff"
+                />
+        </LinearLayout>
+
+        <!-- 主体窗口-->
+        <LinearLayout
+            android:id="@+id/body1"
+            android:layout_width="match_parent"
+            android:layout_height="900dp"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/usercard"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="0dp"
+                android:background="#ffd700"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/appname"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                   android:paddingTop="15dp"
+                    android:paddingLeft="150dp"
+                    android:text="衣值租"
+                    android:textColor="#00574B"
+                    android:textSize="32dp" />
+                <RelativeLayout
+                    android:id="@+id/cardnumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_margin="3dp"
+                    android:paddingLeft="50dp"
+
+                    >
+                    <ImageView
+                        android:id="@+id/photo1"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/ic_launcher"/>
+                    <TextView
+                        android:layout_marginLeft="25dp"
+                        android:layout_toRightOf="@+id/photo1"
+                        android:layout_width="300dp"
+                        android:padding="9dp"
+                        android:layout_height="match_parent"
+                        android:text="163 1608 14205 1203"
+                        android:textSize="22dp"/>
+                </RelativeLayout>
+                <TextView
+                    android:id="@+id/others"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="100dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:text="积分：666    优惠券：7"
+                    android:textSize="20dp"
+                    android:textColor="#00574B"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#00ced1"
+                android:layout_marginTop="10dp"
+                android:padding="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="#fff"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:text="2"
+                        android:textSize="35dp"
+                        android:textColor="#000000"
+                        android:paddingTop="15dp"
+                        android:paddingLeft="50dp"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:text="5"
+                        android:textSize="35dp"
+                        android:textColor="#000000"
+                        android:paddingTop="15dp"
+                        android:paddingLeft="50dp"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:text="0"
+                        android:textSize="35dp"
+                        android:textColor="#000000"
+                        android:paddingTop="15dp"
+                        android:paddingLeft="50dp"
+                        android:layout_weight="1"/>
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="#fff"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    >
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_launcher"
+                        android:background="#d3d3d3"/>
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_launcher"
+                        />
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_launcher"/>
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_launcher"
+                        />
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_launcher"
+                        />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="#d3d3d3"
+                android:padding="10dp">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@mipmap/ic_mylist"
+                    />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@mipmap/ic_wallet" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <!-- 底部导航栏-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#FFD700"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <ImageButton
+                android:id="@+id/m_bottom_home"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:gravity="center"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:background="@mipmap/ic_home"
+                android:layout_weight="1"
+                />
+            <ImageButton
+                android:id="@+id/m_button_list"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:gravity="center"
+                android:background="@mipmap/ic_list"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1" />
+            <ImageButton
+                android:id="@+id/m_button_date"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:gravity="center"
+                android:layout_marginRight="10dp"
+                android:background="@mipmap/ic_list"
+                android:layout_weight="1"
+                />
+            <ImageButton
+                android:id="@+id/m_button_shopcar"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:gravity="center"
+                android:layout_marginRight="10dp"
+                android:background="@mipmap/ic_shopcar"
+                android:layout_weight="1"
+                />
+
+            <ImageButton
+                android:id="@+id/m_button_me"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:gravity="center"
+                android:layout_marginRight="10dp"
+                android:background="@mipmap/ic_me"
+                android:layout_weight="1"
+                />
+
+
+
+            <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:background="#FFD700"-->
+            <!--android:text="12345"-->
+            <!--android:textColor="#6A5ACD"/>-->
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>
