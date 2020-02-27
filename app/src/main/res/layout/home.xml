@@ -30,44 +30,23 @@
         </LinearLayout>
 
         <!-- 中间图片区域-->
-        <LinearLayout
-            android:padding="5dp"
-            android:id="@+id/body1"
+        <com.example.newapplication.newpage.MyViewPager
+            android:id="@+id/looper_pagers"
             android:layout_width="match_parent"
-            android:layout_height="900dp"
-            android:layout_margin="10dp"
-            android:orientation="vertical">
-            <!--  窗口1-->
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="0dp"
-                android:background="#ffd700"
-                android:layout_weight="1">
-
-
-
-
-            </LinearLayout>
-            <!--  窗口2-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:background="#00ced1"
-                android:layout_marginTop="10dp">
-        </LinearLayout>
-            <!--  窗口3-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:background="#ff4500"
-                android:layout_marginTop="10dp">
-    </LinearLayout>
+            android:padding="10dp"
+            android:layout_height="300dp"/>
+        <LinearLayout
+            android:id="@+id/points_container"
+            android:gravity="center"
+            android:layout_marginBottom="40px"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         </LinearLayout>
+
+
+
         <!-- 底部导航栏-->
         <LinearLayout
             android:layout_width="match_parent"
