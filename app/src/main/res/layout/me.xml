@@ -3,31 +3,45 @@
 <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <!--tools:context=".MainActivity"-->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#d3d3d3">
 
         <!-- 顶部 -->
-        <LinearLayout
-            android:id="@+id/top1"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="#7b68ee">
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingTop="10dp"
-                android:paddingLeft="130dp"
-                android:text="叫了个衣服"
-                android:textSize="30sp"
-                android:textColor="#ffffff"
-                />
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                android:background="#FFD700">
+
+                <Button
+                    android:id="@+id/title_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="#FFD700"
+                    android:text="back"
+                    android:textColor="#6A5ACD"
+                    android:textSize="24sp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="叫了个衣服"
+                    android:textColor="#6A5ACD"
+                    android:textSize="24sp"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="#FFD700"
+                    android:text="12345"
+                    android:textColor="#6A5ACD"/>
+            </LinearLayout>
 
         <!-- 主体窗口-->
         <LinearLayout
@@ -36,169 +50,126 @@
             android:layout_height="900dp"
             android:layout_margin="10dp"
             android:orientation="vertical">
-
+            <!-- part1-->
             <LinearLayout
                 android:id="@+id/usercard"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="0dp"
-                android:background="#ffd700"
                 android:layout_weight="1"
-                >
-
-                <TextView
-                    android:id="@+id/appname"
+                android:background="#fff">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
-                   android:paddingTop="15dp"
-                    android:paddingLeft="150dp"
-                    android:text="衣值租"
-                    android:textColor="#00574B"
-                    android:textSize="32dp" />
-                <RelativeLayout
-                    android:id="@+id/cardnumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_margin="3dp"
-                    android:paddingLeft="50dp"
-
-                    >
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal">
+                    <!-- 头像 -->
                     <ImageView
-                        android:id="@+id/photo1"
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/ic_launcher"/>
-                    <TextView
-                        android:layout_marginLeft="25dp"
-                        android:layout_toRightOf="@+id/photo1"
-                        android:layout_width="300dp"
-                        android:padding="9dp"
-                        android:layout_height="match_parent"
-                        android:text="163 1608 14205 1203"
-                        android:textSize="22dp"/>
-                </RelativeLayout>
-                <TextView
-                    android:id="@+id/others"
-                    android:paddingTop="10dp"
-                    android:paddingLeft="100dp"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_marginTop="30dp"
+                        android:scaleType="centerInside"
+                        android:src="@mipmap/ic_launcher_round"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:text="积分：666    优惠券：7"
-                    android:textSize="20dp"
-                    android:textColor="#00574B"/>
+                    android:layout_height="0dp"
+                    android:layout_weight="2">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="叫了个衣服"
+                        android:gravity="center"
+                        android:textSize="22dp"/>
 
-
+                </LinearLayout>
             </LinearLayout>
-
+            <!--part2-->
             <LinearLayout
                 android:layout_width="match_parent"
+                android:background="#fff"
                 android:orientation="vertical"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:background="#00ced1"
                 android:layout_marginTop="10dp"
-                android:padding="10dp">
+                android:padding="3dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="19sp"
+                android:text="我 的 订 单    Orders"
+                android:background="#fff"/>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:background="#fff"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:gravity="center">
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:text="2"
-                        android:textSize="35dp"
-                        android:textColor="#000000"
-                        android:paddingTop="15dp"
-                        android:paddingLeft="50dp"
-                        android:layout_weight="1"/>
+                        style="@style/my_order_ui"
+                        android:text="付"
+                        android:layout_weight="1"
+                        />
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:text="5"
-                        android:textSize="35dp"
-                        android:textColor="#000000"
-                        android:paddingTop="15dp"
-                        android:paddingLeft="50dp"
-                        android:layout_weight="1"/>
+                        style="@style/my_order_ui"
+                        android:layout_weight="1"
+                        android:text="发"
+                    />
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:text="0"
-                        android:textSize="35dp"
-                        android:textColor="#000000"
-                        android:paddingTop="15dp"
-                        android:paddingLeft="50dp"
-                        android:layout_weight="1"/>
-
-
+                        style="@style/my_order_ui"
+                        android:layout_weight="1"
+                        android:text="收"
+                        />
+                    <TextView
+                        style="@style/my_order_ui"
+                        android:layout_weight="1"
+                        android:text="退"
+                        />
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:background="#fff"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal"
-                    >
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:src="@mipmap/ic_launcher"
-                        android:background="#d3d3d3"/>
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:src="@mipmap/ic_launcher"
-                        />
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:src="@mipmap/ic_launcher"/>
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:src="@mipmap/ic_launcher"
-                        />
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:src="@mipmap/ic_launcher"
-                        />
-
-
-                </LinearLayout>
-
             </LinearLayout>
-
+            <!--part3-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:background="#d3d3d3"
+                android:orientation="vertical"
+                android:layout_weight="2"
+                android:background="#fff"
                 android:padding="10dp">
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@mipmap/ic_mylist"
-                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="19sp"
+                    android:layout_margin="15dp"
+                    android:text="其 他 功 能   Other "
+                    android:background="#fff"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        style="@style/m_line"
+                        android:text="钱  包                                 " />
+                    <TextView
+                       style="@style/m_line"
+                        android:text="地  址                                        "/>
+                    <TextView
+                        style="@style/m_line"
+                        android:text="设  置                                           "/>
+                    <TextView
+                        style="@style/m_line"
+                        android:text="客  服                                             "/>
+                    <TextView
+                        style="@style/m_line"
+                        android:text="版  本                                           "/>
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@mipmap/ic_wallet" />
             </LinearLayout>
+
 
 
         </LinearLayout>
@@ -280,4 +251,3 @@
 
 
 
-</LinearLayout>

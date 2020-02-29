@@ -31,7 +31,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'com.android.support:recyclerview-v7:24.2.1'
+
+
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+    implementation 'com.necer.ncalendar:ncalendar:4.4.1'
 
     //自己添加的
 
