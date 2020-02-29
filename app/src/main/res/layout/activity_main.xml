@@ -24,6 +24,7 @@
             >
 
             <TextView
+                android:id="@+id/lonin_help"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"

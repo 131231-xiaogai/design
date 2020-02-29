@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,12 +22,14 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.newapplication.newpage.Notice;
+
 import java.util.Calendar;
 
 public class DateActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = "DateActivity";
     public static final int PERMISSION_RQUEST_CODE = 1;
-    ImageButton d_btn_home,d_btn_list,d_btn_shopcar,d_btn_me;
+    ImageButton btn_list, btn_home, btn_shop, btn_me;
     CalendarView calendarView;
     ContentResolver contentResolver;
     //
@@ -34,6 +37,7 @@ public class DateActivity extends AppCompatActivity implements View.OnClickListe
     private static String CALANDER_EVENT_URL = "content://com.android.calendar/events";
     private static String CALANDER_REMIDER_URL = "content://com.android.calendar/reminders";
     Cursor query;
+    ImageView btn_notice;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -50,14 +54,16 @@ public class DateActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         //底部导航栏
-        d_btn_home = findViewById(R.id.d_bottom_home);
-        d_btn_home.setOnClickListener(this);
-        d_btn_list = findViewById(R.id.d_button_list);
-        d_btn_list.setOnClickListener(this);
-        d_btn_me = findViewById(R.id.d_button_me);
-        d_btn_me.setOnClickListener(this);
-        d_btn_shopcar = findViewById(R.id.d_button_shopcar);
-        d_btn_shopcar.setOnClickListener(this);
+        btn_home = findViewById(R.id.b_home);
+        btn_home.setOnClickListener(this);
+        btn_list = findViewById(R.id.b_list);
+        btn_list.setOnClickListener(this);
+        btn_me = findViewById(R.id.b_me);
+        btn_me.setOnClickListener(this);
+        btn_shop = findViewById(R.id.b_shopcar);
+        btn_shop.setOnClickListener(this);
+        btn_notice = (ImageView)findViewById(R.id.btn_notice);
+        btn_notice.setOnClickListener(this);
 
         //
         if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.M)
@@ -123,17 +129,20 @@ public class DateActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.d_bottom_home:
+            case R.id.b_home:
                 startActivity(new Intent(DateActivity.this,HomeActivity.class));
                 break;
-            case R.id.d_button_list:
+            case R.id.b_list:
                 startActivity(new Intent(DateActivity.this,ListActivity.class));
                 break;
-            case R.id.d_button_me:
+            case R.id.b_me:
                 startActivity(new Intent(DateActivity.this,MeActivity.class));
                 break;
-            case R.id.d_button_shopcar:
+            case R.id.b_shopcar:
                 startActivity(new Intent(DateActivity.this,ShopcarActivity.class));
+                break;
+            case R.id.btn_notice:
+                startActivity(new Intent(DateActivity.this, Notice.class));
                 break;
 
         }

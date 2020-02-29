@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:padding="60dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            style="@style/list_item_image"
+            android:background="@mipmap/icon_bag" />
+        <ImageView
+            style="@style/list_item_image"
+            android:background="@mipmap/icon_bag"
+            android:layout_marginLeft="25dp"/>
+        <ImageView
+            style="@style/list_item_image"
+            android:background="@mipmap/icon_bag"
+            android:layout_marginLeft="25dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+        <TextView
+            style="@style/list_item_text"
+            android:text="西装"/>
+        <TextView
+            style="@style/list_item_text"
+            android:text="唐装"
+            android:layout_marginLeft="25dp" />
+        <TextView
+            style="@style/list_item_text"
+            android:layout_marginLeft="25dp"
+            android:text="古装" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        >
+        <ImageView
+            style="@style/list_item_image"
+            android:background="@mipmap/icon_bag"
+            />
+        <ImageView
+            style="@style/list_item_image"
+            android:background="@mipmap/icon_bag"
+            android:layout_marginLeft="25dp"/>
+        <ImageView
+            style="@style/list_item_image"
+            android:background="@mipmap/icon_bag"
+            android:layout_marginLeft="25dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+        <TextView
+            style="@style/list_item_text"
+            android:text="卡通服" />
+        <TextView
+            style="@style/list_item_text"
+            android:text="礼服"
+            android:layout_marginLeft="25dp" />
+        <TextView
+            style="@style/list_item_text"
+            android:layout_marginLeft="25dp"
+            android:text="汉服" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+        <ImageView
+            style="@style/list_item_image"
+            android:background="@mipmap/icon_bag" />
+        <ImageView
+            style="@style/list_item_image"
+            android:background="@mipmap/icon_bag"
+            android:layout_marginLeft="25dp"/>
+        <ImageView
+            style="@style/list_item_image"
+            android:background="@mipmap/icon_bag"
+            android:layout_marginLeft="25dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+        <TextView
+            style="@style/list_item_text"
+            android:text="首饰"
+            />
+        <TextView
+            style="@style/list_item_text"
+            android:text="鞋子"
+            android:layout_marginLeft="25dp"
+            />
+        <TextView
+            style="@style/list_item_text"
+            android:layout_marginLeft="25dp"
+            android:text="其他" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
+

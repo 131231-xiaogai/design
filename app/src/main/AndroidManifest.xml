@@ -23,6 +23,8 @@
         <activity android:name=".MeActivity" />
         <activity android:name=".ListActivity"/>
         <activity android:name=".DateActivity"/>
+        <activity android:name=".newpage.Phone_help"/>
+        <activity android:name=".newpage.Notice"/>
     </application>
 
     <uses-permission android:name="android.permission.READ_CALENDAR" />

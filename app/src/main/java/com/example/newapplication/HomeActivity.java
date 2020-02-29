@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.view.View;
 
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 
@@ -20,6 +21,8 @@ import com.example.newapplication.Adapter.PhotoAdapter;
 import com.example.newapplication.Adapter.Photo_Rec_Adapter;
 import com.example.newapplication.entity.Photo;
 import com.example.newapplication.newpage.MyViewPager;
+import com.example.newapplication.newpage.Notice;
+import com.example.newapplication.newpage.Phone_help;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +30,11 @@ import java.util.Random;
 
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, MyViewPager.OnViewPageTouchListener, ViewPager.OnPageChangeListener {
-    ImageButton h_btn_list, h_btn_date, h_btn_shop, h_btn_me;
+    ImageButton btn_list, btn_date, btn_shop, btn_me;
     MyViewPager loopPagers;
     LoopAdapter loopAdapter;
     RecyclerView recyclerView;
+    ImageView btn_notice;
     private List<Photo> photoList = new ArrayList<>();
     //private List<Photo> mphotoList = new ArrayList<>();
     private static List<Integer> sPics = new ArrayList<>();
@@ -54,6 +58,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         initView();
         handler = new Handler();
 
+        btn_notice=(ImageView) findViewById(R.id.btn_notice);
+        btn_notice.setOnClickListener(this);
+
         //list
         initPhoto();
         recyclerView = (RecyclerView)findViewById(R.id.h_recycle_view);
@@ -63,14 +70,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         recyclerView.setAdapter(rec_adapter);
 
         //底部导航栏
-        h_btn_list = (ImageButton) findViewById(R.id.h_button_list);
-        h_btn_list.setOnClickListener(this);//添加监听器
-        h_btn_date = (ImageButton) findViewById(R.id.h_button_date);
-        h_btn_date.setOnClickListener(this);
-        h_btn_shop = (ImageButton) findViewById(R.id.h_button_shopcar);
-        h_btn_shop.setOnClickListener(this);
-        h_btn_me = (ImageButton) findViewById(R.id.h_button_me);
-        h_btn_me.setOnClickListener(this);
+        btn_list = (ImageButton) findViewById(R.id.b_list);
+        btn_list.setOnClickListener(this);//添加监听器
+        btn_date = (ImageButton) findViewById(R.id.b_date);
+        btn_date.setOnClickListener(this);
+        btn_shop = (ImageButton) findViewById(R.id.b_shopcar);
+        btn_shop.setOnClickListener(this);
+        btn_me = (ImageButton) findViewById(R.id.b_me);
+        btn_me.setOnClickListener(this);
     }
     //列表
     private void initPhoto() {
@@ -200,17 +207,21 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.h_button_list:
+            case R.id.b_list:
                 startActivity(new Intent(HomeActivity.this, ListActivity.class));
                 break;
-            case R.id.h_button_me:
+            case R.id.b_me:
                 startActivity(new Intent(HomeActivity.this, MeActivity.class));
                 break;
-            case R.id.h_button_shopcar:
+            case R.id.b_shopcar:
                 startActivity(new Intent(HomeActivity.this, ShopcarActivity.class));
                 break;
-            case R.id.h_button_date:
+            case R.id.b_date:
                 startActivity(new Intent(HomeActivity.this, DateActivity.class));
+                break;
+            case R.id.btn_notice:
+                startActivity(new Intent(HomeActivity.this, Notice.class));
+                break;
         }
     }
 }

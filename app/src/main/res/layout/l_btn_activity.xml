@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/a1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:padding="60dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            style="@style/list_item_image"
+            android:background="@mipmap/icon_activity_image" />
+        <ImageView
+            style="@style/list_item_image"
+            android:background="@mipmap/icon_activity_image"
+            android:layout_marginLeft="50dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+        <TextView
+           style="@style/list_item_text"
+            android:text="辩论赛"/>
+        <TextView
+            style="@style/list_item_text"
+            android:text="舞蹈类"
+            android:layout_marginLeft="50dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+       >
+        <ImageView
+            style="@style/list_item_image"
+            android:background="@mipmap/icon_activity_image"
+            />
+
+        <ImageView
+            style="@style/list_item_image"
+            android:background="@mipmap/icon_activity_image"
+            android:layout_marginLeft="50dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+        <TextView
+            style="@style/list_item_text"
+            android:text="音乐类" />
+
+        <TextView
+            style="@style/list_item_text"
+            android:layout_marginLeft="50dp"
+            android:text="运动类" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+        <ImageView
+            style="@style/list_item_image"
+            android:background="@mipmap/icon_activity_image" />
+        <ImageView
+            style="@style/list_item_image"
+            android:background="@mipmap/icon_activity_image"
+            android:layout_marginLeft="50dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            style="@style/list_item_text"
+            android:text="话剧/小品" />
+        <TextView
+            style="@style/list_item_text"
+            android:layout_marginLeft="50dp"
+            android:text="其他"/>
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>
