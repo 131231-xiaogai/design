@@ -8,6 +8,47 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="weekIndicatorStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">#ff25adff</item>
+    </style>
+
+    <style name="mybutton">
+        <item name="android:background">@drawable/button_bg</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textColor">#6A5ACD</item>
+
+    </style>
+
+    <style name="my_order_ui">
+        <item name="android:background">@drawable/shape_h_tubiao</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_margin">20dp</item>
+    </style>
+
+    <style name="m_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:background"> @drawable/shape_m_line</item>
+        <item name="android:paddingLeft"> 30dp</item>
+        <item name="android:gravity">center_vertical </item>
+        <item name="android:textSize">22dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+</style>
+
 
 
 </resources>

@@ -59,15 +59,15 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
     private void initPhoto() {
         for (int i= 0;i < 2;i++){
 
-            Photo home = new Photo("home",R.mipmap.ic_home);
+            Photo home = new Photo("home",R.drawable.image6);
             photoList.add(home);
-            Photo list = new Photo("list",R.mipmap.ic_list);
+            Photo list = new Photo("list",R.drawable.image7);
             photoList.add(list);
-            Photo date = new Photo("date",R.mipmap.ic_wallet);
+            Photo date = new Photo("date",R.drawable.image8);
             photoList.add(date);
-            Photo shopcar = new Photo("shopcar",R.mipmap.ic_shopcar);
+            Photo shopcar = new Photo("shopcar",R.drawable.image9);
             photoList.add(shopcar);
-            Photo me = new Photo("me",R.mipmap.ic_me);
+            Photo me = new Photo("me",R.drawable.image10);
             photoList.add(me);
         }
     }

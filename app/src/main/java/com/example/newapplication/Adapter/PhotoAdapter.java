@@ -34,8 +34,6 @@ public class PhotoAdapter extends ArrayAdapter<Photo> {
 
         if(convertView == null){
             view = LayoutInflater.from(getContext()).inflate(resourceId,parent,false);
-
-
         }else {
             view = convertView;
         }

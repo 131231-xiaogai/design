@@ -3,14 +3,11 @@
 <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+   >
     <!--tools:context=".MainActivity"-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#f8f8ff">
         <!-- 顶部-->
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,6 +15,7 @@
             android:background="#FFD700">
 
             <Button
+
                 android:id="@+id/title_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -46,10 +44,94 @@
                 android:text="12345"
                 android:textColor="#6A5ACD"/>
         </LinearLayout>
-        
+
+        <!---->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="900dp"></LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="#fff"
+                android:orientation="vertical">
+
+            </LinearLayout>
+        </LinearLayout>
+        <!---->
+
+
+
+        <!--  中间日历 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:orientation="vertical">
+            <CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:layout_weight="1" />
+
+
+        </LinearLayout>
+        <!--  编辑框-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/bianjikuang_bg"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="40dp"
+                android:hint="添加活动备注" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+                <Button
+                    android:id="@+id/d_b_add"
+                    android:text="编辑"
+                    android:layout_height="40dp"
+                    android:textSize="24sp"
+
+                    style="@style/mybutton"
+                   />
+
+                <Button
+                    android:id="@+id/d_b_save"
+                    style="@style/mybutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="保存"
+                    android:textSize="24sp" />
+                <Button
+                    android:id="@+id/d_b_del"
+                    android:layout_height="40dp"
+                    android:text="删除"
+                    android:textSize="24sp"
+                    style="@style/mybutton"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+
+
         <!-- 底部导航栏-->
         <LinearLayout
             android:layout_width="match_parent"
@@ -120,12 +202,5 @@
 
         </LinearLayout>
 
+        </LinearLayout>
 
-    </LinearLayout>
-
-
-
-
-
-
-</LinearLayout>
