@@ -26,10 +26,12 @@ public  class MeActivity extends AppCompatActivity implements View.OnClickListen
         btn_shop.setOnClickListener(this);
         btn_home = (ImageButton) findViewById(R.id.b_home);
         btn_home.setOnClickListener(this);
-
-
         btn_notice = findViewById(R.id.btn_notice);
         btn_notice.setOnClickListener(this);
+    }
+
+    public void finish_reback(View v){
+        MeActivity.this.finish();
     }
     @Override
     public void onClick(View v) {

@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-   >
-    <!--tools:context=".MainActivity"-->
+    android:orientation="vertical">
         <!-- 顶部-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,7 +29,6 @@
                 android:layout_marginBottom="10dp"
                 android:background="#fff"
                 android:orientation="vertical">
-
             </LinearLayout>
         </LinearLayout>
         <!---->
@@ -40,6 +36,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="350dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
             <CalendarView
                 android:id="@+id/calendarView"
@@ -47,23 +44,20 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:layout_weight="1" />
-
-
         </LinearLayout>
         <!--  编辑框-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="match_parent"
             android:layout_marginTop="20dp"
             android:orientation="vertical">
-
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:background="@drawable/bianjikuang_bg"
                 android:gravity="center_horizontal"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="40dp"
                 android:hint="添加活动备注" />
             <LinearLayout
@@ -86,10 +80,8 @@
                     style="@style/mybutton"
                     />
             </LinearLayout>
-
         </LinearLayout>
     </LinearLayout>
-
         <!-- 底部导航栏-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -97,6 +89,5 @@
         android:layout_weight="1.2">
         <include layout="@layout/bottombar"/>
     </LinearLayout>
-
         </LinearLayout>
 

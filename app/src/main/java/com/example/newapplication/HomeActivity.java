@@ -203,6 +203,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+     public void finish_reback(View v){
+        HomeActivity.this.finish();
+     }
+
     //底部导航栏
     @Override
     public void onClick(View v) {

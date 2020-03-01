@@ -46,19 +46,10 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
 
         ListView listView = (ListView)findViewById(R.id.s_list_view);
         listView.setAdapter(adapter);
-//        listView.setOnClickListener(new AdapterView.OnItemClickListener() {
-//
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Photo photo =  photoList.get(position);
-//                Toast.makeText(ShopcarActivity.this,photo.getName(),Toast.LENGTH_SHORT).show();
-//            }
-//        });
+    }
 
-//        //listview适配器
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-//                ShopcarActivity.this,android.R.layout.simple_list_item_1,data);
-//        ListView listView = (ListView)findViewById(R.id.s_list_view);
-//        listView.setAdapter(adapter);
+    public void finish_reback(View v){
+        ShopcarActivity.this.finish();
     }
 
     private void initPhoto() {

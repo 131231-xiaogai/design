@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -75,7 +76,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (v.getId()) {
             case R.id.lonin_help:
-                startActivity(new Intent(MainActivity.this,Phone_help.class));
+//                startActivity(new Intent(MainActivity.this,Phone_help.class));
+                  Intent intent = new Intent(Intent.ACTION_DIAL);
+                  intent.setData(Uri.parse("tel:10086"));
+                  startActivity(intent);
                 break;
             case R.id.login:
                 startActivity(new Intent(MainActivity.this,HomeActivity.class));

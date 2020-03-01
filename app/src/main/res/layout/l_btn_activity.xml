@@ -15,7 +15,7 @@
         <ImageView
             style="@style/list_item_image"
             android:background="@mipmap/icon_activity_image"
-            android:layout_marginLeft="50dp"/>
+            android:layout_marginLeft="80dp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
         <TextView
             style="@style/list_item_text"
             android:text="舞蹈类"
-            android:layout_marginLeft="50dp" />
+            android:layout_marginLeft="80dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -43,7 +43,7 @@
         <ImageView
             style="@style/list_item_image"
             android:background="@mipmap/icon_activity_image"
-            android:layout_marginLeft="50dp"/>
+            android:layout_marginLeft="80dp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,7 +55,7 @@
 
         <TextView
             style="@style/list_item_text"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="80dp"
             android:text="运动类" />
     </LinearLayout>
     <LinearLayout
@@ -68,7 +68,7 @@
         <ImageView
             style="@style/list_item_image"
             android:background="@mipmap/icon_activity_image"
-            android:layout_marginLeft="50dp"/>
+            android:layout_marginLeft="80dp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -80,7 +80,7 @@
             android:text="话剧/小品" />
         <TextView
             style="@style/list_item_text"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="80dp"
             android:text="其他"/>
 
     </LinearLayout>

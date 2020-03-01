@@ -54,6 +54,9 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         transaction.addToBackStack(null);
         transaction.commit();
     }
+    public void finish_reback(View v){
+        ListActivity.this.finish();
+    }
 
     @Override
     public void onClick(View v) {

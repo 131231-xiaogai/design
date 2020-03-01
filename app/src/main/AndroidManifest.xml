@@ -23,7 +23,13 @@
         <activity android:name=".MeActivity" />
         <activity android:name=".ListActivity"/>
         <activity android:name=".DateActivity"/>
-        <activity android:name=".newpage.Phone_help"/>
+        <activity android:name=".newpage.Phone_help">
+            <intent-filter>
+                <action android:name="android.Intent.ACTION_DIAL"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="tel"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".newpage.Notice"/>
     </application>
 

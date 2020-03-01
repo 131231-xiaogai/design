@@ -126,6 +126,10 @@ public class DateActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    public void finish_reback(View v){
+        DateActivity.this.finish();
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
