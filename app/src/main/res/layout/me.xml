@@ -83,21 +83,25 @@
                     android:layout_marginTop="25dp"
                     android:gravity="center">
                     <TextView
+                        android:id="@+id/fu"
                         style="@style/my_order_ui"
                         android:text="付"
                         android:layout_weight="1"
                         />
                     <TextView
+                        android:id="@+id/fa"
                         style="@style/my_order_ui"
                         android:layout_weight="1"
                         android:text="发"
                     />
                     <TextView
+                        android:id="@+id/shou"
                         style="@style/my_order_ui"
                         android:layout_weight="1"
                         android:text="收"
                         />
                     <TextView
+                        android:id="@+id/tui"
                         style="@style/my_order_ui"
                         android:layout_weight="1"
                         android:text="退"
@@ -136,7 +140,7 @@
                         android:text="设  置                                           "/>
                     <TextView
                         style="@style/m_line"
-                        android:text="客  服                                             "/>
+                        android:text="尺  码                                             "/>
                     <TextView
                         style="@style/m_line"
                         android:text="版  本                                           "/>

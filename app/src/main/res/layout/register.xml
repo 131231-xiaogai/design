@@ -54,7 +54,8 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:ems="10"
-                android:hint="请输入手机号码"
+                android:drawableLeft="@mipmap/username"
+                android:hint="手机号"
                 android:inputType="phone" />
         </LinearLayout>
         <!-- 密码-->
@@ -71,7 +72,8 @@
                 android:id="@+id/reg_e_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="请设置密码"
+                android:drawableLeft="@mipmap/password"
+                android:hint="密码"
                 android:ems="15"
                 android:inputType="textPassword" />
 
@@ -90,7 +92,7 @@
                 android:id="@+id/reg_e_numberassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="请设置密码"
+                android:hint="验证码"
                 android:ems="10"
                 android:inputType="numberPassword" />
             <com.example.newapplication.new_utill.SMSTextView

@@ -60,8 +60,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
+                android:drawableLeft="@mipmap/username"
                 android:ems="10"
-                android:hint="请输入手机号码"
+                android:hint="手机号"
                 android:inputType="phone" />
         </LinearLayout>
         <!-- 密码-->
@@ -78,7 +79,8 @@
                 android:id="@+id/e_bassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="请输入密码"
+                android:drawableLeft="@mipmap/password"
+                android:hint="密码"
                 android:ems="15"
                 android:inputType="textPassword" />
             <TextView

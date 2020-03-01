@@ -5,29 +5,47 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.newapplication.newpage.Notice;
+import com.example.newapplication.newpage.Order_fa;
+import com.example.newapplication.newpage.Order_fu;
+import com.example.newapplication.newpage.Order_shou;
+import com.example.newapplication.newpage.Order_tui;
 
 public  class MeActivity extends AppCompatActivity implements View.OnClickListener{
     ImageButton btn_list, btn_date, btn_shop, btn_home;
     ImageView btn_notice;
+    TextView fa,fu,tui,shou;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.me);
+        fa=findViewById(R.id.fa);
+        fu=findViewById(R.id.fu);
+        tui=findViewById(R.id.tui);
+        shou=findViewById(R.id.shou);
         btn_list = (ImageButton) findViewById(R.id.b_list);
-        btn_list.setOnClickListener(this);//添加监听器
         btn_date = (ImageButton) findViewById(R.id.b_date);
-        btn_date.setOnClickListener(this);
         btn_shop = (ImageButton) findViewById(R.id.b_shopcar);
-        btn_shop.setOnClickListener(this);
         btn_home = (ImageButton) findViewById(R.id.b_home);
-        btn_home.setOnClickListener(this);
         btn_notice = findViewById(R.id.btn_notice);
+        OnClickListener();
+    }
+
+    private void OnClickListener() {
+        btn_list.setOnClickListener(this);//添加监听器
+        btn_date.setOnClickListener(this);
+        btn_shop.setOnClickListener(this);
+        btn_home.setOnClickListener(this);
         btn_notice.setOnClickListener(this);
+        fa.setOnClickListener(this);
+        fu.setOnClickListener(this);
+        tui.setOnClickListener(this);
+        shou.setOnClickListener(this);
     }
 
     public void finish_reback(View v){
@@ -51,7 +69,18 @@ public  class MeActivity extends AppCompatActivity implements View.OnClickListen
           case R.id.btn_notice:
               startActivity(new Intent(MeActivity.this, Notice.class));
               break;
-
+          case R.id.fa:
+              startActivity(new Intent(MeActivity.this, Order_fa.class));
+              break;
+          case R.id.fu:
+              startActivity(new Intent(MeActivity.this, Order_fu.class));
+              break;
+          case R.id.tui:
+              startActivity(new Intent(MeActivity.this, Order_shou.class));
+              break;
+          case R.id.shou:
+              startActivity(new Intent(MeActivity.this, Order_tui.class));
+              break;
        }
 
     }
