@@ -8,32 +8,37 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.newapplication.Adapter.PhotoAdapter;
 import com.example.newapplication.entity.Photo;
+import com.example.newapplication.newpage.Notice;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShopcarActivity extends AppCompatActivity implements View.OnClickListener{
 
-    ImageButton s_btn_home,s_btn_list,s_btn_date,s_btn_me;
+    ImageButton btn_list, btn_date, btn_home, btn_me;
     private List<Photo> photoList = new ArrayList<>();
+    ImageView btn_notice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shopcar);
-        s_btn_home = (ImageButton)findViewById(R.id.s_bottom_home);
-        s_btn_list = (ImageButton)findViewById(R.id.s_button_list);
-        s_btn_date = (ImageButton)findViewById(R.id.s_button_date);
-        s_btn_me = (ImageButton)findViewById(R.id.s_button_me);
-        s_btn_home.setOnClickListener(this);
-        s_btn_list.setOnClickListener(this);
-        s_btn_date.setOnClickListener(this);
-        s_btn_me.setOnClickListener(this);
+        btn_home = (ImageButton)findViewById(R.id.b_home);
+        btn_list = (ImageButton)findViewById(R.id.b_list);
+        btn_date = (ImageButton)findViewById(R.id.b_date);
+        btn_me = (ImageButton)findViewById(R.id.b_me);
+        btn_notice = findViewById(R.id.btn_notice);
+        btn_notice.setOnClickListener(this);
+        btn_home.setOnClickListener(this);
+        btn_list.setOnClickListener(this);
+        btn_date.setOnClickListener(this);
+        btn_me.setOnClickListener(this);
 
         //
         initPhoto();
@@ -41,19 +46,10 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
 
         ListView listView = (ListView)findViewById(R.id.s_list_view);
         listView.setAdapter(adapter);
-//        listView.setOnClickListener(new AdapterView.OnItemClickListener() {
-//
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Photo photo =  photoList.get(position);
-//                Toast.makeText(ShopcarActivity.this,photo.getName(),Toast.LENGTH_SHORT).show();
-//            }
-//        });
+    }
 
-//        //listview适配器
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-//                ShopcarActivity.this,android.R.layout.simple_list_item_1,data);
-//        ListView listView = (ListView)findViewById(R.id.s_list_view);
-//        listView.setAdapter(adapter);
+    public void finish_reback(View v){
+        ShopcarActivity.this.finish();
     }
 
     private void initPhoto() {
@@ -75,17 +71,20 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.s_bottom_home:
+            case R.id.b_home:
                 startActivity(new Intent(ShopcarActivity.this,HomeActivity.class));
                 break;
-            case R.id.s_button_list:
+            case R.id.b_list:
                 startActivity(new Intent(ShopcarActivity.this,ListActivity.class));
                 break;
-            case R.id.s_button_date:
+            case R.id.b_date:
                 startActivity(new Intent(ShopcarActivity.this,DateActivity.class));
                 break;
-            case R.id.s_button_me:
+            case R.id.b_me:
                 startActivity(new Intent(ShopcarActivity.this,MeActivity.class));
+                break;
+            case R.id.btn_notice:
+                startActivity(new Intent(ShopcarActivity.this, Notice.class));
                 break;
         }
     }

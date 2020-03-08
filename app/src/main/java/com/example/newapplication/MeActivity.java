@@ -4,42 +4,83 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.newapplication.newpage.Notice;
+import com.example.newapplication.newpage.Order_fa;
+import com.example.newapplication.newpage.Order_fu;
+import com.example.newapplication.newpage.Order_shou;
+import com.example.newapplication.newpage.Order_tui;
+
 public  class MeActivity extends AppCompatActivity implements View.OnClickListener{
-    ImageButton m_btn_home,m_btn_list,m_btn_date,m_btn_shopcar;
+    ImageButton btn_list, btn_date, btn_shop, btn_home;
+    ImageView btn_notice;
+    TextView fa,fu,tui,shou;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.me);
-       m_btn_home = findViewById(R.id.m_bottom_home);
-       m_btn_home.setOnClickListener(this);
-       m_btn_list = findViewById(R.id.m_button_list);
-       m_btn_list.setOnClickListener(this);
-       m_btn_date = findViewById(R.id.m_button_date);
-       m_btn_date.setOnClickListener(this);
-       m_btn_shopcar = findViewById(R.id.m_button_shopcar);
-       m_btn_shopcar.setOnClickListener(this);
+        fa=findViewById(R.id.fa);
+        fu=findViewById(R.id.fu);
+        tui=findViewById(R.id.tui);
+        shou=findViewById(R.id.shou);
+        btn_list = (ImageButton) findViewById(R.id.b_list);
+        btn_date = (ImageButton) findViewById(R.id.b_date);
+        btn_shop = (ImageButton) findViewById(R.id.b_shopcar);
+        btn_home = (ImageButton) findViewById(R.id.b_home);
+        btn_notice = findViewById(R.id.btn_notice);
+        OnClickListener();
     }
 
+    private void OnClickListener() {
+        btn_list.setOnClickListener(this);//添加监听器
+        btn_date.setOnClickListener(this);
+        btn_shop.setOnClickListener(this);
+        btn_home.setOnClickListener(this);
+        btn_notice.setOnClickListener(this);
+        fa.setOnClickListener(this);
+        fu.setOnClickListener(this);
+        tui.setOnClickListener(this);
+        shou.setOnClickListener(this);
+    }
+
+    public void finish_reback(View v){
+        MeActivity.this.finish();
+    }
     @Override
     public void onClick(View v) {
       switch (v.getId()){
-            case R.id.m_bottom_home:
+            case R.id.b_home:
                 startActivity(new Intent(MeActivity.this,HomeActivity.class));
                 break;
-            case R.id.m_button_list:
+            case R.id.b_list:
                 startActivity(new Intent(MeActivity.this,ListActivity.class));
                 break;
-            case R.id.m_button_date:
+            case R.id.b_date:
                 startActivity(new Intent(MeActivity.this,DateActivity.class));
                 break;
-            case R.id.m_button_shopcar:
+            case R.id.b_shopcar:
                 startActivity(new Intent(MeActivity.this,ShopcarActivity.class));
                 break;
-
+          case R.id.btn_notice:
+              startActivity(new Intent(MeActivity.this, Notice.class));
+              break;
+          case R.id.fa:
+              startActivity(new Intent(MeActivity.this, Order_fa.class));
+              break;
+          case R.id.fu:
+              startActivity(new Intent(MeActivity.this, Order_fu.class));
+              break;
+          case R.id.tui:
+              startActivity(new Intent(MeActivity.this, Order_shou.class));
+              break;
+          case R.id.shou:
+              startActivity(new Intent(MeActivity.this, Order_tui.class));
+              break;
        }
 
     }

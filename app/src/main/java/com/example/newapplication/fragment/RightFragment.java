@@ -13,7 +13,7 @@ public class RightFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.right_list1,container,false);//动态加载布局
+        View view = inflater.inflate(R.layout.l_btn_cloth,container,false);//动态加载布局
         return view;
     }
 }

@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,16 +23,17 @@ import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.new_utill.SMSTextView;
 import com.example.newapplication.newpage.BaseActivity;
+import com.example.newapplication.newpage.Phone_help;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView th, te, ty;
+
     SMSTextView getcode;
     EditText eh, em, ey;
-    TextView bm, by, bz;
+    TextView bm, by, bz,lonin_help;
     LinearLayout lm, ly;
     Button login;
 
@@ -42,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         eh = (EditText) findViewById(R.id.e_phonemb);
         em = (EditText) findViewById(R.id.e_bassword);
         ey = (EditText) findViewById(R.id.e_pass);
+
+        lonin_help =(TextView)findViewById(R.id.lonin_help);
 
         bm = (TextView) findViewById(R.id.b_m);
         by = (TextView) findViewById(R.id.b_y);
@@ -58,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bm.setOnClickListener(this);
         by.setOnClickListener(this);
         bz.setOnClickListener(this);
-
+        lonin_help.setOnClickListener(this);
         login.setOnClickListener(this);
 
         ly.setVisibility(View.GONE);
@@ -71,6 +75,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
 
         switch (v.getId()) {
+            case R.id.lonin_help:
+//                startActivity(new Intent(MainActivity.this,Phone_help.class));
+                  Intent intent = new Intent(Intent.ACTION_DIAL);
+                  intent.setData(Uri.parse("tel:10086"));
+                  startActivity(intent);
+                break;
             case R.id.login:
                 startActivity(new Intent(MainActivity.this,HomeActivity.class));
                 break;
@@ -81,7 +91,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.b_y:
                 lm.setVisibility(View.GONE);
                 ly.setVisibility(View.VISIBLE);
-
                 break;
             case R.id.b_z:
                 startActivity(new Intent(MainActivity.this,RegisterActivity.class));

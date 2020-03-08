@@ -1,35 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="#4569">
-    <!--tools:context=".MainActivity"-->
 
+    <!-- 首页字样-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <include layout="@layout/title" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="16"
         android:orientation="vertical">
-        <!-- 首页字样-->
-        <LinearLayout
-            android:id="@+id/top1"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-
-            android:background="#7b68ee">
-            <TextView
-                android:paddingLeft="158dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-             android:text="首页"
-                android:textSize="40sp"
-                android:textColor="#ffffff"
-
-                />
-        </LinearLayout>
-
         <!-- 中间图片区域-->
         <com.example.newapplication.newpage.MyViewPager
             android:id="@+id/looper_pagers"
@@ -51,88 +39,14 @@
                 android:id="@+id/h_recycle_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
-
-
         </LinearLayout>
-
-
-
-        <!-- 底部导航栏-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="#FFD700"
-            android:layout_gravity="bottom"
-            android:gravity="center"
-            android:padding="5dp">
-
-            <ImageButton
-                android:id="@+id/h_buttom_home"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:gravity="center"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="5dp"
-                android:background="@mipmap/ic_home"
-                android:layout_weight="1"
-                />
-            <ImageButton
-                android:id="@+id/h_button_list"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:gravity="center"
-                android:background="@mipmap/ic_list"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1" />
-            <ImageButton
-                android:id="@+id/h_button_date"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:gravity="center"
-                android:layout_marginRight="10dp"
-                android:background="@mipmap/ic_list"
-                android:layout_weight="1"
-                />
-            <ImageButton
-                android:id="@+id/h_button_shopcar"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:gravity="center"
-                android:layout_marginRight="10dp"
-                android:background="@mipmap/ic_shopcar"
-                android:layout_weight="1"
-                />
-
-            <ImageButton
-                android:id="@+id/h_button_me"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:gravity="center"
-                android:layout_marginRight="10dp"
-                android:background="@mipmap/ic_me"
-                android:layout_weight="1"
-                />
-
-
-
-            <!--<Button-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:layout_margin="5dp"-->
-            <!--android:background="#FFD700"-->
-            <!--android:text="12345"-->
-            <!--android:textColor="#6A5ACD"/>-->
-
-
-        </LinearLayout>
-
 
     </LinearLayout>
-
-
-
-
-
-
+    <!-- 底部导航栏-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.2">
+        <include layout="@layout/bottombar"/>
+    </LinearLayout>
 </LinearLayout>

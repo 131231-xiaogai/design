@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="#fff"
-    android:layout_gravity="top">
-
+    android:layout_gravity="top"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <ImageButton
         android:id="@+id/title_back"
-        android:layout_width="34dp"
+        android:layout_width="43dp"
         android:layout_height="43dp"
         android:layout_gravity="center_vertical"
         android:layout_margin="5dp"
-        android:onClick="finish_reback"
         android:background="@mipmap/icon_right" />
     <TextView
         android:layout_width="0dp"
@@ -19,15 +21,23 @@
         android:gravity="center"
         android:layout_weight="1"
         android:layout_gravity="center"
-        android:text="App    Name"
+        android:text="客 服 帮 助"
         android:textColor="#6A5ACD"
         android:textSize="28sp"/>
     <ImageButton
-        android:id="@+id/btn_notice"
+        android:id="@+id/notice"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_margin="5dp"
         android:background="@mipmap/icon_grid_notice"
         />
+    </LinearLayout>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="客 服 电 话: 0596 - 123456"
+        android:textSize="20sp"/>
 </LinearLayout>

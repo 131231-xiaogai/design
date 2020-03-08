@@ -4,10 +4,11 @@
     android:layout_height="wrap_content"
     android:layout_gravity="bottom"
     android:gravity="center"
+    android:background="#fff"
    android:padding="5dp">
 
     <ImageButton
-        android:id="@+id/bottom_home"
+        android:id="@+id/b_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
@@ -17,7 +18,7 @@
         android:gravity="center"
         />
     <ImageButton
-        android:id="@+id/bottom_list"
+        android:id="@+id/b_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
@@ -27,7 +28,7 @@
         android:gravity="center"
         />
     <ImageButton
-        android:id="@+id/bottom_date"
+        android:id="@+id/b_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
@@ -37,7 +38,7 @@
         android:gravity="center"
         />
     <ImageButton
-        android:id="@+id/bottom_shopcar"
+        android:id="@+id/b_shopcar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
@@ -47,7 +48,7 @@
         android:gravity="center"
         />
     <ImageButton
-        android:id="@+id/bottom_me"
+        android:id="@+id/b_me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"

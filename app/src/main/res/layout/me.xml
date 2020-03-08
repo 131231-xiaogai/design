@@ -8,48 +8,22 @@
     android:background="#d3d3d3">
 
         <!-- 顶部 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#FFD700">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <include layout="@layout/title" />
+    </LinearLayout>
 
-                <Button
-                    android:id="@+id/title_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_margin="5dp"
-                    android:background="#FFD700"
-                    android:text="back"
-                    android:textColor="#6A5ACD"
-                    android:textSize="24sp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="叫了个衣服"
-                    android:textColor="#6A5ACD"
-                    android:textSize="24sp"/>
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:background="#FFD700"
-                    android:text="12345"
-                    android:textColor="#6A5ACD"/>
-            </LinearLayout>
 
         <!-- 主体窗口-->
         <LinearLayout
             android:id="@+id/body1"
             android:layout_width="match_parent"
-            android:layout_height="900dp"
+            android:layout_height="0dp"
             android:layout_margin="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="16">
             <!-- part1-->
             <LinearLayout
                 android:id="@+id/usercard"
@@ -109,21 +83,25 @@
                     android:layout_marginTop="25dp"
                     android:gravity="center">
                     <TextView
+                        android:id="@+id/fu"
                         style="@style/my_order_ui"
                         android:text="付"
                         android:layout_weight="1"
                         />
                     <TextView
+                        android:id="@+id/fa"
                         style="@style/my_order_ui"
                         android:layout_weight="1"
                         android:text="发"
                     />
                     <TextView
+                        android:id="@+id/shou"
                         style="@style/my_order_ui"
                         android:layout_weight="1"
                         android:text="收"
                         />
                     <TextView
+                        android:id="@+id/tui"
                         style="@style/my_order_ui"
                         android:layout_weight="1"
                         android:text="退"
@@ -162,7 +140,7 @@
                         android:text="设  置                                           "/>
                     <TextView
                         style="@style/m_line"
-                        android:text="客  服                                             "/>
+                        android:text="尺  码                                             "/>
                     <TextView
                         style="@style/m_line"
                         android:text="版  本                                           "/>
@@ -171,77 +149,14 @@
             </LinearLayout>
 
 
-
         </LinearLayout>
         <!-- 底部导航栏-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="#FFD700"
-            android:layout_gravity="bottom"
-            android:gravity="center"
-            android:padding="5dp">
-
-            <ImageButton
-                android:id="@+id/m_bottom_home"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:gravity="center"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="5dp"
-                android:background="@mipmap/ic_home"
-                android:layout_weight="1"
-                />
-            <ImageButton
-                android:id="@+id/m_button_list"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:gravity="center"
-                android:background="@mipmap/ic_list"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1" />
-            <ImageButton
-                android:id="@+id/m_button_date"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:gravity="center"
-                android:layout_marginRight="10dp"
-                android:background="@mipmap/ic_list"
-                android:layout_weight="1"
-                />
-            <ImageButton
-                android:id="@+id/m_button_shopcar"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:gravity="center"
-                android:layout_marginRight="10dp"
-                android:background="@mipmap/ic_shopcar"
-                android:layout_weight="1"
-                />
-
-            <ImageButton
-                android:id="@+id/m_button_me"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:gravity="center"
-                android:layout_marginRight="10dp"
-                android:background="@mipmap/ic_me"
-                android:layout_weight="1"
-                />
-
-
-
-            <!--<Button-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:layout_margin="5dp"-->
-            <!--android:background="#FFD700"-->
-            <!--android:text="12345"-->
-            <!--android:textColor="#6A5ACD"/>-->
-
-
-        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.2">
+        <include layout="@layout/bottombar"/>
+    </LinearLayout>
 
 
     </LinearLayout>

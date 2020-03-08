@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.newapplication">
+
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +17,7 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -21,11 +25,22 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MeActivity" />
-        <activity android:name=".ListActivity"/>
-        <activity android:name=".DateActivity"/>
-    </application>
+        <activity android:name=".ListActivity" />
+        <activity android:name=".DateActivity" />
+        <activity android:name=".newpage.Phone_help">
+            <intent-filter>
+                <action android:name="android.Intent.ACTION_DIAL" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="tel" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".newpage.Notice" />
+        <activity android:name=".newpage.Order_fa"/>
+        <activity android:name=".newpage.Order_fu"/>
+        <activity android:name=".newpage.Order_shou"/>
+        <activity android:name=".newpage.Order_tui"/>
 
-    <uses-permission android:name="android.permission.READ_CALENDAR" />
-    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
+    </application>
 
 </manifest>
