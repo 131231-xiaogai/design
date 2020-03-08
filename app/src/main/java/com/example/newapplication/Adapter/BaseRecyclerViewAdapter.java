@@ -1,4 +1,4 @@
-package com.example.psychologicalcounseling.utils;
+package com.example.newapplication.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -17,11 +17,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import com.example.psychologicalcounseling.R;
-import com.example.psychologicalcounseling.inteface.OnItemChildClickListener;
-import com.example.psychologicalcounseling.inteface.OnItemClickListener;
-import com.example.psychologicalcounseling.inteface.OnItemLongClickListener;
-import com.example.psychologicalcounseling.inteface.OnLoadMoreListener;
+
+import com.example.newapplication.R;
+import com.example.newapplication.inteface.OnItemChildClickListener;
+import com.example.newapplication.inteface.OnItemClickListener;
+import com.example.newapplication.inteface.OnItemLongClickListener;
+import com.example.newapplication.inteface.OnLoadMoreListener;
+import com.example.newapplication.new_utill.UiUtils;
+import com.example.newapplication.viewhandle.RecyclerViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package bean;
+package com.example.newapplication.entity;
 
 public class GoodBean {
 	private String goods_id;

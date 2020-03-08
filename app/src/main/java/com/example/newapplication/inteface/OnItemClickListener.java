@@ -1,6 +1,7 @@
-package com.example.psychologicalcounseling.inteface;
+package com.example.newapplication.inteface;
 
-import com.example.psychologicalcounseling.utils.RecyclerViewHolder;
+
+import com.example.newapplication.viewhandle.RecyclerViewHolder;
 
 public interface OnItemClickListener<T> {
     void onItemClick(RecyclerViewHolder viewHolder, T data, int position);

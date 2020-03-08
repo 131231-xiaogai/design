@@ -1,4 +1,4 @@
-package com.example.psychologicalcounseling.utils;
+package com.example.newapplication.viewhandle;
 
 import android.content.Context;
 import android.util.SparseArray;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.IdRes;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.psychologicalcounseling.utils.BaseRecyclerViewAdapter;
+import com.example.newapplication.Adapter.BaseRecyclerViewAdapter;
 
 import java.util.LinkedHashSet;
 

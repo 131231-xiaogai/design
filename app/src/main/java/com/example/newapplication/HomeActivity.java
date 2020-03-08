@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 
 import androidx.annotation.Nullable;
@@ -16,16 +17,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.newapplication.Adapter.GoodAdapter;
 import com.example.newapplication.Adapter.LoopAdapter;
 import com.example.newapplication.Adapter.PhotoAdapter;
 import com.example.newapplication.Adapter.Photo_Rec_Adapter;
+import com.example.newapplication.entity.GoodBean;
 import com.example.newapplication.entity.Photo;
+import com.example.newapplication.new_utill.Constant;
+import com.example.newapplication.new_utill.OkCallback;
+import com.example.newapplication.new_utill.OkHttp;
+import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.newpage.MyViewPager;
 import com.example.newapplication.newpage.Notice;
 import com.example.newapplication.newpage.Phone_help;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 
@@ -51,6 +60,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private boolean mIsTouch = false;
 
     LinearLayout pointcontainer;
+    private GoodAdapter goodAdapter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,17 +69,18 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         initView();
         handler = new Handler();
 
-        btn_notice=(ImageView) findViewById(R.id.btn_notice);
+        btn_notice = (ImageView) findViewById(R.id.btn_notice);
         btn_notice.setOnClickListener(this);
 
         //list
         initPhoto();
-        recyclerView = (RecyclerView)findViewById(R.id.h_recycle_view);
-        StaggeredGridLayoutManager layoutManager =new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        recyclerView = (RecyclerView) findViewById(R.id.h_recycle_view);
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        Photo_Rec_Adapter rec_adapter = new Photo_Rec_Adapter(photoList);
-        recyclerView.setAdapter(rec_adapter);
-
+        goodAdapter = new GoodAdapter(this);
+//        Photo_Rec_Adapter rec_adapter = new Photo_Rec_Adapter(photoList);
+        recyclerView.setAdapter(goodAdapter);
+        loadData();
         //底部导航栏
         btn_list = (ImageButton) findViewById(R.id.b_list);
         btn_list.setOnClickListener(this);//添加监听器
@@ -79,30 +91,31 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btn_me = (ImageButton) findViewById(R.id.b_me);
         btn_me.setOnClickListener(this);
     }
+
     //列表
     private void initPhoto() {
-        for (int i= 0;i < 2;i++){
+        for (int i = 0; i < 2; i++) {
             Photo home = new Photo(
-                   getRandomLengthName("home"),R.drawable.image6);
+                    getRandomLengthName("home"), R.drawable.image6);
             photoList.add(home);
             Photo list = new Photo(
-                    getRandomLengthName("list"),R.drawable.image7);
+                    getRandomLengthName("list"), R.drawable.image7);
             photoList.add(list);
             Photo date = new Photo(
-                    getRandomLengthName("date"),R.drawable.image8);
+                    getRandomLengthName("date"), R.drawable.image8);
             photoList.add(date);
             Photo shopcar = new Photo(
-                    getRandomLengthName("shopcar"),R.drawable.image9);
+                    getRandomLengthName("shopcar"), R.drawable.image9);
             photoList.add(shopcar);
             Photo me = new Photo(
-                    getRandomLengthName("me"),R.drawable.image10);
+                    getRandomLengthName("me"), R.drawable.image10);
             photoList.add(me);
         }
     }
 
     private String getRandomLengthName(String home) {
         Random random = new Random();
-        int length = random.nextInt(10)+1;
+        int length = random.nextInt(10) + 1;
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < length; i++) {
             builder.append(home);
@@ -121,18 +134,18 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         loopPagers.addOnPageChangeListener(this);
         loopPagers.setOnViewPageTouchListener(this);
         //
-        pointcontainer = (LinearLayout)this.findViewById(R.id.points_container);
+        pointcontainer = (LinearLayout) this.findViewById(R.id.points_container);
         //添加点
         insertpoint();
-        loopPagers.setCurrentItem(loopAdapter.getDataRealSize()* 100,false);
+        loopPagers.setCurrentItem(loopAdapter.getDataRealSize() * 100, false);
     }
 
     private void insertpoint() {
-        for (int i=0;i< sPics.size();i++) {
+        for (int i = 0; i < sPics.size(); i++) {
             View point = new View(this);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(40,40);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(40, 40);
             point.setLayoutParams(layoutParams);
-            layoutParams.leftMargin =20;
+            layoutParams.leftMargin = 20;
             point.setBackground(getResources().getDrawable(R.drawable.shape_point_normal));
             pointcontainer.addView(point);
         }
@@ -155,7 +168,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void run() {
             //
-            if (!mIsTouch){
+            if (!mIsTouch) {
                 int currentItem;
                 currentItem = loopPagers.getCurrentItem();
                 loopPagers.setCurrentItem(++currentItem, true);
@@ -176,11 +189,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onPageSelected(int position) {
-    //
+        //
         int realPosition;
-        if (loopAdapter.getDataRealSize()!=0 ) {
+        if (loopAdapter.getDataRealSize() != 0) {
             realPosition = position % loopAdapter.getDataRealSize();
-        }else {
+        } else {
             realPosition = 0;
         }
         setSelectPoint(realPosition);
@@ -188,24 +201,25 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setSelectPoint(int realPosition) {
         for (int i = 0; i < pointcontainer.getChildCount(); i++) {
-           View postion;
+            View postion;
             postion = pointcontainer.getChildAt(i);
-            if (i!=realPosition){
-               //
-               postion.setBackgroundResource(R.drawable.shape_point_normal);
-           }else {
-               postion.setBackgroundResource(R.drawable.shape_point_select);
-           }
+            if (i != realPosition) {
+                //
+                postion.setBackgroundResource(R.drawable.shape_point_normal);
+            } else {
+                postion.setBackgroundResource(R.drawable.shape_point_select);
+            }
         }
     }
+
     @Override
     public void onPageScrollStateChanged(int state) {
 
     }
 
-     public void finish_reback(View v){
+    public void finish_reback(View v) {
         HomeActivity.this.finish();
-     }
+    }
 
     //底部导航栏
     @Override
@@ -227,6 +241,22 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(HomeActivity.this, Notice.class));
                 break;
         }
+    }
+
+
+    private void loadData() {
+        Map map = new HashMap();
+        OkHttp.get(this, Constant.select_all_good, map, new OkCallback<Result<List<GoodBean>>>() {
+            @Override
+            public void onResponse(Result<List<GoodBean>> response) {
+                goodAdapter.setNewData(response.getData());
+            }
+
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(HomeActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
 

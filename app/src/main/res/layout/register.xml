@@ -4,32 +4,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical"
-    android:padding="25dp">
-        <!--客服字样 -->
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:gravity="right"
-        android:layout_margin="5dp"
-        >
-
-        <TextView
-            android:id="@+id/lonin_help"
-            android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1.5">
+        <!--客服字样 -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_marginRight="10dp"
-            android:text="客服"
-            android:textSize="19sp"/>
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="right"
+            android:layout_margin="5dp"
+            >
+
+            <TextView
+                android:id="@+id/register_help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginRight="10dp"
+                android:text="客服"
+                android:textSize="19sp"/>
+        </LinearLayout>
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/r_en"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="16"
+        android:padding="10dp">
         <!-- 注册字样 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="25dp"
             android:layout_marginBottom="25dp">
             <TextView
                 android:layout_marginLeft="30dp"
@@ -37,95 +48,99 @@
                 android:layout_height="wrap_content"
                 android:text="注册"
                 android:textColor="@color/black"
-                android:textSize="50sp"/>
+                android:textSize="36sp"/>
         </LinearLayout>
+
         <!-- 手机号码 -->
         <LinearLayout
-            android:id="@+id/phone"
+            android:id="@+id/reg_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="25sp"
-            >
+            android:layout_marginTop="20dp">
             <EditText
                 android:id="@+id/reg_e_phonemb"
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:ems="10"
                 android:drawableLeft="@mipmap/username"
+                android:ems="10"
                 android:hint="手机号"
                 android:inputType="phone" />
         </LinearLayout>
         <!-- 密码-->
         <LinearLayout
-            android:id="@+id/lm"
+            android:id="@+id/r_paaaword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="35dp">
-
+            android:layout_marginTop="20dp">
             <EditText
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="10dp"
-                android:id="@+id/reg_e_password"
-                android:layout_width="wrap_content"
+                android:layout_marginRight="8dp"
+                android:id="@+id/reg_bassword"
+                android:layout_width="240dp"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@mipmap/password"
                 android:hint="密码"
                 android:ems="15"
                 android:inputType="textPassword" />
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="忘记密码？"
+                android:textSize="15sp"/>
         </LinearLayout>
+
         <!-- 验证码 -->
         <LinearLayout
             android:id="@+id/ly"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
             <EditText
+                android:id="@+id/reg_pass"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="10dp"
-                android:id="@+id/reg_e_numberassword"
-                android:layout_width="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_width="240dp"
                 android:layout_height="wrap_content"
-                android:hint="验证码"
                 android:ems="10"
+                android:hint="请输入验证码"
                 android:inputType="numberPassword" />
             <com.example.newapplication.new_utill.SMSTextView
                 android:id="@+id/reg_getcode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="13dp"
                 tools:text="获取验证码" />
-
         </LinearLayout>
         <!-- 注册按钮-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="30dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-           >
+            >
             <Button
                 android:id="@+id/btn_regiesst"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
+                android:layout_marginLeft="38dp"
+                android:layout_marginRight="38dp"
                 android:text="立即注册"
                 android:textSize="24sp"
                 android:textColor="#fff"
                 android:layout_height="wrap_content"
                 android:background="#1e90ff"/>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="450dp"></LinearLayout>
-        <!-- foot-->
+    </LinearLayout>
+    <!-- foot-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1">
         <include layout="@layout/foot"/>
+    </LinearLayout>
     </LinearLayout>
 

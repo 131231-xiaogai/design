@@ -4,9 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#4569">
-
-    <!-- 首页字样-->
+    android:background="#d3d3d3">
+    <!-- 头部 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -22,8 +21,9 @@
         <com.example.newapplication.newpage.MyViewPager
             android:id="@+id/looper_pagers"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="215dp"
             android:padding="10dp" />
+        <!--  滑动圆形小图标 -->
         <LinearLayout
             android:id="@+id/points_container"
             android:gravity="center"
@@ -32,13 +32,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </LinearLayout>
+        <!-- 瀑布列表 -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="560dp">
+            android:layout_height="match_parent">
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/h_recycle_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+                android:layout_height="match_parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
 
     </LinearLayout>

@@ -3,16 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-
+    tools:context=".MainActivity"
+    android:orientation="vertical">
     <LinearLayout
-        android:id="@+id/en"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="25dp"
-       >
+        android:layout_height="0dp"
+        android:layout_weight="1.5">
         <!--客服字样 -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,7 +18,6 @@
             android:gravity="right"
             android:layout_margin="5dp"
             >
-
             <TextView
                 android:id="@+id/lonin_help"
                 android:layout_width="wrap_content"
@@ -32,11 +27,19 @@
                 android:text="客服"
                 android:textSize="19sp"/>
         </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/en"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="16"
+        android:padding="10dp">
         <!-- 登录字样 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="25dp"
             android:layout_marginBottom="25dp">
             <TextView
                 android:layout_marginLeft="30dp"
@@ -44,19 +47,20 @@
                 android:layout_height="wrap_content"
                 android:text="登录"
                 android:textColor="@color/black"
-                android:textSize="50sp"/>
+                android:textSize="36sp"/>
         </LinearLayout>
+
         <!-- 手机号码 -->
         <LinearLayout
             android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="25sp"
+            android:layout_marginTop="20dp"
             >
             <EditText
                 android:id="@+id/e_phonemb"
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
@@ -65,19 +69,19 @@
                 android:hint="手机号"
                 android:inputType="phone" />
         </LinearLayout>
+
         <!-- 密码-->
         <LinearLayout
             android:id="@+id/lm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="35dp">
-
+            android:layout_marginTop="20dp">
             <EditText
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="10dp"
                 android:id="@+id/e_bassword"
-                android:layout_width="wrap_content"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@mipmap/password"
                 android:hint="密码"
@@ -89,12 +93,12 @@
                 android:layout_marginLeft="30sp"
                 android:text="忘记密码？"
                 android:textSize="15sp"/>
-
         </LinearLayout>
+
         <!-- 验证码 -->
         <LinearLayout
             android:id="@+id/ly"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -102,7 +106,7 @@
             <EditText
                 android:id="@+id/e_pass"
                 android:layout_marginLeft="30dp"
-                android:layout_width="229dp"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="请输入验证码"
@@ -114,20 +118,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="13dp"
                 tools:text="获取验证码" />
-
         </LinearLayout>
 
         <!-- 登录按钮-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="30dp"
             android:layout_height="wrap_content"
             android:gravity="center">
             <Button
                 android:id="@+id/login"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
+                android:layout_marginLeft="38dp"
+                android:layout_marginRight="38dp"
                 android:text="登录"
                 android:textSize="24sp"
                 android:textColor="#fff"
@@ -137,13 +140,12 @@
 
         <!-- other way-->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="35dp"
             android:layout_marginBottom="450dp">
-
             <TextView
                 android:id="@+id/b_m"
                 android:layout_width="0dp"
@@ -153,7 +155,6 @@
                 android:gravity="left"
                 android:text="密码登录"
                 android:textColor="#4169e1" />
-
             <TextView
                 android:id="@+id/b_y"
                 android:layout_width="0dp"
@@ -163,7 +164,6 @@
                 android:layout_weight="1"
                 android:text="手机验证登录"
                 android:gravity="left"/>
-
             <TextView
                 android:id="@+id/b_z"
                 android:layout_width="0dp"
@@ -174,8 +174,13 @@
                 android:text="新用户注册"
                 android:gravity="center"/>
         </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical">
         <!-- foot-->
         <include layout="@layout/foot"/>
     </LinearLayout>
-
     </LinearLayout>

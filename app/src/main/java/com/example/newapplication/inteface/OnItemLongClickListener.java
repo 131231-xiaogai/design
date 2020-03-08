@@ -1,6 +1,7 @@
-package com.example.psychologicalcounseling.inteface;
+package com.example.newapplication.inteface;
 
-import com.example.psychologicalcounseling.utils.RecyclerViewHolder;
+import com.example.newapplication.viewhandle.RecyclerViewHolder;
+
 
 /**
  * 条目长按点击事件
