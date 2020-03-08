@@ -8,14 +8,16 @@
     <ImageView
         android:id="@+id/h_photo_image"
         android:layout_width="wrap_content"
-        android:layout_height="320dp"
+        android:layout_height="120dp"
+        android:background="#ff9"
         android:layout_gravity="center_horizontal"/>
     <TextView
         android:id="@+id/h_photo_name"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="20dp"
         android:gravity="center_horizontal"
-        android:layout_marginTop="10dp"
+        android:background="#fff"
+        android:layout_marginTop="2dp"
         android:layout_gravity="left"/>
 
 </LinearLayout>

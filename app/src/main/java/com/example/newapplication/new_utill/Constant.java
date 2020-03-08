@@ -1,23 +1,18 @@
 package com.example.newapplication.new_utill;
 
-//请求（action）
-
 public class Constant {
 
-//    public static String BASE_URL = "http://172.20.10.3:8088/Demo2_war_exploded/";
-
-//    public static String BASE_URL = "http://192.168.43.249:8080/nwewepapp";
-    public static String BASE_URL = "http://172.20.10.4:8080/nwewepapp";
+    public static String BASE_URL = "http://192.168.0.109:8088/clothService";//换网络时记得换ip
+//    public static String BASE_URL = "http://192.168.61.104:8088/psychologicalCounseling_war_exploded";//换网络时记得换ip
     /**
-     * 登录
-     *
-     * @param phone
-     * @param password
+     * 查询所有商品
      */
-    public static String user_login = BASE_URL + "/LoginServlet";
+    public static String select_all_good=BASE_URL+"/SelectAllGoodServlet";
+
+    public static String login_by_code="";
+    public static String create_code="";
 
 
 
-    public static String getcode = BASE_URL + "/Code_servelt";
 
 }

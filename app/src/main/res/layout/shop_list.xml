@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#3333">
+    android:background="#d3d3d3">
     <ImageView
         android:id="@+id/photo_image"
         android:layout_marginTop="10dp"
@@ -12,7 +12,7 @@
         android:layout_marginRight="30dp"
         android:layout_width="match_parent"
         android:background="#fff"
-        android:layout_height="300dp" />
+        android:layout_height="200dp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,7 +23,8 @@
             android:layout_marginTop="2dp"
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:gravity="center_horizontal"
+            android:gravity="left"
+            android:paddingLeft="30dp"
             android:text=""
             android:textSize="15sp"/>
         <TextView
@@ -31,7 +32,8 @@
             android:layout_marginTop="2dp"
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:gravity="center_horizontal"
+            android:gravity="left"
+            android:paddingLeft="30dp"
             android:text="X、L、XL"
             android:textSize="15sp"/>
         <TextView
@@ -39,7 +41,8 @@
             android:layout_marginTop="2dp"
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:gravity="center_horizontal"
+            android:paddingLeft="30dp"
+            android:gravity="left"
             android:text="10元/天"
             android:textSize="15sp"/>
     </LinearLayout>

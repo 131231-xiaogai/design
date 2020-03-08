@@ -15,7 +15,7 @@
         android:onClick="finish_reback"
         android:textColor="@color/royalblue"
         android:text="待付款"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:background="@drawable/button_bg"
         android:layout_weight="1"/>
     <TextView
@@ -27,7 +27,7 @@
         android:onClick="finish_reback"
         android:background="@drawable/button_bg"
         android:textColor="@color/royalblue"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:text="待发货"
         android:layout_weight="1"/>
     <TextView
@@ -39,7 +39,7 @@
         android:onClick="finish_reback"
         android:background="@drawable/button_bg"
         android:textColor="@color/royalblue"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:text="待收货"
         android:layout_weight="1"/>
     <TextView
@@ -51,8 +51,8 @@
         android:onClick="finish_reback"
         android:background="@drawable/button_bg"
         android:textColor="@color/royalblue"
-        android:textSize="22sp"
-        android:text="售后"
+        android:textSize="18sp"
+        android:text="待  还"
         android:layout_weight="1"/>
 
 

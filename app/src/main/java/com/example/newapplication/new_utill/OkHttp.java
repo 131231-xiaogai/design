@@ -1,6 +1,6 @@
 package com.example.newapplication.new_utill;
 
-//网络传输协议，请求或提交数据
+
 import android.content.Context;
 import android.util.Log;
 
@@ -17,6 +17,7 @@ import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import okhttp3.logging.HttpLoggingInterceptor;
 
 
 public class OkHttp {
@@ -37,6 +38,7 @@ public class OkHttp {
                         .writeTimeout(30, TimeUnit.SECONDS)
 
                         .connectTimeout(30, TimeUnit.SECONDS)
+                        .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
 
                         .build();
 
@@ -65,7 +67,6 @@ public class OkHttp {
      * @return call
      */
 
-    //get();请求数据
     public static Call get(Context context, String url, Map<String, String> params, OkCallback callback) {
 
         return get(context, url, params, null, callback);
@@ -172,12 +173,13 @@ public class OkHttp {
      * @return call
      */
 
-    //post(); 提交数据
     public static Call post(Context context, String url, Map<String, String> params, OkCallback callback) {
 
         return post(context, url, params, null, callback);
 
     }
+
+
     /**
      * post方法
      *
@@ -299,7 +301,6 @@ public class OkHttp {
         StringBuilder sb = new StringBuilder("");
 
         try {
-
             for (Map.Entry<String, String> entry : params.entrySet()) {
 
                 sb.append(URLEncoder.encode(entry.getKey(),
@@ -308,22 +309,17 @@ public class OkHttp {
 
                 sb.append('=');
 
-                sb.append(URLEncoder.encode(entry.getValue(),
+                sb.append(entry.getValue() == null ? "" : URLEncoder.encode(entry.getValue(),
 
                         "UTF-8"));
 
                 sb.append('&');
 
             }
-
-            return sb.toString();
-
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
-
         return sb.toString();
-
     }
 
 

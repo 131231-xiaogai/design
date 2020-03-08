@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#d3d3d3">
-
         <!-- 顶部 -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,8 +13,6 @@
         android:layout_weight="1">
         <include layout="@layout/title" />
     </LinearLayout>
-
-
         <!-- 主体窗口-->
         <LinearLayout
             android:id="@+id/body1"
@@ -80,32 +77,40 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
                     android:gravity="center">
                     <TextView
                         android:id="@+id/fu"
                         style="@style/my_order_ui"
                         android:text="付"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         />
                     <TextView
                         android:id="@+id/fa"
                         style="@style/my_order_ui"
                         android:layout_weight="1"
-                        android:text="发"
-                    />
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="发" />
                     <TextView
                         android:id="@+id/shou"
                         style="@style/my_order_ui"
                         android:layout_weight="1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         android:text="收"
                         />
                     <TextView
                         android:id="@+id/tui"
                         style="@style/my_order_ui"
                         android:layout_weight="1"
-                        android:text="退"
-                        />
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="15dp"
+                        android:text="还" />
                 </LinearLayout>
             </LinearLayout>
             <!--part3-->
@@ -122,7 +127,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="19sp"
-                    android:layout_margin="15dp"
+                    android:layout_marginBottom="5dp"
                     android:text="其 他 功 能   Other "
                     android:background="#fff"/>
                 <LinearLayout
@@ -145,9 +150,7 @@
                         style="@style/m_line"
                         android:text="版  本                                           "/>
                 </LinearLayout>
-
             </LinearLayout>
-
 
         </LinearLayout>
         <!-- 底部导航栏-->
@@ -157,9 +160,7 @@
         android:layout_weight="1.2">
         <include layout="@layout/bottombar"/>
     </LinearLayout>
-
-
-    </LinearLayout>
+</LinearLayout>
 
 
 

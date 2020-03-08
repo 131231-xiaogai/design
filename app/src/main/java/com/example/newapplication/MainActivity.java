@@ -1,9 +1,7 @@
 package com.example.newapplication;
 
-import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -22,8 +20,6 @@ import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.new_utill.SMSTextView;
-import com.example.newapplication.newpage.BaseActivity;
-import com.example.newapplication.newpage.Phone_help;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,41 +40,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         eh = (EditText) findViewById(R.id.e_phonemb);
         em = (EditText) findViewById(R.id.e_bassword);
         ey = (EditText) findViewById(R.id.e_pass);
-
         lonin_help =(TextView)findViewById(R.id.lonin_help);
-
         bm = (TextView) findViewById(R.id.b_m);
         by = (TextView) findViewById(R.id.b_y);
         bz = (TextView) findViewById(R.id.b_z);
-
         lm = (LinearLayout) findViewById(R.id.lm);
         ly = (LinearLayout) findViewById(R.id.ly);
-
         login = findViewById(R.id.login);
-
         getcode = (SMSTextView) findViewById(R.id.getcode);
-
-
         bm.setOnClickListener(this);
         by.setOnClickListener(this);
         bz.setOnClickListener(this);
         lonin_help.setOnClickListener(this);
         login.setOnClickListener(this);
-
         ly.setVisibility(View.GONE);
         getcode.setOnClickListener(this);
-
-
     }
-
     @Override
     public void onClick(View v) {
-
         switch (v.getId()) {
             case R.id.lonin_help:
 //                startActivity(new Intent(MainActivity.this,Phone_help.class));
                   Intent intent = new Intent(Intent.ACTION_DIAL);
-                  intent.setData(Uri.parse("tel:10086"));
+                  intent.setData(Uri.parse("tel:0596-1234567"));
                   startActivity(intent);
                 break;
             case R.id.login:
@@ -98,8 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //
                 Map<String, String> map = new HashMap<>();
                 map.put("phone", eh.getText().toString());
-
-                OkHttp.post(this, Constant.getcode, map, new OkCallback() {
+                OkHttp.post(this, Constant.login_by_code, map, new OkCallback() {
                     @Override
                     //返回给用户验证码
                     public void onResponse(Result response) {
@@ -113,22 +96,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         builder1.setWhen(System.currentTimeMillis()); //发送时间
                         builder1.setDefaults(Notification.DEFAULT_ALL); //设置默认的提示音，振动方式，灯光
                         builder1.setAutoCancel(true);//打开程序后图标消失
-
                         Notification notification1 = builder1.build();
                         notificationManager.notify(124, notification1); // 通过通知管理器发送通知
                     }
-
                     @Override
                     public void onFailure(String state, String msg) {
-
                         Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
-
                     }
                 });
-
-
         }
-
-
     }
 }

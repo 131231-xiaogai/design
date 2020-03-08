@@ -1,7 +1,5 @@
 package com.example.newapplication.new_utill;
 
-//约定返回数据的格式和内容
-
 /**
  * data 存放 数据库查询出来的数据
  *
@@ -14,7 +12,7 @@ public class Result<T> {
 
     private String message;
 
-    private T data;// 泛型
+    private T data;
 
 
     public String getCode() {
