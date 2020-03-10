@@ -46,13 +46,29 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="2">
+                    android:layout_weight="2"
+                    android:orientation="horizontal">
                     <TextView
-                        android:layout_width="match_parent"
+                        android:id="@+id/m_userid"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="叫了个衣服"
+                        android:text=""
+                        android:background="@color/aliceblue"
                         android:gravity="center"
+                        android:textSize="22dp"
+                        android:layout_weight="2"/>
+
+                    <TextView
+                        android:id="@+id/m_username"
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text=""
+                        android:background="@color/app_color_blue"
+                        android:gravity="center"
+                        android:textColor="#fff"
                         android:textSize="22dp"/>
 
                 </LinearLayout>

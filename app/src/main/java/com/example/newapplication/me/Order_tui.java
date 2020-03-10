@@ -1,4 +1,4 @@
-package com.example.newapplication.newpage;
+package com.example.newapplication.me;
 
 import android.os.Bundle;
 

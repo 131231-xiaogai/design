@@ -1,4 +1,4 @@
-package bean;
+package com.example.newapplication.entity;
 
 public class UsersBean {
 	private String uerid;

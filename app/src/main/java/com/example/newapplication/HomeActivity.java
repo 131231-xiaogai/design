@@ -47,7 +47,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private List<Photo> photoList = new ArrayList<>();
     //private List<Photo> mphotoList = new ArrayList<>();
     private static List<Integer> sPics = new ArrayList<>();
-
     static {
         sPics.add(R.drawable.image6);
         sPics.add(R.drawable.image7);
@@ -55,10 +54,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         sPics.add(R.drawable.image9);
         sPics.add(R.drawable.image10);
     }
-
     private Handler handler;//
     private boolean mIsTouch = false;
-
     LinearLayout pointcontainer;
     private GoodAdapter goodAdapter;
 
@@ -71,14 +68,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         btn_notice = (ImageView) findViewById(R.id.btn_notice);
         btn_notice.setOnClickListener(this);
-
         //list
         initPhoto();
         recyclerView = (RecyclerView) findViewById(R.id.h_recycle_view);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         goodAdapter = new GoodAdapter(this);
-//        Photo_Rec_Adapter rec_adapter = new Photo_Rec_Adapter(photoList);
+//      Photo_Rec_Adapter rec_adapter = new Photo_Rec_Adapter(photoList);
         recyclerView.setAdapter(goodAdapter);
         loadData();
         //底部导航栏
@@ -113,6 +109,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    //随机名字
     private String getRandomLengthName(String home) {
         Random random = new Random();
         int length = random.nextInt(10) + 1;

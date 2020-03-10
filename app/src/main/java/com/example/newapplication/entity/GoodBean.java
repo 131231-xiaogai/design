@@ -16,6 +16,13 @@ public class GoodBean {
 	private String type_id;
 	private String activility_id;
 	private String shop_id;
+	private String good_img;
+	public String getGood_img() {
+		return good_img;
+	}
+	public void setGood_img(String good_img) {
+		this.good_img = good_img;
+	}
 	public String getGoods_id() {
 		return goods_id;
 	}
@@ -106,7 +113,7 @@ public class GoodBean {
 	public void setShop_id(String shop_id) {
 		this.shop_id = shop_id;
 	}
-	
-	
+
+
 
 }

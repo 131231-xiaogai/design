@@ -35,10 +35,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".newpage.Notice" />
-        <activity android:name=".newpage.Order_fa"/>
-        <activity android:name=".newpage.Order_fu"/>
-        <activity android:name=".newpage.Order_shou"/>
-        <activity android:name=".newpage.Order_tui"/>
+        <activity android:name=".me.Order_fa"/>
+        <activity android:name=".me.Order_fu"/>
+        <activity android:name=".me.Order_shou"/>
+        <activity android:name=".me.Order_tui"/>
 
 
     </application>
