@@ -30,17 +30,19 @@
         <activity android:name=".newpage.Phone_help">
             <intent-filter>
                 <action android:name="android.Intent.ACTION_DIAL" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:scheme="tel" />
             </intent-filter>
         </activity>
         <activity android:name=".newpage.Notice" />
-        <activity android:name=".me.Order_fa"/>
-        <activity android:name=".me.Order_fu"/>
-        <activity android:name=".me.Order_shou"/>
-        <activity android:name=".me.Order_tui"/>
-
-
+        <activity android:name=".me.Order_fa" />
+        <activity android:name=".me.Order_fu" />
+        <activity android:name=".me.Order_shou" />
+        <activity android:name=".me.Order_tui" />
+        <activity android:name=".newpage.PagetitleActivity" />
+        <activity android:name=".me.WalletpagaActivity"/>
     </application>
 
 </manifest>

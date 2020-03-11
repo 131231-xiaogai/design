@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.newapplication.entity.UsersBean;
+import com.example.newapplication.me.WalletpagaActivity;
 import com.example.newapplication.new_utill.Constant;
 import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
@@ -28,7 +29,7 @@ import java.util.Map;
 public  class MeActivity extends AppCompatActivity implements View.OnClickListener{
     ImageButton btn_list, btn_date, btn_shop, btn_home;
     ImageView btn_notice;
-    TextView fa,fu,tui,shou,m_username,m_userid;
+    TextView fa,fu,tui,shou,m_username,m_userid,m_wallet;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +45,7 @@ public  class MeActivity extends AppCompatActivity implements View.OnClickListen
         btn_shop = (ImageButton) findViewById(R.id.b_shopcar);
         btn_home = (ImageButton) findViewById(R.id.b_home);
         btn_notice = findViewById(R.id.btn_notice);
+        m_wallet = findViewById(R.id.m_wallet);
         OnClickListener();
         loadData();
     }
@@ -82,6 +84,7 @@ public  class MeActivity extends AppCompatActivity implements View.OnClickListen
         shou.setOnClickListener(this);
         m_username.setOnClickListener(this);
         m_userid.setOnClickListener(this);
+        m_wallet.setOnClickListener(this);
     }
 
     public void finish_reback(View v){
@@ -116,6 +119,12 @@ public  class MeActivity extends AppCompatActivity implements View.OnClickListen
               break;
           case R.id.shou:
               startActivity(new Intent(MeActivity.this, Order_tui.class));
+              break;
+          case R.id.m_wallet:
+              String data = "我 的 钱 包";
+              Intent intent = new Intent(MeActivity.this, WalletpagaActivity.class);
+              intent.putExtra("balance",data);
+              startActivity(intent);
               break;
        }
 

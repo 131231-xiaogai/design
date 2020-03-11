@@ -2,7 +2,7 @@ package com.example.newapplication.new_utill;
 
 public class Constant {
 
-    public static String BASE_URL = "http://192.168.0.109:8088/clothService";//换网络时记得换ip
+    public static String BASE_URL = "http://192.168.0.111:8088/clothService";//换网络时记得换ip
 
     /**
      * 查询所有商品
@@ -13,8 +13,6 @@ public class Constant {
 
     public static String login_by_code="";
     public static String create_code="";
-
-
 
 
 }

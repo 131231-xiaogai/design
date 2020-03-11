@@ -14,9 +14,16 @@ public class GoodAdapter extends BaseRecyclerViewAdapter<GoodBean, RecyclerViewH
     @Override
     protected void convert(RecyclerViewHolder holder, GoodBean data, int position, int viewType) {
         ImageView imageView=holder.getView(R.id.h_photo_image);
+        // imageView.setIm(data.getGood_img());
+
         TextView textView=holder.getView(R.id.h_photo_name);
         textView.setText(data.getGoods_name());
-       // imageView.setIm(data.getGood_img());
+
+        TextView price = holder.getView(R.id.h_price);
+        price.setText(data.getGoods_price());
+
+
+
     }
 
     @Override
