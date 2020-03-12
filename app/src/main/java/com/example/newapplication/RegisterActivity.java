@@ -64,6 +64,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 //
                 Map<String, String> map = new HashMap<>();
                 map.put("phone", reg_e_ponenumber.getText().toString());
+/*
                 OkHttp.post(this, Constant.create_code, map, new OkCallback() {
                     @Override
                     //返回给用户验证码
@@ -86,6 +87,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         Toast.makeText(RegisterActivity.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
+*/
 
 
         }

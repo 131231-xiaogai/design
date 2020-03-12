@@ -9,10 +9,11 @@ public class Constant {
      */
     public static String select_all_good=BASE_URL+"/SelectAllGoodServlet";
     public static String select_all_user=BASE_URL+"/SelectAllUserServlet";
+    public static String select_user_by_phone=BASE_URL+"/Select_user_by_phoneServlet";
     public static String select_user_by_id=BASE_URL+"/Select_user_by_idServlet";
+    public static String login =BASE_URL+"/LoginServlet";
 
-    public static String login_by_code="";
-    public static String create_code="";
+
 
 
 }

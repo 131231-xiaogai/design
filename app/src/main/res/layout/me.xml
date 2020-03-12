@@ -155,17 +155,24 @@
                         style="@style/m_line"
                         android:text="钱  包                                 " />
                     <TextView
+                        android:id="@+id/m_adress"
                        style="@style/m_line"
                         android:text="地  址                                        "/>
                     <TextView
+                        android:id="@+id/m_setup"
                         style="@style/m_line"
                         android:text="设  置                                           "/>
                     <TextView
+                        android:id="@+id/m_bodysize"
                         style="@style/m_line"
                         android:text="尺  码                                             "/>
                     <TextView
+                        android:id="@+id/edition"
                         style="@style/m_line"
                         android:text="版  本                                           "/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"/>
                 </LinearLayout>
             </LinearLayout>
 

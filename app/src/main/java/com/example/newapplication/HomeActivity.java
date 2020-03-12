@@ -23,6 +23,7 @@ import com.example.newapplication.Adapter.PhotoAdapter;
 import com.example.newapplication.Adapter.Photo_Rec_Adapter;
 import com.example.newapplication.entity.GoodBean;
 import com.example.newapplication.entity.Photo;
+import com.example.newapplication.inteface.OnItemClickListener;
 import com.example.newapplication.new_utill.Constant;
 import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
@@ -30,6 +31,7 @@ import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.newpage.MyViewPager;
 import com.example.newapplication.newpage.Notice;
 import com.example.newapplication.newpage.Phone_help;
+import com.example.newapplication.viewhandle.RecyclerViewHolder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -67,7 +69,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         handler = new Handler();
 
         btn_notice = (ImageView) findViewById(R.id.btn_notice);
-        btn_notice.setOnClickListener(this);
+         btn_notice.setOnClickListener(this);
         //list
         initPhoto();
         recyclerView = (RecyclerView) findViewById(R.id.h_recycle_view);
@@ -76,6 +78,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         goodAdapter = new GoodAdapter(this);
 //      Photo_Rec_Adapter rec_adapter = new Photo_Rec_Adapter(photoList);
         recyclerView.setAdapter(goodAdapter);
+        goodAdapter.setOnItemClickListener(new OnItemClickListener<GoodBean>() {
+            @Override
+            public void onItemClick(RecyclerViewHolder viewHolder, GoodBean data, int position) {
+                Toast.makeText(HomeActivity.this, data.getGoods_id(), Toast.LENGTH_SHORT).show();
+            }
+        });
         loadData();
         //底部导航栏
         btn_list = (ImageButton) findViewById(R.id.b_list);

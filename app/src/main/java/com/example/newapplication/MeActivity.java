@@ -12,6 +12,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.newapplication.entity.UsersBean;
+import com.example.newapplication.me.MyBodySizeActivility;
+import com.example.newapplication.me.MyEditionActivility;
+import com.example.newapplication.me.MySetUpActivility;
+import com.example.newapplication.me.MyaddressActivility;
 import com.example.newapplication.me.WalletpagaActivity;
 import com.example.newapplication.new_utill.Constant;
 import com.example.newapplication.new_utill.OkCallback;
@@ -29,7 +33,8 @@ import java.util.Map;
 public  class MeActivity extends AppCompatActivity implements View.OnClickListener{
     ImageButton btn_list, btn_date, btn_shop, btn_home;
     ImageView btn_notice;
-    TextView fa,fu,tui,shou,m_username,m_userid,m_wallet;
+    TextView fa,fu,tui,shou,m_username,m_userid,m_wallet,m_adress,m_setup,m_bodysize,medition;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +51,10 @@ public  class MeActivity extends AppCompatActivity implements View.OnClickListen
         btn_home = (ImageButton) findViewById(R.id.b_home);
         btn_notice = findViewById(R.id.btn_notice);
         m_wallet = findViewById(R.id.m_wallet);
+        m_adress = findViewById(R.id.m_adress);
+        m_setup =findViewById(R.id.m_setup);
+        m_bodysize =findViewById(R.id.m_bodysize);
+        medition =findViewById(R.id.edition);
         OnClickListener();
         loadData();
     }
@@ -85,6 +94,10 @@ public  class MeActivity extends AppCompatActivity implements View.OnClickListen
         m_username.setOnClickListener(this);
         m_userid.setOnClickListener(this);
         m_wallet.setOnClickListener(this);
+        m_adress.setOnClickListener(this);
+        m_setup.setOnClickListener(this);
+        m_bodysize.setOnClickListener(this);
+        medition.setOnClickListener(this);
     }
 
     public void finish_reback(View v){
@@ -93,18 +106,18 @@ public  class MeActivity extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
       switch (v.getId()){
-            case R.id.b_home:
-                startActivity(new Intent(MeActivity.this,HomeActivity.class));
-                break;
-            case R.id.b_list:
-                startActivity(new Intent(MeActivity.this,ListActivity.class));
-                break;
-            case R.id.b_date:
-                startActivity(new Intent(MeActivity.this,DateActivity.class));
-                break;
-            case R.id.b_shopcar:
-                startActivity(new Intent(MeActivity.this,ShopcarActivity.class));
-                break;
+          case R.id.b_home:
+              startActivity(new Intent(MeActivity.this, HomeActivity.class));
+              break;
+          case R.id.b_list:
+              startActivity(new Intent(MeActivity.this, ListActivity.class));
+              break;
+          case R.id.b_date:
+              startActivity(new Intent(MeActivity.this, DateActivity.class));
+              break;
+          case R.id.b_shopcar:
+              startActivity(new Intent(MeActivity.this, ShopcarActivity.class));
+              break;
           case R.id.btn_notice:
               startActivity(new Intent(MeActivity.this, Notice.class));
               break;
@@ -123,8 +136,20 @@ public  class MeActivity extends AppCompatActivity implements View.OnClickListen
           case R.id.m_wallet:
               String data = "我 的 钱 包";
               Intent intent = new Intent(MeActivity.this, WalletpagaActivity.class);
-              intent.putExtra("balance",data);
+              intent.putExtra("balance", data);
               startActivity(intent);
+              break;
+          case R.id.m_adress:
+              startActivity(new Intent(MeActivity.this, MyaddressActivility.class));
+              break;
+          case R.id.m_setup:
+              startActivity(new Intent(MeActivity.this, MySetUpActivility.class));
+              break;
+          case R.id.m_bodysize:
+              startActivity(new Intent(MeActivity.this, MyBodySizeActivility.class));
+              break;
+          case R.id.edition:
+              startActivity(new Intent(MeActivity.this, MyEditionActivility.class));
               break;
        }
 

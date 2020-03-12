@@ -97,7 +97,7 @@
 
         <!-- 验证码 -->
         <LinearLayout
-            android:id="@+id/ly"
+            android:id="@+id/dl_y"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
