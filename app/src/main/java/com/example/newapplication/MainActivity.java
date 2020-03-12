@@ -22,6 +22,7 @@ import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.new_utill.SMSTextView;
 import com.example.newapplication.new_utill.SharePrefrenceUtil;
+import com.example.newapplication.newpage.Notice;
 
 import java.util.HashMap;
 import java.util.List;
@@ -98,6 +99,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if (SharePrefrenceUtil.getObject(MainActivity.this, UsersBean.class).getRole_id().equals("1")) {
                         Toast.makeText(MainActivity.this, "登 录 成 功 ！", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                    }else if (SharePrefrenceUtil.getObject(MainActivity.this, UsersBean.class).getRole_id().equals("2")){
+                        Toast.makeText(MainActivity.this, "登 录 成 功 ！", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, ShopkeeperActivity.class));
+                    }else {
+                        Toast.makeText(MainActivity.this, "登 录 成 功 ！", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, Notice.class));
                     }
                 }else {
                     Toast.makeText(MainActivity.this, "登 录 失 败！", Toast.LENGTH_SHORT).show();

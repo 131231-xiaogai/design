@@ -23,7 +23,7 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void OnClickListener() {
-        k_add.setOnClickListener( this);
+        k_add.setOnClickListener(this);
     }
 
 

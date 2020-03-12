@@ -55,7 +55,7 @@
         android:paddingRight="20dp"
         android:orientation="vertical">
         <EditText
-
+            android:id="@+id/add_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
@@ -64,7 +64,7 @@
             android:layout_gravity="center"/>
 
         <EditText
-            android:id="@+id/insert_phone"
+            android:id="@+id/add_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
@@ -73,7 +73,7 @@
             android:layout_gravity="center"/>
 
         <EditText
-            android:id="@+id/insert_address2"
+            android:id="@+id/add_yajin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
@@ -81,7 +81,7 @@
             android:hint="商品押金"
             android:layout_gravity="center"/>
         <EditText
-
+            android:id="@+id/add_saize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
@@ -89,7 +89,7 @@
             android:hint="商品尺码"
             android:layout_gravity="center"/>
         <EditText
-
+            android:id="@+id/add_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
@@ -98,6 +98,7 @@
             android:layout_gravity="center"/>
     </LinearLayout>
     <Button
+        android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
