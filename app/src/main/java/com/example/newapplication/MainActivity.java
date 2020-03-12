@@ -29,130 +29,62 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    SMSTextView getcode;
-    EditText eh, em, ey;
-    TextView bm, by, bz, lonin_help;
-    LinearLayout lm, ly;
+    EditText e_phonemb, e_bassword;
+    TextView register, lonin_help;
     Button login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        eh = (EditText) findViewById(R.id.e_phonemb);
-        em = (EditText) findViewById(R.id.e_bassword);
-        ey = (EditText) findViewById(R.id.e_pass);
-
+        e_phonemb = (EditText) findViewById(R.id.e_phonemb);
+        e_bassword = (EditText) findViewById(R.id.e_bassword);
         lonin_help = (TextView) findViewById(R.id.lonin_help);
         login = findViewById(R.id.login);
-
-        bm = (TextView) findViewById(R.id.b_m);
-        by = (TextView) findViewById(R.id.b_y);
-        bz = (TextView) findViewById(R.id.b_z);
-
-        lm = (LinearLayout) findViewById(R.id.lm);
-        ly = (LinearLayout) findViewById(R.id.dl_y);
-
-        getcode = (SMSTextView) findViewById(R.id.getcode);
+        register = (TextView) findViewById(R.id.register);
         OnClickListener();
-
     }
 
 
     private void OnClickListener() {
-        eh.setOnClickListener(this);
-        em.setOnClickListener(this);
-        ey.setOnClickListener(this);
-
+        e_phonemb.setOnClickListener(this);
+        e_bassword.setOnClickListener(this);
         lonin_help.setOnClickListener(this);
         login.setOnClickListener(this);
-
-        ly.setVisibility(View.GONE);
-        lm.setVisibility(View.GONE);
-
-        bm.setOnClickListener(this);
-        by.setOnClickListener(this);
-        bz.setOnClickListener(this);
-
-        getcode.setOnClickListener(this);
-
+        register.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.lonin_help:
-//                startActivity(new Intent(MainActivity.this,Phone_help.class));
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse("tel:0596-1234567"));
                 startActivity(intent);
                 break;
             case R.id.login:
-                //
                 user_login();
                 break;
-            case R.id.b_m:
-                ly.setVisibility(View.GONE);
-                lm.setVisibility(View.VISIBLE);
-                break;
-            case R.id.b_y:
-                lm.setVisibility(View.GONE);
-                ly.setVisibility(View.VISIBLE);
-                break;
-            case R.id.b_z:
+            case R.id.register:
                 startActivity(new Intent(MainActivity.this, RegisterActivity.class));
-            case R.id.getcode:
-                //
-                Map<String, String> map = new HashMap<>();
-                map.put("phone", eh.getText().toString());
-/*
-                OkHttp.post(this, Constant.login_by_code, map, new OkCallback() {
-                    @Override
-                    //返回给用户验证码
-                    public void onResponse(Result response) {
-                        getcode.start();
-                        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                        Notification.Builder builder1 = new Notification.Builder(MainActivity.this);
-                        builder1.setSmallIcon(R.drawable.ic_launcher_background); //设置图标
-                        builder1.setTicker("显示第二个通知");
-                        builder1.setContentTitle("通知"); //设置标题
-                        builder1.setContentText(response.getData() + ""); //消息内容
-                        builder1.setWhen(System.currentTimeMillis()); //发送时间
-                        builder1.setDefaults(Notification.DEFAULT_ALL); //设置默认的提示音，振动方式，灯光
-                        builder1.setAutoCancel(true);//打开程序后图标消失
-                        Notification notification1 = builder1.build();
-                        notificationManager.notify(124, notification1); // 通过通知管理器发送通知
-                    }
-
-                    @Override
-                    public void onFailure(String state, String msg) {
-                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
-                    }
-                });
-*/
+                break;
         }
     }
 
     private void user_login() {
-
         Map map = new HashMap();
-        //map. put("uerid" , m_userid) ;
-        map.put("phone", eh.getText().toString());
-        map.put("password", em.getText().toString());
+        map.put("phone", e_phonemb.getText().toString());
+        map.put("password", e_bassword.getText().toString());
         OkHttp.get(this, Constant.login, map, new OkCallback<Result<String>>() {
             @Override
             public void onResponse(Result<String> response) {
-                getUserInfo(eh.getText().toString());
-
-
+                getUserInfo(e_phonemb.getText().toString());
             }
-
             @Override
             public void onFailure(String state, String msg) {
                 Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     private void getUserInfo(String phone) {
@@ -164,11 +96,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 SharePrefrenceUtil.saveObject(MainActivity.this, response.getData());
                 if (response.getData() != null) {
                     if (SharePrefrenceUtil.getObject(MainActivity.this, UsersBean.class).getRole_id().equals("1")) {
-                        Toast.makeText(MainActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "登 录 成 功 ！", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(MainActivity.this, HomeActivity.class));
                     }
                 }else {
-                    Toast.makeText(MainActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "登 录 失 败！", Toast.LENGTH_SHORT).show();
                 }
                 //todo 跳转需要角色判断
 

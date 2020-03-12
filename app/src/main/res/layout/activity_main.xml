@@ -52,7 +52,6 @@
 
         <!-- 手机号码 -->
         <LinearLayout
-            android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -72,7 +71,7 @@
 
         <!-- 密码-->
         <LinearLayout
-            android:id="@+id/lm"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -87,37 +86,6 @@
                 android:hint="密码"
                 android:ems="15"
                 android:inputType="textPassword" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30sp"
-                android:text="忘记密码？"
-                android:textSize="15sp"/>
-        </LinearLayout>
-
-        <!-- 验证码 -->
-        <LinearLayout
-            android:id="@+id/dl_y"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/e_pass"
-                android:layout_marginLeft="30dp"
-                android:layout_width="220dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="请输入验证码"
-                android:inputType="numberPassword" />
-
-            <com.example.newapplication.new_utill.SMSTextView
-                android:id="@+id/getcode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="13dp"
-                tools:text="获取验证码" />
         </LinearLayout>
 
         <!-- 登录按钮-->
@@ -146,26 +114,9 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="35dp"
             android:layout_marginBottom="450dp">
+
             <TextView
-                android:id="@+id/b_m"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="密码登录"
-                android:textColor="#4169e1" />
-            <TextView
-                android:id="@+id/b_y"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:textColor="#4169e1"
-                android:layout_weight="1"
-                android:text="手机验证登录"
-                android:gravity="left"/>
-            <TextView
-                android:id="@+id/b_z"
+                android:id="@+id/register"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

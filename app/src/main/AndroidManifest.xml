@@ -48,6 +48,7 @@
         <activity android:name=".me.MyBodySizeActivility"/>
         <activity android:name=".me.MyEditionActivility"/>
         <activity android:name=".ShopkeeperActivity"/>
+        <activity android:name=".shopkeeper.AddGoodsActivity"/>
     </application>
 
 </manifest>

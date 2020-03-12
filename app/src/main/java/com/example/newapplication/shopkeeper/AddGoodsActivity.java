@@ -1,4 +1,4 @@
-package com.example.newapplication;
+package com.example.newapplication.shopkeeper;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,16 +7,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.newapplication.newpage.Notice;
-import com.example.newapplication.shopkeeper.AddGoodsActivity;
+import com.example.newapplication.R;
+import com.example.newapplication.ShopkeeperActivity;
 
-public class ShopkeeperActivity extends AppCompatActivity implements View.OnClickListener {
+public class AddGoodsActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView k_add;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout. shopkeeper);
+        setContentView(R.layout.sk_addgoods);
         k_add=findViewById(R.id.k_add);
         OnClickListener();
 
@@ -31,7 +31,7 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
         switch (v.getId()){
             case R.id. k_add:
-                startActivity(new Intent(ShopkeeperActivity.this, AddGoodsActivity.class));
+                //startActivity(new Intent(AddGoodsActivity.this, AddGoodsActivity.class));
                 break;
         }
 
