@@ -60,7 +60,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(intent);
                 break;
             case R.id.btn_register:
-                checkphonemb();
+                checkdata();
              //register();
                 break;
             case R.id.reg_roleid:
@@ -68,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private void checkphonemb() {
+    private void checkdata() {
         Map map = new HashMap();
         map.put("mphone", reg_phonemb.getText().toString() );
         OkHttp.get(this, Constant.select_user_by_phone, map, new OkCallback<Result<UsersBean>>() {
@@ -79,14 +79,33 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     Toast.makeText(RegisterActivity.this, "注册失败，该用户已经存在！", Toast.LENGTH_SHORT).show();
                 }
                 if (response.getData() == null){
-                    register(reg_phonemb.getText().toString());
-                    Toast.makeText(RegisterActivity.this, "注册成功！", Toast.LENGTH_SHORT).show();
+                    if (reg_phonemb.getText().length()!=11){
+                        reg_phonemb.getText().clear();
+                        Toast.makeText(RegisterActivity.this, "电话号码应该是11位阿拉伯数字！", Toast.LENGTH_SHORT).show();
+                    }else {
+                        if (reg_bassword.getText().length() != 6) {
+                            reg_bassword.getText().clear();
+                            reg_bassword.setHint("密码格式错误，应为6位数");
+                        } else {
+                            if (reg_roleid.getText().toString().equals("1") || reg_roleid.getText().toString().equals("2")) {
+                                register(reg_phonemb.getText().toString());
+                            } else {
+                                // Toast.makeText(RegisterActivity.this, "注册成功！", Toast.LENGTH_SHORT).show();}
+                                reg_roleid.getText().clear();
+                                reg_roleid.setHint("顾客角色编码为 1 位数且值为 1 或 2");
+                            }
+                        }
+                    }
+
                 }
             }
             @Override
             public void onFailure(String state, String msg) {
+                Toast.makeText(RegisterActivity.this, msg, Toast.LENGTH_SHORT).show();
             }
+
         });
+
     }
 
 
