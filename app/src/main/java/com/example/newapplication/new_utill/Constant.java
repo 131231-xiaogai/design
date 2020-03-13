@@ -13,6 +13,7 @@ public class Constant {
     public static String select_user_by_id=BASE_URL+"/Select_user_by_idServlet";
     public static String login =BASE_URL+"/LoginServlet";
     public static String register =BASE_URL+"/RegisterServlet";
+    public static String publicgoods =BASE_URL+"/PublicgoodServlet";
 
 
 
