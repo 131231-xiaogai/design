@@ -22,6 +22,7 @@ import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.new_utill.SMSTextView;
 import com.example.newapplication.new_utill.SharePrefrenceUtil;
+import com.example.newapplication.newpage.Notice;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,7 +51,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         register_help.setOnClickListener(this);
         reg_roleid.setOnClickListener(this);
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -60,14 +60,39 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(intent);
                 break;
             case R.id.btn_register:
-             register();
+                checkphonemb();
+             //register();
+                break;
+            case R.id.reg_roleid:
                 break;
         }
     }
 
-    private void register() {
+    private void checkphonemb() {
         Map map = new HashMap();
-        map.put("reg_phonemb", reg_phonemb.getText().toString());
+        map.put("mphone", reg_phonemb.getText().toString() );
+        OkHttp.get(this, Constant.select_user_by_phone, map, new OkCallback<Result<UsersBean>>() {
+            @Override
+            public void onResponse(Result<UsersBean> response) {
+                SharePrefrenceUtil.saveObject(RegisterActivity.this, response.getData());
+                if (response.getData() != null) {
+                    Toast.makeText(RegisterActivity.this, "注册失败，该用户已经存在！", Toast.LENGTH_SHORT).show();
+                }
+                if (response.getData() == null){
+                    register(reg_phonemb.getText().toString());
+                    Toast.makeText(RegisterActivity.this, "注册成功！", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(String state, String msg) {
+            }
+        });
+    }
+
+
+    private void register(String reg_phonemb) {
+        Map map = new HashMap();
+        map.put("reg_phonemb", reg_phonemb);
         map.put("reg_bassword", reg_bassword.getText().toString());
         map.put("reg_roleid", reg_roleid.getText().toString());
         OkHttp.get(this, Constant.register, map, new OkCallback<Result<String>>() {
