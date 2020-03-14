@@ -1,6 +1,7 @@
 package com.example.newapplication.Adapter;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,7 +29,8 @@ public class GoodAdapter extends BaseRecyclerViewAdapter<GoodBean, RecyclerViewH
         TextView price = holder.getView(R.id.h_price);
         price.setText(data.getGoods_price());
 
-
+        TextView goodid = holder.getView(R.id.h_goodid);
+        goodid.setText(data.getGoods_id());
     }
 
 

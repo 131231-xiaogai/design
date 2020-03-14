@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -23,6 +24,7 @@ import com.example.newapplication.Adapter.PhotoAdapter;
 import com.example.newapplication.Adapter.Photo_Rec_Adapter;
 import com.example.newapplication.entity.GoodBean;
 import com.example.newapplication.entity.Photo;
+import com.example.newapplication.home.ItemDetailActivity;
 import com.example.newapplication.inteface.OnItemClickListener;
 import com.example.newapplication.new_utill.Constant;
 import com.example.newapplication.new_utill.OkCallback;
@@ -38,7 +40,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, MyViewPager.OnViewPageTouchListener, ViewPager.OnPageChangeListener {
     ImageButton btn_list, btn_date, btn_shop, btn_me;
@@ -67,7 +68,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.home);
         initView();
         handler = new Handler();
-
         btn_notice = (ImageView) findViewById(R.id.btn_notice);
          btn_notice.setOnClickListener(this);
         //list
@@ -82,6 +82,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onItemClick(RecyclerViewHolder viewHolder, GoodBean data, int position) {
                 Toast.makeText(HomeActivity.this, data.getGoods_id(), Toast.LENGTH_SHORT).show();
+                String da = data.getGoods_id();
+                Intent intent = new Intent(HomeActivity.this, ItemDetailActivity.class);
+                intent.putExtra("hgoodid", da);
+                startActivity(intent);
             }
         });
         loadData();
@@ -94,6 +98,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btn_shop.setOnClickListener(this);
         btn_me = (ImageButton) findViewById(R.id.b_me);
         btn_me.setOnClickListener(this);
+
     }
 
     //列表
@@ -159,7 +164,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
-        //
         handler.post(looperTask);
     }
 
@@ -256,7 +260,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             public void onResponse(Result<List<GoodBean>> response) {
                 goodAdapter.setNewData(response.getData());
             }
-
             @Override
             public void onFailure(String state, String msg) {
                 Toast.makeText(HomeActivity.this, msg, Toast.LENGTH_SHORT).show();

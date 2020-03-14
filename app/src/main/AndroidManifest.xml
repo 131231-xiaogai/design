@@ -49,6 +49,8 @@
         <activity android:name=".me.MyEditionActivility"/>
         <activity android:name=".ShopkeeperActivity"/>
         <activity android:name=".shopkeeper.AddGoodsActivity"/>
+        <activity android:name=".home.ItemDetailActivity"/>
+        <activity android:name=".AdministratorsActivity"/>
     </application>
 
 </manifest>

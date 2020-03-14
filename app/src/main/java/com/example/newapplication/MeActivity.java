@@ -33,7 +33,7 @@ import java.util.Map;
 public  class MeActivity extends AppCompatActivity implements View.OnClickListener{
     ImageButton btn_list, btn_date, btn_shop, btn_home;
     ImageView btn_notice;
-    TextView fa,fu,tui,shou,m_username,m_userid,m_wallet,m_adress,m_setup,m_bodysize,medition;
+    TextView fa,fu,tui,shou,m_username,m_wallet,m_adress,m_setup,m_bodysize,medition;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,7 +43,6 @@ public  class MeActivity extends AppCompatActivity implements View.OnClickListen
         fu=findViewById(R.id.fu);
         tui=findViewById(R.id.tui);
         shou=findViewById(R.id.shou);
-        m_userid=findViewById(R.id.m_userid);
         m_username= findViewById(R.id.m_username);
         btn_list = (ImageButton) findViewById(R.id.b_list);
         btn_date = (ImageButton) findViewById(R.id.b_date);
@@ -92,7 +91,6 @@ public  class MeActivity extends AppCompatActivity implements View.OnClickListen
         tui.setOnClickListener(this);
         shou.setOnClickListener(this);
         m_username.setOnClickListener(this);
-        m_userid.setOnClickListener(this);
         m_wallet.setOnClickListener(this);
         m_adress.setOnClickListener(this);
         m_setup.setOnClickListener(this);

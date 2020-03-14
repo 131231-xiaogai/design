@@ -34,7 +34,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="一号店"
+                android:text="Administrators"
                 android:textSize="22sp" />
 
 
@@ -55,7 +55,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
                 android:textSize="19sp"
-                android:text="   订 单 管 理   "
+                android:text="   顾 客 管 理   "
                 android:background="@drawable/button_bg"/>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -142,7 +142,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
                 android:textSize="19sp"
-                android:text="   商 品 管 理   "
+                android:text="   商 家 管 理   "
                 android:background="@drawable/button_bg"/>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -212,7 +212,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:text="   店 铺 管 理   "
+                android:text="   信  息   "
                 android:background="@drawable/button_bg"
                 android:textSize="19sp" />
 
@@ -228,11 +228,11 @@
                     style="@style/sk_ui"
                     android:layout_weight="1"
                     android:layout_marginLeft="2dp"
-                    android:text="地   址：" />
+                    android:text="电   话：" />
                 <TextView
                     style="@style/sk_ui"
                     android:layout_weight="3"
-                    android:text="福州市闽侯县上街镇平安路3号" />
+                    android:text="13123165433" />
 
 
             </LinearLayout>
@@ -241,27 +241,8 @@
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:background="@drawable/line"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp">
-                <TextView
-                    style="@style/sk_ui"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="2dp"
-                    android:text="评   分：" />
-                <TextView
-                    style="@style/sk_ui"
-                    android:layout_weight="3"
-                    android:text="0" />
-            </LinearLayout>
-            <TextView
-                android:layout_width="356dp"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:background="@drawable/line"/>
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -38,7 +38,7 @@ public class WalletpagaActivity extends AppCompatActivity implements View.OnClic
             setContentView(R.layout.m_walletpaga);
             mbalance=findViewById(R.id.balance);
             mpageneme=findViewById(R.id.pageneme);
-           P_notice=findViewById(R.id.P_notice);
+            P_notice=findViewById(R.id.P_notice);
             //
             pagename_integer = getIntent();
             String  data = pagename_integer.getStringExtra("balance");

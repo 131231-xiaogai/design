@@ -104,14 +104,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         startActivity(new Intent(MainActivity.this, ShopkeeperActivity.class));
                     }else {
                         Toast.makeText(MainActivity.this, "登 录 成 功 ！", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(MainActivity.this, Notice.class));
+                        startActivity(new Intent(MainActivity.this, AdministratorsActivity.class));
                     }
                 }else {
                     Toast.makeText(MainActivity.this, "登 录 失 败！", Toast.LENGTH_SHORT).show();
                 }
                 //todo 跳转需要角色判断
-
-
             }
 
             @Override
