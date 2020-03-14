@@ -89,6 +89,7 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
                     @Override
                     public void onResponse( Result<String> response) {
                         Toast.makeText(AddGoodsActivity.this,"上传成功。",Toast.LENGTH_SHORT).show();
+
                     }
 
                     @Override

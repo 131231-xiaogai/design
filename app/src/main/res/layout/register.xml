@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:text="注册"
                 android:textColor="@color/black"
-                android:textSize="36sp"/>
+                android:textSize="40sp"/>
         </LinearLayout>
 
         <!-- 手机号码 -->
@@ -59,10 +59,11 @@
             android:layout_marginTop="20dp">
             <EditText
                 android:id="@+id/reg_phonemb"
-                android:layout_width="320dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
                 android:drawableLeft="@mipmap/username"
                 android:ems="10"
                 android:hint="手机号"
@@ -76,9 +77,10 @@
             android:layout_marginTop="20dp">
             <EditText
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
                 android:id="@+id/reg_bassword"
-                android:layout_width="320dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@mipmap/password"
                 android:hint="密码"
@@ -109,7 +111,7 @@
                 android:layout_height="22dp"
                 android:gravity="center"
                 android:textSize="15sp"
-                android:textColor="@color/qmui_config_color_red"
+                android:textColor="@color/btn_filled_blue_bg_normal"
                 android:text="请填写数字   1   注册为顾客。"/>
             <TextView
                 android:layout_marginLeft="30dp"
@@ -118,7 +120,7 @@
                 android:layout_height="22dp"
                 android:gravity="center"
                 android:textSize="15sp"
-                android:textColor="@color/qmui_config_color_red"
+                android:textColor="@color/btn_filled_blue_bg_normal"
                 android:text="请填写数字   2   注册为商家。"/>
 
 
