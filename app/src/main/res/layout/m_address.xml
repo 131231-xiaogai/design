@@ -103,12 +103,16 @@
                 android:gravity="center"
                 android:layout_weight="1"/>
         </LinearLayout>
-        <ListView
-            android:id="@+id/a_list_view"
-            android:padding="15dp"
+        <!-- 瀑布列表 -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        </ListView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ma_recycle_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
     </LinearLayout>
 
 

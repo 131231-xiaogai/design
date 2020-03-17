@@ -21,6 +21,7 @@ import com.example.newapplication.new_utill.Constant;
 import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
+import com.example.newapplication.new_utill.SharePrefrenceUtil;
 import com.example.newapplication.newpage.Notice;
 
 import java.util.HashMap;
@@ -29,7 +30,7 @@ import java.util.Map;
 
 public class WalletpagaActivity extends AppCompatActivity implements View.OnClickListener {
         ImageButton P_notice;
-        Intent pagename_integer;
+
         TextView mpageneme,mbalance;
 
         @Override
@@ -40,7 +41,7 @@ public class WalletpagaActivity extends AppCompatActivity implements View.OnClic
             mpageneme=findViewById(R.id.pageneme);
             P_notice=findViewById(R.id.P_notice);
             //
-            pagename_integer = getIntent();
+            Intent pagename_integer = getIntent();
             String  data = pagename_integer.getStringExtra("balance");
             mpageneme.setText(data);
             Log.d("WalletpagaActivity",data);
@@ -48,32 +49,14 @@ public class WalletpagaActivity extends AppCompatActivity implements View.OnClic
             lodata();
         }
 
-    private void lodata() {
-        Map map = new HashMap() ;
-        //map. put("uerid" , m_userid) ;
-        OkHttp. get(this, Constant.select_user_by_id, map,new OkCallback<Result<UsersBean>>() {
-            @Override
-            public void onResponse(Result<UsersBean> response) {
-                if (response.getData() != null) {
-                    String balance = response.getData().getBalance();
-                    if (balance == null || balance.isEmpty()) {
-                        mbalance.setText("无");
-                    } else {
-                        mbalance.setText(balance);
-
-                    }
+        private void lodata() {
+            String balance = SharePrefrenceUtil.getObject(WalletpagaActivity.this, UsersBean.class).getBalance();
+            if (balance == null || balance.isEmpty()) {
+                mbalance.setText("0.00");
+            } else {
+                mbalance.setText(balance);
+            }
                 }
-            }
-
-            @Override
-            public void onFailure(String state, String msg) {
-                Toast.makeText(WalletpagaActivity.this, msg, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-            }
-
-
 
         private void OnClickListener(){
             P_notice.setOnClickListener(this);

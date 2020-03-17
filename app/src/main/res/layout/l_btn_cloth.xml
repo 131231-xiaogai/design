@@ -9,8 +9,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
+            android:id="@+id/xizhuang"
             style="@style/list_item_image"
+            android:onClick="xz_type_select"
+            android:layout_height="wrap_content"
             android:background="@mipmap/icon_activity_image" />
         <ImageView
             style="@style/list_item_image"

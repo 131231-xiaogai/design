@@ -51,6 +51,9 @@
         <activity android:name=".shopkeeper.AddGoodsActivity"/>
         <activity android:name=".home.ItemDetailActivity"/>
         <activity android:name=".AdministratorsActivity"/>
+        <activity android:name=".me.SetUserNameActivity"/>
+        <activity android:name=".me.SetUserSexActivity"/>
+        <activity android:name=".list.TypeListActivity"/>
     </application>
 
 </manifest>

@@ -15,8 +15,9 @@ public class Constant {
     public static String register =BASE_URL+"/RegisterServlet";
     public static String publicgoods =BASE_URL+"/PublicgoodServlet";
     public static String select_good_by_id =BASE_URL+"/Select_good_by_idServlet";
-
-
+    public static String insert_user_nickname =BASE_URL+"/Insert_user_nicknameServlet";
+    public static String insert_user_sex =BASE_URL+"/Insert_user_sexServlet";
+    public static String select_address_by_userid =BASE_URL+"/Select_address_by_useridServlet";
 
 
 }

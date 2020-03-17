@@ -40,88 +40,82 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:hint=" 头  像 "
-            android:layout_gravity="center"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
 
-            android:layout_weight="4"
-            android:layout_gravity="center"/>
-        <ImageView
-            android:id="@+id/user_image"
-            android:layout_width="30dp"
-            android:layout_height="50dp"
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:layout_marginRight="20dp"
-            android:background="@mipmap/me"/>
+            android:gravity="center"
+            android:text="头  像"
+            android:textSize="20sp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/user_image"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:scaleType="centerInside"
+                android:layout_marginRight="20dp"
+                android:background="@mipmap/me"/>
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/setup_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:hint=" 名  字 "
             android:layout_gravity="center"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_weight="4"
-            android:layout_gravity="center"/>
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="名  字"
+            android:textSize="20sp" />
+
+
         <TextView
             android:id="@+id/user_name"
-            android:layout_width="wrap_content"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:hint="叫了个快递"
             android:layout_gravity="center"
-            android:layout_weight="1"/>
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="昵称"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/setup_sex"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:gravity="center"
-            android:hint="性  别 "
+            android:hint="性  别"
             android:layout_gravity="center"
             android:layout_weight="1"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_weight="4"
-            android:layout_gravity="center"/>
+
         <TextView
             android:id="@+id/user_sex"
-            android:layout_width="wrap_content"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
             android:textSize="20sp"
             android:gravity="center"
-            android:hint="女"
+            android:text="女"
             android:layout_gravity="center"
             android:layout_weight="1"/>
     </LinearLayout>

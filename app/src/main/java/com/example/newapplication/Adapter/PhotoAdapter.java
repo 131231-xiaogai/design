@@ -37,10 +37,10 @@ public class PhotoAdapter extends ArrayAdapter<Photo> {
         }else {
             view = convertView;
         }
-        ImageView photoImage = (ImageView)view.findViewById(R.id.photo_image);
-        TextView photoName = (TextView)view.findViewById(R.id.photo_name);
-        photoImage.setImageResource(photo.getImageId());
-        photoName.setText(photo.getName());
+//        ImageView photoImage = (ImageView)view.findViewById(R.id.photo_image);
+//        TextView photoName = (TextView)view.findViewById(R.id.photo_name);
+//        photoImage.setImageResource(photo.getImageId());
+//        photoName.setText(photo.getName());
         return view;
     }
 }

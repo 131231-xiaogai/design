@@ -74,7 +74,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         OkHttp.get(this, Constant.select_user_by_phone, map, new OkCallback<Result<UsersBean>>() {
             @Override
             public void onResponse(Result<UsersBean> response) {
-                SharePrefrenceUtil.saveObject(RegisterActivity.this, response.getData());
+                //SharePrefrenceUtil.saveObject(RegisterActivity.this, response.getData());
                 if (response.getData() != null) {
                     Toast.makeText(RegisterActivity.this, "注册失败，该用户已经存在！", Toast.LENGTH_SHORT).show();
                 }

@@ -19,7 +19,7 @@
         android:layout_marginLeft="80dp"
         android:id="@+id/l_btn_activity"
         android:background="@drawable/shape_l_btn"
-        android:text="  13123165431按活动分类  "
+        android:text="  按活动分类  "
         android:textColor="#6A5ACD"
         android:textSize="16sp"
         />

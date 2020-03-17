@@ -48,7 +48,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     RecyclerView recyclerView;
     ImageView btn_notice;
     private List<Photo> photoList = new ArrayList<>();
-    //private List<Photo> mphotoList = new ArrayList<>();
     private static List<Integer> sPics = new ArrayList<>();
     static {
         sPics.add(R.drawable.image6);
@@ -60,6 +59,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private Handler handler;//
     private boolean mIsTouch = false;
     LinearLayout pointcontainer;
+    //
     private GoodAdapter goodAdapter;
 
     @Override
@@ -69,10 +69,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         initView();
         handler = new Handler();
         btn_notice = (ImageView) findViewById(R.id.btn_notice);
-         btn_notice.setOnClickListener(this);
+        btn_notice.setOnClickListener(this);
         //list
         initPhoto();
-        recyclerView = (RecyclerView) findViewById(R.id.h_recycle_view);
+        recyclerView =findViewById(R.id.h_recycle_view);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         goodAdapter = new GoodAdapter(this);
@@ -229,7 +229,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void finish_reback(View v) {
         HomeActivity.this.finish();
     }
-
     //底部导航栏
     @Override
     public void onClick(View v) {
@@ -251,7 +250,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
-
 
     private void loadData() {
         Map map = new HashMap();

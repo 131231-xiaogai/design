@@ -1,6 +1,7 @@
 package com.example.newapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -21,6 +22,7 @@ import com.example.newapplication.new_utill.Constant;
 import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
+import com.example.newapplication.new_utill.SharePrefrenceUtil;
 import com.example.newapplication.newpage.Notice;
 import com.example.newapplication.me.Order_fa;
 import com.example.newapplication.me.Order_fu;
@@ -30,7 +32,8 @@ import com.example.newapplication.me.Order_tui;
 import java.util.HashMap;
 import java.util.Map;
 
-public  class MeActivity extends AppCompatActivity implements View.OnClickListener{
+public  class
+MeActivity extends AppCompatActivity implements View.OnClickListener{
     ImageButton btn_list, btn_date, btn_shop, btn_home;
     ImageView btn_notice;
     TextView fa,fu,tui,shou,m_username,m_wallet,m_adress,m_setup,m_bodysize,medition;
@@ -44,10 +47,10 @@ public  class MeActivity extends AppCompatActivity implements View.OnClickListen
         tui=findViewById(R.id.tui);
         shou=findViewById(R.id.shou);
         m_username= findViewById(R.id.m_username);
-        btn_list = (ImageButton) findViewById(R.id.b_list);
-        btn_date = (ImageButton) findViewById(R.id.b_date);
-        btn_shop = (ImageButton) findViewById(R.id.b_shopcar);
-        btn_home = (ImageButton) findViewById(R.id.b_home);
+        btn_list =  findViewById(R.id.b_list);
+        btn_date =  findViewById(R.id.b_date);
+        btn_shop =  findViewById(R.id.b_shopcar);
+        btn_home =  findViewById(R.id.b_home);
         btn_notice = findViewById(R.id.btn_notice);
         m_wallet = findViewById(R.id.m_wallet);
         m_adress = findViewById(R.id.m_adress);
@@ -58,26 +61,12 @@ public  class MeActivity extends AppCompatActivity implements View.OnClickListen
         loadData();
     }
     private void loadData() {
-    Map map = new HashMap () ;
-    map. put("uerid" , m_userid) ;
-   OkHttp. get(this, Constant.select_user_by_id, map,new OkCallback<Result<UsersBean>>() {
-    @Override
-    public void onResponse (Result<UsersBean> response) {
-    if (response. getData() != null) {
-        String nickname = response. getData().getNickname();
-         if (nickname == null || nickname.isEmpty()){
-             m_username.setText("无");
-         }else{
-             m_username.setText(nickname);
-
-         }
-    }
-    }
-    @Override
-    public void onFailure(String state, String msg) {
-        Toast.makeText(MeActivity.this, msg, Toast.LENGTH_SHORT).show();
-        }
-    });
+        String nickname = SharePrefrenceUtil.getObject(MeActivity.this, UsersBean.class).getNickname();
+            if (nickname == null || nickname.isEmpty()){
+                m_username.setText("暂未设置昵称");
+            }else{
+                m_username.setText(nickname);
+            }
     }
 
     private void OnClickListener() {
