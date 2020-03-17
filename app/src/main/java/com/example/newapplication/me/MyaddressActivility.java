@@ -42,9 +42,9 @@ public class MyaddressActivility extends AppCompatActivity implements View.OnCli
         //maddress=findViewById(R.id.address);
         a_title_back=findViewById(R.id.a_title_back);
         a_notice=findViewById(R.id.a_notice);
-        //
+        //添加适配器
         recyclerView =findViewById(R.id.ma_recycle_view);
-        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         addressAdapter = new AddressAdapter(this);
         recyclerView.setAdapter(addressAdapter);

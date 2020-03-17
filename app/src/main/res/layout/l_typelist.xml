@@ -11,7 +11,7 @@
         android:layout_gravity="top">
 
         <ImageButton
-            android:id="@+id/p_title_back"
+
             android:layout_width="34dp"
             android:layout_height="43dp"
             android:layout_gravity="center_vertical"
@@ -29,10 +29,10 @@
             android:textColor="#6A5ACD"
             android:textSize="28sp"/>
         <ImageButton
-            android:id="@+id/P_notice"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
+            android:onClick="my_notice"
             android:layout_margin="5dp"
             android:background="@mipmap/notice"
             />
@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/s_recycle_view"
+                android:id="@+id/type_recycle_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             </androidx.recyclerview.widget.RecyclerView>
