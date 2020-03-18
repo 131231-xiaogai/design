@@ -1,6 +1,7 @@
 package com.example.newapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
     ImageButton btn_list, btn_date, btn_home, btn_me;
     private List<Photo> photoList = new ArrayList<>();
     ImageView btn_notice;
+    RecyclerView s_recycle_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +41,12 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
         btn_list.setOnClickListener(this);
         btn_date.setOnClickListener(this);
         btn_me.setOnClickListener(this);
-
         //
         initPhoto();
-        PhotoAdapter adapter = new PhotoAdapter(ShopcarActivity.this,R.layout.shop_list,photoList);
+       // PhotoAdapter adapter = new PhotoAdapter(ShopcarActivity.this,R.layout.shop_list,photoList);
 
-        ListView listView = (ListView)findViewById(R.id.s_list_view);
-        listView.setAdapter(adapter);
+         s_recycle_view = findViewById(R.id.s_recycle_view);
+       // listView.setAdapter(adapter);
     }
 
     public void finish_reback(View v){

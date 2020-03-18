@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -23,6 +24,8 @@ import com.example.newapplication.Adapter.PhotoAdapter;
 import com.example.newapplication.Adapter.Photo_Rec_Adapter;
 import com.example.newapplication.entity.GoodBean;
 import com.example.newapplication.entity.Photo;
+import com.example.newapplication.home.ItemDetailActivity;
+import com.example.newapplication.inteface.OnItemClickListener;
 import com.example.newapplication.new_utill.Constant;
 import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
@@ -30,13 +33,13 @@ import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.newpage.MyViewPager;
 import com.example.newapplication.newpage.Notice;
 import com.example.newapplication.newpage.Phone_help;
+import com.example.newapplication.viewhandle.RecyclerViewHolder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, MyViewPager.OnViewPageTouchListener, ViewPager.OnPageChangeListener {
     ImageButton btn_list, btn_date, btn_shop, btn_me;
@@ -45,9 +48,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     RecyclerView recyclerView;
     ImageView btn_notice;
     private List<Photo> photoList = new ArrayList<>();
-    //private List<Photo> mphotoList = new ArrayList<>();
     private static List<Integer> sPics = new ArrayList<>();
-
     static {
         sPics.add(R.drawable.image6);
         sPics.add(R.drawable.image7);
@@ -55,11 +56,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         sPics.add(R.drawable.image9);
         sPics.add(R.drawable.image10);
     }
-
     private Handler handler;//
     private boolean mIsTouch = false;
-
     LinearLayout pointcontainer;
+    //
     private GoodAdapter goodAdapter;
 
     @Override
@@ -68,18 +68,26 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.home);
         initView();
         handler = new Handler();
-
         btn_notice = (ImageView) findViewById(R.id.btn_notice);
         btn_notice.setOnClickListener(this);
-
         //list
         initPhoto();
-        recyclerView = (RecyclerView) findViewById(R.id.h_recycle_view);
+        recyclerView =findViewById(R.id.h_recycle_view);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         goodAdapter = new GoodAdapter(this);
-//        Photo_Rec_Adapter rec_adapter = new Photo_Rec_Adapter(photoList);
+//      Photo_Rec_Adapter rec_adapter = new Photo_Rec_Adapter(photoList);
         recyclerView.setAdapter(goodAdapter);
+        goodAdapter.setOnItemClickListener(new OnItemClickListener<GoodBean>() {
+            @Override
+            public void onItemClick(RecyclerViewHolder viewHolder, GoodBean data, int position) {
+                Toast.makeText(HomeActivity.this, data.getGoods_id(), Toast.LENGTH_SHORT).show();
+                String da = data.getGoods_id();
+                Intent intent = new Intent(HomeActivity.this, ItemDetailActivity.class);
+                intent.putExtra("hgoodid", da);
+                startActivity(intent);
+            }
+        });
         loadData();
         //底部导航栏
         btn_list = (ImageButton) findViewById(R.id.b_list);
@@ -90,6 +98,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btn_shop.setOnClickListener(this);
         btn_me = (ImageButton) findViewById(R.id.b_me);
         btn_me.setOnClickListener(this);
+
     }
 
     //列表
@@ -113,6 +122,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    //随机名字
     private String getRandomLengthName(String home) {
         Random random = new Random();
         int length = random.nextInt(10) + 1;
@@ -154,7 +164,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
-        //
         handler.post(looperTask);
     }
 
@@ -220,7 +229,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void finish_reback(View v) {
         HomeActivity.this.finish();
     }
-
     //底部导航栏
     @Override
     public void onClick(View v) {
@@ -243,7 +251,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
     private void loadData() {
         Map map = new HashMap();
         OkHttp.get(this, Constant.select_all_good, map, new OkCallback<Result<List<GoodBean>>>() {
@@ -251,7 +258,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             public void onResponse(Result<List<GoodBean>> response) {
                 goodAdapter.setNewData(response.getData());
             }
-
             @Override
             public void onFailure(String state, String msg) {
                 Toast.makeText(HomeActivity.this, msg, Toast.LENGTH_SHORT).show();

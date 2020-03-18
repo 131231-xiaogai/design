@@ -1,4 +1,4 @@
-package com.example.newapplication.newpage;
+package com.example.newapplication.me;
 
 import android.os.Bundle;
 
@@ -7,12 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.newapplication.R;
 
-public class Order_shou extends AppCompatActivity   {
+public class Order_tui extends AppCompatActivity   {
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.m_order_shou);
+        setContentView(R.layout.m_order_tui);
     }
-
-
 }

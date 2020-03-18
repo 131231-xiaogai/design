@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <!--头-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/e_title_back"
+            android:layout_width="34dp"
+            android:layout_height="43dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:onClick="finish_reback"
+            android:background="@mipmap/left" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:hint=" 当前版本 "
+            android:layout_gravity="center"
+            android:paddingLeft="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="V 1.0.1"
+
+            android:layout_gravity="center"/>
+
+        />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:hint=" 版本更新 "
+            android:layout_gravity="center"
+            android:paddingLeft="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="170dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="已经是最新版本"
+            android:layout_gravity="center"/>
+
+        />
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

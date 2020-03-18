@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/l_btn_cloth"
         android:background="@drawable/shape_l_btn"
-        android:text="按衣服分类"
+        android:text="  按衣服分类  "
         android:textColor="#6A5ACD"
         android:textSize="16sp"
        />
@@ -19,7 +19,7 @@
         android:layout_marginLeft="80dp"
         android:id="@+id/l_btn_activity"
         android:background="@drawable/shape_l_btn"
-        android:text="按活动分类"
+        android:text="  按活动分类  "
         android:textColor="#6A5ACD"
         android:textSize="16sp"
         />

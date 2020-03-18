@@ -18,7 +18,6 @@
             android:gravity="right"
             android:layout_margin="5dp"
             >
-
             <TextView
                 android:id="@+id/register_help"
                 android:layout_width="wrap_content"
@@ -48,22 +47,23 @@
                 android:layout_height="wrap_content"
                 android:text="注册"
                 android:textColor="@color/black"
-                android:textSize="36sp"/>
+                android:textSize="40sp"/>
         </LinearLayout>
 
         <!-- 手机号码 -->
         <LinearLayout
-            android:id="@+id/reg_phone"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="20dp">
             <EditText
-                android:id="@+id/reg_e_phonemb"
-                android:layout_width="320dp"
+                android:id="@+id/reg_phonemb"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
                 android:drawableLeft="@mipmap/username"
                 android:ems="10"
                 android:hint="手机号"
@@ -71,49 +71,59 @@
         </LinearLayout>
         <!-- 密码-->
         <LinearLayout
-            android:id="@+id/r_paaaword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="20dp">
             <EditText
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
                 android:id="@+id/reg_bassword"
-                android:layout_width="240dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@mipmap/password"
                 android:hint="密码"
                 android:ems="15"
                 android:inputType="textPassword" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="忘记密码？"
-                android:textSize="15sp"/>
-        </LinearLayout>
 
-        <!-- 验证码 -->
+        </LinearLayout>
+        <!-- 选择角色-->
         <LinearLayout
-            android:id="@+id/ly"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
             <EditText
-                android:id="@+id/reg_pass"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="8dp"
-                android:layout_width="240dp"
+                android:id="@+id/reg_roleid"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="请输入验证码"
-                android:inputType="numberPassword" />
-            <com.example.newapplication.new_utill.SMSTextView
-                android:id="@+id/reg_getcode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="获取验证码" />
+                android:hint="您的角色，请填“1”或“2”。"
+                android:ems="15"
+                android:inputType="textPassword" />
+            <TextView
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="320dp"
+                android:layout_height="22dp"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textColor="@color/btn_filled_blue_bg_normal"
+                android:text="请填写数字   1   注册为顾客。"/>
+            <TextView
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="8dp"
+                android:layout_width="320dp"
+                android:layout_height="22dp"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textColor="@color/btn_filled_blue_bg_normal"
+                android:text="请填写数字   2   注册为商家。"/>
+
+
         </LinearLayout>
         <!-- 注册按钮-->
         <LinearLayout
@@ -123,7 +133,7 @@
             android:gravity="center"
             >
             <Button
-                android:id="@+id/btn_regiesst"
+                android:id="@+id/btn_register"
                 android:layout_width="match_parent"
                 android:layout_marginLeft="38dp"
                 android:layout_marginRight="38dp"

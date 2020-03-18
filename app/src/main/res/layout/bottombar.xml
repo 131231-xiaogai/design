@@ -5,58 +5,86 @@
     android:layout_gravity="bottom"
     android:gravity="center"
     android:background="#fff"
-   android:padding="5dp">
-
+    android:orientation="horizontal"
+   >
+     <LinearLayout
+         android:layout_width="0dp"
+         android:layout_weight="1"
+         android:gravity="center"
+         android:layout_marginLeft="10dp"
+         android:layout_marginRight="5dp"
+         android:layout_height="match_parent">
     <ImageButton
         android:id="@+id/b_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="10dp"
-        android:layout_weight="1"
-        android:background="@mipmap/icon_grid_layout"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:background="@mipmap/home"
         android:gravity="center"
         />
+     </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_height="match_parent">
     <ImageButton
         android:id="@+id/b_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="10dp"
-        android:layout_weight="1"
-        android:background="@mipmap/icon_grid_layout"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+
+        android:background="@mipmap/list"
         android:gravity="center"
         />
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_height="match_parent">
     <ImageButton
         android:id="@+id/b_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="10dp"
-        android:layout_weight="1"
-        android:background="@mipmap/icon_grid_layout"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:background="@mipmap/data1"
         android:gravity="center"
         />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_height="match_parent">
     <ImageButton
         android:id="@+id/b_shopcar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="10dp"
-        android:layout_weight="1"
-        android:background="@mipmap/icon_grid_layout"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+
+        android:background="@mipmap/shopcar"
         android:gravity="center"
         />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:layout_height="match_parent">
     <ImageButton
         android:id="@+id/b_me"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="10dp"
-        android:layout_weight="1"
-        android:background="@mipmap/icon_grid_layout"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+
+        android:background="@mipmap/me"
         android:gravity="center"
         />
+    </LinearLayout>
     <!--<Button-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->

@@ -1,4 +1,4 @@
-package com.example.newapplication.newpage;
+package com.example.newapplication.me;
 
 import android.os.Bundle;
 
@@ -7,11 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.newapplication.R;
 
-public class Order_fa extends AppCompatActivity   {
+public class Order_fu extends AppCompatActivity   {
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.m_order_fa);
+        setContentView(R.layout.m_order_fu);
     }
 
 
