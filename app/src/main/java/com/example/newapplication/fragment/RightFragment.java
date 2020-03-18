@@ -112,7 +112,7 @@ public class RightFragment extends Fragment implements View.OnClickListener {
 
     private void search_lifu() {
         String data = " 礼  服 ";
-        String typeid = "4 ";
+        String typeid = "4";
         Intent xiz = new Intent();
         xiz.setClass(getActivity(), TypeListActivity.class);
         xiz.putExtra("typename", data);

@@ -15,7 +15,7 @@
             android:layout_gravity="center_vertical"
             android:layout_margin="5dp"
             android:onClick="reback"
-            android:background="@mipmap/icon_right" />
+            android:background="@mipmap/left" />
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"

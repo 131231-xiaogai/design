@@ -39,9 +39,10 @@ public class TypeListActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.l_typelist);
         typename=findViewById(R.id.typename);
         //接收上一个页面的数据
-        Intent typename_integer = getIntent();
-        String  data = typename_integer.getStringExtra("typename");
-        String  typeid = typename_integer.getStringExtra("typeid");
+        Intent integer = getIntent();
+        String  data = integer.getStringExtra("typename");
+        String  typeid = integer.getStringExtra("typeid");
+
         typename.setText(data);
         Log.d("TypeListActivity",data);
         //添加适配器
@@ -60,8 +61,29 @@ public class TypeListActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(intent);
             }
         });
-        loadData(typeid.toString());
+        if (typeid.length()>1){
+            loadData_a(typeid);
+        }else {
+            loadData(typeid);
+        }
+
+
         OnClickListener();
+    }
+
+    private void loadData_a(String typeid) {
+        Map map = new HashMap();
+        map.put("mtype_activity_id",typeid);
+        OkHttp.get(this, Constant.select_good_by_type_activityid, map, new OkCallback<Result<List<GoodBean>>>() {
+            @Override
+            public void onResponse(Result<List<GoodBean>> response) {
+                typeListAdapter.setNewData(response.getData());
+            }
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(TypeListActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void finish_reback(View v) {

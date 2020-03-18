@@ -1,6 +1,7 @@
 package com.example.newapplication.me;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -59,6 +60,7 @@ public class SetUserNameActivity extends AppCompatActivity implements View.OnCli
     private void insert() {
         String id = SharePrefrenceUtil.getObject(SetUserNameActivity.this, UsersBean.class).getUerid();
         Toast.makeText(SetUserNameActivity.this, setup_nickname.getText().toString(), Toast.LENGTH_SHORT).show();
+        Log.d("SetUserNameActivity",setup_nickname.getText().toString());
         Map map = new HashMap();
         map.put("muser_id",id);
         map.put("mnickname",setup_nickname.getText().toString());
@@ -67,6 +69,7 @@ public class SetUserNameActivity extends AppCompatActivity implements View.OnCli
             public void onResponse(Result<UsersBean> response) {
                 //SharePrefrenceUtil.saveObject(SetUserNameActivity.this, response.getData());
                 if (response.getData() != null) {
+
                     Toast.makeText(SetUserNameActivity.this, "保存成功！", Toast.LENGTH_SHORT).show();
                 }
             }

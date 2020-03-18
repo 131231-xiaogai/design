@@ -19,6 +19,8 @@ public class Constant {
     public static String insert_user_sex =BASE_URL+"/Insert_user_sexServlet";
     public static String select_address_by_userid =BASE_URL+"/Select_address_by_useridServlet";
     public static String select_good_by_typeid =BASE_URL+"/Select_good_by_typeidServlet";
+    public static String select_good_by_type_activityid =BASE_URL+"/Select_good_by_type_activityidServlet";
+    public static String add_to_shopcar =BASE_URL+"/add_to_shopcarServlet";
 
 
 }
