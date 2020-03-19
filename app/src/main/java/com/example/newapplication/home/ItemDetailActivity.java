@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.example.newapplication.HomeActivity;
 import com.example.newapplication.R;
 import com.example.newapplication.entity.GoodBean;
@@ -30,6 +31,7 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
     TextView l_goodid,l_goodname,l_shopname,good_price,good_size,back;
     ImageView l_img;
     Button add_to_shopcar,to_pay;
+    private GoodBean data;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,10 +60,11 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
         OkHttp.get(this, Constant.select_good_by_id, map, new OkCallback<Result<GoodBean>>() {
             @Override
             public void onResponse(Result<GoodBean> response) {
-                if (response.getData() != null) {
-                    String gname = response.getData().getGoods_name();
-                    String pice = response.getData().getGoods_price();
-                    String size = response.getData().getSize();
+                data = response.getData();
+                if (data != null) {
+                    String gname = data.getGoods_name();
+                    String pice = data.getGoods_price();
+                    String size = data.getSize();
                     if (gname == null || gname.isEmpty()) {
                         l_goodname.setText("无");
                     } else {
@@ -77,6 +80,7 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
                     } else {
                         good_size.setText(size);
                     }
+                    Glide.with(ItemDetailActivity.this).load(data.getGood_img()).into(l_img);
                 }
             }
             @Override
@@ -112,14 +116,20 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
         String good_number ="1";
 
         Map map = new HashMap();
+
+        map.put("user_id",userid);
         map.put("goods_id",goodid);
-        map.put("userid",userid);
         map.put("good_number",good_number);
+        map.put("shop_id","1");
+        map.put("good_name",data.getGoods_name());
+        map.put("good_price",data.getGoods_price());
+        map.put("good_img",data.getGood_img());
+        map.put("shop_name","");
 
         OkHttp.get(this, Constant.add_to_shopcar, map, new OkCallback<Result<String>>() {
             @Override
             public void onResponse(Result<String> response) {
-                Toast.makeText(ItemDetailActivity.this, "已收藏", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ItemDetailActivity.this, "已添加", Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onFailure(String state, String msg) {

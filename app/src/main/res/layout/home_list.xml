@@ -8,10 +8,12 @@
     <ImageView
         android:id="@+id/h_photo_image"
         android:layout_width="wrap_content"
-        android:padding="5dp"
         android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
         android:background="#ff9"
-        android:layout_gravity="center_horizontal"/>
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:padding="5dp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

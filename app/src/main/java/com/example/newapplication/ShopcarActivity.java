@@ -2,6 +2,7 @@ package com.example.newapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,16 +15,29 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.newapplication.Adapter.PhotoAdapter;
+import com.example.newapplication.Adapter.ShopcarAdapter;
 import com.example.newapplication.entity.Photo;
+import com.example.newapplication.entity.Shooping_carBean;
+import com.example.newapplication.entity.UsersBean;
+import com.example.newapplication.home.ItemDetailActivity;
+import com.example.newapplication.inteface.OnItemClickListener;
+import com.example.newapplication.new_utill.Constant;
+import com.example.newapplication.new_utill.OkCallback;
+import com.example.newapplication.new_utill.OkHttp;
+import com.example.newapplication.new_utill.Result;
+import com.example.newapplication.new_utill.SharePrefrenceUtil;
 import com.example.newapplication.newpage.Notice;
+import com.example.newapplication.viewhandle.RecyclerViewHolder;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ShopcarActivity extends AppCompatActivity implements View.OnClickListener{
 
     ImageButton btn_list, btn_date, btn_home, btn_me;
-    private List<Photo> photoList = new ArrayList<>();
+    private ShopcarAdapter shopcarAdapter;
     ImageView btn_notice;
     RecyclerView s_recycle_view;
 
@@ -41,33 +55,49 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
         btn_list.setOnClickListener(this);
         btn_date.setOnClickListener(this);
         btn_me.setOnClickListener(this);
-        //
-        initPhoto();
-       // PhotoAdapter adapter = new PhotoAdapter(ShopcarActivity.this,R.layout.shop_list,photoList);
+        s_recycle_view = findViewById(R.id.s_recycle_view);
 
-         s_recycle_view = findViewById(R.id.s_recycle_view);
-       // listView.setAdapter(adapter);
+        //添加适配器
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
+        s_recycle_view.setLayoutManager(layoutManager);
+        shopcarAdapter = new ShopcarAdapter(this);
+        s_recycle_view.setAdapter(shopcarAdapter);
+
+        shopcarAdapter.setOnItemClickListener(new OnItemClickListener<Shooping_carBean>() {
+            @Override
+            public void onItemClick(RecyclerViewHolder viewHolder, Shooping_carBean data, int position) {
+                Toast.makeText(ShopcarActivity.this, data.getGoods_id(), Toast.LENGTH_SHORT).show();
+                String da = data.getGoods_id();
+                Intent intent = new Intent(ShopcarActivity.this, ItemDetailActivity.class);
+                intent.putExtra("hgoodid", da);
+                startActivity(intent);
+            }
+        });
+        loadData();
+    }
+
+    private void loadData() {
+        String user_id = SharePrefrenceUtil.getObject(ShopcarActivity.this, UsersBean.class).getUerid();
+
+        Map map = new HashMap();
+        map.put("user_id",user_id);
+
+        OkHttp.get(this, Constant.select_shopcar_by_userid, map, new OkCallback<Result<List<Shooping_carBean>>>() {
+            @Override
+            public void onResponse(Result<List<Shooping_carBean>> response) {
+                shopcarAdapter.setNewData(response.getData());
+            }
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(ShopcarActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void finish_reback(View v){
         ShopcarActivity.this.finish();
     }
 
-    private void initPhoto() {
-        for (int i= 0;i < 2;i++){
-
-            Photo home = new Photo("home",R.drawable.image6);
-            photoList.add(home);
-            Photo list = new Photo("list",R.drawable.image7);
-            photoList.add(list);
-            Photo date = new Photo("date",R.drawable.image8);
-            photoList.add(date);
-            Photo shopcar = new Photo("shopcar",R.drawable.image9);
-            photoList.add(shopcar);
-            Photo me = new Photo("me",R.drawable.image10);
-            photoList.add(me);
-        }
-    }
 
     @Override
     public void onClick(View v) {
@@ -89,6 +119,5 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
                 break;
         }
     }
-    //listview数组
-    private String[] data = {"home","list","date","shopcar","me"};
+
 }

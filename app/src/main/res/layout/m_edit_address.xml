@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <!--头-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/edit_address_back"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:onClick="finish_edit_adress"
+            android:background="@mipmap/left_white" />
+        <TextView
+            android:id="@+id/pageneme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="地 址 管 理"
+            android:textColor="#6A5ACD"
+            android:textSize="28sp"/>
+        <ImageButton
+            android:id="@+id/edit_address_save"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:background="@mipmap/save" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:layout_marginTop="5dp"
+                android:text="收  货  人 :"/>
+            <EditText
+                android:id="@+id/edit_address_name"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="50dp"
+                android:textSize="18sp"
+                android:layout_marginTop="5dp"
+                android:hint=" 姓 名 "
+                android:layout_gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:layout_marginTop="5dp"
+                android:text="联系方式 :"/>
+        <EditText
+            android:id="@+id/edit_address_phone"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="3"
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:hint=" 11 位 手 机 号 "
+            android:layout_gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:layout_marginTop="5dp"
+                android:text="收货地区  :"/>
+        <EditText
+            android:id="@+id/edit_address1"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:textSize="20sp"
+            android:layout_weight="3"
+            android:layout_marginTop="5dp"
+            android:hint=" 地 区 信 息"
+            android:layout_gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:layout_marginTop="5dp"
+                android:text="详细地址  :"/>
+        <EditText
+            android:id="@+id/edit_address2"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="3"
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:hint="街道（村镇）详细地区"
+            android:layout_gravity="center"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

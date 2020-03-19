@@ -42,7 +42,6 @@ public class TypeListActivity extends AppCompatActivity implements View.OnClickL
         Intent integer = getIntent();
         String  data = integer.getStringExtra("typename");
         String  typeid = integer.getStringExtra("typeid");
-
         typename.setText(data);
         Log.d("TypeListActivity",data);
         //添加适配器

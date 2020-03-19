@@ -18,17 +18,19 @@ public class ShopcarAdapter extends BaseRecyclerViewAdapter<Shooping_carBean, Re
     @Override
     protected void convert(RecyclerViewHolder holder, Shooping_carBean data, int position, int viewType) {
         ImageView imageView = holder.getView(R.id.sc_good_image);
-        // imageView.setIm(data.getGood_img());
-       // Glide.with(mContext).load(data.getGood_img()).into(imageView);
+        Glide.with(mContext).load(data.getGood_img()).into(imageView);
 
-       // TextView textView = holder.getView(R.id.sc_shopname);
-       // textView.setText(data.getGoods_name());
+        TextView shop_ame = holder.getView(R.id.ms_shop_ame);
+        shop_ame.setText(data.getShop_name());
 
-       // TextView price = holder.getView(R.id.sc_goood_price);
-        //price.setText(data.getGoods_price());
+       TextView price = holder.getView(R.id.sc_goood_price);
+       price.setText(data.getGood_price());
+
+        TextView goodname = holder.getView(R.id.sc_goodname);
+        goodname.setText(data.getGood_name());
 
         TextView good_number = holder.getView(R.id.sc_good_number);
-        good_number.setText(data.getGoods_id());
+        good_number.setText(data.getGood_number());
     }
 
 
