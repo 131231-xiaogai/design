@@ -32,6 +32,7 @@
             android:background="#fff">
 
                 <TextView
+                    android:id="@+id/my_shop_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="一号店"
