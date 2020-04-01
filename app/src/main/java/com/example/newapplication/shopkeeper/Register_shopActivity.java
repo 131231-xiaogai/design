@@ -1,5 +1,6 @@
 package com.example.newapplication.shopkeeper;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.newapplication.R;
+import com.example.newapplication.ShopkeeperActivity;
 import com.example.newapplication.entity.ShopBean;
 import com.example.newapplication.entity.UsersBean;
 import com.example.newapplication.new_utill.Constant;
@@ -90,18 +92,25 @@ public class Register_shopActivity extends AppCompatActivity implements View.OnC
     }
 
     private void save_insertshop_data(String user_id) {
-
         Map map = new HashMap();
         map.put("user_id",user_id);
         map.put("shop_name",insert_shopname.getText().toString());
         map.put("shop_dresss",insert_shop_address.getText().toString());
         map.put("shop_phone",insert_shop_phone.getText().toString());
         Log.d("Register_shopActivity",insert_shopname.getText().toString());
-
         OkHttp.get(this, Constant.regiest_shop, map, new OkCallback<Result<String>>() {
             @Override
             public void onResponse(Result<String> response) {
                 Toast.makeText(Register_shopActivity.this, "注 册 成 功 ！", Toast.LENGTH_SHORT).show();
+                String shop_name = insert_shopname.getText().toString();
+                String shop_dresss =insert_shop_address.getText().toString();
+                String shop_phone =insert_shop_phone.getText().toString();
+                Intent intent = new Intent(Register_shopActivity.this, ShopkeeperActivity.class);
+                intent.putExtra("shop_name", shop_name);
+                intent.putExtra("shop_dresss", shop_dresss);
+                intent.putExtra("shop_phone", shop_phone);
+                startActivity(intent);
+                Register_shopActivity.this.finish();
             }
             @Override
             public void onFailure(String state, String msg) {

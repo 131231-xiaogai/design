@@ -25,13 +25,25 @@ import java.util.Map;
 
 public class ShopkeeperActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView k_add,my_shop_name;
+    TextView k_add,my_shop_name,my_shop_address,me_shop_register_time,me_shop_phone,my_shop_sorc;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shopkeeper);
         k_add=findViewById(R.id.k_add);
         my_shop_name=findViewById(R.id.my_shop_name);
+        my_shop_address=findViewById(R.id.my_shop_address);
+        me_shop_register_time=findViewById(R.id.me_shop_register_time);
+        me_shop_phone=findViewById(R.id.me_shop_phone);
+        my_shop_sorc=findViewById(R.id.my_shop_sorc);
+        //
+        Intent goodid_integer = getIntent();
+        String  shop_name = goodid_integer.getStringExtra("shop_name");
+        my_shop_name.setText(shop_name);
+        String  shop_dresss = goodid_integer.getStringExtra("shop_dresss");
+        my_shop_address.setText(shop_dresss);
+        String  shop_phone = goodid_integer.getStringExtra("shop_phone");
+        me_shop_phone.setText(shop_phone);
         OnClickListener();
         loadData();
 
@@ -47,14 +59,20 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
             public void onResponse(Result<ShopBean> response) {
 
                 if (response.getData() != null) {
-
                     String myshop_name =response.getData().getShop_name();
+                    String myshop_dress =response.getData().getShop_dresss();
+                    String myshop_phone =response.getData().getShop_phone();
+                    String myshop_sorc =response.getData().getShop_score();
+                    String myshop_register_time =response.getData().getShop_regist_time();
                     if (myshop_name == null || myshop_name.isEmpty()) {
                         my_shop_name.setText("空的店铺名");
                     } else {
                         my_shop_name.setText(myshop_name);
                     }
-
+                    my_shop_address.setText(myshop_dress);
+                    me_shop_register_time.setText(myshop_register_time);
+                    my_shop_sorc.setText(myshop_sorc);
+                    me_shop_phone.setText(myshop_phone);
                 }else {
                     Toast.makeText(ShopkeeperActivity.this, "您还没有注册商铺。", Toast.LENGTH_SHORT).show();
                     my_shop_name.setText("注册我的店铺");
@@ -70,6 +88,10 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
     private void OnClickListener() {
         k_add.setOnClickListener(this);
         my_shop_name.setOnClickListener(this);
+        my_shop_address.setOnClickListener(this);
+        me_shop_register_time.setOnClickListener(this);
+        me_shop_phone.setOnClickListener(this);
+        my_shop_sorc.setOnClickListener(this);
     }
 
 

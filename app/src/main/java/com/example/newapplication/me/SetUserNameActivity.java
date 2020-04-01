@@ -1,5 +1,6 @@
 package com.example.newapplication.me;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -57,6 +58,8 @@ public class SetUserNameActivity extends AppCompatActivity implements View.OnCli
 
     }
 
+
+
     private void insert() {
         String id = SharePrefrenceUtil.getObject(SetUserNameActivity.this, UsersBean.class).getUerid();
         Toast.makeText(SetUserNameActivity.this, setup_nickname.getText().toString(), Toast.LENGTH_SHORT).show();
@@ -69,8 +72,11 @@ public class SetUserNameActivity extends AppCompatActivity implements View.OnCli
             public void onResponse(Result<UsersBean> response) {
                 //SharePrefrenceUtil.saveObject(SetUserNameActivity.this, response.getData());
                 if (response.getData() != null) {
-
                     Toast.makeText(SetUserNameActivity.this, "保存成功！", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent();
+                    intent.putExtra("data_return","my_mame");
+                    setResult(RESULT_OK,intent);
+                    finish();
                 }
             }
             @Override

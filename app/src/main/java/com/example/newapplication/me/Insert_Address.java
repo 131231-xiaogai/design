@@ -75,7 +75,10 @@ public class Insert_Address extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onResponse(Result<String> response) {
                 Toast.makeText(Insert_Address.this, "您的新增地址已保存。", Toast.LENGTH_SHORT).show();
-
+                Intent intent = new Intent();
+                intent.putExtra("data_return","my_addresses");
+                setResult(RESULT_OK,intent);
+                finish();
             }
             @Override
             public void onFailure(String state, String msg) {

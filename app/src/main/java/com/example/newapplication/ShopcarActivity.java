@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -70,10 +71,26 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
                 String da = data.getGoods_id();
                 Intent intent = new Intent(ShopcarActivity.this, ItemDetailActivity.class);
                 intent.putExtra("hgoodid", da);
-                startActivity(intent);
+                startActivityForResult(intent,1);
             }
         });
         loadData();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    String data_return = data.getStringExtra("data_return");
+                    Log.d("my_address",data_return);
+                    loadData();
+                }
+                break;
+            default:
+        }
     }
 
     private void loadData() {

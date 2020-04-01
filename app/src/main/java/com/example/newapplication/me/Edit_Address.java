@@ -80,7 +80,10 @@ public class Edit_Address extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onResponse(Result<String> response) {
                 Toast.makeText(Edit_Address.this, "您的修改已经保存。", Toast.LENGTH_SHORT).show();
-
+                Intent intent = new Intent();
+                intent.putExtra("data_return","my_addresses");
+                setResult(RESULT_OK,intent);
+                finish();
             }
             @Override
             public void onFailure(String state, String msg) {

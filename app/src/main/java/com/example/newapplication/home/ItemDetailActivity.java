@@ -130,6 +130,10 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onResponse(Result<String> response) {
                 Toast.makeText(ItemDetailActivity.this, "已添加", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent();
+                intent.putExtra("data_return","shopcar");
+                setResult(RESULT_OK,intent);
+                Log.d("my_address","shopcar");
             }
             @Override
             public void onFailure(String state, String msg) {

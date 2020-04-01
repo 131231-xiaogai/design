@@ -89,7 +89,11 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
                     @Override
                     public void onResponse( Result<String> response) {
                         Toast.makeText(AddGoodsActivity.this,"上传成功。",Toast.LENGTH_SHORT).show();
-
+                        add_yajin.getText().clear();
+                        add_type.getText().clear();
+                        add_saize.getText().clear();
+                        add_price.getText().clear();
+                        add_name.getText().clear();
                     }
 
                     @Override
@@ -126,56 +130,5 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
- /*   private void choosephoto() {
-        if (ContextCompat.checkSelfPermission(AddGoodsActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(AddGoodsActivity.this,new String[]{ Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
-        }else {
-            openAlbum();
-        }
-    }
 
-    private void openAlbum() {
-
-        Intent intent = new Intent("android.intent.action.GET_CONTENT");
-        intent.setType("image/*");
-        startActivityForResult(intent,CHOOSE_PHOTO);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
-            case 1:
-                if (grantResults.length >0&&grantResults[0]== PackageManager.PERMISSION_GRANTED){
-                    openAlbum();
-                }else {
-                    Toast.makeText(this,"123",Toast.LENGTH_SHORT).show();
-                }
-                break;
-                default:
-        }
-       // super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        switch (requestCode){
-            case CHOOSE_PHOTO:
-                if (requestCode == RESULT_OK){
-                    if(Build.VERSION.SDK_INT >= 19){
-                        handlerImageOnKitKat(data);
-                    }else {
-                        handlerImageBeforeKitKat(data);
-                    }
-                }
-
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    private void handlerImageBeforeKitKat(Intent data) {
-
-    }
-
-    private void handlerImageOnKitKat(Intent data) {
-    }*/
 }
