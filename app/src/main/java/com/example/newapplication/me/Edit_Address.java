@@ -3,8 +3,10 @@ package com.example.newapplication.me;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,8 +23,10 @@ import java.util.Map;
 public class Edit_Address extends AppCompatActivity implements View.OnClickListener {
 
     EditText edit_address_name,edit_address_phone,edit_address1,edit_address2;
-    ImageButton edit_address_back,edit_address_save;
+    TextView edit_address_back,edit_address_dele;
     String  address_id;
+    Button edit_address_save;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.m_edit_address);
@@ -33,6 +37,7 @@ public class Edit_Address extends AppCompatActivity implements View.OnClickListe
         edit_address2 =findViewById(R.id.edit_address2);
         edit_address_back =findViewById(R.id.edit_address_back);
         edit_address_save =findViewById(R.id.edit_address_save);
+        edit_address_dele =findViewById(R.id.edit_address_dele);
 
         //接收上一个页面的数据
         Intent integer = getIntent();
@@ -53,9 +58,8 @@ public class Edit_Address extends AppCompatActivity implements View.OnClickListe
     private void OnClickListener() {
         edit_address_back.setOnClickListener(this);
         edit_address_save.setOnClickListener(this);
+        edit_address_dele.setOnClickListener(this);
     }
-
-
 
     @Override
     public void onClick(View v) {
@@ -66,8 +70,33 @@ public class Edit_Address extends AppCompatActivity implements View.OnClickListe
             case R.id.edit_address_back:
                 Edit_Address.this.finish();
                 break;
+            case R.id.edit_address_dele:
+                dele_address_Data();
+                break;
         }
     }
+
+    private void dele_address_Data() {
+        Map map = new HashMap();
+        map.put("address_id",address_id);
+
+        OkHttp.get(this, Constant.delete_user_address, map, new OkCallback<Result<String>>() {
+            @Override
+            public void onResponse(Result<String> response) {
+                Toast.makeText(Edit_Address.this, "已 删 除。", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent();
+                intent.putExtra("data_return","my_addresses");
+                setResult(RESULT_OK,intent);
+                finish();
+            }
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(Edit_Address.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
     private void save_edit_address_Data() {
         Map map = new HashMap();
         map.put("address_id",address_id);

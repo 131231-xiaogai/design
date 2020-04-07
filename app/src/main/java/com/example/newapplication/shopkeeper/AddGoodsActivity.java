@@ -51,7 +51,7 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
         add_name = findViewById(R.id.add_name);
         add_price = findViewById(R.id.add_price);
         add_saize = findViewById(R.id.add_saize);
-        add_type = findViewById(R.id.add_type);
+
         add_yajin = findViewById(R.id.add_yajin);
         btn_add = findViewById(R.id.btn_add);
         btn_addimg = findViewById(R.id.btn_addimg);
@@ -78,8 +78,8 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.add_price:
                 break;
-            case R.id.add_type:
-                break;
+
+
             case R.id.add_yajin:
                 break;
             case R.id.btn_add:
@@ -95,7 +95,6 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
                         add_price.getText().clear();
                         add_name.getText().clear();
                     }
-
                     @Override
                     public void onFailure(String state, String msg) {
                         Toast.makeText(AddGoodsActivity.this,"上传失败。",Toast.LENGTH_SHORT).show();

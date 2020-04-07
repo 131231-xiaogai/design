@@ -31,6 +31,8 @@ public class GoodAdapter extends BaseRecyclerViewAdapter<GoodBean, RecyclerViewH
 
         TextView goodid = holder.getView(R.id.h_goodid);
         goodid.setText(data.getGoods_id());
+
+
     }
 
 

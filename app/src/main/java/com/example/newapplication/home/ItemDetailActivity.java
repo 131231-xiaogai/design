@@ -65,6 +65,13 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
                     String gname = data.getGoods_name();
                     String pice = data.getGoods_price();
                     String size = data.getSize();
+                    String shopname = data.getShop_name();
+
+                    if (shopname == null || shopname.isEmpty()) {
+                        l_shopname.setText("无");
+                    } else {
+                        l_shopname.setText(shopname);
+                    }
                     if (gname == null || gname.isEmpty()) {
                         l_goodname.setText("无");
                     } else {
