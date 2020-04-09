@@ -1,5 +1,6 @@
 package com.example.newapplication.me;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -65,6 +66,10 @@ public class SetUserSexActivity extends AppCompatActivity implements View.OnClic
                 //SharePrefrenceUtil.saveObject(SetUserNameActivity.this, response.getData());
                 if (response.getData() != null) {
                     Toast.makeText(SetUserSexActivity.this, "保存成功！", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent();
+                    intent.putExtra("data_return","my_addresses");
+                    setResult(RESULT_OK,intent);
+                    finish();
                 }
             }
             @Override

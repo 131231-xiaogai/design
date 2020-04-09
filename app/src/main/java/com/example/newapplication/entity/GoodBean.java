@@ -1,7 +1,6 @@
 package com.example.newapplication.entity;
 
 public class GoodBean {
-
 	private String goods_id;
 	private String goods_name;
 	private String goods_price;
@@ -19,19 +18,23 @@ public class GoodBean {
 	private String shop_id;
 	private String good_img;
 	private String type_activity_id;
+	private String shop_name;
 
+
+
+	public String getShop_name() {
+		return shop_name;
+	}
+	public void setShop_name(String shop_name) {
+		this.shop_name = shop_name;
+	}
 	public String getType_activity_id() {
 		return type_activity_id;
 	}
 	public void setType_activity_id(String type_activity_id) {
 		this.type_activity_id = type_activity_id;
 	}
-	public String getGood_img() {
-		return good_img;
-	}
-	public void setGood_img(String good_img) {
-		this.good_img = good_img;
-	}
+
 	public String getGoods_id() {
 		return goods_id;
 	}
@@ -101,7 +104,7 @@ public class GoodBean {
 	public String getSize() {
 		return size;
 	}
-	public void setSize_id(String size) {
+	public void setSize(String size) {
 		this.size = size;
 	}
 	public String getType_id() {
@@ -122,4 +125,13 @@ public class GoodBean {
 	public void setShop_id(String shop_id) {
 		this.shop_id = shop_id;
 	}
+	public String getGood_img() {
+		return good_img;
+	}
+	public void setGood_img(String good_img) {
+		this.good_img = good_img;
+	}
+
+
+
 }

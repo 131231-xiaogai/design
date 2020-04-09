@@ -21,6 +21,11 @@ public class Constant {
     public static String select_good_by_typeid =BASE_URL+"/Select_good_by_typeidServlet";
     public static String select_good_by_type_activityid =BASE_URL+"/Select_good_by_type_activityidServlet";
     public static String add_to_shopcar =BASE_URL+"/add_to_shopcarServlet";
-
+    public static String update_user_address =BASE_URL+"/Update_user_addressServlet";
+    public static String insert_user_address =BASE_URL+"/Insert_user_addressServlet";
+    public static String select_shopcar_by_userid =BASE_URL+"/Select_shopcar_by_useridServlet";
+    public static String select_shop_by_userid =BASE_URL+"/Select_shop_by_useridServlet";
+    public static String regiest_shop =BASE_URL+"/Regiest_shopServlet";
+    public static String delete_user_address =BASE_URL+"/Delete_user_addressServlet";
 
 }

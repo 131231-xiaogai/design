@@ -2,6 +2,7 @@ package com.example.newapplication.me;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -68,19 +69,36 @@ public class MySetUpActivility extends AppCompatActivity implements View.OnClick
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    String data_return = data.getStringExtra("data_return");
+                    Log.d("name",data_return);
+                    loadData();
+                }
+                break;
+            default:
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()){
 
             case R.id.setup_name:
-                startActivity(new Intent(MySetUpActivility.this, SetUserNameActivity.class));
+                Intent intent_name =new Intent(MySetUpActivility.this, SetUserNameActivity.class);
+                startActivityForResult(intent_name,1);
                 break;
             case R.id.u_title_back:
                 MySetUpActivility.this.finish();
                 break;
             case  R.id.setup_sex:
-                startActivity(new Intent(MySetUpActivility.this, SetUserSexActivity.class));
+                Intent intent_sex =new Intent(MySetUpActivility.this, SetUserSexActivity.class);
+                startActivityForResult(intent_sex,1);
                 break;
-
 
         }
     }

@@ -54,6 +54,9 @@
         <activity android:name=".me.SetUserNameActivity"/>
         <activity android:name=".me.SetUserSexActivity"/>
         <activity android:name=".list.TypeListActivity"/>
+        <activity android:name=".me.Edit_Address"/>
+        <activity android:name=".me.Insert_Address"/>
+        <activity android:name=".shopkeeper.Register_shopActivity"/>
     </application>
 
 </manifest>
