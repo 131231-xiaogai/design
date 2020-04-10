@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -41,8 +42,9 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
     public static final int CHOOSE_PHOTO = 2;
     public static final int REQUEST_CODE_CHOOSE = 3;//跳转去选择图片时的code;
     ImageView add_img;
-    EditText add_name, add_price, add_yajin, add_saize, add_type;
+    EditText add_name, add_price, add_yajin, add_saize;
     Button btn_add, btn_addimg;
+    Spinner add_type;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,7 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
         add_name = findViewById(R.id.add_name);
         add_price = findViewById(R.id.add_price);
         add_saize = findViewById(R.id.add_saize);
-
+        add_type =findViewById(R.id.add_type);;
         add_yajin = findViewById(R.id.add_yajin);
         btn_add = findViewById(R.id.btn_add);
         btn_addimg = findViewById(R.id.btn_addimg);
@@ -60,7 +62,7 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
 
     private void OnClickListener() {
         add_yajin.setOnClickListener(this);
-        add_type.setOnClickListener(this);
+        //add_type.setOnClickListener(this);
         add_saize.setOnClickListener(this);
         add_price.setOnClickListener(this);
         add_name.setOnClickListener(this);
@@ -90,7 +92,6 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
                     public void onResponse( Result<String> response) {
                         Toast.makeText(AddGoodsActivity.this,"上传成功。",Toast.LENGTH_SHORT).show();
                         add_yajin.getText().clear();
-                        add_type.getText().clear();
                         add_saize.getText().clear();
                         add_price.getText().clear();
                         add_name.getText().clear();

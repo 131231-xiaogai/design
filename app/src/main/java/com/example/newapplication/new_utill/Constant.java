@@ -27,5 +27,6 @@ public class Constant {
     public static String select_shop_by_userid =BASE_URL+"/Select_shop_by_useridServlet";
     public static String regiest_shop =BASE_URL+"/Regiest_shopServlet";
     public static String delete_user_address =BASE_URL+"/Delete_user_addressServlet";
+    public static String select_good_by_shopid =BASE_URL+"/Select_good_by_shopIdServlet";
 
 }

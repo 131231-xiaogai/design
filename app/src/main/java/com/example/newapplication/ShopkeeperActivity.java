@@ -17,6 +17,7 @@ import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.new_utill.SharePrefrenceUtil;
 import com.example.newapplication.newpage.Notice;
 import com.example.newapplication.shopkeeper.AddGoodsActivity;
+import com.example.newapplication.shopkeeper.DeletedGoodsActivity;
 import com.example.newapplication.shopkeeper.Register_shopActivity;
 
 import java.util.HashMap;
@@ -25,8 +26,9 @@ import java.util.Map;
 
 public class ShopkeeperActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView k_add,my_shop_name,my_shop_address,me_shop_register_time,me_shop_phone,my_shop_sorc;
-
+    String myshop_id;
+    TextView my_shop_name,my_shop_address,me_shop_register_time,me_shop_phone,my_shop_sorc;
+    TextView k_add,k_delete;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shopkeeper);
@@ -36,6 +38,7 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         me_shop_register_time=findViewById(R.id.me_shop_register_time);
         me_shop_phone=findViewById(R.id.me_shop_phone);
         my_shop_sorc=findViewById(R.id.my_shop_sorc);
+        k_delete=findViewById(R.id.k_delete);
         //
         Intent goodid_integer = getIntent();
         String  shop_name = goodid_integer.getStringExtra("shop_name");
@@ -57,6 +60,8 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         OkHttp.get(this, Constant.select_shop_by_userid, map, new OkCallback<Result<ShopBean>>() {
             @Override
             public void onResponse(Result<ShopBean> response) {
+
+                myshop_id =response.getData().getShop_id();
 
                 if (response.getData() != null) {
                     String myshop_name =response.getData().getShop_name();
@@ -92,6 +97,7 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         me_shop_register_time.setOnClickListener(this);
         me_shop_phone.setOnClickListener(this);
         my_shop_sorc.setOnClickListener(this);
+        k_delete.setOnClickListener(this);
     }
 
 
@@ -103,6 +109,11 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.my_shop_name:
                 startActivity(new Intent(ShopkeeperActivity.this, Register_shopActivity.class));
+                break;
+            case R.id.k_delete:
+                Intent intent = new Intent(ShopkeeperActivity.this, DeletedGoodsActivity.class);
+                intent.putExtra("myshop_id", myshop_id);
+                startActivity(intent);
                 break;
         }
 

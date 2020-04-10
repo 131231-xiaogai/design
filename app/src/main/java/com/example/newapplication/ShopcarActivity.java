@@ -38,8 +38,9 @@ import java.util.Map;
 public class ShopcarActivity extends AppCompatActivity implements View.OnClickListener{
 
     ImageButton btn_list, btn_date, btn_home, btn_me;
-    private ShopcarAdapter shopcarAdapter;
     ImageView btn_notice;
+
+    private ShopcarAdapter shopcarAdapter;
     RecyclerView s_recycle_view;
 
     @Override
