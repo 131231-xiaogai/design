@@ -19,9 +19,15 @@ public class GoodBean {
 	private String good_img;
 	private String type_activity_id;
 	private String shop_name;
+	private String goods_number;
 
 
-
+	public String getGoods_number() {
+		return goods_number;
+	}
+	public void setGoods_number(String goods_number) {
+		this.goods_number = goods_number;
+	}
 	public String getShop_name() {
 		return shop_name;
 	}

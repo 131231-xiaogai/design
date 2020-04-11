@@ -148,13 +148,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="21dp"
                     android:text="商 品 数 量："/>
                 <TextView
                     android:id="@+id/kd_good_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:text="good munber"/>
             </LinearLayout>
 
@@ -164,11 +165,6 @@
                 android:gravity="right"
                 android:textSize="14sp"
                 android:text=" 详 情 "/>
-
         </LinearLayout>
     </LinearLayout>
-
-
-
-
 </LinearLayout>
