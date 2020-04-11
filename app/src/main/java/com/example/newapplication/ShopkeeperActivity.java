@@ -60,15 +60,13 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         OkHttp.get(this, Constant.select_shop_by_userid, map, new OkCallback<Result<ShopBean>>() {
             @Override
             public void onResponse(Result<ShopBean> response) {
-
-                myshop_id =response.getData().getShop_id();
-
                 if (response.getData() != null) {
                     String myshop_name =response.getData().getShop_name();
                     String myshop_dress =response.getData().getShop_dresss();
                     String myshop_phone =response.getData().getShop_phone();
                     String myshop_sorc =response.getData().getShop_score();
                     String myshop_register_time =response.getData().getShop_regist_time();
+                    myshop_id =response.getData().getShop_id();
                     if (myshop_name == null || myshop_name.isEmpty()) {
                         my_shop_name.setText("空的店铺名");
                     } else {
