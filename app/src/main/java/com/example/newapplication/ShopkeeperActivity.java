@@ -28,7 +28,7 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
 
     String myshop_id;
     TextView my_shop_name,my_shop_address,me_shop_register_time,me_shop_phone,my_shop_sorc;
-    TextView k_add,k_delete;
+    TextView k_add,k_delete,k_change;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shopkeeper);
@@ -39,6 +39,7 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         me_shop_phone=findViewById(R.id.me_shop_phone);
         my_shop_sorc=findViewById(R.id.my_shop_sorc);
         k_delete=findViewById(R.id.k_delete);
+        k_change=findViewById(R.id.k_change);
         //
         Intent goodid_integer = getIntent();
         String  shop_name = goodid_integer.getStringExtra("shop_name");
@@ -96,6 +97,7 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         me_shop_phone.setOnClickListener(this);
         my_shop_sorc.setOnClickListener(this);
         k_delete.setOnClickListener(this);
+        k_change.setOnClickListener(this);
     }
 
 
@@ -112,6 +114,11 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
                 Intent intent = new Intent(ShopkeeperActivity.this, DeletedGoodsActivity.class);
                 intent.putExtra("myshop_id", myshop_id);
                 startActivity(intent);
+                break;
+            case R.id.k_change:
+                Intent change_intent = new Intent(ShopkeeperActivity.this, DeletedGoodsActivity.class);
+                change_intent.putExtra("myshop_id", myshop_id);
+                startActivity(change_intent);
                 break;
         }
 

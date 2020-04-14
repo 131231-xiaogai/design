@@ -58,6 +58,8 @@
         <activity android:name=".me.Insert_Address"/>
         <activity android:name=".shopkeeper.Register_shopActivity"/>
         <activity android:name=".shopkeeper.DeletedGoodsActivity"/>
+        <activity android:name=".shopkeeper.Goods_DetailActivity"/>
+        <activity android:name=".shopkeeper.Update_GoodslActivity"/>
     </application>
 
 </manifest>

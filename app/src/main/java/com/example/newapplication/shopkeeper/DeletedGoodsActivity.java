@@ -57,7 +57,7 @@ public class DeletedGoodsActivity extends AppCompatActivity implements View.OnCl
             public void onItemClick(RecyclerViewHolder viewHolder, GoodBean data, int position) {
                 Toast.makeText(DeletedGoodsActivity.this, data.getGoods_id(), Toast.LENGTH_SHORT).show();
                 String da = data.getGoods_id();
-                Intent intent = new Intent(DeletedGoodsActivity.this, ItemDetailActivity.class);
+                Intent intent = new Intent(DeletedGoodsActivity.this, Goods_DetailActivity.class);
                 intent.putExtra("hgoodid", da);
                 startActivityForResult(intent,1);
             }
@@ -88,6 +88,23 @@ public class DeletedGoodsActivity extends AppCompatActivity implements View.OnCl
     private void OnClickListener() {
 
         skd_title_back.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    String data_return = data.getStringExtra("data_return");
+                    Log.d("deleted_goods",data_return);
+                    loadData();
+                }
+                break;
+
+            default:
+        }
     }
 
     @Override
