@@ -123,7 +123,7 @@ public class Goods_DetailActivity extends AppCompatActivity implements View.OnCl
                 break;
             case R.id.go_to_update:
                 Intent intent = new Intent(Goods_DetailActivity.this, Update_GoodslActivity.class);
-                //intent.putExtra("myshop_id", myshop_id);
+                intent.putExtra("hgoodid", l_goodid.getText().toString());
                 startActivity(intent);
                 break;
         }

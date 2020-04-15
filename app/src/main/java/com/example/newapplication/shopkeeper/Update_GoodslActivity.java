@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,8 +26,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Update_GoodslActivity extends AppCompatActivity implements View.OnClickListener {
-    TextView l_goodid,l_goodname,gdd_yajin,good_price,good_size,back,gdd_goood_type,gdd_good_number;
+    EditText l_goodid,l_goodname,gdd_yajin,good_price,good_size,gdd_goood_type,gdd_good_number;
     ImageView l_img;
+    ImageButton back;
     Button to_save_update,to_deleted;
     private GoodBean data;
 
@@ -106,13 +109,13 @@ public class Update_GoodslActivity extends AppCompatActivity implements View.OnC
     private void OnClickListener() {
         back.setOnClickListener(this);
         to_save_update.setOnClickListener(this);
-        to_deleted.setOnClickListener(this);
+        //to_deleted.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.gdd_back:
+            case R.id.gup_back:
                 Update_GoodslActivity.this.finish();
                 break;
 //            case R.id.to_deleted:

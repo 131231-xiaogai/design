@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,9 +32,10 @@ import java.util.Map;
 public class DeletedGoodsActivity extends AppCompatActivity implements View.OnClickListener  {
 
     ImageButton skd_title_back;
-    String  myshop_id;
+    String  myshop_id,my_pagename;
     private Shopkeeper_goodAdapter shopkeeper_goodAdapter;
     RecyclerView skd_recycle_view;
+    TextView gdd_pageneme;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +43,12 @@ public class DeletedGoodsActivity extends AppCompatActivity implements View.OnCl
 
         skd_title_back=findViewById(R.id.skd_title_back);
         skd_recycle_view=findViewById(R.id.skd_recycle_view);
+        gdd_pageneme=findViewById(R.id.gdd_pageneme);
         //
          Intent pagename_integer = getIntent();
          myshop_id = pagename_integer.getStringExtra("myshop_id");
+         my_pagename = pagename_integer.getStringExtra("my_pagename");
+         gdd_pageneme.setText(my_pagename);
          Log.d("DeletedGoodsActivity",myshop_id);
 
         //添加适配器

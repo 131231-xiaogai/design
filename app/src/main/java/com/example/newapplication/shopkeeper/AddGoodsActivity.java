@@ -95,6 +95,7 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
                         add_saize.getText().clear();
                         add_price.getText().clear();
                         add_name.getText().clear();
+
                     }
                     @Override
                     public void onFailure(String state, String msg) {
@@ -124,6 +125,7 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == REQUEST_CODE_CHOOSE && resultCode == RESULT_OK) {
             mSelected = Matisse.obtainPathResult(data);
             Glide.with(this).load(mSelected.get(0)).into(add_img);
