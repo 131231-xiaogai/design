@@ -45,6 +45,8 @@ public class DeletedGoodsActivity extends AppCompatActivity implements View.OnCl
         skd_recycle_view=findViewById(R.id.skd_recycle_view);
         gdd_pageneme=findViewById(R.id.gdd_pageneme);
         //
+
+        //从ShopkeeperActivity接受数据
          Intent pagename_integer = getIntent();
          myshop_id = pagename_integer.getStringExtra("myshop_id");
          my_pagename = pagename_integer.getStringExtra("my_pagename");

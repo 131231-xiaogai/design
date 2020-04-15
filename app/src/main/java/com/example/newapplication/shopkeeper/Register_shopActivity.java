@@ -37,11 +37,23 @@ public class Register_shopActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.sk_register_shop);
         save_insert_shop=findViewById(R.id.save_insert_shop);
         insert_shop_back=findViewById(R.id.insert_shop_back);
-
         insert_shopname =findViewById(R.id.insert_shop_name);
         insert_shop_address =findViewById(R.id.insert_shop_address);
         insert_shop_phone=findViewById(R.id.insert_shop_phone);
         regist_failure_description =findViewById(R.id.regist_failure_description);
+
+        //
+        //从ShopkeeperActivity接收数据
+        Intent pagename_integer = getIntent();
+        String shopname = pagename_integer.getStringExtra("my_shop_name");
+        insert_shopname.setText(shopname);
+        String shop_address = pagename_integer.getStringExtra("my_shop_address");
+        insert_shop_address.setText(shop_address);
+        String shop_phone=  pagename_integer.getStringExtra("me_shop_phone");
+        insert_shop_phone.setText(shop_phone);
+        Log.d("DeletedGoodsActivity",shopname);
+
+        //
         OnClickListener();
     }
 
@@ -65,7 +77,6 @@ public class Register_shopActivity extends AppCompatActivity implements View.OnC
                 check_insertshop_data();
                 break;
         }
-
     }
 
     private void check_insertshop_data() {
@@ -102,14 +113,19 @@ public class Register_shopActivity extends AppCompatActivity implements View.OnC
             @Override
             public void onResponse(Result<String> response) {
                 Toast.makeText(Register_shopActivity.this, "注 册 成 功 ！", Toast.LENGTH_SHORT).show();
-                String shop_name = insert_shopname.getText().toString();
-                String shop_dresss =insert_shop_address.getText().toString();
-                String shop_phone =insert_shop_phone.getText().toString();
-                Intent intent = new Intent(Register_shopActivity.this, ShopkeeperActivity.class);
-                intent.putExtra("shop_name", shop_name);
-                intent.putExtra("shop_dresss", shop_dresss);
-                intent.putExtra("shop_phone", shop_phone);
-                startActivity(intent);
+//                String shop_name = insert_shopname.getText().toString();
+//                String shop_dresss =insert_shop_address.getText().toString();
+//                String shop_phone =insert_shop_phone.getText().toString();
+//                Intent intent = new Intent(Register_shopActivity.this, ShopkeeperActivity.class);
+//                intent.putExtra("shop_name", shop_name);
+//                intent.putExtra("shop_dresss", shop_dresss);
+//                intent.putExtra("shop_phone", shop_phone);
+//                startActivity(intent);
+
+                Intent intent = new Intent();
+                intent.putExtra("data_return","updata_goods");
+                setResult(RESULT_OK,intent);
+                Log.d("updata_goods","updata_goods");
                 Register_shopActivity.this.finish();
             }
             @Override

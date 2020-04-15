@@ -45,6 +45,7 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
     EditText add_name, add_price, add_yajin, add_saize;
     Button btn_add, btn_addimg;
     Spinner add_type;
+    String shop_name,shop_id;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +58,11 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
         add_yajin = findViewById(R.id.add_yajin);
         btn_add = findViewById(R.id.btn_add);
         btn_addimg = findViewById(R.id.btn_addimg);
+        //
+        Intent goodid_integer = getIntent();
+        shop_name = goodid_integer.getStringExtra("myshop_name");
+        shop_id = goodid_integer.getStringExtra("my_shop_id");
+        //
         OnClickListener();
     }
 
@@ -80,46 +86,58 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.add_price:
                 break;
-
-
             case R.id.add_yajin:
                 break;
             case R.id.btn_add:
-                Map map=new HashMap<>();
-                map.put("good_title","aaa");
-                OkHttp.upload(this, Constant.publicgoods, map, mSelected, new OkCallback<Result<String>>() {
-                    @Override
-                    public void onResponse( Result<String> response) {
-                        Toast.makeText(AddGoodsActivity.this,"上传成功。",Toast.LENGTH_SHORT).show();
-                        add_yajin.getText().clear();
-                        add_saize.getText().clear();
-                        add_price.getText().clear();
-                        add_name.getText().clear();
-
-                    }
-                    @Override
-                    public void onFailure(String state, String msg) {
-                        Toast.makeText(AddGoodsActivity.this,"上传失败。",Toast.LENGTH_SHORT).show();
-                    }
-                });
+                add_good();
                 break;
             case R.id.add_saize:
                 break;
             case R.id.btn_addimg:
-                Matisse.from(this)
-                        .choose(MimeType.ofAll())//资源的类型，比如现在这个设置是照片视频全部显示
-                        .countable(true)//显示选择图片的数量
-                        .capture(true)//使用拍照
-                        .maxSelectable(1)//最多选择几张图片
-                        .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)// 图像选择和预览活动所需的方向。
-                        .captureStrategy(new CaptureStrategy(true, BuildConfig.APPLICATION_ID + ".file_provider"))
-                        .thumbnailScale(0.85f)//缩放比例
-                        .imageEngine(new MyGlideEngine())//图片加载类，需要重写框架自带的不然会报错
-                        .forResult(REQUEST_CODE_CHOOSE);//请求码
-                // choosephoto();
+                choosephoto();
                 break;
         }
+    }
 
+    private void choosephoto() {
+        Matisse.from(this)
+                .choose(MimeType.ofAll())//资源的类型，比如现在这个设置是照片视频全部显示
+                .countable(true)//显示选择图片的数量
+                .capture(true)//使用拍照
+                .maxSelectable(1)//最多选择几张图片
+                .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)// 图像选择和预览活动所需的方向。
+                .captureStrategy(new CaptureStrategy(true, BuildConfig.APPLICATION_ID + ".file_provider"))
+                .thumbnailScale(0.85f)//缩放比例
+                .imageEngine(new MyGlideEngine())//图片加载类，需要重写框架自带的不然会报错
+                .forResult(REQUEST_CODE_CHOOSE);//请求码
+    }
+
+
+    private void add_good() {
+
+        Map map=new HashMap<>();
+
+        map.put("good_name",add_name.getText().toString());
+        map.put("goods_price",add_price.getText().toString());
+        map.put("goods_yajin",add_yajin.getText().toString());
+        map.put("goods_type_id",add_saize.getText().toString());
+        map.put("shop_id",shop_id);
+        map.put("shop_name",shop_name);
+        OkHttp.upload(this, Constant.publicgoods, map, mSelected, new OkCallback<Result<String>>() {
+            @Override
+            public void onResponse( Result<String> response) {
+                Toast.makeText(AddGoodsActivity.this,"上传成功。",Toast.LENGTH_SHORT).show();
+                add_yajin.getText().clear();
+                add_saize.getText().clear();
+                add_price.getText().clear();
+                add_name.getText().clear();
+
+            }
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(AddGoodsActivity.this,"上传失败。",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -131,6 +149,5 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
             Glide.with(this).load(mSelected.get(0)).into(add_img);
         }
     }
-
 
 }

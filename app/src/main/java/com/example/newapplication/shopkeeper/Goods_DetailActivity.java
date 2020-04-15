@@ -48,6 +48,7 @@ public class Goods_DetailActivity extends AppCompatActivity implements View.OnCl
         gdd_good_number=findViewById(R.id.gdd_good_number);
         to_deleted = findViewById(R.id.to_deleted);
         //
+        //从DeletedGoodsActivity接收数据
         Intent goodid_integer = getIntent();
         String  da = goodid_integer.getStringExtra("hgoodid");
         pagenumber =  goodid_integer.getStringExtra("my_pagenumber");
@@ -162,7 +163,6 @@ public class Goods_DetailActivity extends AppCompatActivity implements View.OnCl
                 Toast.makeText(Goods_DetailActivity.this, msg, Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
 

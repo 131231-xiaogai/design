@@ -198,7 +198,7 @@
 
             </LinearLayout>
         </LinearLayout>
-        <!--part4-->
+        <!--part4 店铺管理-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
