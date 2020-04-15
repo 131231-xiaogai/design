@@ -26,11 +26,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Update_GoodslActivity extends AppCompatActivity implements View.OnClickListener {
-    EditText l_goodid,l_goodname,gdd_yajin,good_price,good_size,gdd_goood_type,gdd_good_number;
+    EditText l_goodname,gdd_yajin,good_price,good_size,gdd_goood_type,gdd_good_number;
+    TextView l_goodid;
     ImageView l_img;
     ImageButton back;
     Button to_save_update,to_deleted;
     private GoodBean data;
+    String myshop_id,da;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +46,12 @@ public class Update_GoodslActivity extends AppCompatActivity implements View.OnC
         back=findViewById(R.id.gup_back);
         to_save_update =findViewById(R.id.to_save_update);
         gdd_good_number=findViewById(R.id.gup_good_number);
-        //to_deleted = findViewById(R.id.to_deleted);
+        to_deleted = findViewById(R.id.to_deleted);
+        to_deleted.setBackground(getResources().getDrawable(R.drawable.button_bg1));
         //
         Intent goodid_integer = getIntent();
-        String  da = goodid_integer.getStringExtra("hgoodid");
+        da = goodid_integer.getStringExtra("hgoodid");
+        myshop_id =goodid_integer.getStringExtra("myshop_id");
         l_goodid.setText(da);
         Log.d("Goods_DetailActivity",da);
         //
@@ -69,13 +73,11 @@ public class Update_GoodslActivity extends AppCompatActivity implements View.OnC
                     String goood_type = data.getType_id();
                     String yajin = data.getGoods_yajin();
                     String good_number = data.getGoods_number();
-
                     if (good_number == null || good_number.isEmpty()) {
                         gdd_good_number.setText("无");
                     } else {
                         gdd_good_number.setText(good_number);
                     }
-
                     if (yajin == null || yajin.isEmpty()) {
                         gdd_yajin.setText("无");
                     } else {
@@ -109,7 +111,7 @@ public class Update_GoodslActivity extends AppCompatActivity implements View.OnC
     private void OnClickListener() {
         back.setOnClickListener(this);
         to_save_update.setOnClickListener(this);
-        //to_deleted.setOnClickListener(this);
+        to_deleted.setOnClickListener(this);
     }
 
     @Override
@@ -118,27 +120,29 @@ public class Update_GoodslActivity extends AppCompatActivity implements View.OnC
             case R.id.gup_back:
                 Update_GoodslActivity.this.finish();
                 break;
-//            case R.id.to_deleted:
-//                deleted_to_goods();
-//                break;
+            case R.id.to_deleted:
+                Toast.makeText(Update_GoodslActivity.this, "请在“下架商品”页面使用此按钮。", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.to_save_update:
-//                Intent intent = new Intent(Goods_DetailActivity.this, DeletedGoodsActivity.class);
-//                //intent.putExtra("myshop_id", myshop_id);
-//                startActivity(intent);
+                save_update();
                 break;
         }
     }
 
-    private void deleted_to_goods() {
-        //String userid=SharePrefrenceUtil.getObject(Goods_DetailActivity.this, UsersBean.class).getUerid();
-        String goodid=l_goodid.getText().toString();
+    private void save_update() {
         Map map = new HashMap();
-        map.put("goods_id",goodid);
 
-        OkHttp.get(this, Constant.deleted_goods_by_goodsid, map, new OkCallback<Result<String>>() {
+        map.put("goods_id",l_goodid.getText().toString());
+        map.put("goods_name",l_goodname.getText().toString());
+        map.put("goods_price",good_price.getText().toString());
+        map.put("goods_yajin",gdd_yajin.getText().toString());
+        map.put("goods_number",gdd_good_number.getText().toString());
+        map.put("goods_type",gdd_goood_type.getText().toString());
+
+        OkHttp.get(this, Constant.update_good_by_goodId, map, new OkCallback<Result<String>>() {
             @Override
             public void onResponse(Result<String> response) {
-                Toast.makeText(Update_GoodslActivity.this, "下 架 成 功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Update_GoodslActivity.this, "修 改 成 功 ！", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent();
                 intent.putExtra("data_return","deleted_goods");
                 setResult(RESULT_OK,intent);

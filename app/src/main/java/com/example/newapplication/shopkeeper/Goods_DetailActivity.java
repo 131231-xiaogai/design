@@ -31,10 +31,12 @@ public class Goods_DetailActivity extends AppCompatActivity implements View.OnCl
     ImageView l_img;
     Button go_to_update,to_deleted;
     private GoodBean data;
+    String pagenumber,myshop_id;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.goods_detail);
+
         l_goodid=findViewById(R.id.gdd_goodid);
         l_goodname=findViewById(R.id.gdd_goodname);
         l_img=findViewById(R.id.gdd_img);
@@ -48,9 +50,15 @@ public class Goods_DetailActivity extends AppCompatActivity implements View.OnCl
         //
         Intent goodid_integer = getIntent();
         String  da = goodid_integer.getStringExtra("hgoodid");
+        pagenumber =  goodid_integer.getStringExtra("my_pagenumber");
+        myshop_id  =  goodid_integer.getStringExtra("myshop_id");
         l_goodid.setText(da);
         Log.d("Goods_DetailActivity",da);
+        Log.d("Goods_DetailActivity",pagenumber);
         //
+        if (pagenumber.equals("11")){
+            to_deleted.setBackground(getResources().getDrawable(R.drawable.button_bg1));
+        }
         OnClickListener();
         loadData();
     }
@@ -119,16 +127,20 @@ public class Goods_DetailActivity extends AppCompatActivity implements View.OnCl
                 Goods_DetailActivity.this.finish();
                 break;
             case R.id.to_deleted:
-                deleted_to_goods();
+                if (pagenumber.equals("1")){
+                    deleted_to_goods();
+                }else {
+                    Toast.makeText(Goods_DetailActivity.this, "请在“下架商品”页面使用此按钮。", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.go_to_update:
                 Intent intent = new Intent(Goods_DetailActivity.this, Update_GoodslActivity.class);
                 intent.putExtra("hgoodid", l_goodid.getText().toString());
-                startActivity(intent);
+                intent.putExtra("myshop_id",myshop_id);
+                startActivityForResult(intent,1);
                 break;
         }
     }
-
     private void deleted_to_goods() {
         //String userid=SharePrefrenceUtil.getObject(Goods_DetailActivity.this, UsersBean.class).getUerid();
         String goodid=l_goodid.getText().toString();
@@ -140,9 +152,9 @@ public class Goods_DetailActivity extends AppCompatActivity implements View.OnCl
             public void onResponse(Result<String> response) {
                 Toast.makeText(Goods_DetailActivity.this, "下 架 成 功", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent();
-                intent.putExtra("data_return","deleted_goods");
+                intent.putExtra("data_return","updata_goods");
                 setResult(RESULT_OK,intent);
-                Log.d("deleted_goods","deleted_goods");
+                Log.d("updata_goods","updata_goods");
                 Goods_DetailActivity.this.finish();
             }
             @Override
@@ -152,5 +164,24 @@ public class Goods_DetailActivity extends AppCompatActivity implements View.OnCl
         });
 
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    String data_return = data.getStringExtra("data_return");
+                    Log.d("updata_goods",data_return);
+                    loadData();
+                }
+                break;
+
+            default:
+        }
+    }
+
 
 }

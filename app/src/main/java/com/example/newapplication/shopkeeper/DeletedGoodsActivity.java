@@ -33,6 +33,7 @@ public class DeletedGoodsActivity extends AppCompatActivity implements View.OnCl
 
     ImageButton skd_title_back;
     String  myshop_id,my_pagename;
+    String pagenumber;
     private Shopkeeper_goodAdapter shopkeeper_goodAdapter;
     RecyclerView skd_recycle_view;
     TextView gdd_pageneme;
@@ -40,7 +41,6 @@ public class DeletedGoodsActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sk_deletedgoods);
-
         skd_title_back=findViewById(R.id.skd_title_back);
         skd_recycle_view=findViewById(R.id.skd_recycle_view);
         gdd_pageneme=findViewById(R.id.gdd_pageneme);
@@ -49,6 +49,7 @@ public class DeletedGoodsActivity extends AppCompatActivity implements View.OnCl
          myshop_id = pagename_integer.getStringExtra("myshop_id");
          my_pagename = pagename_integer.getStringExtra("my_pagename");
          gdd_pageneme.setText(my_pagename);
+         pagenumber=  pagename_integer.getStringExtra("my_pagenumber");
          Log.d("DeletedGoodsActivity",myshop_id);
 
         //添加适配器
@@ -64,6 +65,8 @@ public class DeletedGoodsActivity extends AppCompatActivity implements View.OnCl
                 String da = data.getGoods_id();
                 Intent intent = new Intent(DeletedGoodsActivity.this, Goods_DetailActivity.class);
                 intent.putExtra("hgoodid", da);
+                intent.putExtra("myshop_id", myshop_id);
+                intent.putExtra("my_pagenumber", pagenumber);
                 startActivityForResult(intent,1);
             }
         });

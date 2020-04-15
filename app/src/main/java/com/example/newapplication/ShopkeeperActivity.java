@@ -25,8 +25,8 @@ import java.util.List;
 import java.util.Map;
 
 public class ShopkeeperActivity extends AppCompatActivity implements View.OnClickListener {
-
     String myshop_id,pagename;
+    String pagenumber;
     TextView my_shop_name,my_shop_address,me_shop_register_time,me_shop_phone,my_shop_sorc;
     TextView k_add,k_delete,k_change;
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,16 +112,20 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.k_delete:
                 pagename="商 品 下 架";
+                pagenumber="1";
                 Intent intent = new Intent(ShopkeeperActivity.this, DeletedGoodsActivity.class);
                 intent.putExtra("myshop_id", myshop_id);
                 intent.putExtra("my_pagename", pagename);
+                intent.putExtra("my_pagenumber", pagenumber);
                 startActivity(intent);
                 break;
             case R.id.k_change:
                 pagename="修 改 商 品";
+                pagenumber= "11";
                 Intent change_intent = new Intent(ShopkeeperActivity.this, DeletedGoodsActivity.class);
                 change_intent.putExtra("myshop_id", myshop_id);
                 change_intent.putExtra("my_pagename", pagename);
+                change_intent.putExtra("my_pagenumber", pagenumber);
                 startActivity(change_intent);
                 break;
         }
