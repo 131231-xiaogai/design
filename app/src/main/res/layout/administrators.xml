@@ -21,24 +21,21 @@
         android:layout_margin="10dp"
         android:orientation="vertical"
         android:layout_weight="17">
-        <!-- part1-->
+        <!-- 管 理 员-->
         <LinearLayout
-            android:id="@+id/usercard"
+
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
             android:background="#fff">
-
             <TextView
+                android:id="@+id/Ad_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Administrators"
                 android:textSize="22sp" />
-
-
-
         </LinearLayout>
         <!--part2-->
         <LinearLayout
@@ -66,7 +63,7 @@
                 android:gravity="center">
                 <TextView
                     style="@style/sk_ui"
-                    android:text="付"
+                    android:text="查 看 顾 客"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="15dp"
                     android:layout_weight="1"
@@ -76,15 +73,8 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
-                    android:text="发" />
-                <TextView
+                    android:text="注 销 顾 客" />
 
-                    style="@style/sk_ui"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="30dp"
-                    android:text="收"
-                    />
 
             </LinearLayout>
             <TextView
@@ -92,39 +82,7 @@
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:background="@drawable/line"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="28dp"
-                    android:textSize="19sp"
-                    android:text=" 1 "
-                    android:background="#fff"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="19sp"
-                    android:gravity="center"
-                    android:text=" 2 "
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="19sp"
-                    android:text=" 3 "
-                    android:layout_marginRight="28dp"
-                    android:background="#fff"/>
-            </LinearLayout>
+
 
         </LinearLayout>
         <!--part3-->
@@ -154,7 +112,7 @@
                 <TextView
                     android:id="@+id/k_add"
                     style="@style/sk_ui"
-                    android:text="商 品 上 架"
+                    android:text="查 看 商 家"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
@@ -165,106 +123,151 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="20dp"
-                    android:text="商 品 下 架" />
+                    android:text="注 销 商 家" />
             </LinearLayout>
             <TextView
                 android:layout_width="300dp"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:background="@drawable/line"/>
+        </LinearLayout>
+        <!--通 知 管 理-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="#fff"
+            android:orientation="vertical"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginTop="6dp"
+            android:padding="3dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="19sp"
+                android:text="   通 知 管 理   "
+                android:background="@drawable/button_bg"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:gravity="center">
                 <TextView
-                    android:id="@+id/k_change"
                     style="@style/sk_ui"
-                    android:text="修 改 商 品"
+                    android:text="发 送 通 知"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     />
                 <TextView
-                    android:id="@+id/k_select"
+
                     style="@style/sk_ui"
                     android:layout_weight="1"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="20dp"
-                    android:text="查 询 商 品" />
-
-
-            </LinearLayout>
-        </LinearLayout>
-        <!--part4-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="6dp"
-            android:layout_weight="3"
-            android:background="#fff"
-            android:orientation="vertical"
-            android:padding="3dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:text="   信  息   "
-                android:background="@drawable/button_bg"
-                android:textSize="19sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:gravity="center"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp">
-
-                <TextView
-                    style="@style/sk_ui"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="2dp"
-                    android:text="电   话：" />
-                <TextView
-                    style="@style/sk_ui"
-                    android:layout_weight="3"
-                    android:text="13123165433" />
-
-
+                    android:text="删 除 通 知" />
             </LinearLayout>
             <TextView
-                android:layout_width="356dp"
+                android:layout_width="300dp"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:background="@drawable/line"/>
-
-
+        </LinearLayout>
+        <!--活动管理-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="#fff"
+            android:orientation="vertical"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginTop="6dp"
+            android:padding="3dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="19sp"
+                android:text="  活 动 管 理   "
+                android:background="@drawable/button_bg"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_marginTop="5dp"
                 android:paddingLeft="5dp"
-                android:paddingRight="5dp">
+                android:paddingRight="5dp"
+                android:gravity="center">
                 <TextView
+
+                    style="@style/sk_ui"
+                    android:text="发 布 活 动"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    />
+                <TextView
+
                     style="@style/sk_ui"
                     android:layout_weight="1"
-                    android:layout_marginLeft="2dp"
-                    android:text="注册时间：" />
-                <TextView
-                    style="@style/sk_ui"
-                    android:layout_weight="2.2"
-                    android:text="2020-02-11 19:57:26" />
-
-
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:text="注 销 活 动" />
             </LinearLayout>
+            <TextView
+                android:layout_width="300dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:background="@drawable/line"/>
         </LinearLayout>
+        <!--评 论 管 理-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="#fff"
+            android:orientation="vertical"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginTop="6dp"
+            android:padding="3dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="19sp"
+                android:text="   评 论 管 理   "
+                android:background="@drawable/button_bg"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:gravity="center">
+                <TextView
 
+                    style="@style/sk_ui"
+                    android:text="审 核 评 论"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    />
+                <TextView
 
-
+                    style="@style/sk_ui"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:text="删 除 评 论" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="300dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:background="@drawable/line"/>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
