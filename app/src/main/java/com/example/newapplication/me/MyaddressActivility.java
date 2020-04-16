@@ -50,6 +50,7 @@ public class MyaddressActivility extends AppCompatActivity implements View.OnCli
         recyclerView.setLayoutManager(layoutManager);
         addressAdapter = new AddressAdapter(this);
         recyclerView.setAdapter(addressAdapter);
+
         addressAdapter.setOnItemClickListener(new OnItemClickListener<AddressBean>() {
             @Override
             public void onItemClick(RecyclerViewHolder viewHolder, AddressBean data, int position) {
@@ -97,6 +98,7 @@ public class MyaddressActivility extends AppCompatActivity implements View.OnCli
         String muserid = SharePrefrenceUtil.getObject(MyaddressActivility.this, UsersBean.class).getUerid();
         Map map = new HashMap();
         map.put("muserid",muserid);
+
         OkHttp.get(this, Constant.select_address_by_userid, map, new OkCallback<Result<List<AddressBean>>>() {
             @Override
             public void onResponse(Result<List<AddressBean>> response) {
@@ -111,7 +113,6 @@ public class MyaddressActivility extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-
             case R.id.a_add:
                 Intent intent = new Intent(MyaddressActivility.this, Insert_Address.class);
                 startActivityForResult(intent,1);

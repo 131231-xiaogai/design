@@ -7,7 +7,7 @@ public class Constant {
     /**
      * 查询所有商品
      */
-    public static String select_all_good=BASE_URL+"/SelectAllGoodServlet";
+    public static String select_all_good=BASE_URL+"/SelectAllUserServlet";
     public static String select_all_user=BASE_URL+"/SelectAllUserServlet";
     public static String select_user_by_phone=BASE_URL+"/Select_user_by_phoneServlet";
     public static String select_user_by_id=BASE_URL+"/Select_user_by_idServlet";

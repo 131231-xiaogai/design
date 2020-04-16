@@ -60,6 +60,8 @@
         <activity android:name=".shopkeeper.DeletedGoodsActivity"/>
         <activity android:name=".shopkeeper.Goods_DetailActivity"/>
         <activity android:name=".shopkeeper.Update_GoodslActivity"/>
+        <activity android:name=".Administrators.AllUserActivity"/>
+        <activity android:name=".Administrators.AllShopkeeperActivity"/>
     </application>
 
 </manifest>
