@@ -11,12 +11,12 @@
         android:orientation="horizontal">
         <ImageButton
             android:id="@+id/adm_title_back"
-            android:layout_width="43dp"
+            android:layout_width="34dp"
             android:layout_height="43dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="5dp"
+            android:layout_margin="5dp"
             android:onClick="finish_reback"
-            android:background="@mipmap/left" />
+            android:background="@mipmap/left"  />
         <TextView
             android:id="@+id/adm_pageneme"
             android:layout_width="0dp"

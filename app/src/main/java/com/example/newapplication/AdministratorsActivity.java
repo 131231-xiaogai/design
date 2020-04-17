@@ -45,6 +45,7 @@ public class AdministratorsActivity extends AppCompatActivity implements View.On
         switch (v.getId()){
             case R.id.adm_allUsser:
                 p_pagename="查 看 顾 客";
+                deleted_number="0";
                 intent = new Intent(AdministratorsActivity.this, AllUserActivity.class);
                 intent.putExtra("p_pagename", p_pagename);
                 startActivity(intent);

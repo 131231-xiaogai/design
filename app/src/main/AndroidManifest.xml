@@ -62,6 +62,7 @@
         <activity android:name=".shopkeeper.Update_GoodslActivity"/>
         <activity android:name=".Administrators.AllUserActivity"/>
         <activity android:name=".Administrators.AllShopkeeperActivity"/>
+        <activity android:name=".Administrators.Adm_ItemDetailActivity"/>
     </application>
 
 </manifest>

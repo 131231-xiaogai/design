@@ -25,8 +25,6 @@ import com.example.newapplication.viewhandle.RecyclerViewHolder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static com.example.newapplication.new_utill.Constant.login;
 import static com.example.newapplication.new_utill.Constant.select_all_user;
 
 public class AllUserActivity extends AppCompatActivity implements View.OnClickListener {
@@ -35,6 +33,7 @@ public class AllUserActivity extends AppCompatActivity implements View.OnClickLi
     RecyclerView recyclerView;
     TextView adm_pageneme;
     String deleted_number;
+    UsersBean data;
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.adm_re_view);
@@ -57,9 +56,20 @@ public class AllUserActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onItemClick(RecyclerViewHolder viewHolder, UsersBean data, int position) {
                 if (deleted_number.equals("1")){
-                    //删除操作
-                }else {
-                    Toast.makeText(AllUserActivity.this, data.getUerid(), Toast.LENGTH_SHORT).show();
+                    String userId = data.getUerid();
+                    String name = data.getNickname();
+                    String phone =data.getPhone();
+                    String Idnumber = data.getId_number();
+                    String sex =data.getSex();
+                    String blance = data.getBalance();
+                    Intent intent = new Intent(AllUserActivity.this, Adm_ItemDetailActivity.class);
+                    intent.putExtra("userId",userId);
+                    intent.putExtra("name", name);
+                    intent.putExtra("phone", phone);
+                    intent.putExtra("Idnumber",Idnumber);
+                    intent.putExtra("sex",sex);
+                    intent.putExtra("blance",blance);
+                    startActivityForResult(intent,1);
                 }
 
             }
@@ -84,6 +94,22 @@ public class AllUserActivity extends AppCompatActivity implements View.OnClickLi
 
         }
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    String data_return = data.getStringExtra("data_return");
+                    Log.d("my_address",data_return);
+                    loadData();
+                }
+                break;
+            default:
+        }
     }
 
     private void loadData() {
