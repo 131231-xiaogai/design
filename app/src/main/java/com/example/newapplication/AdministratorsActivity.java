@@ -10,13 +10,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.newapplication.Administrators.AllShopkeeperActivity;
 import com.example.newapplication.Administrators.AllUserActivity;
+import com.example.newapplication.Administrators.Deleted_ShopkeeperActivity;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class AdministratorsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView Ad_user,adm_allUsser,adm_allShopkeeper,adm_deletedUser;
+    TextView Ad_user,adm_allUsser,adm_allShopkeeper,adm_deletedUser,adm_deletedShopkeeper;
     String p_pagename,deleted_number;
     Intent intent;
 
@@ -27,6 +28,7 @@ public class AdministratorsActivity extends AppCompatActivity implements View.On
         adm_allUsser=findViewById(R.id.adm_allUsser);
         adm_allShopkeeper=findViewById(R.id.adm_allShopkeeper);
         adm_deletedUser=findViewById(R.id.adm_deletedUser);
+        adm_deletedShopkeeper=findViewById(R.id.adm_deletedShopkeeper);
 
         //
         OnClickListener();
@@ -38,6 +40,7 @@ public class AdministratorsActivity extends AppCompatActivity implements View.On
         adm_allUsser.setOnClickListener(this);
         adm_allShopkeeper.setOnClickListener(this);
         adm_deletedUser.setOnClickListener(this);
+        adm_deletedShopkeeper.setOnClickListener(this);
     }
 
     @Override
@@ -63,6 +66,15 @@ public class AdministratorsActivity extends AppCompatActivity implements View.On
                 intent.putExtra("p_pagename", p_pagename);
                 intent.putExtra("p_deleted_number", deleted_number);
                 startActivity(intent);
+                break;
+            case R.id.adm_deletedShopkeeper:
+                p_pagename="注 销 商 家";
+                //deleted_number="1";
+                intent = new Intent(AdministratorsActivity.this, Deleted_ShopkeeperActivity.class);
+                intent.putExtra("p_pagename", p_pagename);
+                intent.putExtra("p_deleted_number", deleted_number);
+                startActivity(intent);
+
                 break;
         }
 

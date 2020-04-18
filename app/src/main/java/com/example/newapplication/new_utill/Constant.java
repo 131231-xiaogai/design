@@ -7,7 +7,7 @@ public class Constant {
     /**
      * 查询所有商品
      */
-    public static String select_all_good=BASE_URL+"/SelectAllUserServlet";
+    public static String select_all_good=BASE_URL+"/SelectAllGoodServlet";
     public static String select_all_user=BASE_URL+"/SelectAllUserServlet";
     public static String select_user_by_phone=BASE_URL+"/Select_user_by_phoneServlet";
     public static String select_user_by_id=BASE_URL+"/Select_user_by_idServlet";
@@ -30,4 +30,5 @@ public class Constant {
     public static String select_good_by_shopid =BASE_URL+"/Select_good_by_shopIdServlet";
     public static String deleted_goods_by_goodsid =BASE_URL+"/Deleted_goods_by_goodsIdServlet";
     public static String update_good_by_goodId =BASE_URL+"/Update_good_by_goodIdServlet";
+    public static String deleted_user_byId =BASE_URL+"/Delete_user_by_userIDServlet";
 }

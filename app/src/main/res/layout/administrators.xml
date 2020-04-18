@@ -120,7 +120,7 @@
                     android:layout_weight="1"
                     />
                 <TextView
-                    android:id="@+id/k_delete"
+                    android:id="@+id/adm_deletedShopkeeper"
                     style="@style/sk_ui"
                     android:layout_weight="1"
                     android:layout_marginLeft="10dp"
