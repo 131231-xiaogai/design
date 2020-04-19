@@ -21,14 +21,34 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.example.newapplication.Adapter.Eventdapter;
+import com.example.newapplication.Adapter.ShopcarAdapter;
+import com.example.newapplication.entity.EventBean;
+import com.example.newapplication.entity.Shooping_carBean;
+import com.example.newapplication.entity.UsersBean;
+import com.example.newapplication.home.ItemDetailActivity;
+import com.example.newapplication.inteface.OnItemClickListener;
+import com.example.newapplication.new_utill.Constant;
+import com.example.newapplication.new_utill.OkCallback;
+import com.example.newapplication.new_utill.OkHttp;
+import com.example.newapplication.new_utill.Result;
+import com.example.newapplication.new_utill.SharePrefrenceUtil;
 import com.example.newapplication.newpage.Notice;
+import com.example.newapplication.viewhandle.RecyclerViewHolder;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DateActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = "DateActivity";
     public static final int PERMISSION_RQUEST_CODE = 1;
+    private Eventdapter eventdapter;
+    RecyclerView s_recycle_view;
     ImageButton btn_list, btn_home, btn_shop, btn_me;
     CalendarView calendarView;
     ContentResolver contentResolver;
@@ -45,31 +65,96 @@ public class DateActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.date);
         calendarView = findViewById(R.id.calendarView);
-
         //日历布局添加监听器
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                Toast.makeText(DateActivity.this,year+"年"+month+"月"+dayOfMonth+"日",Toast.LENGTH_SHORT).show();
+                int new_month=month+1;
+                Toast.makeText(DateActivity.this,year+"年"+new_month+"月"+dayOfMonth+"日",Toast.LENGTH_SHORT).show();
+                String  date = year+"-"+new_month+"-"+dayOfMonth;
+                Log.d("添 加 事 件 日 期 为 ", date);
+                //select_event(date);
             }
         });
         //底部导航栏
         btn_home = findViewById(R.id.b_home);
-        btn_home.setOnClickListener(this);
         btn_list = findViewById(R.id.b_list);
-        btn_list.setOnClickListener(this);
         btn_me = findViewById(R.id.b_me);
-        btn_me.setOnClickListener(this);
         btn_shop = findViewById(R.id.b_shopcar);
-        btn_shop.setOnClickListener(this);
-        btn_notice = (ImageView)findViewById(R.id.btn_notice);
-        btn_notice.setOnClickListener(this);
-
+        //
+        btn_notice = findViewById(R.id.btn_notice);
+        s_recycle_view=findViewById(R.id.dateEvent_recycle_view);
         //
         if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.M)
         {
         checkCalendarPermission();}
         queryCalendars();
+        //
+
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
+        s_recycle_view.setLayoutManager(layoutManager);
+        eventdapter = new Eventdapter(this);
+        s_recycle_view.setAdapter(eventdapter);
+
+        eventdapter.setOnItemClickListener(new OnItemClickListener<EventBean>() {
+            @Override
+            public void onItemClick(RecyclerViewHolder viewHolder, EventBean data, int position) {
+                Toast.makeText(DateActivity.this, data.getEvent_id(), Toast.LENGTH_SHORT).show();
+//                String da = data.getEvent_id();
+////                Intent intent = new Intent(DateActivity.this, ItemDetailActivity.class);
+////                intent.putExtra("hgoodid", da);
+////                startActivityForResult(intent,1);
+            }
+        });
+        //
+        OnClickListener();
+        loadData();
+    }
+
+    private void OnClickListener() {
+        s_recycle_view.setOnClickListener(this);
+        btn_notice.setOnClickListener(this);
+        btn_shop.setOnClickListener(this);
+        btn_me.setOnClickListener(this);
+        btn_list.setOnClickListener(this);
+        btn_home.setOnClickListener(this);
+    }
+
+    private void loadData() {
+        String userid=SharePrefrenceUtil.getObject(DateActivity.this, UsersBean.class).getUerid();
+        Map map = new HashMap();
+        map.put("user_id", userid);
+        Log.d("用 户 编 号 为 ", String.valueOf(userid));
+
+        OkHttp.get(this, Constant.select_event_byUserID, map, new OkCallback<Result<List<EventBean>>>() {
+            @Override
+            public void onResponse(Result<List<EventBean>>response) {
+                eventdapter.setNewData(response.getData());
+            }
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(DateActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private void select_event(int date) {
+        String userid=SharePrefrenceUtil.getObject(DateActivity.this, UsersBean.class).getUerid();
+        Map map = new HashMap();
+        map.put("event_date", date);
+        map.put("user_id", userid);
+
+        OkHttp.get(this, Constant.select_event, map, new OkCallback<Result<List<EventBean>>>() {
+            @Override
+            public void onResponse(Result<List<EventBean>>response) {
+
+            }
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(DateActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 //    public void addAlterEvent(View view){
 //        long calID =1;
@@ -116,8 +201,6 @@ public class DateActivity extends AppCompatActivity implements View.OnClickListe
         query =contentResolver.query(uri,null,null,null,null);
         String[] columnNames = query.getColumnNames();
         while (query.moveToNext()) {
-
-
             Log.d(TAG,"====================");
             for (String columnName : columnNames) {
                 Log.d(TAG,columnName+"===="+query.getString(query.getColumnIndex(columnName)));
@@ -150,7 +233,6 @@ public class DateActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
         }
-
     }
 //    private static int checkCalendarAccount(Context context) {
 //        Cursor userCursor = context.getContentResolver().query(Uri.parse(CALANDER_URL), null, null, null, null);

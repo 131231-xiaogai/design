@@ -10,13 +10,16 @@
         android:layout_weight="1"
         android:orientation="horizontal"
         >
-        <TextView
+        <ImageButton
             android:id="@+id/setup_back"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/left"/>
+            android:layout_width="34dp"
+            android:layout_height="43dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:onClick="finish_reback"
+            android:background="@mipmap/left" />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:id="@+id/l_goodid"
@@ -24,6 +27,7 @@
             android:textSize="20sp"
             android:text="123"
             />
+
     </LinearLayout>
 
     <LinearLayout

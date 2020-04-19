@@ -10,32 +10,33 @@
         android:layout_height="wrap_content"
         android:layout_weight="14"
         android:orientation="vertical"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:padding="10dp">
         <TextView
-            android:id="@+id/adm_user_id"
+            android:id="@+id/da_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_weight="1"
             android:textSize="18sp"
-            android:text="编 号"/>
+            android:text="事 件 日 期"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:orientation="horizontal">
         <TextView
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="用 户 名 ："
+            android:text="事 件 标 题 ："
             android:textSize="18sp" />
             <TextView
-                android:id="@+id/adm_name"
+                android:id="@+id/da_event_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" 你好用户"
                 android:textSize="18sp" />
         </LinearLayout>
         <!---->
@@ -49,14 +50,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="手 机 号 ："
+            android:text="事 件 内 容 ："
             android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/adm_phone"
+                android:id="@+id/da_event_contant"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="11111111111："
+                android:text=""
                 android:textSize="18sp" />
         </LinearLayout>
         <!---->
@@ -66,54 +67,35 @@
             android:layout_marginTop="5dp"
             android:orientation="horizontal">
         <TextView
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="身 份 证 号 ："
+            android:text="开 始 时 间 ："
             android:textSize="18sp" />
             <TextView
-                android:id="@+id/adm_IDnumber"
+                android:id="@+id/da_evevt_startTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="123456749871498 ："
+                android:text=""
                 android:textSize="18sp" />
         </LinearLayout>
         <!---->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:orientation="horizontal">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="性 别 :"
-                android:layout_weight="1"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/adm_sex"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:text="女"
+                android:layout_marginTop="5dp"
+                android:text="结 束 时 间 ："
                 android:textSize="18sp" />
             <TextView
-                android:layout_weight="1"
+                android:id="@+id/da_evevt_endTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="余 额 :"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/adm_balance"
-                android:layout_weight="2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="0.0"
+                android:text=""
                 android:textSize="18sp" />
         </LinearLayout>
         <TextView

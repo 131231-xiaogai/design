@@ -48,6 +48,9 @@ public class SetUserSexActivity extends AppCompatActivity implements View.OnClic
                 insert();
                 break;
             case R.id.setupsex_back:
+                Intent intent = new Intent();
+                intent.putExtra("data_return","性别设置");
+                setResult(RESULT_OK,intent);
                 SetUserSexActivity.this.finish();
                 break;
         }
@@ -66,10 +69,6 @@ public class SetUserSexActivity extends AppCompatActivity implements View.OnClic
                 //SharePrefrenceUtil.saveObject(SetUserNameActivity.this, response.getData());
                 if (response.getData() != null) {
                     Toast.makeText(SetUserSexActivity.this, "保存成功！", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent();
-                    intent.putExtra("data_return","my_addresses");
-                    setResult(RESULT_OK,intent);
-                    finish();
                 }
             }
             @Override

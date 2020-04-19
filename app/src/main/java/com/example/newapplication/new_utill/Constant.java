@@ -3,7 +3,6 @@ package com.example.newapplication.new_utill;
 public class Constant {
 
     public static String BASE_URL = "http://192.168.0.108:8088/clothService";//换网络时记得换ip
-
     /**
      * 查询所有商品
      */
@@ -31,4 +30,7 @@ public class Constant {
     public static String deleted_goods_by_goodsid =BASE_URL+"/Deleted_goods_by_goodsIdServlet";
     public static String update_good_by_goodId =BASE_URL+"/Update_good_by_goodIdServlet";
     public static String deleted_user_byId =BASE_URL+"/Delete_user_by_userIDServlet";
+    public static String select_event =BASE_URL+"/Select_eventServlet";
+    public static String select_event_byUserID =BASE_URL+"/Select_event_byUserIDServlet";
+
 }

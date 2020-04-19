@@ -51,6 +51,9 @@ public class SetUserNameActivity extends AppCompatActivity implements View.OnCli
                 insert();
                 break;
             case R.id.setup_back:
+                Intent intent = new Intent();
+                intent.putExtra("data_return","用户名设置");
+                setResult(RESULT_OK,intent);
                 SetUserNameActivity.this.finish();
                 break;
 
@@ -73,10 +76,7 @@ public class SetUserNameActivity extends AppCompatActivity implements View.OnCli
                 //SharePrefrenceUtil.saveObject(SetUserNameActivity.this, response.getData());
                 if (response.getData() != null) {
                     Toast.makeText(SetUserNameActivity.this, "保存成功！", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent();
-                    intent.putExtra("data_return","my_mame");
-                    setResult(RESULT_OK,intent);
-                    finish();
+
                 }
             }
             @Override
