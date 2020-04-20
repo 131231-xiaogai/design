@@ -26,6 +26,8 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.newapplication.Adapter.Eventdapter;
 import com.example.newapplication.Adapter.ShopcarAdapter;
+import com.example.newapplication.date.Add_eventActivity;
+import com.example.newapplication.date.Event_ItemDetailActivity;
 import com.example.newapplication.entity.EventBean;
 import com.example.newapplication.entity.Shooping_carBean;
 import com.example.newapplication.entity.UsersBean;
@@ -73,6 +75,9 @@ public class DateActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(DateActivity.this,year+"年"+new_month+"月"+dayOfMonth+"日",Toast.LENGTH_SHORT).show();
                 String  date = year+"-"+new_month+"-"+dayOfMonth;
                 Log.d("添 加 事 件 日 期 为 ", date);
+                Intent intent = new Intent(DateActivity.this, Add_eventActivity.class);
+                intent.putExtra("date", date);
+                startActivityForResult(intent,1);
                 //select_event(date);
             }
         });
@@ -100,10 +105,20 @@ public class DateActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onItemClick(RecyclerViewHolder viewHolder, EventBean data, int position) {
                 Toast.makeText(DateActivity.this, data.getEvent_id(), Toast.LENGTH_SHORT).show();
-//                String da = data.getEvent_id();
-////                Intent intent = new Intent(DateActivity.this, ItemDetailActivity.class);
-////                intent.putExtra("hgoodid", da);
-////                startActivityForResult(intent,1);
+                String event_date = data.getEvent_date();
+                String event_title = data.getEvevt_title();
+                String event_contant = data.getEvent_content();
+                String event_startTine = data.getEvent_start_time();
+                String event_endTime = data.getEvent_finish_time();
+                String event_id = data.getEvent_id();
+                Intent intent = new Intent(DateActivity.this, Event_ItemDetailActivity.class);
+                intent.putExtra("event_date", event_date);
+                intent.putExtra("event_title", event_title);
+                intent.putExtra("event_contant", event_contant);
+                intent.putExtra("event_startTine", event_startTine);
+                intent.putExtra("event_endTime", event_endTime);
+                intent.putExtra("event_id", event_id);
+                startActivityForResult(intent,1);
             }
         });
         //
@@ -118,6 +133,21 @@ public class DateActivity extends AppCompatActivity implements View.OnClickListe
         btn_me.setOnClickListener(this);
         btn_list.setOnClickListener(this);
         btn_home.setOnClickListener(this);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    String data_return = data.getStringExtra("data_return");
+                    Log.d("name",data_return);
+                    loadData();
+                }
+                break;
+            default:
+        }
     }
 
     private void loadData() {

@@ -32,5 +32,8 @@ public class Constant {
     public static String deleted_user_byId =BASE_URL+"/Delete_user_by_userIDServlet";
     public static String select_event =BASE_URL+"/Select_eventServlet";
     public static String select_event_byUserID =BASE_URL+"/Select_event_byUserIDServlet";
+    public static String update_event_byEventID =BASE_URL+"/Update_event_byEventIDServlet";
+    public static String deletede_event_byEventID =BASE_URL+"/Deletede_event_byEventIDServlet";
+    public static String add_event =BASE_URL+"/Add_event";
 
 }

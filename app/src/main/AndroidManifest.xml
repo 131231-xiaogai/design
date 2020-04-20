@@ -63,6 +63,8 @@
         <activity android:name=".Administrators.AllShopkeeperActivity"/>
         <activity android:name=".Administrators.Adm_ItemDetailActivity"/>
         <activity android:name=".Administrators.Deleted_ShopkeeperActivity"/>
+        <activity android:name=".date.Event_ItemDetailActivity"/>
+        <activity android:name=".date.Add_eventActivity"/>
     </application>
 
 </manifest>
