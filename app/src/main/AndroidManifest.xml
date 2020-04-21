@@ -65,6 +65,7 @@
         <activity android:name=".Administrators.Deleted_ShopkeeperActivity"/>
         <activity android:name=".date.Event_ItemDetailActivity"/>
         <activity android:name=".date.Add_eventActivity"/>
+        <activity android:name=".me.My_orderBearActivity"/>
     </application>
 
 </manifest>
