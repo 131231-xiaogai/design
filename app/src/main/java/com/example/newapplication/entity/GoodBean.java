@@ -21,6 +21,15 @@ public class GoodBean {
 	private String shop_name;
 	private String goods_number;
 
+	private boolean isChildSelected;
+
+	public boolean isChildSelected() {
+		return isChildSelected;
+	}
+
+	public void setChildSelected(boolean childSelected) {
+		isChildSelected = childSelected;
+	}
 
 	public String getGoods_number() {
 		return goods_number;

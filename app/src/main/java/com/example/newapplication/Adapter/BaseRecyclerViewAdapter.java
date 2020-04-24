@@ -75,7 +75,7 @@ public abstract class BaseRecyclerViewAdapter<T, K extends RecyclerViewHolder> e
     public static final int STATUS_END_SHOW_GONE = 2;//显示1秒后隐藏 , 持续显示与隐藏
     public static final int STATUS_END_GONE = 3;//隐藏加载完成布局
     private OnItemClickListener<T> mItemClickListener;
-    private OnItemLongClickListener<T> mOnItemLongClickListener;
+    private OnItemLongClickListener<T> mOnItemLongClickListener; //条目长按点击事件
     private OnItemChildClickListener mOnItemChildClickListeners;
 
     public BaseRecyclerViewAdapter(Context context) {

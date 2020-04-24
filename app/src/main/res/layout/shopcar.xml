@@ -30,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="12"/>
         <TextView
+            android:id="@+id/sc_tv_del"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" 编 辑 "
@@ -63,28 +64,85 @@
         android:layout_weight="1.2"
         android:gravity="center"
       >
+        <CheckBox
+            android:id="@+id/checkbox_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:button="@null"
+            android:drawableLeft="@drawable/checkbox_selector"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:paddingLeft="0dp"
+            android:text="全选"
+            android:textColor="#303235"
+            android:textSize="18sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text=""
-            android:textSize="18sp"
-            android:layout_weight="1"/>
+            android:padding="10dp"
+            android:text="合计:"
+            android:textColor="#303235"
+            android:textSize="18sp" />
+
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_shopcart_total"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="12"/>
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="￥0.00"
+            android:textColor="#ed3f3f"
+            android:textSize="18sp" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/sc_bt_tatal"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="2dp"
-            android:layout_weight="1"
+            android:layout_marginRight="6dp"
             android:gravity="center"
             android:background="@drawable/button_bg"
             android:text="结   算"
             android:textSize="20sp" />
     </LinearLayout>
+
+    <!--删除-->
+    <LinearLayout
+        android:id="@+id/ll_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:visibility="gone">
+
+        <CheckBox
+            android:id="@+id/cb_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableLeft="@drawable/checkbox_selector"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:paddingLeft="0dp"
+            android:text="全选"
+            android:textColor="#303235"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@mipmap/words"
+            android:text="删除"
+            android:textColor="#303235"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+
         <!-- 底部导航栏-->
     <LinearLayout
         android:layout_width="match_parent"

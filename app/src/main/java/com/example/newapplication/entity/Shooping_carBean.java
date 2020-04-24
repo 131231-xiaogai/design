@@ -14,6 +14,16 @@ public class Shooping_carBean {
 	private String add_time;
 	private String cancle_time;
 	private String sumbit_time;
+	private String isChildSelected;
+
+
+	public String getIsChildSelected() {
+		return isChildSelected;
+	}
+	public void setIsChildSelected(String isChildSelected) {
+		this.isChildSelected = isChildSelected;
+	}
+
 	public String getId() {
 		return id;
 	}

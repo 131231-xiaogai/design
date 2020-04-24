@@ -10,9 +10,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.newapplication.Adapter.PhotoAdapter;
@@ -28,6 +32,7 @@ import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.new_utill.SharePrefrenceUtil;
 import com.example.newapplication.newpage.Notice;
+import com.example.newapplication.other.ShopCartAdapter;
 import com.example.newapplication.viewhandle.RecyclerViewHolder;
 
 import java.util.ArrayList;
@@ -39,6 +44,12 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
 
     ImageButton btn_list, btn_date, btn_home, btn_me;
     ImageView btn_notice;
+    TextView sc_tv_del,tv_shopcart_total;
+    CheckBox checkbox_all,cb_all;
+    LinearLayout ll_delete;
+    Button btn_delete;
+
+    private ShopCartAdapter shopCartAdapter;
 
     private ShopcarAdapter shopcarAdapter;
     RecyclerView s_recycle_view;
@@ -52,12 +63,14 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
         btn_date = (ImageButton)findViewById(R.id.b_date);
         btn_me = (ImageButton)findViewById(R.id.b_me);
         btn_notice = findViewById(R.id.btn_notice);
-        btn_notice.setOnClickListener(this);
-        btn_home.setOnClickListener(this);
-        btn_list.setOnClickListener(this);
-        btn_date.setOnClickListener(this);
-        btn_me.setOnClickListener(this);
         s_recycle_view = findViewById(R.id.s_recycle_view);
+        sc_tv_del =findViewById(R.id.sc_tv_del);
+        tv_shopcart_total=findViewById(R.id.tv_shopcart_total);
+        checkbox_all=findViewById(R.id.checkbox_all);
+        cb_all=findViewById(R.id.cb_all);
+        ll_delete=findViewById(R.id.ll_delete);
+        btn_delete=findViewById(R.id.btn_delete);
+
 
         //添加适配器
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
@@ -76,6 +89,21 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
         loadData();
+        OnClickListener();
+    }
+
+    private void OnClickListener() {
+        btn_notice.setOnClickListener(this);
+        btn_home.setOnClickListener(this);
+        btn_list.setOnClickListener(this);
+        btn_date.setOnClickListener(this);
+        btn_me.setOnClickListener(this);
+        sc_tv_del.setOnClickListener(this);
+        tv_shopcart_total.setOnClickListener(this);
+        checkbox_all.setOnClickListener(this);
+        cb_all.setOnClickListener(this);
+        ll_delete.setOnClickListener(this);
+        btn_delete.setOnClickListener(this);
     }
 
     @Override
