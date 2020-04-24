@@ -115,10 +115,10 @@ MeActivity extends AppCompatActivity implements View.OnClickListener{
               startActivity(new Intent(MeActivity.this, Order_fu.class));
               break;
           case R.id.tui:
-              startActivity(new Intent(MeActivity.this, Order_shou.class));
+              startActivity(new Intent(MeActivity.this, Order_tui.class));
               break;
           case R.id.shou:
-              startActivity(new Intent(MeActivity.this, Order_tui.class));
+              startActivity(new Intent(MeActivity.this, Order_shou.class));
               break;
           case R.id.m_wallet:
               String data = "我 的 钱 包";

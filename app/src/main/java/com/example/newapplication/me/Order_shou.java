@@ -2,6 +2,7 @@ package com.example.newapplication.me;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -9,13 +10,33 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.example.newapplication.Adapter.OrderAdapter;
+import com.example.newapplication.Adapter.Order_shou_Adapter;
 import com.example.newapplication.R;
+import com.example.newapplication.entity.OrderBean;
+import com.example.newapplication.entity.UsersBean;
+import com.example.newapplication.home.ItemDetailActivity;
+import com.example.newapplication.inteface.OnItemClickListener;
+import com.example.newapplication.new_utill.Constant;
+import com.example.newapplication.new_utill.OkCallback;
+import com.example.newapplication.new_utill.OkHttp;
+import com.example.newapplication.new_utill.Result;
+import com.example.newapplication.new_utill.SharePrefrenceUtil;
+import com.example.newapplication.viewhandle.RecyclerViewHolder;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Order_shou extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton title_back;
     TextView fa,fu,tui,shou;
+    private Order_shou_Adapter order_shou_adapter;
+    RecyclerView s_recycle_view;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,12 +45,51 @@ public class Order_shou extends AppCompatActivity implements View.OnClickListene
         fa=findViewById(R.id.ord_fa);
         fu=findViewById(R.id.ord_fu);
         tui=findViewById(R.id.ord_tui);
-        shou=findViewById(R.id.ord_shou);
+        shou=findViewById(R.id.ord_shou);//
+        s_recycle_view=findViewById(R.id.order_shou_recycle_view);
+
         //-------------------------------/
         shou.setBackground(getResources().getDrawable(R.drawable.button_bg3));
         shou.setTextColor(this.getResources().getColor(R.color.white));
         //------------------------------------/
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
+        s_recycle_view.setLayoutManager(layoutManager);
+        order_shou_adapter = new Order_shou_Adapter(this);
+        s_recycle_view.setAdapter(order_shou_adapter);
+        order_shou_adapter.setOnItemClickListener(new OnItemClickListener<OrderBean>() {
+            @Override
+            public void onItemClick(RecyclerViewHolder viewHolder, OrderBean data, int position) {
+                Toast.makeText(Order_shou.this, data.getGoods_id(), Toast.LENGTH_SHORT).show();
+                String da = data.getGoods_id();
+                Intent intent = new Intent(Order_shou.this, ItemDetailActivity.class);
+                intent.putExtra("hgoodid", da);
+                startActivityForResult(intent,1);
+            }
+        });
+        //
+        LoData();
         OnClickListener();
+    }
+
+    private void LoData() {
+        String userID = SharePrefrenceUtil.getObject(Order_shou.this, UsersBean.class).getUerid();
+        String status = "3";
+        Map map = new HashMap();
+        map.put("user_id",userID);
+        map.put("order_status",status);
+        Log.d("用户编号为",userID);
+        Log.d("订单状态为",status);
+
+        OkHttp.get(this, Constant.select_order_by_UseridAndOrderStstus, map, new OkCallback<Result<List<OrderBean>>>() {
+            @Override
+            public void onResponse(Result<List<OrderBean>> response) {
+                order_shou_adapter.setNewData(response.getData());
+            }
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(Order_shou.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     public void finish_reback(View v){
         Order_shou.this.finish();

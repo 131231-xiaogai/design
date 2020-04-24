@@ -104,7 +104,8 @@ public class AddsubView extends LinearLayout implements View.OnClickListener {
         this.min_value = min_value;
     }
 
-
+    public void setText(int mn) {
+    }
 
 
     public  interface OnNumberChangeListener{

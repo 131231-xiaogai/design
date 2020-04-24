@@ -35,7 +35,7 @@ public class ShopcarAdapter extends BaseRecyclerViewAdapter<Shooping_carBean, Re
 
         AddsubView good_number = holder.getView(R.id.sc_good_number);
         int mn =Integer.parseInt(data.getGood_number());
-        good_number.setValue(mn);
+        good_number.setText(mn);
     }
 
 
