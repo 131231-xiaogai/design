@@ -1,7 +1,9 @@
 package com.example.newapplication.entity;
 
 public class Shooping_carBean {
-	
+
+	private boolean isSelect;
+
 	private String id;
 	private String user_id;
 	private String shop_id;
@@ -14,6 +16,16 @@ public class Shooping_carBean {
 	private String add_time;
 	private String cancle_time;
 	private String sumbit_time;
+
+
+	public boolean isSelect() {
+		return isSelect;
+	}
+
+	public void setSelect(boolean select) {
+		isSelect = select;
+	}
+
 	private String isChildSelected;
 
 
