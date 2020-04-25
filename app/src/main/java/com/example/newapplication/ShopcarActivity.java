@@ -45,14 +45,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static android.view.View.GONE;
+
 public class ShopcarActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton btn_list, btn_date, btn_home, btn_me;
     ImageView btn_notice;
-    private ImageView ivAllSelect;
-    private TextView tvTotalPrice;
+    private ImageView ivAllSelect,iv_all_select2;
+    private TextView tvTotalPrice,sc_tv_del,sc_tv_ok;
     private Button btnPay;
     private boolean isAllSelect;
+    private LinearLayout l1_pay,l1del,l_del,l_ok;
 
     private ShopcarNewAdapter shopcarAdapter;
     RecyclerView s_recycle_view;
@@ -62,10 +65,43 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shopcar);
 
-
+        sc_tv_ok=findViewById(R.id.sc_tv_ok);
+        l_del=findViewById(R.id.l_de);
+        l_ok=findViewById(R.id.l_ok);
+        l1del=findViewById(R.id.l1_del);
+        l1_pay=findViewById(R.id.l1_pay);
+        sc_tv_del = findViewById(R.id.sc_tv_del);
         ivAllSelect = (ImageView) findViewById(R.id.iv_all_select);
         tvTotalPrice = (TextView) findViewById(R.id.tv_total_price);
         btnPay = (Button) findViewById(R.id.btn_pay);
+        iv_all_select2=findViewById(R.id.iv_all_select2);
+
+
+        iv_all_select2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                isAllSelect = !isAllSelect;
+                if (isAllSelect) {
+                    iv_all_select2.setImageResource(R.mipmap.select);
+                    for (Shooping_carBean allDatum : shopcarAdapter.getAllData()) {
+                        allDatum.setSelect(true);
+                    }
+                    shopcarAdapter.notifyDataSetChanged();
+                    //double totalPrice = shopcarAdapter.totalPrice();
+                    //tvTotalPrice.setText("￥" + totalPrice);
+                } else {
+                    iv_all_select2.setImageResource(R.mipmap.unselect);
+                    for (Shooping_carBean allDatum : shopcarAdapter.getAllData()) {
+                        allDatum.setSelect(false);
+                    }
+                    shopcarAdapter.notifyDataSetChanged();
+                    //tvTotalPrice.setText("￥0.00");
+                }
+
+            }
+        });
+
 
         ivAllSelect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +138,9 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
         btn_list.setOnClickListener(this);
         btn_date.setOnClickListener(this);
         btn_me.setOnClickListener(this);
+        sc_tv_del.setOnClickListener(this);
+        sc_tv_ok.setOnClickListener(this);
+
         s_recycle_view = findViewById(R.id.s_recycle_view);
 
         s_recycle_view.setLayoutManager(new LinearLayoutManager(this));
@@ -190,6 +229,18 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.sc_tv_ok:
+                l1_pay.setVisibility(View.VISIBLE);
+                l1del.setVisibility(GONE);
+                l_del.setVisibility(View.VISIBLE);
+                l_ok.setVisibility(GONE);
+                break;
+            case R.id.sc_tv_del:
+                l1_pay.setVisibility(GONE);
+                l1del.setVisibility(View.VISIBLE);
+                l_del.setVisibility(GONE);
+                l_ok.setVisibility(View.VISIBLE);
+                break;
             case R.id.b_home:
                 startActivity(new Intent(ShopcarActivity.this, HomeActivity.class));
                 break;

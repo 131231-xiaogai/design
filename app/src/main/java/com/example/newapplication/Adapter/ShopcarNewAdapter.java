@@ -1,6 +1,7 @@
 package com.example.newapplication.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,6 +35,7 @@ public class ShopcarNewAdapter extends BaseRecyclerViewAdapter<Shooping_carBean,
         ImageView ivMinus = (ImageView) holder.getView(R.id.iv_minus);
         TextView tvCount = (TextView) holder.getView(R.id.tv_count);
         ImageView ivAdd = (ImageView) holder.getView(R.id.iv_add);
+
 
         if (data.isSelect()) {
             ivIsSelect.setImageResource(R.mipmap.select);
@@ -75,10 +77,12 @@ public class ShopcarNewAdapter extends BaseRecyclerViewAdapter<Shooping_carBean,
         ivAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                String m_id =data.getId();
                 Map map = new HashMap();
-                map.put("id", data.getId());
+                map.put("id", m_id);
                 map.put("count", Integer.valueOf(tvCount.getText().toString()) + 1 + "");
+                Log.d("id",m_id);
+
                 OkHttp.get(mContext, Constant.updateShopCount, map, new OkCallback<Result<String>>() {
                     @Override
                     public void onResponse(Result<String> response) {

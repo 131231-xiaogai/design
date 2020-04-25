@@ -19,6 +19,9 @@ import com.example.newapplication.new_utill.SharePrefrenceUtil;
 import com.example.newapplication.newpage.Notice;
 import com.example.newapplication.shopkeeper.AddGoodsActivity;
 import com.example.newapplication.shopkeeper.DeletedGoodsActivity;
+import com.example.newapplication.shopkeeper.My_OrderActivity;
+import com.example.newapplication.shopkeeper.My_Order_fuActivity;
+import com.example.newapplication.shopkeeper.My_Order_shouActivity;
 import com.example.newapplication.shopkeeper.Register_shopActivity;
 
 import java.util.HashMap;
@@ -29,7 +32,8 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
     String myshop_id,pagename,myshop_name;
     String pagenumber,isshop;
     TextView my_shop_name,my_shop_address,me_shop_register_time,me_shop_phone,my_shop_sorc;
-    TextView k_add,k_delete,k_change;
+    TextView k_add,k_delete,k_change,me_shop_name,me_shop_blance;
+    private TextView fu,fa,shou;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shopkeeper);
@@ -41,16 +45,13 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         my_shop_sorc=findViewById(R.id.my_shop_sorc);
         k_delete=findViewById(R.id.k_delete);
         k_change=findViewById(R.id.k_change);
-        //
-//        从店铺注册页面返回的数据
-//        Intent goodid_integer = getIntent();
-//        String  shop_name = goodid_integer.getStringExtra("shop_name");
-//        my_shop_name.setText(shop_name);
-//        String  shop_dresss = goodid_integer.getStringExtra("shop_dresss");
-//        my_shop_address.setText(shop_dresss);
-//        String  shop_phone = goodid_integer.getStringExtra("shop_phone");
-//        me_shop_phone.setText(shop_phone);
+        fu=findViewById(R.id.sk_fu);
+        fa=findViewById(R.id.sk_fa);
+        shou=findViewById(R.id.sk_shou);
+        me_shop_name=findViewById(R.id.me_shop_username);
+        me_shop_blance=findViewById(R.id.me_shop_blance);
 
+        //
 
         OnClickListener();
         loadData();
@@ -59,6 +60,8 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
 
     private void loadData() {
         String user_id = SharePrefrenceUtil.getObject(ShopkeeperActivity.this, UsersBean.class).getUerid();
+        String user_name = SharePrefrenceUtil.getObject(ShopkeeperActivity.this, UsersBean.class).getNickname();
+        String user_blance = SharePrefrenceUtil.getObject(ShopkeeperActivity.this, UsersBean.class).getBalance();
         Map map = new HashMap();
         map.put("user_id",user_id);
 
@@ -81,6 +84,9 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
                     me_shop_register_time.setText(myshop_register_time);
                     my_shop_sorc.setText(myshop_sorc);
                     me_shop_phone.setText(myshop_phone);
+                    me_shop_name.setText(user_name);
+                    me_shop_blance.setText("￥"+user_blance);
+
                     isshop="1";
                 }else {
                     Toast.makeText(ShopkeeperActivity.this, "您还没有注册商铺。", Toast.LENGTH_SHORT).show();
@@ -104,12 +110,36 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         my_shop_sorc.setOnClickListener(this);
         k_delete.setOnClickListener(this);
         k_change.setOnClickListener(this);
+        fu.setOnClickListener(this);
+        fa.setOnClickListener(this);
+        shou.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id. sk_fa:
+                Intent intent2 = new Intent(ShopkeeperActivity.this, My_OrderActivity.class);
+                intent2.putExtra("my_shop_id",myshop_id);
+                intent2.putExtra("page_name","待 发 货 页 面");
+                intent2.putExtra("order_status","2");
+                startActivity(intent2);
+                break;
+            case R.id. sk_fu:
+                Intent intent1 = new Intent(ShopkeeperActivity.this, My_Order_fuActivity.class);
+                intent1.putExtra("my_shop_id",myshop_id);
+                intent1.putExtra("order_status","2");
+                intent1.putExtra("page_name","待 顾 客 付 款 订 单");
+                startActivity(intent1);
+                break;
+            case R.id. sk_shou:
+                Intent intent3 = new Intent(ShopkeeperActivity.this, My_Order_shouActivity.class);
+                intent3.putExtra("my_shop_id",myshop_id);
+                intent3.putExtra("order_status","4");
+                intent3.putExtra("page_name","待 顾 客 还 货 页 面");
+                startActivity(intent3);
+               break;
             case R.id. k_add:
                 add_goods();
                 break;
@@ -123,7 +153,6 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
                 change_goods();
                 break;
         }
-
     }
 
     private void add_goods() {

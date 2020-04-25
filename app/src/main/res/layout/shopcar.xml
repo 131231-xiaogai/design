@@ -13,6 +13,7 @@
     </LinearLayout>
     <!--购物车字样-->
     <LinearLayout
+        android:id="@+id/l_de"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -42,6 +43,38 @@
             android:text=" 编 辑 "
             android:textSize="20sp" />
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/l_ok"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#fff"
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text=" 购 物 车 "
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="12" />
+
+        <TextView
+            android:id="@+id/sc_tv_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text=" 完 成 "
+            android:textSize="20sp" />
+    </LinearLayout>
     <!-- 购物车内容-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,11 +96,13 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/l1_pay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:visibility="visible"
         android:padding="10dp">
 
         <ImageView
@@ -111,6 +146,44 @@
             android:background="@drawable/button_bg"
             android:gravity="center"
             android:text="结   算"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/l1_del"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/iv_all_select2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/unselect" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:text="全选"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+
+
+        <Button
+            android:id="@+id/btn_deleted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/button_bg"
+            android:gravity="center"
+            android:text="  删  除 "
             android:textSize="20sp" />
     </LinearLayout>
     <!-- 底部导航栏-->

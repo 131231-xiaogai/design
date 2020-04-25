@@ -66,6 +66,9 @@
         <activity android:name=".date.Event_ItemDetailActivity"/>
         <activity android:name=".date.Add_eventActivity"/>
         <activity android:name=".me.My_orderBearActivity"/>
+        <activity android:name=".shopkeeper.My_OrderActivity"/>
+        <activity android:name=".shopkeeper.My_Order_fuActivity"/>
+        <activity android:name=".shopkeeper.My_Order_shouActivity"/>
     </application>
 
 </manifest>
