@@ -2,14 +2,12 @@ package com.example.newapplication;
 
 import android.Manifest;
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.CalendarView;
@@ -25,13 +23,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.newapplication.Adapter.Eventdapter;
-import com.example.newapplication.Adapter.ShopcarAdapter;
 import com.example.newapplication.date.Add_eventActivity;
 import com.example.newapplication.date.Event_ItemDetailActivity;
 import com.example.newapplication.entity.EventBean;
-import com.example.newapplication.entity.Shooping_carBean;
 import com.example.newapplication.entity.UsersBean;
-import com.example.newapplication.home.ItemDetailActivity;
 import com.example.newapplication.inteface.OnItemClickListener;
 import com.example.newapplication.new_utill.Constant;
 import com.example.newapplication.new_utill.OkCallback;
@@ -41,7 +36,6 @@ import com.example.newapplication.new_utill.SharePrefrenceUtil;
 import com.example.newapplication.newpage.Notice;
 import com.example.newapplication.viewhandle.RecyclerViewHolder;
 
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

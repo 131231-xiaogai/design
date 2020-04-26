@@ -21,36 +21,34 @@ import com.example.newapplication.viewhandle.RecyclerViewHolder;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Order_tui_Adapter extends BaseRecyclerViewAdapter<OrderBean, RecyclerViewHolder> {
-    public Order_tui_Adapter(Context context) {
+public class Sk_Order_huanAdapter extends BaseRecyclerViewAdapter<OrderBean, RecyclerViewHolder> {
+    public Sk_Order_huanAdapter(Context context) {
         super(context);
     }
 
     @Override
     protected void convert(RecyclerViewHolder holder, OrderBean data, int position, int viewType) {
-        TextView name = holder.getView(R.id.order_tui_goodname);
+        TextView name = holder.getView(R.id.sk_order_huan_goodname);
         name.setText(data.getGood_name());
 
-        ImageView imageView = holder.getView(R.id.order_tui_img);
+        ImageView imageView = holder.getView(R.id.sk_order_huan_img);
         Glide.with(mContext).load(data.getGood_img()).into(imageView);
 
-        TextView price = holder.getView(R.id.order_tui_price);
+        TextView price = holder.getView(R.id.sk_order_huan_price);
         price.setText(data.getGood_price());
 
-        TextView number = holder.getView(R.id.order_tui_goodNumber);
+        TextView number = holder.getView(R.id.sk_order_huan_goodNumber);
         number.setText(data.getGood_number());
-        TextView total = holder.getView(R.id.order_tui_total);
+        TextView total = holder.getView(R.id.sk_order_huan_total);
         total.setText(data.getTotal_price());
-
-        TextView m_return=holder.getView(R.id.m_return);
-
-        m_return.setOnClickListener(new View.OnClickListener() {
+        TextView sk_fahuo =holder.getView(R.id.huan);
+        sk_fahuo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder dialog;
                 dialog = new AlertDialog.Builder(mContext);
 
-                dialog.setTitle("请确定归还");
+                dialog.setTitle("请确认是否收到顾客还货");
                 dialog.setCancelable(false);
                 dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
@@ -58,12 +56,12 @@ public class Order_tui_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recycl
                         Map map = new HashMap();
                         String order_id=data.getOrder_id();
                         map.put("order_id", order_id);
-                        map.put("order_status", "5");
+                        map.put("order_status", "6");
                         Log.d("id",data.getOrder_id());
                         OkHttp.get(mContext, Constant.updateOrder_status, map, new OkCallback<Result<String>>() {
                             @Override
                             public void onResponse(Result<String> response) {
-                                Toast.makeText(mContext, "衣物已归还，感谢您的光临。", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(mContext, "订单已完成。", Toast.LENGTH_SHORT).show();
 
                             }
                             @Override
@@ -85,12 +83,13 @@ public class Order_tui_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recycl
         });
 
 
+
     }
 
     @Override
     protected int getItemLayoutId(int viewType) {
-        return R.layout.order_itemtui;
-    }
+        return R.layout.sk_order_itemhuan;
+    }//
 
     @Override
     protected int getViewType(int position, OrderBean data) {

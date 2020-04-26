@@ -243,6 +243,7 @@ public abstract class BaseRecyclerViewAdapter<T, K extends RecyclerViewHolder> e
     }
 
 
+
     public class MyThread implements Runnable {
 
         public synchronized void run() {

@@ -48,6 +48,7 @@ public class ShopcarNewAdapter extends BaseRecyclerViewAdapter<Shooping_carBean,
         tvCount.setText(data.getGood_number());
 
         holder.addOnClickListener(R.id.iv_is_select);
+//        ivAdd.setEnabled(false);
         ivMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

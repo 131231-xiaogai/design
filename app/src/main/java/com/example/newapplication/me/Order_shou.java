@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.newapplication.Adapter.OrderAdapter;
 import com.example.newapplication.Adapter.Order_shou_Adapter;
@@ -37,6 +38,7 @@ public class Order_shou extends AppCompatActivity implements View.OnClickListene
     TextView fa,fu,tui,shou;
     private Order_shou_Adapter order_shou_adapter;
     RecyclerView s_recycle_view;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,14 @@ public class Order_shou extends AppCompatActivity implements View.OnClickListene
         tui=findViewById(R.id.ord_tui);
         shou=findViewById(R.id.ord_shou);//
         s_recycle_view=findViewById(R.id.order_shou_recycle_view);
+        swipeRefreshLayout=findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                LoData();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
         //-------------------------------/
         shou.setBackground(getResources().getDrawable(R.drawable.button_bg3));

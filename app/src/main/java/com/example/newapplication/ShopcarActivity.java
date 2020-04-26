@@ -3,29 +3,20 @@ package com.example.newapplication;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.newapplication.Adapter.BaseRecyclerViewAdapter;
-import com.example.newapplication.Adapter.PhotoAdapter;
-import com.example.newapplication.Adapter.ShopcarAdapter;
 import com.example.newapplication.Adapter.ShopcarNewAdapter;
-import com.example.newapplication.entity.Photo;
 import com.example.newapplication.entity.Shooping_carBean;
 import com.example.newapplication.entity.UsersBean;
 import com.example.newapplication.home.ItemDetailActivity;
@@ -37,9 +28,10 @@ import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.new_utill.SharePrefrenceUtil;
 import com.example.newapplication.newpage.Notice;
-import com.example.newapplication.other.ShopCartAdapter;
+import com.example.newapplication.shopcar.SettlementActivity;
 import com.example.newapplication.viewhandle.RecyclerViewHolder;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -51,11 +43,11 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
 
     ImageButton btn_list, btn_date, btn_home, btn_me;
     ImageView btn_notice;
-    private ImageView ivAllSelect,iv_all_select2;
-    private TextView tvTotalPrice,sc_tv_del,sc_tv_ok;
+    private ImageView ivAllSelect, iv_all_select2;
+    private TextView tvTotalPrice, sc_tv_del, sc_tv_ok;
     private Button btnPay;
     private boolean isAllSelect;
-    private LinearLayout l1_pay,l1del,l_del,l_ok;
+    private LinearLayout l1_pay, l1del, l_del, l_ok;
 
     private ShopcarNewAdapter shopcarAdapter;
     RecyclerView s_recycle_view;
@@ -65,16 +57,16 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shopcar);
 
-        sc_tv_ok=findViewById(R.id.sc_tv_ok);
-        l_del=findViewById(R.id.l_de);
-        l_ok=findViewById(R.id.l_ok);
-        l1del=findViewById(R.id.l1_del);
-        l1_pay=findViewById(R.id.l1_pay);
+        sc_tv_ok = findViewById(R.id.sc_tv_ok);
+        l_del = findViewById(R.id.l_de);
+        l_ok = findViewById(R.id.l_ok);
+        l1del = findViewById(R.id.l1_del);
+        l1_pay = findViewById(R.id.l1_pay);
         sc_tv_del = findViewById(R.id.sc_tv_del);
         ivAllSelect = (ImageView) findViewById(R.id.iv_all_select);
         tvTotalPrice = (TextView) findViewById(R.id.tv_total_price);
         btnPay = (Button) findViewById(R.id.btn_pay);
-        iv_all_select2=findViewById(R.id.iv_all_select2);
+        iv_all_select2 = findViewById(R.id.iv_all_select2);
 
 
         iv_all_select2.setOnClickListener(new View.OnClickListener() {
@@ -140,6 +132,7 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
         btn_me.setOnClickListener(this);
         sc_tv_del.setOnClickListener(this);
         sc_tv_ok.setOnClickListener(this);
+        btnPay.setOnClickListener(this);
 
         s_recycle_view = findViewById(R.id.s_recycle_view);
 
@@ -256,7 +249,24 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.btn_notice:
                 startActivity(new Intent(ShopcarActivity.this, Notice.class));
                 break;
+            case R.id.btn_pay:
+                Intent intent = new Intent(ShopcarActivity.this, SettlementActivity.class);
+                List<Shooping_carBean> shopCards = getShopCards();
+                intent.putExtra("shopcards", (Serializable) shopCards);
+                startActivity(intent);
+                break;
         }
+    }
+
+
+    private List<Shooping_carBean> getShopCards() {
+        List<Shooping_carBean> shooping_carBeans = new ArrayList<>();
+        for (Shooping_carBean allDatum : shopcarAdapter.getAllData()) {
+            if (allDatum.isSelect()) {
+                shooping_carBeans.add(allDatum);
+            }
+        }
+        return shooping_carBeans;
     }
 
 }

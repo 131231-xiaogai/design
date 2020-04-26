@@ -19,6 +19,15 @@ public class OrderBean {
 	private String total_price;
 	private String good_img;
 	private String shop_id;
+	private String order_code;
+
+	public String getOrder_code() {
+		return order_code;
+	}
+
+	public void setOrder_code(String order_code) {
+		this.order_code = order_code;
+	}
 
 	public String getShop_id() {
 		return shop_id;

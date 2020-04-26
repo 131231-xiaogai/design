@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,12 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.newapplication.Adapter.OrderAdapter;
-import com.example.newapplication.Adapter.ShopcarAdapter;
-import com.example.newapplication.MeActivity;
 import com.example.newapplication.R;
-import com.example.newapplication.ShopcarActivity;
 import com.example.newapplication.entity.OrderBean;
-import com.example.newapplication.entity.Shooping_carBean;
 import com.example.newapplication.entity.UsersBean;
 import com.example.newapplication.home.ItemDetailActivity;
 import com.example.newapplication.inteface.OnItemClickListener;

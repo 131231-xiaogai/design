@@ -1,6 +1,8 @@
 package com.example.newapplication.entity;
 
-public class Shooping_carBean {
+import java.io.Serializable;
+
+public class Shooping_carBean implements Serializable {
 
 	private boolean isSelect;
 

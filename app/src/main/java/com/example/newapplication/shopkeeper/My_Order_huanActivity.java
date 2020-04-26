@@ -11,9 +11,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.newapplication.Adapter.Sk_OrderAdapter;
+import com.example.newapplication.Adapter.Sk_Order_huanAdapter;
 import com.example.newapplication.Adapter.Sk_Order_shouAdapter;
 import com.example.newapplication.R;
 import com.example.newapplication.entity.OrderBean;
@@ -28,33 +27,32 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class My_Order_shouActivity extends AppCompatActivity implements View.OnClickListener {
+public class My_Order_huanActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView title_page;
-    private ImageButton title_back, btn_notice;
-    private String shop_id, status;
+    private ImageButton title_back,btn_notice;
+    private String shop_id,status;
 
-    private Sk_Order_shouAdapter sk_order_shouAdapter;
+    private Sk_Order_huanAdapter sk_order_shouAdapter;
     private RecyclerView s_recycle_view;
-
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sk_order);
-        title_page = findViewById(R.id.title_page);
-        title_back = findViewById(R.id.title_back);
-        btn_notice = findViewById(R.id.btn_notice);
-        s_recycle_view = findViewById(R.id.sk_order_recycleView);
-
+        title_page=findViewById(R.id.title_page);
+        title_back=findViewById(R.id.title_back);
+        btn_notice=findViewById(R.id.btn_notice);
+        s_recycle_view=findViewById(R.id.sk_order_recycleView);
+        //
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         s_recycle_view.setLayoutManager(layoutManager);
-        sk_order_shouAdapter = new Sk_Order_shouAdapter(this);
+        sk_order_shouAdapter = new Sk_Order_huanAdapter(this);
         s_recycle_view.setAdapter(sk_order_shouAdapter);
         sk_order_shouAdapter.setOnItemClickListener(new OnItemClickListener<OrderBean>() {
             @Override
             public void onItemClick(RecyclerViewHolder viewHolder, OrderBean data, int position) {
-                Toast.makeText(My_Order_shouActivity.this, data.getGoods_id(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(My_Order_huanActivity.this, data.getGoods_id(), Toast.LENGTH_SHORT).show();
 //                String da = data.getGoods_id();
 //                Intent intent = new Intent(My_OrderActivity.this, ItemDetailActivity.class);
 //                intent.putExtra("hgoodid", da);
@@ -63,11 +61,11 @@ public class My_Order_shouActivity extends AppCompatActivity implements View.OnC
         });
         //
         Intent pagename_integer = getIntent();
-        String name = pagename_integer.getStringExtra("page_name");
+        String  name = pagename_integer.getStringExtra("page_name");
         shop_id = pagename_integer.getStringExtra("my_shop_id");
         status = pagename_integer.getStringExtra("order_status");
         title_page.setText(name);
-        Log.d("WalletpagaActivity", name);
+        Log.d("WalletpagaActivity",name);
 
         LoData();
         OnClickListener();
@@ -76,29 +74,28 @@ public class My_Order_shouActivity extends AppCompatActivity implements View.OnC
 
     private void LoData() {
         Map map = new HashMap();
-        map.put("shop_id", shop_id);
-        map.put("order_status", status);
-        Log.d("商家编号为", shop_id);
-        Log.d("订单状态为", status);
+        map.put("shop_id",shop_id);
+        map.put("order_status",status);
+        Log.d("商家编号为",shop_id);
+        Log.d("订单状态为",status);
 
         OkHttp.get(this, Constant.select_order_by_ShopidAndOrderStstus, map, new OkCallback<Result<List<OrderBean>>>() {
             @Override
             public void onResponse(Result<List<OrderBean>> response) {
 
-                sk_order_shouAdapter.setNewData(response.getData());
+              sk_order_shouAdapter.setNewData(response.getData());
 
 
             }
-
             @Override
             public void onFailure(String state, String msg) {
-                Toast.makeText(My_Order_shouActivity.this, msg, Toast.LENGTH_SHORT).show();
+                Toast.makeText(My_Order_huanActivity.this, msg, Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     public void finish_reback(View v) {
-        My_Order_shouActivity.this.finish();
+        My_Order_huanActivity.this.finish();
     }
 
 
@@ -110,9 +107,9 @@ public class My_Order_shouActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
+        switch (v.getId()){
             case R.id.title_back:
-                My_Order_shouActivity.this.finish();
+                My_Order_huanActivity.this.finish();
                 break;
 
             case R.id.btn_notice:

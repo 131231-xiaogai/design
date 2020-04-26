@@ -63,6 +63,8 @@ public class Order_fu extends AppCompatActivity implements View.OnClickListener 
                 Intent intent = new Intent(Order_fu.this, ItemDetailActivity.class);
                 intent.putExtra("hgoodid", da);
                 startActivityForResult(intent,1);
+
+
             }
         });
         //------------------------------------/

@@ -87,6 +87,14 @@
                     android:layout_marginRight="30dp"
                     android:text="收"
                     />
+                <TextView
+                    android:id="@+id/sk_huan"
+                    style="@style/sk_ui"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="30dp"
+                    android:text="还"
+                    />
 
             </LinearLayout>
             <TextView

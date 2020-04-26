@@ -43,4 +43,8 @@ public class Constant {
     public static String add_event =BASE_URL+"/Add_event";
     public static String select_order_by_UseridAndOrderStstus =BASE_URL+"/select_order_by_UseridAndOrderStstus";
     public static String select_order_by_ShopidAndOrderStstus =BASE_URL+"/select_order_by_ShopidAndOrderStstus";
+    public static String updateOrder_status =BASE_URL+"/UpdateOrder_statusServlet";
+    public static String add_order =BASE_URL+"/Add_order";
+    public static String insert_message =BASE_URL+"/Insert_message";
+    public static String update_user_balance =BASE_URL+"/Update_user_balance";
 }
