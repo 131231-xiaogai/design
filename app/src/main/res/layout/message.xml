@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#fff"
-    android:orientation="vertical">
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,29 +30,52 @@
             android:layout_gravity="center_vertical"
             android:layout_margin="5dp" />
     </LinearLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="30dp">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="系  统  消  息"
-        android:textSize="20sp"
-        android:layout_marginLeft="22sp"
-        android:layout_marginTop="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/line" />
         <TextView
+            android:id="@+id/n_sys_notic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="活  动  消  息"
+            android:text="系  统  消  息"
             android:textSize="20sp"
             android:layout_marginLeft="22sp"
             android:layout_marginTop="10dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sys_notic_recycle_view"
+            android:visibility="gone"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/line"
+            />
+
+        <TextView
+            android:id="@+id/n_your_notic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="用  户  消  息"
+            android:textSize="20sp"
+            android:layout_marginLeft="22sp"
+            android:layout_marginTop="10dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/my_notic_recycle_view"
+            android:visibility="gone"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -66,10 +88,12 @@
             android:layout_marginTop="10dp"
             android:text="客  服  咨  询"
             android:textSize="20sp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/line" />
+
     </LinearLayout>
 
 </LinearLayout>

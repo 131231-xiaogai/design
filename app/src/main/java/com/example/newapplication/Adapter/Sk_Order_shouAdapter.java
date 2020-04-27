@@ -56,6 +56,7 @@ public class Sk_Order_shouAdapter extends BaseRecyclerViewAdapter<OrderBean, Rec
                 map.put("message_context", "订单"+order_id+"请您及时归还呦~");
                 map.put("message_status", "1");
                 map.put("user_id",data.getUser_id() );//顾客id
+                map.put("message_type","2");//消息类型：1系统消息；2用户消息
                 Log.d("id",shop_id);
                 OkHttp.get(mContext, Constant.insert_message, map, new OkCallback<Result<String>>() {
                     @Override

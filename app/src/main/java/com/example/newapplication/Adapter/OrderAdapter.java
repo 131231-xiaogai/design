@@ -58,6 +58,7 @@ public class OrderAdapter extends BaseRecyclerViewAdapter<OrderBean, RecyclerVie
                 map.put("message_context", "订单"+order_id+"请您及时发货呦~");
                 map.put("message_status", "2");
                 map.put("user_id", userID);
+                map.put("message_type","2");//消息类型：1系统消息；2用户消息
                 Log.d("id",title);
                 OkHttp.get(mContext, Constant.insert_message, map, new OkCallback<Result<String>>() {
                     @Override

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.new_utill.SharePrefrenceUtil;
 import com.example.newapplication.newpage.Notice;
+import com.example.newapplication.newpage.Sk_Notice;
 import com.example.newapplication.shopkeeper.AddGoodsActivity;
 import com.example.newapplication.shopkeeper.DeletedGoodsActivity;
 import com.example.newapplication.shopkeeper.My_OrderActivity;
@@ -34,11 +36,13 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
     String pagenumber,isshop;
     TextView my_shop_name,my_shop_address,me_shop_register_time,me_shop_phone,my_shop_sorc,sk_huan;
     TextView k_add,k_delete,k_change,me_shop_name,me_shop_blance;
+    ImageButton btn_notice;
     private TextView fu,fa,shou;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shopkeeper);
         k_add=findViewById(R.id.k_add);
+        btn_notice=findViewById(R.id.btn_notice);
         my_shop_name=findViewById(R.id.my_shop_name);
         my_shop_address=findViewById(R.id.my_shop_address);
         me_shop_register_time=findViewById(R.id.me_shop_register_time);
@@ -116,6 +120,7 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         fa.setOnClickListener(this);
         shou.setOnClickListener(this);
         sk_huan.setOnClickListener(this);
+        btn_notice.setOnClickListener(this);
     }
 
 
@@ -161,7 +166,11 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
                 intent4.putExtra("order_status","5");
                 intent4.putExtra("page_name","确 认 顾 客 还 货 ");
                 startActivity(intent4);
-
+                break;
+            case R.id.btn_notice:
+                Intent intent5 = new Intent(ShopkeeperActivity.this, Sk_Notice.class);
+                intent5.putExtra("my_shop_id",myshop_id);
+                startActivity(intent5);
                 break;
         }
     }

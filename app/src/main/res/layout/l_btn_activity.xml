@@ -4,19 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="60dp">
+    android:paddingTop="20dp"
+    android:paddingLeft="100dp"
+    android:paddingRight="100dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/bianlunsai"
             style="@style/list_item_image"
-            android:background="@mipmap/icon_activity_image" />
+            android:background="@mipmap/bianlun_sai" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
         <ImageView
             android:id="@+id/wudaolei"
             style="@style/list_item_image"
-            android:background="@mipmap/icon_activity_image"
-            android:layout_marginLeft="80dp"/>
+            android:background="@mipmap/dance"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,9 +32,13 @@
            style="@style/list_item_text"
             android:text="辩论赛"/>
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <TextView
             style="@style/list_item_text"
             android:text="舞蹈类"
-            android:layout_marginLeft="80dp" />
+           />
     </LinearLayout>
 
     <LinearLayout
@@ -39,14 +49,17 @@
         <ImageView
             android:id="@+id/yinyuelei"
             style="@style/list_item_image"
-            android:background="@mipmap/icon_activity_image"
+            android:background="@mipmap/music"
             />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
 
         <ImageView
             android:id="@+id/yundonglei"
             style="@style/list_item_image"
-            android:background="@mipmap/icon_activity_image"
-            android:layout_marginLeft="80dp"/>
+            android:background="@mipmap/yun_dong" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,10 +68,12 @@
         <TextView
             style="@style/list_item_text"
             android:text="音乐类" />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
         <TextView
             style="@style/list_item_text"
-            android:layout_marginLeft="80dp"
             android:text="运动类" />
     </LinearLayout>
 
@@ -69,12 +84,16 @@
         <ImageView
             android:id="@+id/huaju_xiaopin"
             style="@style/list_item_image"
-            android:background="@mipmap/icon_activity_image" />
+            android:background="@mipmap/hua_ju" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
         <ImageView
             android:id="@+id/a_qita"
             style="@style/list_item_image"
-            android:background="@mipmap/icon_activity_image"
-            android:layout_marginLeft="80dp"/>
+            android:background="@mipmap/other"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -83,10 +102,15 @@
 
         <TextView
             style="@style/list_item_text"
-            android:text="话剧/小品" />
+            android:text="话剧/
+            小品" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
         <TextView
             style="@style/list_item_text"
-            android:layout_marginLeft="80dp"
+
             android:text="其他"/>
 
     </LinearLayout>

@@ -21,6 +21,7 @@ import com.example.newapplication.new_utill.Constant;
 import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
+import com.example.newapplication.newpage.Sk_Notice;
 import com.example.newapplication.viewhandle.RecyclerViewHolder;
 
 import java.util.HashMap;
@@ -113,6 +114,9 @@ public class My_Order_huanActivity extends AppCompatActivity implements View.OnC
                 break;
 
             case R.id.btn_notice:
+                Intent intent5 = new Intent(My_Order_huanActivity.this, Sk_Notice.class);
+                intent5.putExtra("my_shop_id",shop_id);
+                startActivity(intent5);
                 break;
         }
 

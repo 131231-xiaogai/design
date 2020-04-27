@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ import com.example.newapplication.new_utill.MyGlideEngine;
 import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
+import com.example.newapplication.newpage.Sk_Notice;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.internal.entity.CaptureStrategy;
@@ -46,6 +48,7 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
     Button btn_add, btn_addimg;
     Spinner add_type;
     String shop_name,shop_id;
+    private ImageButton a_title_back,a_notice;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +61,9 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
         add_yajin = findViewById(R.id.add_yajin);
         btn_add = findViewById(R.id.btn_add);
         btn_addimg = findViewById(R.id.btn_addimg);
+        a_title_back =findViewById(R.id.a_title_back);
+        a_notice=findViewById(R.id.a_notice);
+        a_notice.setOnClickListener(this);
         //
         Intent goodid_integer = getIntent();
         shop_name = goodid_integer.getStringExtra("myshop_name");
@@ -75,6 +81,7 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
         add_img.setOnClickListener(this);
         btn_add.setOnClickListener(this);
         btn_addimg.setOnClickListener(this);
+        a_title_back.setOnClickListener(this);
     }
 
     @Override
@@ -95,6 +102,14 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.btn_addimg:
                 choosephoto();
+                break;
+            case R.id.a_title_back:
+                AddGoodsActivity.this.finish();
+                break;
+            case R.id.a_notice:
+                Intent intent5 = new Intent(AddGoodsActivity.this, Sk_Notice.class);
+                intent5.putExtra("my_shop_id",shop_id);
+                startActivity(intent5);
                 break;
         }
     }

@@ -27,7 +27,7 @@ public class GoodAdapter extends BaseRecyclerViewAdapter<GoodBean, RecyclerViewH
         textView.setText(data.getGoods_name());
 
         TextView price = holder.getView(R.id.h_price);
-        price.setText(data.getGoods_price());
+        price.setText("￥"+data.getGoods_price());
 
         TextView goodid = holder.getView(R.id.h_goodid);
         goodid.setText(data.getGoods_id());
