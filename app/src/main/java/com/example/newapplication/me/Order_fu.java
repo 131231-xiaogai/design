@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.newapplication.Adapter.OrderAdapter;
 import com.example.newapplication.Adapter.Order_fu_Adapter;
@@ -35,6 +36,7 @@ public class Order_fu extends AppCompatActivity implements View.OnClickListener 
     ImageButton title_back;
     TextView ord_fu;
     TextView fa,tui,shou;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     private Order_fu_Adapter order_fu_adapter;
     RecyclerView s_recycle_view;
@@ -63,11 +65,17 @@ public class Order_fu extends AppCompatActivity implements View.OnClickListener 
                 Intent intent = new Intent(Order_fu.this, ItemDetailActivity.class);
                 intent.putExtra("hgoodid", da);
                 startActivityForResult(intent,1);
-
-
             }
         });
         //------------------------------------/
+        swipeRefreshLayout=findViewById(R.id.swipeRefreshLayout_fu);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                LoData();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
         LoData();
         OnClickListener();
     }

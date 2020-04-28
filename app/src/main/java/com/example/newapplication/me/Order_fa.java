@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.newapplication.Adapter.OrderAdapter;
 import com.example.newapplication.R;
@@ -38,6 +39,7 @@ public class Order_fa extends AppCompatActivity implements View.OnClickListener 
     private  Button btn_fa;
     private OrderAdapter orderAdapter;
     RecyclerView s_recycle_view;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +69,14 @@ public class Order_fa extends AppCompatActivity implements View.OnClickListener 
         fa.setBackground(getResources().getDrawable(R.drawable.button_bg3));
         fa.setTextColor(this.getResources().getColor(R.color.white));
         //
+        swipeRefreshLayout=findViewById(R.id.swipeRefreshLayout_fa);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                LoData();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
         LoData();
         //

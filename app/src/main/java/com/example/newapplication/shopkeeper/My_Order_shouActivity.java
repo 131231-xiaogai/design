@@ -34,11 +34,9 @@ public class My_Order_shouActivity extends AppCompatActivity implements View.OnC
     private TextView title_page;
     private ImageButton title_back, btn_notice;
     private String shop_id, status;
-
     private Sk_Order_shouAdapter sk_order_shouAdapter;
     private RecyclerView s_recycle_view;
-
-
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,10 +54,6 @@ public class My_Order_shouActivity extends AppCompatActivity implements View.OnC
             @Override
             public void onItemClick(RecyclerViewHolder viewHolder, OrderBean data, int position) {
                 Toast.makeText(My_Order_shouActivity.this, data.getGoods_id(), Toast.LENGTH_SHORT).show();
-//                String da = data.getGoods_id();
-//                Intent intent = new Intent(My_OrderActivity.this, ItemDetailActivity.class);
-//                intent.putExtra("hgoodid", da);
-//                startActivityForResult(intent,1);
             }
         });
         //
@@ -69,7 +63,15 @@ public class My_Order_shouActivity extends AppCompatActivity implements View.OnC
         status = pagename_integer.getStringExtra("order_status");
         title_page.setText(name);
         Log.d("WalletpagaActivity", name);
-
+        //
+        swipeRefreshLayout=findViewById(R.id.swipeRefreshLayout_sk);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                LoData();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
         LoData();
         OnClickListener();
 

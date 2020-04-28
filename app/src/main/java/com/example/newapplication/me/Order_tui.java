@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.newapplication.Adapter.OrderAdapter;
 import com.example.newapplication.Adapter.Order_tui_Adapter;
@@ -37,6 +38,7 @@ public class Order_tui extends AppCompatActivity implements View.OnClickListener
     TextView fa,fu,tui,shou;
     private Order_tui_Adapter order_tui_adapter;
     RecyclerView s_recycle_view;
+    private SwipeRefreshLayout swipeRefreshLayout;
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.m_order_tui);
@@ -64,8 +66,15 @@ public class Order_tui extends AppCompatActivity implements View.OnClickListener
                 startActivityForResult(intent,1);
             }
         });
-
         //-------------------------------/
+        swipeRefreshLayout=findViewById(R.id.swipeRefreshLayout_tui);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                LoData();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
         LoData();
         //
         OnClickListener();

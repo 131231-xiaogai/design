@@ -8,6 +8,7 @@ package com.example.newapplication.new_utill;
 
 public class Result<T> {
 
+
     private String code;
 
     private String message;

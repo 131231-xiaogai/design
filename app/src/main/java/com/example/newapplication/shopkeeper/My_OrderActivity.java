@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.newapplication.Adapter.OrderAdapter;
 import com.example.newapplication.Adapter.Sk_OrderAdapter;
@@ -39,9 +40,9 @@ public class My_OrderActivity extends AppCompatActivity implements View.OnClickL
     private TextView title_page;
     private ImageButton title_back,btn_notice;
     private String shop_id,status;
-
     private Sk_OrderAdapter sk_orderAdapter;
     private RecyclerView s_recycle_view;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +74,15 @@ public class My_OrderActivity extends AppCompatActivity implements View.OnClickL
         status = pagename_integer.getStringExtra("order_status");
         title_page.setText(name);
         Log.d("WalletpagaActivity",name);
-
+        //
+        swipeRefreshLayout=findViewById(R.id.swipeRefreshLayout_sk);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                LoData();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
         LoData();
         OnClickListener();
 
@@ -91,7 +100,6 @@ public class My_OrderActivity extends AppCompatActivity implements View.OnClickL
             public void onResponse(Result<List<OrderBean>> response) {
 
               sk_orderAdapter.setNewData(response.getData());
-
 
             }
             @Override

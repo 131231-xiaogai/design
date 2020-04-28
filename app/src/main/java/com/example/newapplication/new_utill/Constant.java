@@ -49,4 +49,6 @@ public class Constant {
     public static String update_user_balance =BASE_URL+"/Update_user_balance";
     public static String select_message =BASE_URL+"/Select_message";
     public static String select_message_byshopid =BASE_URL+"/Select_message_byshopid";
+
+    public static String selece_order_totalprice =BASE_URL+"/Selece_order_totalprice";
 }

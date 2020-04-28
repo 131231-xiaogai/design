@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.newapplication.entity.OrderBean;
 import com.example.newapplication.entity.ShopBean;
 import com.example.newapplication.entity.UsersBean;
 import com.example.newapplication.new_utill.Constant;
@@ -17,7 +18,6 @@ import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.new_utill.SharePrefrenceUtil;
-import com.example.newapplication.newpage.Notice;
 import com.example.newapplication.newpage.Sk_Notice;
 import com.example.newapplication.shopkeeper.AddGoodsActivity;
 import com.example.newapplication.shopkeeper.DeletedGoodsActivity;
@@ -35,8 +35,8 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
     String myshop_id,pagename,myshop_name;
     String pagenumber,isshop;
     TextView my_shop_name,my_shop_address,me_shop_register_time,me_shop_phone,my_shop_sorc,sk_huan;
-    TextView k_add,k_delete,k_change,me_shop_name,me_shop_blance;
-    ImageButton btn_notice;
+    TextView k_add,k_delete,k_change,me_shop_name,me_shop_blance,s_totalprice;
+    ImageButton btn_notice,title_back;
     private TextView fu,fa,shou;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +47,7 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         my_shop_address=findViewById(R.id.my_shop_address);
         me_shop_register_time=findViewById(R.id.me_shop_register_time);
         me_shop_phone=findViewById(R.id.me_shop_phone);
+        title_back=findViewById(R.id.title_back);
         my_shop_sorc=findViewById(R.id.my_shop_sorc);
         k_delete=findViewById(R.id.k_delete);
         k_change=findViewById(R.id.k_change);
@@ -56,12 +57,10 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         me_shop_name=findViewById(R.id.me_shop_username);
         me_shop_blance=findViewById(R.id.me_shop_blance);
         sk_huan=findViewById(R.id.sk_huan);
-
+        s_totalprice=findViewById(R.id.s_totalprice);
         //
-
         OnClickListener();
         loadData();
-
     }
 
     private void loadData() {
@@ -70,7 +69,6 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         String user_blance = SharePrefrenceUtil.getObject(ShopkeeperActivity.this, UsersBean.class).getBalance();
         Map map = new HashMap();
         map.put("user_id",user_id);
-
         OkHttp.get(this, Constant.select_shop_by_userid, map, new OkCallback<Result<ShopBean>>() {
             @Override
             public void onResponse(Result<ShopBean> response) {
@@ -99,7 +97,28 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
                     my_shop_name.setText("注册我的店铺");
                     isshop="0";
                 }
+                shop_totoprice();
             }
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(ShopkeeperActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void shop_totoprice() {
+        Map map = new HashMap();
+        map.put("shop_id",myshop_id);
+
+        OkHttp.get(this, Constant.selece_order_totalprice, map, new OkCallback<Result<List<OrderBean>>>() {
+            @Override
+            public void onResponse(Result<List<OrderBean>> response) {
+                double totalPrice=0;
+                for (int i = 0; i < response.getData().size(); i++) {
+                    totalPrice= totalPrice+Double.valueOf(response.getData().get(i).getTotal_price());
+                }
+                s_totalprice.setText("￥"+totalPrice);
+        }
             @Override
             public void onFailure(String state, String msg) {
                 Toast.makeText(ShopkeeperActivity.this, msg, Toast.LENGTH_SHORT).show();
@@ -121,6 +140,7 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         shou.setOnClickListener(this);
         sk_huan.setOnClickListener(this);
         btn_notice.setOnClickListener(this);
+        title_back.setOnClickListener(this);
     }
 
 
@@ -171,6 +191,9 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
                 Intent intent5 = new Intent(ShopkeeperActivity.this, Sk_Notice.class);
                 intent5.putExtra("my_shop_id",myshop_id);
                 startActivity(intent5);
+                break;
+            case R.id.title_back:
+                ShopkeeperActivity.this.finish();
                 break;
         }
     }

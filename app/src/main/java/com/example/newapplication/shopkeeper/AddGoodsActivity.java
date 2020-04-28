@@ -7,7 +7,10 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -46,9 +49,13 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
     ImageView add_img;
     EditText add_name, add_price, add_yajin, add_saize;
     Button btn_add, btn_addimg;
-    Spinner add_type;
-    String shop_name,shop_id;
+    String shop_name,shop_id,good_type,good_actype,good_cltype;
     private ImageButton a_title_back,a_notice;
+
+    Spinner add_type;
+    private String[] starAdapter ={"西装","唐装","卡通服","礼服","汉服","首饰","鞋子","其他一","辩论赛",
+            "舞蹈类","音乐类","运动类","话剧/小品","其他二"};
+    private ArrayAdapter<String> marrayAdapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +64,6 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
         add_name = findViewById(R.id.add_name);
         add_price = findViewById(R.id.add_price);
         add_saize = findViewById(R.id.add_saize);
-        add_type =findViewById(R.id.add_type);;
         add_yajin = findViewById(R.id.add_yajin);
         btn_add = findViewById(R.id.btn_add);
         btn_addimg = findViewById(R.id.btn_addimg);
@@ -70,6 +76,35 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
         shop_id = goodid_integer.getStringExtra("my_shop_id");
         //
         OnClickListener();
+//        spinner_typr();
+        //----------------------//
+        Spinner sp = findViewById(R.id.add_type);
+        marrayAdapter = new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item,starAdapter);
+        sp.setAdapter(marrayAdapter);
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(AddGoodsActivity.this,"您选择的是"+starAdapter[position],Toast.LENGTH_LONG).show();
+                if (starAdapter[position].equals("西装")){ good_type="1"; }
+                if (starAdapter[position]=="唐装"){ good_type="2"; }
+                if (starAdapter[position]=="卡通服"){ good_type="3"; }
+                if (starAdapter[position]=="礼服"){ good_type="4"; }
+                if (starAdapter[position]=="汉服"){ good_type="5"; }
+                if (starAdapter[position]=="首饰"){ good_type="6"; }
+                if (starAdapter[position]=="鞋子"){ good_type="7"; }
+                if (starAdapter[position]=="其他一"){ good_type="8"; }
+                if (starAdapter[position]=="辩论赛"){ good_type="51"; }
+                if (starAdapter[position]=="舞蹈类"){ good_type="52"; }
+                if (starAdapter[position]=="音乐类"){ good_type="53"; }
+                if (starAdapter[position]=="运动类"){ good_type="54"; }
+                if (starAdapter[position]=="话剧/小品"){ good_type="55"; }
+                if (starAdapter[position]=="其他二") { good_type = "56"; }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private void OnClickListener() {
@@ -96,7 +131,20 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
             case R.id.add_yajin:
                 break;
             case R.id.btn_add:
-                add_good();
+                if (good_type.length()>1) {
+                    good_cltype="0";
+                    good_actype=good_type;
+                    Log.d("新添加商品按活动分类编号为",good_actype);
+                    Log.d("新添加商品按衣服分类编号为",good_cltype);
+                    add_good_activity(good_cltype,good_actype);
+                }else {
+                    good_cltype=good_type;
+                    good_actype="00";
+                    Log.d("新添加商品按活动分类编号为",good_actype);
+                    Log.d("新添加商品按衣服分类编号为",good_cltype);
+                    add_good_clothes(good_cltype,good_actype);
+                }
+
                 break;
             case R.id.add_saize:
                 break;
@@ -113,7 +161,6 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
                 break;
         }
     }
-
     private void choosephoto() {
         Matisse.from(this)
                 .choose(MimeType.ofAll())//资源的类型，比如现在这个设置是照片视频全部显示
@@ -127,17 +174,47 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
                 .forResult(REQUEST_CODE_CHOOSE);//请求码
     }
 
+    private void add_good_activity(String good_cltype,String good_actype) {
+        Map map=new HashMap<>();
 
-    private void add_good() {
+        map.put("good_name",add_name.getText().toString());
+        map.put("goods_price",add_price.getText().toString());
+        map.put("goods_yajin",add_yajin.getText().toString());
+        map.put("goods_size_id",add_saize.getText().toString());
+        map.put("shop_id",shop_id);
+        map.put("shop_name",shop_name);
+        map.put("type_id",good_cltype);
+        map.put("type_activity_id",good_actype);
+        OkHttp.upload(this, Constant.publicgoods, map, mSelected, new OkCallback<Result<String>>() {
+            @Override
+            public void onResponse( Result<String> response) {
+                Toast.makeText(AddGoodsActivity.this,"上传成功。",Toast.LENGTH_SHORT).show();
+                add_yajin.getText().clear();
+                add_saize.getText().clear();
+                add_price.getText().clear();
+                add_name.getText().clear();
+
+            }
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(AddGoodsActivity.this,"上传失败。",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+    private void add_good_clothes(String good_cltype,String good_actype) {
+
 
         Map map=new HashMap<>();
 
         map.put("good_name",add_name.getText().toString());
         map.put("goods_price",add_price.getText().toString());
         map.put("goods_yajin",add_yajin.getText().toString());
-        map.put("goods_type_id",add_saize.getText().toString());
+        map.put("goods_size_id",add_saize.getText().toString());
         map.put("shop_id",shop_id);
         map.put("shop_name",shop_name);
+        map.put("type_id",good_cltype);
+        map.put("type_activity_id",good_actype);
         OkHttp.upload(this, Constant.publicgoods, map, mSelected, new OkCallback<Result<String>>() {
             @Override
             public void onResponse( Result<String> response) {
