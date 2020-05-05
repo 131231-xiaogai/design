@@ -45,13 +45,11 @@ public class Submit_OrderAdapter extends BaseRecyclerViewAdapter<Shooping_carBea
         }
         Glide.with(mContext).load(data.getGood_img()).into(ivShop);
         tvShopName.setText(data.getGood_name());
-        tvPrice.setText("￥"+data.getGood_price());
+        tvPrice.setText("单价：￥"+data.getGood_price()+"  "+"押 金："+data.getGoods_yajin());
         tvCount.setText(data.getGood_number());
-
         holder.addOnClickListener(R.id.iv_is_select);
         ivAdd.setEnabled(false);
         ivMinus.setEnabled(false);
-
 
     }
 
@@ -75,7 +73,7 @@ public class Submit_OrderAdapter extends BaseRecyclerViewAdapter<Shooping_carBea
         double totalPrice = 0;
         for (Shooping_carBean allDatum : getAllData()) {
             if (allDatum.isSelect()) {
-                totalPrice = totalPrice + Double.valueOf(allDatum.getGood_number()) * Double.valueOf(allDatum.getGood_price());
+                totalPrice = totalPrice + Double.valueOf(allDatum.getGood_number()) * Double.valueOf(allDatum.getGood_price())+Double.valueOf(allDatum.getGoods_yajin());
             }
         }
         return totalPrice;

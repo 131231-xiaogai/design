@@ -65,7 +65,7 @@
                     android:id="@+id/addoder_adresstatal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="收 货 人 地 址：大概"
+                    android:text="收 货 人 地 址："
                     android:textSize="18sp" />
 
                 <TextView
@@ -73,7 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:text="收 货 人 地 址：详细"
+                    android:text=""
                     android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>

@@ -38,12 +38,12 @@ public class Order_shou_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recyc
         Glide.with(mContext).load(data.getGood_img()).into(imageView);
 
         TextView price = holder.getView(R.id.order_shou_price);
-        price.setText("￥"+data.getGood_price());
+        price.setText("单 价 ： ￥"+data.getGood_price()+"租 金 ：￥"+data.getGoods_yajin());
 
         TextView number = holder.getView(R.id.order_shou_goodNumber);
-        number.setText(data.getGood_number());
+        number.setText("数 量 ："+data.getGood_number());
         TextView total = holder.getView(R.id.order_shou_total);
-        total.setText("￥"+data.getTotal_price());
+        total.setText("总 金 额 ：￥"+data.getTotal_price());
 
         TextView shou = holder.getView(R.id.shou);
 
@@ -68,9 +68,11 @@ public class Order_shou_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recyc
                             public void onResponse(Result<String> response) {
                                 Toast.makeText(mContext, "订单已签收。", Toast.LENGTH_SHORT).show();
                                 //给商家加钱
-                                String a =  data.getTotal_price();
+                                String a =  data.getTotal_price();//订单总价
+                                String b =  data.getGoods_yajin();//订单押金
+                                String c = Double.valueOf(a)-Double.valueOf(b)+"";
                                 String shop_id = data.getShop_id();
-                                select_userid_byShopId (a,shop_id);
+                                select_userid_byShopId (c,shop_id);
                             }
                             @Override
                             public void onFailure(String state, String msg) {
@@ -89,7 +91,7 @@ public class Order_shou_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recyc
         });
     }
 
-    public void select_userid_byShopId(String a,String shop_id){
+    public void select_userid_byShopId(String c,String shop_id){
         Map map = new HashMap();
         map.put("shop_id",shop_id);
         Log.d("收款的商家编号是：", shop_id);
@@ -99,7 +101,7 @@ public class Order_shou_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recyc
                 //给商家加钱
                 String user_id = response.getData().getUser_id();
 
-                select_userblance(a,user_id);
+                select_userblance(c,user_id);
             }
             @Override
             public void onFailure(String state, String msg) {
@@ -108,7 +110,7 @@ public class Order_shou_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recyc
         });
     }
 
-    private void select_userblance(String a,String user_id) {
+    private void select_userblance(String c,String user_id) {
         Map map = new HashMap();
         map.put("muser_id",user_id);
         Log.d("收款的用户编号是：", user_id);
@@ -118,7 +120,7 @@ public class Order_shou_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recyc
                 //给商家加钱
                 String user_id = response.getData().getUerid();
                 double old_user_blance =Double.valueOf(response.getData().getBalance());
-                double new_user_blance = Double.valueOf(a)+old_user_blance;
+                double new_user_blance = Double.valueOf(c)+old_user_blance;
                 add_shopbalance(new_user_blance+"",user_id);
             }
             @Override
@@ -134,12 +136,10 @@ public class Order_shou_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recyc
         Map map = new HashMap();
         map.put("user_id", user_id);
         map.put("totalprice", new_user_blance);
-        Log.d("收款金额是",new_user_blance);
         OkHttp.get(mContext, Constant.update_shop_balance, map, new OkCallback<Result<String>>() {
             @Override
             public void onResponse(Result<String> response) {
                 Log.d("已经向商家付款，商家总金额是",new_user_blance);
-
             }
 
             @Override

@@ -97,8 +97,6 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
                 }
             }
         });
-
-
     }
 
     @Override
@@ -138,7 +136,7 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
         String userId = "";
         for (Shooping_carBean shooping_carBean : list) {
             userId = shooping_carBean.getUser_id();
-            totalPrice = Double.valueOf(shooping_carBean.getGood_number()) * Double.valueOf(shooping_carBean.getGood_price()) + totalPrice;
+            totalPrice = Double.valueOf(shooping_carBean.getGood_number()) * Double.valueOf(shooping_carBean.getGood_price())+Double.valueOf(shooping_carBean.getGoods_yajin()) + totalPrice;
         }
         AlertDialog.Builder dialog;
         dialog = new AlertDialog.Builder(SettlementActivity.this);
@@ -152,7 +150,7 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
                 String userId = "";
                 for (Shooping_carBean shooping_carBean : list) {
                     userId = shooping_carBean.getUser_id();
-                    totalPrice = Double.valueOf(shooping_carBean.getGood_number()) * Double.valueOf(shooping_carBean.getGood_price()) + totalPrice;
+                    totalPrice = Double.valueOf(shooping_carBean.getGood_number()) * Double.valueOf(shooping_carBean.getGood_price())+Double.valueOf(shooping_carBean.getGoods_yajin()) + totalPrice;
                 }
                 pay(list, userId, totalPrice + "");
             }
@@ -164,7 +162,7 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
                 String userId = "";
                 for (Shooping_carBean shooping_carBean : list) {
                     userId = shooping_carBean.getUser_id();
-                    totalPrice = Double.valueOf(shooping_carBean.getGood_number()) * Double.valueOf(shooping_carBean.getGood_price()) + totalPrice;
+                    totalPrice = Double.valueOf(shooping_carBean.getGood_number()) * Double.valueOf(shooping_carBean.getGood_price())+Double.valueOf(shooping_carBean.getGoods_yajin())+ totalPrice;
                 }
                 pay1(list, userId, totalPrice + "");
             }
@@ -197,7 +195,6 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
         OkHttp.get(this, Constant.update_user_balance, map, new OkCallback<Result<String>>() {
             @Override
             public void onResponse(Result<String> response) {
-
                 submit_order(list);
             }
 
@@ -228,10 +225,11 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
             map.put("good_name", shooping_carBean.getGood_name());
             map.put("good_number", shooping_carBean.getGood_number());
             map.put("good_price", shooping_carBean.getGood_price());
-            map.put("total_price", Double.valueOf(shooping_carBean.getGood_number()) * Double.valueOf(shooping_carBean.getGood_price()) + "");
+            map.put("total_price", Double.valueOf(shooping_carBean.getGood_number()) * Double.valueOf(shooping_carBean.getGood_price()) +Double.valueOf(shooping_carBean.getGoods_yajin())+ "");
             map.put("good_img", shooping_carBean.getGood_img());
             map.put("shop_id", shooping_carBean.getShop_id());
             map.put("order_code", orderCode);
+            map.put(",goods_yajin",shooping_carBean.getGoods_yajin());
             OkHttp.get(this, Constant.add_order, map, new OkCallback<Result<List<AddressBean>>>() {
                 @Override
                 public void onResponse(Result<List<AddressBean>> response) {
@@ -313,7 +311,7 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
             map.put("good_name", shooping_carBean.getGood_name());
             map.put("good_number", shooping_carBean.getGood_number());
             map.put("good_price", shooping_carBean.getGood_price());
-            map.put("total_price", Double.valueOf(shooping_carBean.getGood_number()) * Double.valueOf(shooping_carBean.getGood_price()) + "");
+            map.put("total_price", Double.valueOf(shooping_carBean.getGood_number()) * Double.valueOf(shooping_carBean.getGood_price())+Double.valueOf(shooping_carBean.getGoods_yajin()) + "");
             map.put("good_img", shooping_carBean.getGood_img());
             map.put("shop_id", shooping_carBean.getShop_id());
             map.put("order_code", orderCode);

@@ -62,15 +62,26 @@ public class WalletpagaActivity extends AppCompatActivity implements View.OnClic
             OnClickListener();
             lodata();
         }
+        public void finish_reback(View v){
+            WalletpagaActivity.this.finish();
+        }
 
         private void lodata() {
-            String balance = SharePrefrenceUtil.getObject(WalletpagaActivity.this, UsersBean.class).getBalance();
-            if (balance == null || balance.isEmpty()) {
-                mbalance.setText("0.00");
-            } else {
-                mbalance.setText("￥"+balance);
-            }
+            String uerid = SharePrefrenceUtil.getObject(WalletpagaActivity.this, UsersBean.class).getUerid();
+            Map map = new HashMap();
+            map.put("muser_id", uerid);
+            OkHttp.get(WalletpagaActivity.this, Constant.select_user_by_id, map, new OkCallback<Result<UsersBean>>() {
+                @Override
+                public void onResponse(Result<UsersBean> response) {
+                    mbalance.setText("￥" + response.getData().getBalance());
                 }
+                @Override
+                public void onFailure(String state, String msg) {
+                    Toast.makeText(WalletpagaActivity.this, msg, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
 
         private void OnClickListener(){
             P_notice.setOnClickListener(this);

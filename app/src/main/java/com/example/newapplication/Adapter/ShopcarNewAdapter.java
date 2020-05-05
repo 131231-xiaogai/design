@@ -52,7 +52,7 @@ public class ShopcarNewAdapter extends BaseRecyclerViewAdapter<Shooping_carBean,
         ivMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.valueOf(tvCount.getText().toString()) <= 1) {
+                if (Integer.valueOf(tvCount.getText().toString()) <1) {
                     Toast.makeText(mContext, "不能再减少了", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
@@ -122,7 +122,7 @@ public class ShopcarNewAdapter extends BaseRecyclerViewAdapter<Shooping_carBean,
         double totalPrice = 0;
         for (Shooping_carBean allDatum : getAllData()) {
             if (allDatum.isSelect()) {
-                totalPrice = totalPrice + Double.valueOf(allDatum.getGood_number()) * Double.valueOf(allDatum.getGood_price());
+                totalPrice = totalPrice + Double.valueOf(allDatum.getGood_number()) * Double.valueOf(allDatum.getGood_price())+Double.valueOf(allDatum.getGoods_yajin());
             }
         }
         return totalPrice;

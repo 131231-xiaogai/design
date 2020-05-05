@@ -20,6 +20,15 @@ public class OrderBean {
 	private String good_img;
 	private String shop_id;
 	private String order_code;
+	private String goods_yajin;
+
+	public String getGoods_yajin() {
+		return goods_yajin;
+	}
+
+	public void setGoods_yajin(String goods_yajin) {
+		this.goods_yajin = goods_yajin;
+	}
 
 	public String getOrder_code() {
 		return order_code;

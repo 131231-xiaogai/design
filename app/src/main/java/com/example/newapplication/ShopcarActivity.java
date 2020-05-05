@@ -80,15 +80,13 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
                         allDatum.setSelect(true);
                     }
                     shopcarAdapter.notifyDataSetChanged();
-                    //double totalPrice = shopcarAdapter.totalPrice();
-                    //tvTotalPrice.setText("￥" + totalPrice);
+
                 } else {
                     iv_all_select2.setImageResource(R.mipmap.unselect);
                     for (Shooping_carBean allDatum : shopcarAdapter.getAllData()) {
                         allDatum.setSelect(false);
                     }
                     shopcarAdapter.notifyDataSetChanged();
-                    //tvTotalPrice.setText("￥0.00");
                 }
 
             }
