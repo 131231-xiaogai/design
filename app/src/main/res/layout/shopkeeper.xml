@@ -111,7 +111,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="19sp"
-                    android:text=" 我 的 收 益 :"
+                    android:text=" 我 的 收 入 :"
                     android:background="#fff"/>
                 <TextView
                     android:id="@+id/s_totalprice"

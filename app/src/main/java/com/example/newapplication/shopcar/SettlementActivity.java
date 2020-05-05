@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -44,7 +45,6 @@ import java.util.Map;
 
 public class SettlementActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView addoderaddress, name, phone, detail_address, total_address, sub_order;
-
     private Submit_OrderAdapter shopcarAdapter;
     private RecyclerView s_recycle_view;
     private String mname;
@@ -57,6 +57,7 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
     private String address_id;
     private String deliver;
     private List shopcards;
+    private ImageButton bk;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,26 +72,21 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
         sub_order = findViewById(R.id.sub_order);
         s_recycle_view = findViewById(R.id.syb_order_recycle_view);
         sub_order.setOnClickListener(this);
+        bk=findViewById(R.id.bk);
+        bk.setOnClickListener(this);
 
         rg = (RadioGroup) findViewById(R.id.rg);
         rb1 = (RadioButton) findViewById(R.id.rb1);
         rb2 = (RadioButton) findViewById(R.id.rb2);
-
-
         //-----------
         Intent intent = getIntent();
-
-
         shopcards = (List<Shooping_carBean>) intent.getSerializableExtra("shopcards");
-
-
         //---------
         s_recycle_view.setLayoutManager(new LinearLayoutManager(this));
         shopcarAdapter = new Submit_OrderAdapter(this);
         shopcarAdapter.setNewData(shopcards);
         s_recycle_view.setAdapter(shopcarAdapter);
         shopcarAdapter.notifyDataSetChanged();
-
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -131,10 +127,12 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
             case R.id.sub_order:
                 ispay(shopcards);
                 break;
+            case R.id.bk:
+                SettlementActivity.this.finish();
+                break;
         }
-
     }
-
+    //是否付款的弹窗提示
     private void ispay(List<Shooping_carBean> list) {
         double totalPrice = 0;
         String userId = "";
@@ -144,7 +142,6 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
         }
         AlertDialog.Builder dialog;
         dialog = new AlertDialog.Builder(SettlementActivity.this);
-
         dialog.setTitle("提示");
         dialog.setMessage(String.format("是否支付以下金额：￥%s",totalPrice));
         dialog.setCancelable(false);
@@ -163,22 +160,44 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
         dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                double totalPrice = 0;
+                String userId = "";
+                for (Shooping_carBean shooping_carBean : list) {
+                    userId = shooping_carBean.getUser_id();
+                    totalPrice = Double.valueOf(shooping_carBean.getGood_number()) * Double.valueOf(shooping_carBean.getGood_price()) + totalPrice;
+                }
+                pay1(list, userId, totalPrice + "");
             }
         });
         dialog.show();
-
-
     }
 
-    private void pay(List<Shooping_carBean> list, String userId, String totalPrice) {
+    //付款未成功
+    private void pay1(List<Shooping_carBean> list, String userId, String totalPrice) {
+        Map map = new HashMap();
+        map.put("uerid", userId);
+        map.put("price", "0");
+        OkHttp.get(this, Constant.update_user_balance, map, new OkCallback<Result<String>>() {
+            @Override
+            public void onResponse(Result<String> response) {
+                submit_order1(list);
+            }
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(SettlementActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
+    //付款成功的扣款
+    private void pay(List<Shooping_carBean> list, String userId, String totalPrice) {
         Map map = new HashMap();
         map.put("uerid", userId);
         map.put("price", totalPrice);
         OkHttp.get(this, Constant.update_user_balance, map, new OkCallback<Result<String>>() {
             @Override
             public void onResponse(Result<String> response) {
+
                 submit_order(list);
             }
 
@@ -189,6 +208,7 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
         });
     }
 
+    //付款成功生成的订单
     private void submit_order(List<Shooping_carBean> shooping_carBeans) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date date = new Date();
@@ -212,14 +232,108 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
             map.put("good_img", shooping_carBean.getGood_img());
             map.put("shop_id", shooping_carBean.getShop_id());
             map.put("order_code", orderCode);
-
-
             OkHttp.get(this, Constant.add_order, map, new OkCallback<Result<List<AddressBean>>>() {
                 @Override
                 public void onResponse(Result<List<AddressBean>> response) {
                     // addressAdapter.setNewData(response.getData());
+                    Toast.makeText(SettlementActivity.this, "付款成功。", Toast.LENGTH_SHORT).show();
+                    String good_id=shooping_carBean.getGoods_id();
+                    String car_good_number=shooping_carBean.getGood_number();
+                    change_goodnumber(good_id,car_good_number);
+                    change_shopcarStatus(shooping_carBean.getId());
+                    //
+                    Intent intent = new Intent();
+                    intent.putExtra("data_return","从付款成功返回购物车页面");
+                    setResult(RESULT_OK,intent);
+                    Log.d("从付款成功返回购物车页面","shopcar");
+                    SettlementActivity.this.finish();
                 }
+                @Override
+                public void onFailure(String state, String msg) {
+                    Toast.makeText(SettlementActivity.this, msg, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
 
+    //改变购物车状态
+    private void change_shopcarStatus(String shopacrId) {
+        Map map = new HashMap();
+        map.put("shopacrId", shopacrId);
+        map.put("shop_car_status","1");//0未形成订单，1为已形成订单
+        OkHttp.get(this, Constant.update_shopcarStatus, map, new OkCallback<Result<String>>() {
+            @Override
+            public void onResponse(Result<String> response) {
+                Log.d("形成订单的购物车编号",shopacrId);
+            }
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(SettlementActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    //修改商品数量
+    private void change_goodnumber(String good_id,String car_good_number) {
+        Map map = new HashMap();
+        map.put("good_id", good_id);
+        map.put("car_good_number", car_good_number);
+        OkHttp.get(this, Constant.update_goodNumber, map, new OkCallback<Result<String>>() {
+            @Override
+            public void onResponse(Result<String> response) {
+                Log.d("顾客租走的数量",car_good_number);
+            }
+
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(SettlementActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    //取消付款生成的订单
+    private void submit_order1(List<Shooping_carBean> shooping_carBeans) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        Date date = new Date();
+        String orderCode = System.currentTimeMillis() + "";
+        for (Shooping_carBean shooping_carBean : shooping_carBeans) {
+            Map map = new HashMap();
+            map.put("order_rent_validation_time", simpleDateFormat.format(date));
+            map.put("order_rent_finesh_time", beforeAfterDate(5));
+            map.put("order_creat_time", simpleDateFormat.format(date));
+            map.put("order_getgoods_time", beforeAfterDate(1));
+            map.put("order_status", "1");
+            map.put("order_remark", "");
+            map.put("user_id", shooping_carBean.getUser_id());
+            map.put("goods_id", shooping_carBean.getGoods_id());
+            map.put("address", address_id);
+            map.put("deliver", deliver);
+            map.put("good_name", shooping_carBean.getGood_name());
+            map.put("good_number", shooping_carBean.getGood_number());
+            map.put("good_price", shooping_carBean.getGood_price());
+            map.put("total_price", Double.valueOf(shooping_carBean.getGood_number()) * Double.valueOf(shooping_carBean.getGood_price()) + "");
+            map.put("good_img", shooping_carBean.getGood_img());
+            map.put("shop_id", shooping_carBean.getShop_id());
+            map.put("order_code", orderCode);
+            OkHttp.get(this, Constant.add_order, map, new OkCallback<Result<List<AddressBean>>>() {
+                @Override
+                public void onResponse(Result<List<AddressBean>> response) {
+                    // addressAdapter.setNewData(response.getData());
+                    Toast.makeText(SettlementActivity.this, "您已经取消付款，可以到待付款界面查看该订单。", Toast.LENGTH_SHORT).show();
+                    String good_id=shooping_carBean.getGoods_id();
+                    String car_good_number=shooping_carBean.getGood_number();
+                    change_goodnumber(good_id,car_good_number);
+                    change_shopcarStatus(shooping_carBean.getId());
+                    //
+
+                    Intent intent = new Intent();
+                    intent.putExtra("data_return","从取消付款返回购物车页面");
+                    setResult(RESULT_OK,intent);
+                    Log.d("从取消付款返回购物车页面","shopcar");
+                    SettlementActivity.this.finish();
+                }
                 @Override
                 public void onFailure(String state, String msg) {
                     Toast.makeText(SettlementActivity.this, msg, Toast.LENGTH_SHORT).show();
@@ -228,8 +342,8 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
         }
 
     }
-    //获取当前时间前后几天的时间
 
+    //获取当前时间前后几天的时间
     public static String beforeAfterDate(int days) {
 
         long nowTime = System.currentTimeMillis();
@@ -240,8 +354,7 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
 
     }
 
-//时间戳转字符串
-
+    //时间戳转字符串
     public static String getStrTime(String timeStamp, String format) {
 
         String timeString = null;
@@ -255,5 +368,6 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
         return timeString;
 
     }
+
 
 }

@@ -191,6 +191,13 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
                     loadData();
                 }
                 break;
+            case 2:
+                if (resultCode == RESULT_OK) {
+                    String data_return = data.getStringExtra("data_return");
+                    Log.d("从结算页面返回", data_return);
+                    loadData();
+                }
+                break;
             default:
         }
     }
@@ -200,7 +207,7 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
 
         Map map = new HashMap();
         map.put("user_id", user_id);
-
+        map.put("shop_car_status","0");//0未形成订单，1为已形成订单
         OkHttp.get(this, Constant.select_shopcar_by_userid, map, new OkCallback<Result<List<Shooping_carBean>>>() {
             @Override
             public void onResponse(Result<List<Shooping_carBean>> response) {
@@ -253,7 +260,7 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
                 Intent intent = new Intent(ShopcarActivity.this, SettlementActivity.class);
                 List<Shooping_carBean> shopCards = getShopCards();
                 intent.putExtra("shopcards", (Serializable) shopCards);
-                startActivity(intent);
+                startActivityForResult(intent,2);
                 break;
         }
     }
@@ -268,5 +275,6 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
         }
         return shooping_carBeans;
     }
+
 
 }

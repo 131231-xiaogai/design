@@ -73,6 +73,11 @@
         <activity android:name=".shopcar.SettlementActivity"/>
         <activity android:name=".shopcar.ChooseAddressActivity"/>
         <activity android:name=".newpage.Sk_Notice"/>
+        <activity android:name=".me.Update_bodyData"/>
+        <activity android:name=".Administrators.Adm_dj_gk"/>
+        <activity android:name=".Administrators.Adm_dj_sj"/>
+        <activity android:name=".Administrators.Adm_qxdj_guke"/>
+        <activity android:name=".Administrators.Adm_qxdj_sj"/>
     </application>
 
 </manifest>

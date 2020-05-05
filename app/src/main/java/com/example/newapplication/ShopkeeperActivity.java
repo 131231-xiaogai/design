@@ -161,7 +161,7 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
                 intent1.putExtra("page_name","待 顾 客 付 款 订 单");
                 startActivity(intent1);
                 break;
-            case R.id. sk_shou:
+            case R.id. sk_huan:
                 Intent intent3 = new Intent(ShopkeeperActivity.this, My_Order_shouActivity.class);
                 intent3.putExtra("my_shop_id",myshop_id);
                 intent3.putExtra("order_status","4");
@@ -180,7 +180,7 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
             case R.id.k_change:
                 change_goods();
                 break;
-            case R.id.sk_huan:
+            case R.id.sk_shou:
                 Intent intent4 = new Intent(ShopkeeperActivity.this, My_Order_huanActivity.class);
                 intent4.putExtra("my_shop_id",myshop_id);
                 intent4.putExtra("order_status","5");

@@ -44,7 +44,6 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
         good_size=findViewById(R.id.good_size);
         back=findViewById(R.id.back);
         add_to_shopcar =findViewById(R.id.add_to_shopcar);
-        to_pay = findViewById(R.id.to_pay);
         //
         Intent goodid_integer = getIntent();
         String  da = goodid_integer.getStringExtra("hgoodid");
@@ -100,7 +99,7 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
     private void OnClickListener() {
         back.setOnClickListener(this);
         add_to_shopcar.setOnClickListener(this);
-        to_pay.setOnClickListener(this);
+
     }
 
     @Override
@@ -112,8 +111,7 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
             case R.id.add_to_shopcar:
                 addto_shopcar();
                 break;
-            case R.id.to_pay:
-                break;
+
         }
     }
 
@@ -132,6 +130,7 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
         map.put("good_price",data.getGoods_price());
         map.put("good_img",data.getGood_img());
         map.put("shop_name","");
+        map.put("shop_car_status","0");//0未形成订单，1为已形成订单
 
         OkHttp.get(this, Constant.add_to_shopcar, map, new OkCallback<Result<String>>() {
             @Override

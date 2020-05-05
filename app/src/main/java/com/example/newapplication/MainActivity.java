@@ -102,9 +102,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }else if (SharePrefrenceUtil.getObject(MainActivity.this, UsersBean.class).getRole_id().equals("2")){
                         Toast.makeText(MainActivity.this, "登 录 成 功 ！", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(MainActivity.this, ShopkeeperActivity.class));
-                    }else {
+                    }else if (SharePrefrenceUtil.getObject(MainActivity.this, UsersBean.class).getRole_id().equals("3")){
                         Toast.makeText(MainActivity.this, "登 录 成 功 ！", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(MainActivity.this, AdministratorsActivity.class));
+                    }else {
+                        Toast.makeText(MainActivity.this, "该账户已经被冻结，请联系客服。", Toast.LENGTH_SHORT).show();
                     }
                 }else {
                     Toast.makeText(MainActivity.this, "登 录 失 败！", Toast.LENGTH_SHORT).show();

@@ -5,13 +5,23 @@
     android:orientation="vertical"
    >
     <include layout="@layout/pagetitle"/>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout_cz"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
-        android:text="余 额"
-        android:textSize="20sp"/>
+        android:visibility="gone"
+        android:text=" 余 额 "
+        android:textSize="22sp"/>
     <TextView
         android:id="@+id/balance"
         android:layout_width="100dp"
@@ -21,6 +31,41 @@
         android:layout_marginTop="20dp"
         android:text="0元"
         android:layout_gravity="center"/>
+
+    <EditText
+        android:id="@+id/chongzhi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="gone"
+        android:hint="请输充值金额 ："/>
+
+    <TextView
+        android:id="@+id/add_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:visibility="visible"
+        android:background="@drawable/button_bg3"
+        android:text="    我 要 充 值    "
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/to_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:background="@drawable/button_bg3"
+        android:text="    我 要 充 值    "
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+        </LinearLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
 </LinearLayout>

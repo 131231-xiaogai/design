@@ -35,12 +35,12 @@ public class Sk_Order_shouAdapter extends BaseRecyclerViewAdapter<OrderBean, Rec
         Glide.with(mContext).load(data.getGood_img()).into(imageView);
 
         TextView price = holder.getView(R.id.sk_order_shou_price);
-        price.setText(data.getGood_price());
+        price.setText("￥"+data.getGood_price());
 
         TextView number = holder.getView(R.id.sk_order_shou_goodNumber);
         number.setText(data.getGood_number());
         TextView total = holder.getView(R.id.sk_order_shou_total);
-        total.setText(data.getTotal_price());
+        total.setText("￥"+data.getTotal_price());
 
         TextView sk_return=holder.getView(R.id.sk_return);
         //商家提醒顾客及时归还衣物

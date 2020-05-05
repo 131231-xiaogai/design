@@ -16,8 +16,7 @@
             android:layout_height="36dp"
             android:layout_gravity="center_vertical"
             android:layout_margin="5dp"
-            android:background="@mipmap/left"
-            android:onClick="finish_reback" />
+            android:background="@mipmap/left" />
 
         <TextView
 
@@ -41,28 +40,37 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="20sp"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:gravity="center"
-            android:hint=" 体  重 "
+            android:hint=" 体  重 ："
             android:layout_gravity="center"
-            android:layout_weight="1"/>
+           />
         <TextView
+            android:id="@+id/weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:textSize="20sp"
             android:layout_weight="1"
             android:layout_gravity="center"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:layout_weight="1"
-            android:layout_gravity="center"/>
+            android:gravity="left"
+            android:hint=" kg"
+            android:layout_gravity="center"
+            />
 
            />
     </LinearLayout>
@@ -70,206 +78,231 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:gravity="center"
-            android:hint=" 身  高 "
+            android:hint=" 身  高 ："
             android:layout_gravity="center"
-            android:layout_weight="1"/>
+            />
         <TextView
+            android:id="@+id/height"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:textSize="20sp"
             android:layout_weight="1"
             android:layout_gravity="center"/>
         <TextView
-
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-
             android:textSize="20sp"
-            android:gravity="center"
+            android:gravity="left"
+            android:hint=" cm"
             android:layout_gravity="center"
-            android:layout_weight="1"/>
+            />
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:gravity="center"
-            android:hint=" 胸  围 "
+            android:hint=" 胸  围 ："
             android:layout_gravity="center"
-            android:layout_weight="1"/>
+            />
         <TextView
+            android:id="@+id/Bust"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
+            android:gravity="center"
             android:layout_weight="1"
             android:layout_gravity="center"/>
         <TextView
-
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-
             android:textSize="20sp"
-            android:gravity="center"
+            android:gravity="left"
+            android:hint=" kg"
             android:layout_gravity="center"
-            android:layout_weight="1"/>
+            />
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:gravity="center"
-            android:hint=" 腰  围 "
+            android:hint=" 腰  围 ："
             android:layout_gravity="center"
-            android:layout_weight="1"/>
+           />
         <TextView
+            android:id="@+id/The_waist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:textSize="20sp"
             android:layout_weight="1"
             android:layout_gravity="center"/>
         <TextView
-
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-
             android:textSize="20sp"
-            android:gravity="center"
+            android:gravity="left"
+            android:hint=" kg"
             android:layout_gravity="center"
-            android:layout_weight="1"/>
+            />
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:gravity="center"
-            android:hint=" 臀  围 "
+            android:hint=" 臀  围 ："
             android:layout_gravity="center"
-            android:layout_weight="1"/>
+            />
         <TextView
+            android:id="@+id/Hipline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:textSize="20sp"
             android:layout_weight="1"
             android:layout_gravity="center"/>
         <TextView
-
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-
             android:textSize="20sp"
-            android:gravity="center"
+            android:gravity="left"
+            android:hint=" kg"
             android:layout_gravity="center"
-            android:layout_weight="1"/>
+            />
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:gravity="center"
-            android:hint=" 肩  宽 "
+            android:hint=" 肩  宽 ："
             android:layout_gravity="center"
-            android:layout_weight="1"/>
+           />
         <TextView
+            android:id="@+id/Shoulder_width"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:textSize="20sp"
             android:layout_weight="1"
             android:layout_gravity="center"/>
         <TextView
-
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-
             android:textSize="20sp"
-            android:gravity="center"
+            android:gravity="left"
+            android:hint=" kg"
             android:layout_gravity="center"
-            android:layout_weight="1"/>
+            />
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:gravity="center"
-            android:hint=" 衣  长 "
+            android:hint=" 衣  长 ："
             android:layout_gravity="center"
-            android:layout_weight="1"/>
+          />
         <TextView
+            android:id="@+id/Clothing_length"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
+            android:gravity="center"
             android:layout_weight="1"
             android:layout_gravity="center"/>
         <TextView
-
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-
             android:textSize="20sp"
-            android:gravity="center"
+            android:gravity="left"
+            android:hint=" kg"
             android:layout_gravity="center"
-            android:layout_weight="1"/>
+            />
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:gravity="center"
-            android:hint=" 裤  长"
+            android:hint=" 裤  长 ："
             android:layout_gravity="center"
-            android:layout_weight="1"/>
+            />
         <TextView
+            android:id="@+id/trousers_length"
             android:layout_width="wrap_content"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:layout_weight="1"
             android:layout_gravity="center"/>
         <TextView
-
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-
             android:textSize="20sp"
-            android:gravity="center"
+            android:gravity="left"
+            android:hint=" kg"
             android:layout_gravity="center"
-            android:layout_weight="1"/>
-    </LinearLayout>
+            />
 
+    </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/save_bodyData"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="@drawable/button_bg3"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="      设 置我 的 参 数     "/>
 
 
 </LinearLayout>

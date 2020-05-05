@@ -81,6 +81,7 @@ public class AllShopkeeperActivity extends AppCompatActivity implements View.OnC
     private void loadData() {
         String role_id="2";
         Map map = new HashMap();
+        map.put("role_status","2");
         map.put("role_id",role_id);
         Log.d("AllShopkeeperActivity",role_id);
 

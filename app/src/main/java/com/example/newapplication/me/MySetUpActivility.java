@@ -49,7 +49,6 @@ public class MySetUpActivility extends AppCompatActivity implements View.OnClick
     private void loadData() {
         String nickname = SharePrefrenceUtil.getObject(MySetUpActivility.this, UsersBean.class).getNickname();
         String usersex = SharePrefrenceUtil.getObject(MySetUpActivility.this, UsersBean.class).getSex();
-        String userimg = SharePrefrenceUtil.getObject(MySetUpActivility.this, UsersBean.class).getImage();
         if (nickname == null || nickname.isEmpty()){
             muser_name.setText("暂无");
         }else{
@@ -105,7 +104,6 @@ public class MySetUpActivility extends AppCompatActivity implements View.OnClick
 
                 String nickname = response.getData().getNickname();
                 String usersex = response.getData().getSex();
-                String userimg = response.getData().getImage();
                 if (response.getData() != null) {
                     //Toast.makeText(MySetUpActivility.this, "保存成功！", Toast.LENGTH_SHORT).show(); cleanObject
                     if (nickname == null || nickname.isEmpty()){

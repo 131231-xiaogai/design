@@ -35,12 +35,12 @@ public class Sk_Order_fuAdapter extends BaseRecyclerViewAdapter<OrderBean, Recyc
         Glide.with(mContext).load(data.getGood_img()).into(imageView);
 
         TextView price = holder.getView(R.id.sk_order_fu_price);
-        price.setText(data.getGood_price());
+        price.setText("￥"+data.getGood_price());
 
         TextView number = holder.getView(R.id.sk_order_fu_goodNumber);
         number.setText(data.getGood_number());
         TextView total = holder.getView(R.id.sk_order_fu_total);
-        total.setText(data.getTotal_price());
+        total.setText("￥"+data.getTotal_price());
 
         TextView tixing = holder.getView(R.id.tixing_fukuan);
 

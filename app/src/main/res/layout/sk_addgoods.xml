@@ -69,7 +69,15 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:layout_marginTop="5dp"
-            android:hint="商品租金/天"
+            android:hint="商品租金"
+            android:layout_gravity="center"/>
+        <EditText
+            android:id="@+id/add_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:hint="商品数量"
             android:layout_gravity="center"/>
 
         <EditText
@@ -86,7 +94,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:layout_marginTop="5dp"
-            android:hint="商品size"
+            android:hint="商品size  :xxs, xs, s, m, l, xl, xxl"
             android:layout_gravity="center"/>
         <LinearLayout
             android:layout_width="match_parent"

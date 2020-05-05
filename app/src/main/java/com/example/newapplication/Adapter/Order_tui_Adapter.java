@@ -35,12 +35,12 @@ public class Order_tui_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recycl
         Glide.with(mContext).load(data.getGood_img()).into(imageView);
 
         TextView price = holder.getView(R.id.order_tui_price);
-        price.setText(data.getGood_price());
+        price.setText("￥"+data.getGood_price());
 
         TextView number = holder.getView(R.id.order_tui_goodNumber);
         number.setText(data.getGood_number());
         TextView total = holder.getView(R.id.order_tui_total);
-        total.setText(data.getTotal_price());
+        total.setText("￥"+data.getTotal_price());
 
         TextView m_return=holder.getView(R.id.m_return);
 
@@ -49,7 +49,6 @@ public class Order_tui_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recycl
             public void onClick(View v) {
                 AlertDialog.Builder dialog;
                 dialog = new AlertDialog.Builder(mContext);
-
                 dialog.setTitle("请确定归还");
                 dialog.setCancelable(false);
                 dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -57,6 +56,8 @@ public class Order_tui_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recycl
                     public void onClick(DialogInterface dialog, int which) {
                         Map map = new HashMap();
                         String order_id=data.getOrder_id();
+                        String ruturn_goodNumber =data.getGood_number();
+                        String good_id = data.getGoods_id();
                         map.put("order_id", order_id);
                         map.put("order_status", "5");
                         Log.d("id",data.getOrder_id());
@@ -65,13 +66,13 @@ public class Order_tui_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recycl
                             public void onResponse(Result<String> response) {
                                 Toast.makeText(mContext, "衣物已归还，感谢您的光临。", Toast.LENGTH_SHORT).show();
 
+                                change_goodNumber(ruturn_goodNumber,good_id);
                             }
                             @Override
                             public void onFailure(String state, String msg) {
                                 Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
                             }
                         });
-
                     }
                 });
                 dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -83,8 +84,23 @@ public class Order_tui_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recycl
                 dialog.show();
             }
         });
+    }
 
+    private void change_goodNumber(String ruturn_goodNumber,String good_id) {
+        Map map = new HashMap();
+        map.put("good_id", good_id);
+        map.put("ruturn_goodNumber", ruturn_goodNumber);
+        OkHttp.get(mContext, Constant.update_goodNumber_add, map, new OkCallback<Result<String>>() {
+            @Override
+            public void onResponse(Result<String> response) {
+                Log.d("顾客归还的数量",ruturn_goodNumber);
+            }
 
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

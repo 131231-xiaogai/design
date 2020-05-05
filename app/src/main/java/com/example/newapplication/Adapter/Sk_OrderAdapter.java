@@ -35,12 +35,12 @@ public class Sk_OrderAdapter extends BaseRecyclerViewAdapter<OrderBean, Recycler
         Glide.with(mContext).load(data.getGood_img()).into(imageView);
 
         TextView price = holder.getView(R.id.sk_order_fa_price);
-        price.setText(data.getGood_price());
+        price.setText("￥"+data.getGood_price());
 
         TextView number = holder.getView(R.id.sk_order_fa_goodNumber);
         number.setText(data.getGood_number());
         TextView total = holder.getView(R.id.sk_order_fa_total);
-        total.setText(data.getTotal_price());
+        total.setText("￥"+data.getTotal_price());
         TextView sk_fahuo =holder.getView(R.id.sk_fahuo);
         sk_fahuo.setOnClickListener(new View.OnClickListener() {
             @Override

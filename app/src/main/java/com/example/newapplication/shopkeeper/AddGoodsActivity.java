@@ -1,12 +1,8 @@
 package com.example.newapplication.shopkeeper;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -47,7 +43,7 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
     public static final int CHOOSE_PHOTO = 2;
     public static final int REQUEST_CODE_CHOOSE = 3;//跳转去选择图片时的code;
     ImageView add_img;
-    EditText add_name, add_price, add_yajin, add_saize;
+    EditText add_name, add_price, add_yajin, add_saize,add_number;
     Button btn_add, btn_addimg;
     String shop_name,shop_id,good_type,good_actype,good_cltype;
     private ImageButton a_title_back,a_notice;
@@ -65,6 +61,7 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
         add_price = findViewById(R.id.add_price);
         add_saize = findViewById(R.id.add_saize);
         add_yajin = findViewById(R.id.add_yajin);
+        add_number = findViewById(R.id.add_number);
         btn_add = findViewById(R.id.btn_add);
         btn_addimg = findViewById(R.id.btn_addimg);
         a_title_back =findViewById(R.id.a_title_back);
@@ -76,7 +73,6 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
         shop_id = goodid_integer.getStringExtra("my_shop_id");
         //
         OnClickListener();
-//        spinner_typr();
         //----------------------//
         Spinner sp = findViewById(R.id.add_type);
         marrayAdapter = new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item,starAdapter);
@@ -185,6 +181,7 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
         map.put("shop_name",shop_name);
         map.put("type_id",good_cltype);
         map.put("type_activity_id",good_actype);
+        map.put("add_number",add_number.getText().toString());
         OkHttp.upload(this, Constant.publicgoods, map, mSelected, new OkCallback<Result<String>>() {
             @Override
             public void onResponse( Result<String> response) {
@@ -193,7 +190,6 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
                 add_saize.getText().clear();
                 add_price.getText().clear();
                 add_name.getText().clear();
-
             }
             @Override
             public void onFailure(String state, String msg) {
@@ -223,6 +219,7 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
                 add_saize.getText().clear();
                 add_price.getText().clear();
                 add_name.getText().clear();
+                add_number.getText().clear();
 
             }
             @Override

@@ -17,7 +17,7 @@ public class Shooping_carBean implements Serializable {
 	private String shop_name;
 	private String add_time;
 	private String cancle_time;
-	private String sumbit_time;
+	private String shop_car_status;
 
 
 	public boolean isSelect() {
@@ -104,15 +104,12 @@ public class Shooping_carBean implements Serializable {
 	public void setCancle_time(String cancle_time) {
 		this.cancle_time = cancle_time;
 	}
-	public String getSumbit_time() {
-		return sumbit_time;
-	}
-	public void setSumbit_time(String sumbit_time) {
-		this.sumbit_time = sumbit_time;
+
+	public String getShop_car_status() {
+		return shop_car_status;
 	}
 
-	
-	
-
-
+	public void setShop_car_status(String shop_car_status) {
+		this.shop_car_status = shop_car_status;
+	}
 }

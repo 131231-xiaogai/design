@@ -49,6 +49,17 @@ public class Constant {
     public static String update_user_balance =BASE_URL+"/Update_user_balance";
     public static String select_message =BASE_URL+"/Select_message";
     public static String select_message_byshopid =BASE_URL+"/Select_message_byshopid";
-
     public static String selece_order_totalprice =BASE_URL+"/Selece_order_totalprice";
+    public static String select_user_byShopId =BASE_URL+"/Select_user_byShopId";
+    public static String update_shop_balance =BASE_URL+"/Update_shop_balance";
+
+    public static String update_goodNumber =BASE_URL+"/Update_goodNumber";
+    public static String update_goodNumber_add =BASE_URL+"/Update_goodNumber_add";
+    public static String update_shopcarStatus =BASE_URL+"/Update_shopcarStatus";
+
+    //dody_data
+    public static String insert_user_bodyData =BASE_URL+"/Insert_user_bodyData";
+    public static String select_Bodydata_byuserId =BASE_URL+"/Select_Bodydata_byuserId";
+    public static String update_user_bodyData =BASE_URL+"/Update_user_bodyData";
+    public static String update_user_role =BASE_URL+"/Update_user_role";
 }

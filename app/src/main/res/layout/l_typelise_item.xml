@@ -10,7 +10,6 @@
         android:layout_width="wrap_content"
         android:padding="5dp"
         android:layout_height="200dp"
-        android:background="#ff9"
         android:layout_gravity="center_horizontal"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +34,6 @@
         android:layout_height="20dp"
         android:gravity="center_horizontal"
         android:text="12345649874548461031984"
-        android:background="@color/app_color_theme_9"
         android:layout_gravity="left"/>
         <TextView
             android:id="@+id/type_good__price"
@@ -44,7 +42,6 @@
             android:gravity="center_horizontal"
             android:layout_marginRight="12dp"
             android:text="86"
-            android:background="@color/app_color_theme_9"
             android:layout_gravity="right"/>
             />
     </LinearLayout>

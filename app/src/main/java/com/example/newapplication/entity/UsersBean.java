@@ -6,7 +6,7 @@ public class UsersBean {
 	private String password;
 	private String nickname;
 	private String sex;
-	private String image;
+	private String role_status;
 	private String balance;
 	private String id_number;
 	private String role_id;
@@ -41,12 +41,15 @@ public class UsersBean {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	public String getImage() {
-		return image;
+
+	public String getRole_status() {
+		return role_status;
 	}
-	public void setImage(String image) {
-		this.image = image;
+
+	public void setRole_status(String role_status) {
+		this.role_status = role_status;
 	}
+
 	public String getBalance() {
 		return balance;
 	}

@@ -26,7 +26,7 @@ public class TypeListAdapter extends BaseRecyclerViewAdapter<GoodBean, RecyclerV
         textView.setText(data.getGoods_name());
 
         TextView price = holder.getView(R.id.type_good__price);
-        price.setText(data.getGoods_price());
+        price.setText("￥"+data.getGoods_price());
 
         TextView goodid = holder.getView(R.id.type_goodid);
         goodid.setText(data.getGoods_id());

@@ -37,12 +37,12 @@ public class OrderAdapter extends BaseRecyclerViewAdapter<OrderBean, RecyclerVie
         Glide.with(mContext).load(data.getGood_img()).into(imageView);
 
         TextView price = holder.getView(R.id.order_fa_price);
-        price.setText(data.getGood_price());
+        price.setText("￥"+data.getGood_price());
 
         TextView number = holder.getView(R.id.order_fa_goodNumber);
         number.setText(data.getGood_number());
         TextView total = holder.getView(R.id.order_fa_total);
-        total.setText(data.getTotal_price());
+        total.setText("￥"+data.getTotal_price());
 
         TextView fa =holder.getView(R.id.remark_fa);
         //顾客向商家提醒发货
