@@ -18,7 +18,15 @@ public class Shooping_carBean implements Serializable {
 	private String add_time;
 	private String cancle_time;
 	private String shop_car_status;
+	private String goods_yajin;
 
+	public String getGoods_yajin() {
+		return goods_yajin;
+	}
+
+	public void setGoods_yajin(String goods_yajin) {
+		this.goods_yajin = goods_yajin;
+	}
 
 	public boolean isSelect() {
 		return isSelect;

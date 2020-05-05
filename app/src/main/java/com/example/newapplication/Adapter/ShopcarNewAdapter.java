@@ -44,7 +44,7 @@ public class ShopcarNewAdapter extends BaseRecyclerViewAdapter<Shooping_carBean,
         }
         Glide.with(mContext).load(data.getGood_img()).into(ivShop);
         tvShopName.setText(data.getGood_name());
-        tvPrice.setText("￥"+data.getGood_price());
+        tvPrice.setText("商 品 单 价 ：￥"+data.getGood_price()+"  "+"押 金 ："+"￥"+data.getGoods_yajin());
         tvCount.setText(data.getGood_number());
 
         holder.addOnClickListener(R.id.iv_is_select);

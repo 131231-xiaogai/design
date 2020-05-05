@@ -28,15 +28,15 @@ import java.util.List;
 import java.util.Map;
 
 public class ItemDetailActivity extends AppCompatActivity implements View.OnClickListener {
-    TextView l_goodid,l_goodname,l_shopname,good_price,good_size,back;
-    ImageView l_img;
-    Button add_to_shopcar,to_pay;
+    private TextView l_goodid,l_goodname,l_shopname,good_price,good_size,back;
+    private ImageView l_img;
+    private  Button add_to_shopcar,to_pay;
     private GoodBean data;
+    private String  da;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.itemdetail);
-        l_goodid=findViewById(R.id.l_goodid);
         l_goodname=findViewById(R.id.l_goodname);
         l_img=findViewById(R.id.l_img);
         l_shopname=findViewById(R.id.l_shopname);
@@ -46,8 +46,7 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
         add_to_shopcar =findViewById(R.id.add_to_shopcar);
         //
         Intent goodid_integer = getIntent();
-        String  da = goodid_integer.getStringExtra("hgoodid");
-        l_goodid.setText(da);
+        da = goodid_integer.getStringExtra("hgoodid");
         Log.d("ItemDetailActivity",da);
         lodata();
         OnClickListener();
@@ -55,7 +54,7 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
 
     private void lodata() {
         Map map = new HashMap();
-        map.put("goods_id",l_goodid.getText().toString());
+        map.put("goods_id",da);
         OkHttp.get(this, Constant.select_good_by_id, map, new OkCallback<Result<GoodBean>>() {
             @Override
             public void onResponse(Result<GoodBean> response) {
@@ -79,12 +78,12 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
                     if (pice == null || pice.isEmpty()) {
                         good_price.setText("无");
                     } else {
-                        good_price.setText(pice);
+                        good_price.setText("单价：￥"+pice+"   "+"押金"+data.getGoods_yajin());
                     }
                     if (size == null || size.isEmpty()) {
                         good_size.setText("无");
                     } else {
-                        good_size.setText(size);
+                        good_size.setText("商品尺码"+size);
                     }
                     Glide.with(ItemDetailActivity.this).load(data.getGood_img()).into(l_img);
                 }
@@ -131,6 +130,7 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
         map.put("good_img",data.getGood_img());
         map.put("shop_name","");
         map.put("shop_car_status","0");//0未形成订单，1为已形成订单
+        map.put("goods_yajin",data.getGoods_yajin());
 
         OkHttp.get(this, Constant.add_to_shopcar, map, new OkCallback<Result<String>>() {
             @Override
