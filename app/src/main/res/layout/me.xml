@@ -134,27 +134,28 @@
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:padding="20dp">
                     <TextView
                         android:id="@+id/m_wallet"
                         style="@style/m_line"
-                        android:text="钱  包                                 " />
+                        android:text="我 的 钱  包" />
                     <TextView
                         android:id="@+id/m_adress"
                        style="@style/m_line"
-                        android:text="地  址                                        "/>
+                        android:text="我 的 地  址"/>
                     <TextView
                         android:id="@+id/m_setup"
                         style="@style/m_line"
-                        android:text="设  置                                           "/>
+                        android:text="我 的 设  置"/>
                     <TextView
                         android:id="@+id/m_bodysize"
                         style="@style/m_line"
-                        android:text="尺  码                                             "/>
+                        android:text="我 的 尺  码"/>
                     <TextView
-                        android:id="@+id/edition"
+                        android:id="@+id/evaluate"
                         style="@style/m_line"
-                        android:text="版  本                                           "/>
+                        android:text="评 价 订  单"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="2dp"/>

@@ -36,7 +36,7 @@ public  class
 MeActivity extends AppCompatActivity implements View.OnClickListener{
     ImageButton btn_list, btn_date, btn_shop, btn_home;
     ImageView btn_notice;
-    TextView fa,fu,tui,shou,m_username,m_wallet,m_adress,m_setup,m_bodysize,medition;
+    TextView fa,fu,tui,shou,m_username,m_wallet,m_adress,m_setup,m_bodysize,evaluate;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ MeActivity extends AppCompatActivity implements View.OnClickListener{
         m_adress = findViewById(R.id.m_adress);
         m_setup =findViewById(R.id.m_setup);
         m_bodysize =findViewById(R.id.m_bodysize);
-        medition =findViewById(R.id.edition);
+        evaluate =findViewById(R.id.evaluate);
         OnClickListener();
         loadData();
     }
@@ -84,7 +84,7 @@ MeActivity extends AppCompatActivity implements View.OnClickListener{
         m_adress.setOnClickListener(this);
         m_setup.setOnClickListener(this);
         m_bodysize.setOnClickListener(this);
-        medition.setOnClickListener(this);
+        evaluate.setOnClickListener(this);
     }
 
     public void finish_reback(View v){
@@ -135,7 +135,7 @@ MeActivity extends AppCompatActivity implements View.OnClickListener{
           case R.id.m_bodysize:
               startActivity(new Intent(MeActivity.this, MyBodySizeActivility.class));
               break;
-          case R.id.edition:
+          case R.id.evaluate:
               startActivity(new Intent(MeActivity.this, MyEditionActivility.class));
               break;
        }

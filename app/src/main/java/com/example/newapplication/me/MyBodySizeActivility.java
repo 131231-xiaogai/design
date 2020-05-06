@@ -57,7 +57,7 @@ public class MyBodySizeActivility extends AppCompatActivity implements View.OnCl
         OkHttp.get(MyBodySizeActivility.this, Constant.select_Bodydata_byuserId, map, new OkCallback<Result<ConsumerBean>>() {
             @Override
             public void onResponse(Result<ConsumerBean> response) {
-                if (response.getData() != null) {
+                if (response.getData()!= null) {
                     weight.setText(response.getData().getWeight());
                     height.setText(response.getData().getHeight());
                     Bust.setText(response.getData().getBust());
@@ -66,7 +66,7 @@ public class MyBodySizeActivility extends AppCompatActivity implements View.OnCl
                     Shoulder_width.setText(response.getData().getShoulder_width());
                     Clothing_length.setText(response.getData().getClothing_length());
                     trousers_length.setText(response.getData().getTrousers_length());
-                } else {
+                } else if (response.getData() == null){
                     Map map = new HashMap();
                     map.put("user_id",user_id);
                     map.put("weight"," ");
@@ -88,7 +88,6 @@ public class MyBodySizeActivility extends AppCompatActivity implements View.OnCl
                         }
                     });
                 }
-
             }
             @Override
             public void onFailure(String state, String msg) {
@@ -132,8 +131,5 @@ public class MyBodySizeActivility extends AppCompatActivity implements View.OnCl
                 startActivityForResult(intent,1);
                 break;
         }
-
     }
-
-
 }

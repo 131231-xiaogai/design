@@ -136,14 +136,14 @@ public class MySetUpActivility extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()){
 
-            case R.id.setup_name:
+            case R.id.user_name:
                 intent =new Intent(MySetUpActivility.this, SetUserNameActivity.class);
                 startActivityForResult(intent,1);
                 break;
             case R.id.u_title_back:
                 MySetUpActivility.this.finish();
                 break;
-            case  R.id.setup_sex:
+            case  R.id.user_sex:
                 intent =new Intent(MySetUpActivility.this, SetUserSexActivity.class);
                 startActivityForResult(intent,1);
                 break;

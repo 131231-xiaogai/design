@@ -62,4 +62,13 @@ public class Constant {
     public static String select_Bodydata_byuserId =BASE_URL+"/Select_Bodydata_byuserId";
     public static String update_user_bodyData =BASE_URL+"/Update_user_bodyData";
     public static String update_user_role =BASE_URL+"/Update_user_role";
+
+    //add_order_p_content
+    public static String add_order_p_content =BASE_URL+"/Add_order_p_content";
+    //select_order_by_UseridAndOrderStstus_evaluate_status
+    public static String select_order_by_UseridAndOrderStstus_evaluate_status =BASE_URL+"/Select_order_by_UseridAndOrderStstus_evaluate_status";
+    //updata_Order_evaluateStatus
+    public static String updata_Order_evaluateStatus =BASE_URL+"/Updata_Order_evaluateStatus";
+    //selece_shop_evaluate
+    public static String selece_shop_evaluate =BASE_URL+"/Selece_shop_evaluate";
 }

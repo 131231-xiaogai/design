@@ -16,7 +16,6 @@
             android:layout_height="43dp"
             android:layout_gravity="center_vertical"
             android:layout_margin="5dp"
-            android:onClick="finish_reback"
             android:background="@mipmap/left" />
         <TextView
             android:layout_width="wrap_content"

@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.newapplication.entity.EvaluateBean;
 import com.example.newapplication.entity.OrderBean;
 import com.example.newapplication.entity.ShopBean;
 import com.example.newapplication.entity.UsersBean;
@@ -48,7 +49,7 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         me_shop_register_time=findViewById(R.id.me_shop_register_time);
         me_shop_phone=findViewById(R.id.me_shop_phone);
         title_back=findViewById(R.id.title_back);
-        my_shop_sorc=findViewById(R.id.my_shop_sorc);
+        my_shop_sorc=findViewById(R.id.my_shop_sorc);// 评分
         k_delete=findViewById(R.id.k_delete);
         k_change=findViewById(R.id.k_change);
         fu=findViewById(R.id.sk_fu);
@@ -106,6 +107,31 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         });
     }
 
+    private void shop_evaluate() {
+        Map map = new HashMap();
+        map.put("shop_id",myshop_id);
+
+        OkHttp.get(this, Constant.selece_shop_evaluate, map, new OkCallback<Result<List<EvaluateBean>>>() {
+            @Override
+            public void onResponse(Result<List<EvaluateBean>> response) {
+                double evaluate=0;
+                for (int i = 0; i < response.getData().size(); i++) {
+                    evaluate= evaluate+Double.valueOf(response.getData().get(i).getP_content());
+                }
+                evaluate=evaluate/response.getData().size();
+                my_shop_sorc.setText(evaluate+"分");
+
+
+            }
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(ShopkeeperActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
     private void shop_totoprice() {
         Map map = new HashMap();
         map.put("shop_id",myshop_id);
@@ -118,6 +144,8 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
                     totalPrice= totalPrice+Double.valueOf(response.getData().get(i).getTotal_price());
                 }
                 s_totalprice.setText("￥"+totalPrice);
+
+                shop_evaluate();
         }
             @Override
             public void onFailure(String state, String msg) {

@@ -116,7 +116,7 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
 
     private void addto_shopcar() {
         String userid=SharePrefrenceUtil.getObject(ItemDetailActivity.this, UsersBean.class).getUerid();
-        String goodid=l_goodid.getText().toString();
+        String goodid=da;
         String good_number ="1";
 
         Map map = new HashMap();

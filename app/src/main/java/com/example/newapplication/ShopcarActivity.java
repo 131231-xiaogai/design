@@ -88,7 +88,6 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
                     }
                     shopcarAdapter.notifyDataSetChanged();
                 }
-
             }
         });
 
@@ -113,8 +112,6 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
                     shopcarAdapter.notifyDataSetChanged();
                     tvTotalPrice.setText("￥0.00");
                 }
-
-
             }
         });
 

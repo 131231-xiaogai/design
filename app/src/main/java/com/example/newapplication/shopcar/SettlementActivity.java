@@ -229,7 +229,8 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
             map.put("good_img", shooping_carBean.getGood_img());
             map.put("shop_id", shooping_carBean.getShop_id());
             map.put("order_code", orderCode);
-            map.put(",goods_yajin",shooping_carBean.getGoods_yajin());
+            map.put("goods_yajin",shooping_carBean.getGoods_yajin());
+            map.put("evaluate_status","0");
             OkHttp.get(this, Constant.add_order, map, new OkCallback<Result<List<AddressBean>>>() {
                 @Override
                 public void onResponse(Result<List<AddressBean>> response) {

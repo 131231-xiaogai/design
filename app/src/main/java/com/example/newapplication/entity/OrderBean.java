@@ -21,6 +21,16 @@ public class OrderBean {
 	private String shop_id;
 	private String order_code;
 	private String goods_yajin;
+	private String evaluate_status;
+
+
+	public String getEvaluate_status() {
+		return evaluate_status;
+	}
+
+	public void setEvaluate_status(String evaluate_status) {
+		this.evaluate_status = evaluate_status;
+	}
 
 	public String getGoods_yajin() {
 		return goods_yajin;

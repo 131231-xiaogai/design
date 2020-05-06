@@ -57,6 +57,9 @@ public class AdministratorsActivity extends AppCompatActivity implements View.On
         adm_qxdj_sj.setOnClickListener(this);
     }
 
+    public void finish_reback(View v){
+        AdministratorsActivity.this.finish();
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -106,7 +109,6 @@ public class AdministratorsActivity extends AppCompatActivity implements View.On
                 p_pagename ="取消冻结顾客";
                 intent = new Intent(AdministratorsActivity.this, Adm_qxdj_guke.class);
                 intent.putExtra("p_pagename", p_pagename);
-
                 startActivity(intent);
                 break;
             case R.id. adm_qxdj_sj:

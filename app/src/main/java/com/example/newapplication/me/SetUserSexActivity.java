@@ -69,6 +69,7 @@ public class SetUserSexActivity extends AppCompatActivity implements View.OnClic
                 //SharePrefrenceUtil.saveObject(SetUserNameActivity.this, response.getData());
                 if (response.getData() != null) {
                     Toast.makeText(SetUserSexActivity.this, "保存成功！", Toast.LENGTH_SHORT).show();
+
                 }
             }
             @Override
