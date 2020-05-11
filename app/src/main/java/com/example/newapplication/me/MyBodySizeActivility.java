@@ -57,7 +57,6 @@ public class MyBodySizeActivility extends AppCompatActivity implements View.OnCl
         OkHttp.get(MyBodySizeActivility.this, Constant.select_Bodydata_byuserId, map, new OkCallback<Result<ConsumerBean>>() {
             @Override
             public void onResponse(Result<ConsumerBean> response) {
-                if (response.getData()!= null) {
                     weight.setText(response.getData().getWeight());
                     height.setText(response.getData().getHeight());
                     Bust.setText(response.getData().getBust());
@@ -66,29 +65,8 @@ public class MyBodySizeActivility extends AppCompatActivity implements View.OnCl
                     Shoulder_width.setText(response.getData().getShoulder_width());
                     Clothing_length.setText(response.getData().getClothing_length());
                     trousers_length.setText(response.getData().getTrousers_length());
-                } else if (response.getData() == null){
-                    Map map = new HashMap();
-                    map.put("user_id",user_id);
-                    map.put("weight"," ");
-                    map.put("height"," ");
-                    map.put("bust"," ");
-                    map.put("the_waist"," ");
-                    map.put("hipline"," ");
-                    map.put("shoulder_width"," ");
-                    map.put("clothing_length"," ");
-                    map.put("trousers_length"," ");
-                    OkHttp.get(MyBodySizeActivility.this, Constant.insert_user_bodyData, map, new OkCallback<Result<String>>() {
-                        @Override
-                        public void onResponse(Result<String> response) {
-                            Toast.makeText(MyBodySizeActivility.this, "设置个人参数。", Toast.LENGTH_SHORT).show();
-                        }
-                        @Override
-                        public void onFailure(String state, String msg) {
-                            Toast.makeText(MyBodySizeActivility.this, msg, Toast.LENGTH_SHORT).show();
-                        }
-                    });
                 }
-            }
+
             @Override
             public void onFailure(String state, String msg) {
                 Toast.makeText(MyBodySizeActivility.this, msg, Toast.LENGTH_SHORT).show();

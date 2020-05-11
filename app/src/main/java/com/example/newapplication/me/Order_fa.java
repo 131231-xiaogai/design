@@ -34,11 +34,11 @@ import java.util.Map;
 
 public class Order_fa extends AppCompatActivity implements View.OnClickListener {
 
-    ImageButton title_back;
-    TextView fa,fu,tui,shou;
+    private  ImageButton title_back;
+    private  TextView fa,fu,tui,shou;
     private  Button btn_fa;
     private OrderAdapter orderAdapter;
-    RecyclerView s_recycle_view;
+    private  RecyclerView s_recycle_view;
     private SwipeRefreshLayout swipeRefreshLayout;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -123,12 +123,15 @@ public class Order_fa extends AppCompatActivity implements View.OnClickListener 
                 break;
             case R.id.ord_fu:
                 startActivity(new Intent(Order_fa.this, Order_fu.class));
+                Order_fa.this.finish();
                 break;
             case R.id.ord_tui:
                 startActivity(new Intent(Order_fa.this, Order_tui.class));
+                Order_fa.this.finish();
                 break;
             case R.id.ord_shou:
                 startActivity(new Intent(Order_fa.this, Order_shou.class));
+                Order_fa.this.finish();
                 break;
         }
 

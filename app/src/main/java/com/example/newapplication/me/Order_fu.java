@@ -120,16 +120,19 @@ public class Order_fu extends AppCompatActivity implements View.OnClickListener 
         switch (v.getId()){
             case R.id.ord_fa:
                 startActivity(new Intent(Order_fu.this, Order_fa.class));
+                Order_fu.this.finish();
                 break;
             case R.id.ord_fu:
                 Toast.makeText(Order_fu.this, "您 正 在 当 前 页 。", Toast.LENGTH_SHORT).show();
-
+                Order_fu.this.finish();
                 break;
             case R.id.ord_tui:
                 startActivity(new Intent(Order_fu.this, Order_tui.class));
+                Order_fu.this.finish();
                 break;
             case R.id.ord_shou:
                 startActivity(new Intent(Order_fu.this, Order_shou.class));
+                Order_fu.this.finish();
                 break;
         }
 

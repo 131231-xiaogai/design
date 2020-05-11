@@ -9,10 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.newapplication.MeActivity;
 import com.example.newapplication.R;
 import com.example.newapplication.entity.UsersBean;
 import com.example.newapplication.new_utill.Constant;
@@ -146,6 +143,9 @@ public class MySetUpActivility extends AppCompatActivity implements View.OnClick
             case  R.id.user_sex:
                 intent =new Intent(MySetUpActivility.this, SetUserSexActivity.class);
                 startActivityForResult(intent,1);
+                break;
+            case R.id.u_notice:
+                startActivity(new Intent(MySetUpActivility.this, Notice.class));
                 break;
 
         }

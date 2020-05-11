@@ -78,6 +78,8 @@
         <activity android:name=".Administrators.Adm_dj_sj"/>
         <activity android:name=".Administrators.Adm_qxdj_guke"/>
         <activity android:name=".Administrators.Adm_qxdj_sj"/>
+        <activity android:name=".newpage.All_orderActivity"/>
+        <activity android:name=".shopkeeper.Sk_All_orderActivity"/>
     </application>
 
 </manifest>

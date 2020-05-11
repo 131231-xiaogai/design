@@ -30,15 +30,17 @@ public class Sk_Order_huanAdapter extends BaseRecyclerViewAdapter<OrderBean, Rec
     @Override
     protected void convert(RecyclerViewHolder holder, OrderBean data, int position, int viewType) {
         TextView name = holder.getView(R.id.sk_order_huan_goodname);
-        name.setText(data.getGood_name());
+        name.setText("#"+data.getGood_name()+"#");
+
+        TextView tiame =holder.getView(R.id.sk_order_huan_goodNumber);
+        tiame.setText("订单结束时间："+data.getOrder_rent_finesh_time());
         ImageView imageView = holder.getView(R.id.sk_order_huan_img);
         Glide.with(mContext).load(data.getGood_img()).into(imageView);
         TextView price = holder.getView(R.id.sk_order_huan_price);
-        price.setText("￥"+data.getGood_price());
-        TextView number = holder.getView(R.id.sk_order_huan_goodNumber);
-        number.setText(data.getGood_number());
+        price.setText("租金/件 ￥"+data.getGood_price()+"/ 押 金："+data.getGoods_yajin()+"/ 数 量 ："+data.getGood_number());
+
         TextView total = holder.getView(R.id.sk_order_huan_total);
-        total.setText("￥"+data.getTotal_price());
+        total.setText("订单总金额:￥"+data.getTotal_price());
         TextView sk_fahuo =holder.getView(R.id.huan);
         user_id=data.getUser_id();
         goods_yajin=data.getGoods_yajin();//顾客id

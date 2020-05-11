@@ -42,10 +42,11 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
     private List<String> mSelected = new ArrayList<>();
     public static final int CHOOSE_PHOTO = 2;
     public static final int REQUEST_CODE_CHOOSE = 3;//跳转去选择图片时的code;
-    ImageView add_img;
-    EditText add_name, add_price, add_yajin, add_saize,add_number;
-    Button btn_add, btn_addimg;
-    String shop_name,shop_id,good_type,good_actype,good_cltype;
+    private  ImageView add_img;
+    private  EditText add_name, add_price, add_yajin, add_saize,add_number,
+            Clothing_length, Sleeve_length, Shoulder_width, trousers_length;
+    private  Button btn_add, btn_addimg;
+    private  String shop_name,shop_id,good_type,good_actype,good_cltype;
     private ImageButton a_title_back,a_notice;
 
     Spinner add_type;
@@ -67,6 +68,11 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
         a_title_back =findViewById(R.id.a_title_back);
         a_notice=findViewById(R.id.a_notice);
         a_notice.setOnClickListener(this);
+        Clothing_length=findViewById(R.id.add_Clothing_length);
+        Sleeve_length=findViewById(R.id.add_Sleeve_length);
+        Shoulder_width=findViewById(R.id.add_Shoulder_width);
+        trousers_length=findViewById(R.id.add_trousers_length);
+
         //
         Intent goodid_integer = getIntent();
         shop_name = goodid_integer.getStringExtra("myshop_name");
@@ -140,7 +146,6 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
                     Log.d("新添加商品按衣服分类编号为",good_cltype);
                     add_good_clothes(good_cltype,good_actype);
                 }
-
                 break;
             case R.id.add_saize:
                 break;
@@ -173,6 +178,7 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
     private void add_good_activity(String good_cltype,String good_actype) {
         Map map=new HashMap<>();
 
+
         map.put("good_name",add_name.getText().toString());
         map.put("goods_price",add_price.getText().toString());
         map.put("goods_yajin",add_yajin.getText().toString());
@@ -199,10 +205,7 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
 
     }
     private void add_good_clothes(String good_cltype,String good_actype) {
-
-
         Map map=new HashMap<>();
-
         map.put("good_name",add_name.getText().toString());
         map.put("goods_price",add_price.getText().toString());
         map.put("goods_yajin",add_yajin.getText().toString());
@@ -211,6 +214,12 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
         map.put("shop_name",shop_name);
         map.put("type_id",good_cltype);
         map.put("type_activity_id",good_actype);
+
+        map.put("Clothing_length",Clothing_length.getText().toString());
+        map.put("Sleeve_length",Sleeve_length.getText().toString());
+        map.put("Shoulder_width",Shoulder_width.getText().toString());
+        map.put("trousers_length",trousers_length.getText().toString());
+
         OkHttp.upload(this, Constant.publicgoods, map, mSelected, new OkCallback<Result<String>>() {
             @Override
             public void onResponse( Result<String> response) {

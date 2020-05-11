@@ -32,16 +32,17 @@ public class Order_shou_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recyc
     @Override
     protected void convert(RecyclerViewHolder holder, OrderBean data, int position, int viewType) {
         TextView name = holder.getView(R.id.order_shou_goodname);
-        name.setText(data.getGood_name());
+        name.setText("#"+data.getGood_name()+"#");
+
+        TextView tiame =holder.getView(R.id.order_shou_goodNumber);
+        tiame.setText("订单结束时间："+data.getOrder_rent_finesh_time());
 
         ImageView imageView = holder.getView(R.id.order_shou_img);
         Glide.with(mContext).load(data.getGood_img()).into(imageView);
 
         TextView price = holder.getView(R.id.order_shou_price);
-        price.setText("单 价 ： ￥"+data.getGood_price()+"租 金 ：￥"+data.getGoods_yajin());
+        price.setText("租金/件: ￥"+data.getGood_price()+"/租 金：￥"+data.getGoods_yajin()+"/数 量："+data.getGood_number());
 
-        TextView number = holder.getView(R.id.order_shou_goodNumber);
-        number.setText("数 量 ："+data.getGood_number());
         TextView total = holder.getView(R.id.order_shou_total);
         total.setText("总 金 额 ：￥"+data.getTotal_price());
 

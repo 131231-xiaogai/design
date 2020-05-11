@@ -29,19 +29,19 @@ public class Sk_Order_fuAdapter extends BaseRecyclerViewAdapter<OrderBean, Recyc
     @Override
     protected void convert(RecyclerViewHolder holder, OrderBean data, int position, int viewType) {
         TextView name = holder.getView(R.id.sk_order_fu_goodname);
-        name.setText(data.getGood_name());
+        name.setText("#"+data.getGood_name()+"#");
+
+        TextView tiame =holder.getView(R.id.sk_order_fu_goodNumber);
+        tiame.setText("订单结束时间："+data.getOrder_rent_finesh_time());
 
         ImageView imageView = holder.getView(R.id.sk_order_fu_img);
         Glide.with(mContext).load(data.getGood_img()).into(imageView);
 
         TextView price = holder.getView(R.id.sk_order_fu_price);
-        price.setText("￥"+data.getGood_price());
+        price.setText("租金/件：￥"+data.getGood_price()+"/ 押 金："+data.getGoods_yajin()+"/ 数 量："+data.getGood_number());
 
-        TextView number = holder.getView(R.id.sk_order_fu_goodNumber);
-        number.setText(data.getGood_number());
         TextView total = holder.getView(R.id.sk_order_fu_total);
-        total.setText("￥"+data.getTotal_price());
-
+        total.setText("订单总金额:￥"+data.getTotal_price());
         TextView tixing = holder.getView(R.id.tixing_fukuan);
 
         tixing.setOnClickListener(new View.OnClickListener() {

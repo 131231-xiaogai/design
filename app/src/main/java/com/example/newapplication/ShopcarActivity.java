@@ -238,18 +238,23 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.b_home:
                 startActivity(new Intent(ShopcarActivity.this, HomeActivity.class));
+                ShopcarActivity.this.finish();
                 break;
             case R.id.b_list:
                 startActivity(new Intent(ShopcarActivity.this, ListActivity.class));
+                ShopcarActivity.this.finish();
                 break;
             case R.id.b_date:
                 startActivity(new Intent(ShopcarActivity.this, DateActivity.class));
+                ShopcarActivity.this.finish();
                 break;
             case R.id.b_me:
                 startActivity(new Intent(ShopcarActivity.this, MeActivity.class));
+                ShopcarActivity.this.finish();
                 break;
             case R.id.btn_notice:
                 startActivity(new Intent(ShopcarActivity.this, Notice.class));
+                ShopcarActivity.this.finish();
                 break;
             case R.id.btn_pay:
                 Intent intent = new Intent(ShopcarActivity.this, SettlementActivity.class);

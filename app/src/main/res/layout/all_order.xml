@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <!-- 头部 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:layout_gravity="top">
+
+        <ImageButton
+            android:id="@+id/order_all_back"
+            android:layout_width="34dp"
+            android:layout_height="43dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:background="@mipmap/left" />
+        <TextView
+            android:id="@+id/title_page"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="全部订单"
+            android:paddingLeft="20dp"
+            android:textColor="#6A5ACD"
+            android:textSize="20sp"/>
+        <ImageButton
+            android:id="@+id/order_all_notice"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:background="@mipmap/notice"
+            />
+    </LinearLayout>
+    <!---->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="16"
+        android:orientation="vertical">
+        <!-- 瀑布列表 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/all_order_recycle_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -23,6 +23,7 @@ import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.new_utill.SharePrefrenceUtil;
+import com.example.newapplication.newpage.All_orderActivity;
 import com.example.newapplication.newpage.Notice;
 import com.example.newapplication.me.Order_fa;
 import com.example.newapplication.me.Order_fu;
@@ -32,11 +33,10 @@ import com.example.newapplication.me.Order_tui;
 import java.util.HashMap;
 import java.util.Map;
 
-public  class
-MeActivity extends AppCompatActivity implements View.OnClickListener{
+public  class MeActivity extends AppCompatActivity implements View.OnClickListener{
     ImageButton btn_list, btn_date, btn_shop, btn_home;
     ImageView btn_notice;
-    TextView fa,fu,tui,shou,m_username,m_wallet,m_adress,m_setup,m_bodysize,evaluate;
+    TextView fa,fu,tui,shou,m_username,m_wallet,m_adress,m_setup,m_bodysize,evaluate,all_order;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,6 +57,7 @@ MeActivity extends AppCompatActivity implements View.OnClickListener{
         m_setup =findViewById(R.id.m_setup);
         m_bodysize =findViewById(R.id.m_bodysize);
         evaluate =findViewById(R.id.evaluate);
+        all_order=findViewById(R.id.all_order);
         OnClickListener();
         loadData();
     }
@@ -75,6 +76,7 @@ MeActivity extends AppCompatActivity implements View.OnClickListener{
         btn_shop.setOnClickListener(this);
         btn_home.setOnClickListener(this);
         btn_notice.setOnClickListener(this);
+        all_order.setOnClickListener(this);
         fa.setOnClickListener(this);
         fu.setOnClickListener(this);
         tui.setOnClickListener(this);
@@ -95,30 +97,39 @@ MeActivity extends AppCompatActivity implements View.OnClickListener{
       switch (v.getId()){
           case R.id.b_home:
               startActivity(new Intent(MeActivity.this, HomeActivity.class));
+              MeActivity.this.finish();
               break;
           case R.id.b_list:
               startActivity(new Intent(MeActivity.this, ListActivity.class));
+              MeActivity.this.finish();
               break;
           case R.id.b_date:
               startActivity(new Intent(MeActivity.this, DateActivity.class));
+              MeActivity.this.finish();
               break;
           case R.id.b_shopcar:
               startActivity(new Intent(MeActivity.this, ShopcarActivity.class));
+              MeActivity.this.finish();
               break;
           case R.id.btn_notice:
               startActivity(new Intent(MeActivity.this, Notice.class));
+              //MeActivity.this.finish();
               break;
           case R.id.fa:
               startActivity(new Intent(MeActivity.this, Order_fa.class));
+              //MeActivity.this.finish();
               break;
           case R.id.fu:
               startActivity(new Intent(MeActivity.this, Order_fu.class));
+              //MeActivity.this.finish();
               break;
           case R.id.tui:
               startActivity(new Intent(MeActivity.this, Order_tui.class));
+              //MeActivity.this.finish();
               break;
           case R.id.shou:
               startActivity(new Intent(MeActivity.this, Order_shou.class));
+              //MeActivity.this.finish();
               break;
           case R.id.m_wallet:
               String data = "我 的 钱 包";
@@ -134,9 +145,13 @@ MeActivity extends AppCompatActivity implements View.OnClickListener{
               break;
           case R.id.m_bodysize:
               startActivity(new Intent(MeActivity.this, MyBodySizeActivility.class));
+
               break;
           case R.id.evaluate:
               startActivity(new Intent(MeActivity.this, MyEditionActivility.class));
+              break;
+          case R.id.all_order:
+              startActivity(new Intent(MeActivity.this, All_orderActivity.class));
               break;
        }
 

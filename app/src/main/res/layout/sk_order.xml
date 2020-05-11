@@ -23,7 +23,7 @@
             android:layout_weight="1"
             android:layout_height="0dp">
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:id="@+id/swipeRefreshLayout_sk"
+                android:id="@+id/swipeRefreshLayout_fa"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             <androidx.recyclerview.widget.RecyclerView

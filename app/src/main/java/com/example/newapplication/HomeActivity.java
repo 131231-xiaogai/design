@@ -22,14 +22,18 @@ import com.example.newapplication.Adapter.GoodAdapter;
 import com.example.newapplication.Adapter.LoopAdapter;
 import com.example.newapplication.Adapter.PhotoAdapter;
 import com.example.newapplication.Adapter.Photo_Rec_Adapter;
+import com.example.newapplication.entity.ConsumerBean;
 import com.example.newapplication.entity.GoodBean;
 import com.example.newapplication.entity.Photo;
+import com.example.newapplication.entity.UsersBean;
 import com.example.newapplication.home.ItemDetailActivity;
 import com.example.newapplication.inteface.OnItemClickListener;
+import com.example.newapplication.me.Update_bodyData;
 import com.example.newapplication.new_utill.Constant;
 import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
+import com.example.newapplication.new_utill.SharePrefrenceUtil;
 import com.example.newapplication.newpage.MyViewPager;
 import com.example.newapplication.newpage.Notice;
 import com.example.newapplication.newpage.Phone_help;
@@ -235,18 +239,23 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.b_list:
                 startActivity(new Intent(HomeActivity.this, ListActivity.class));
+
                 break;
             case R.id.b_me:
                 startActivity(new Intent(HomeActivity.this, MeActivity.class));
+
                 break;
             case R.id.b_shopcar:
                 startActivity(new Intent(HomeActivity.this, ShopcarActivity.class));
+
                 break;
             case R.id.b_date:
                 startActivity(new Intent(HomeActivity.this, DateActivity.class));
+
                 break;
             case R.id.btn_notice:
                 startActivity(new Intent(HomeActivity.this, Notice.class));
+
                 break;
         }
     }
@@ -263,6 +272,51 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(HomeActivity.this, msg, Toast.LENGTH_SHORT).show();
             }
         });
+        check_bodysize();//检查个人参数记录是否存在
+
+    }
+
+    private void check_bodysize() {
+        String  user_id = SharePrefrenceUtil.getObject(HomeActivity.this, UsersBean.class).getUerid();
+        Map map = new HashMap();
+        map.put("user_id",user_id);
+        OkHttp.get(HomeActivity.this, Constant.select_Bodydata_byuserId, map, new OkCallback<Result<ConsumerBean>>() {
+            @Override
+            public void onResponse(Result<ConsumerBean> response) {
+                if (response.getData().getUser_id() == null){
+                    insert_bodysize();
+                }
+            }
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(HomeActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void insert_bodysize() {
+        String user_id= SharePrefrenceUtil.getObject(HomeActivity.this, UsersBean.class).getUerid();
+        Map map = new HashMap();
+        map.put("user_id",user_id);
+        map.put("weight"," ");
+        map.put("height"," ");
+        map.put("bust"," ");
+        map.put("the_waist"," ");
+        map.put("hipline"," ");
+        map.put("shoulder_width"," ");
+        map.put("clothing_length"," ");
+        map.put("trousers_length"," ");
+        OkHttp.get(HomeActivity.this, Constant.insert_user_bodyData, map, new OkCallback<Result<String>>() {
+            @Override
+            public void onResponse(Result<String> response) {
+                //Toast.makeText(HomeActivity.this, "设置个人参数。", Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(HomeActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }
 

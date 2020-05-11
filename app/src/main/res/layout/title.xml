@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#fff"
-    android:layout_gravity="top">
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:background="#fff"
+android:layout_gravity="top">
 
-    <ImageButton
-        android:id="@+id/title_back"
-        android:layout_width="34dp"
-        android:layout_height="43dp"
-        android:layout_gravity="center_vertical"
-        android:layout_margin="5dp"
-        android:onClick="finish_reback"
-        android:background="@mipmap/left" />
-    <TextView
-        android:id="@+id/title_page"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:layout_gravity="center"
-        android:text="租衣捷"
-        android:textColor="#6A5ACD"
-        android:textSize="28sp"/>
-    <ImageButton
-        android:id="@+id/btn_notice"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_margin="5dp"
-        android:background="@mipmap/notice"
-        />
+<ImageButton
+    android:id="@+id/title_back"
+    android:layout_width="34dp"
+    android:layout_height="43dp"
+    android:layout_gravity="center_vertical"
+    android:layout_margin="5dp"
+    android:onClick="finish_reback"
+    android:background="@mipmap/left" />
+<TextView
+    android:id="@+id/title_page"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_weight="1"
+    android:layout_gravity="center"
+    android:text="租衣捷"
+    android:textColor="#6A5ACD"
+    android:textSize="28sp"/>
+<ImageButton
+    android:id="@+id/btn_notice"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:layout_gravity="center"
+    android:layout_margin="5dp"
+    android:background="@mipmap/notice"
+    />
 </LinearLayout>

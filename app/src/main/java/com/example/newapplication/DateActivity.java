@@ -242,18 +242,23 @@ public class DateActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.b_home:
                 startActivity(new Intent(DateActivity.this,HomeActivity.class));
+                DateActivity.this.finish();
                 break;
             case R.id.b_list:
                 startActivity(new Intent(DateActivity.this,ListActivity.class));
+                DateActivity.this.finish();
                 break;
             case R.id.b_me:
                 startActivity(new Intent(DateActivity.this,MeActivity.class));
+                DateActivity.this.finish();
                 break;
             case R.id.b_shopcar:
                 startActivity(new Intent(DateActivity.this,ShopcarActivity.class));
+                DateActivity.this.finish();
                 break;
             case R.id.btn_notice:
                 startActivity(new Intent(DateActivity.this, Notice.class));
+                DateActivity.this.finish();
                 break;
 
         }

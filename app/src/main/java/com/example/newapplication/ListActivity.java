@@ -83,18 +83,23 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
                 //底部导航栏按钮
             case R.id.b_home:
                 startActivity(new Intent(ListActivity.this,HomeActivity.class));
+                ListActivity.this.finish();
                 break;
             case R.id.b_date:
                 startActivity(new Intent(ListActivity.this,DateActivity.class));
+                ListActivity.this.finish();
                 break;
             case R.id.b_shopcar:
                 startActivity(new Intent(ListActivity.this,ShopcarActivity.class));
+                ListActivity.this.finish();
                 break;
             case R.id.b_me:
                 startActivity(new Intent(ListActivity.this,MeActivity.class));
+                ListActivity.this.finish();
                 break;
             case R.id.btn_notice:
                 startActivity(new Intent(ListActivity.this, Notice.class));
+                ListActivity.this.finish();
                 break;
         }
 
