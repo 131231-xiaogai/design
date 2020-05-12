@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +45,8 @@ public class My_OrderActivity extends AppCompatActivity implements View.OnClickL
     private Sk_OrderAdapter sk_orderAdapter;
     private RecyclerView s_recycle_view;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private ImageView sk_order_good_find;
+    private EditText sk_order_input_goodname;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,9 @@ public class My_OrderActivity extends AppCompatActivity implements View.OnClickL
         title_back=findViewById(R.id.title_back);
         btn_notice=findViewById(R.id.btn_notice);
         s_recycle_view=findViewById(R.id.sk_order_recycleView);
+        sk_order_good_find=findViewById(R.id.sk_order_good_find);
+        sk_order_input_goodname=findViewById(R.id.sk_order_input_goodname);
+
         //
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         s_recycle_view.setLayoutManager(layoutManager);
@@ -75,7 +82,7 @@ public class My_OrderActivity extends AppCompatActivity implements View.OnClickL
         title_page.setText(name);
         Log.d("WalletpagaActivity",name);
         //
-        swipeRefreshLayout=findViewById(R.id.swipeRefreshLayout_sk);
+        swipeRefreshLayout=findViewById(R.id.swipeRefreshLayout_sk_shuaxin);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -117,6 +124,7 @@ public class My_OrderActivity extends AppCompatActivity implements View.OnClickL
     private void OnClickListener() {
         title_back.setOnClickListener(this);
         btn_notice.setOnClickListener(this);
+        sk_order_good_find.setOnClickListener(this);
     }
 
 
@@ -131,6 +139,13 @@ public class My_OrderActivity extends AppCompatActivity implements View.OnClickL
                 Intent intent5 = new Intent(My_OrderActivity.this, Sk_Notice.class);
                 intent5.putExtra("my_shop_id",shop_id);
                 startActivity(intent5);
+                break;
+            case R.id.sk_order_good_find:
+                Intent intent1 = new Intent(My_OrderActivity.this, Sk_select_order_fa.class);
+                intent1.putExtra("my_shop_id",shop_id);
+                intent1.putExtra("order_status",status);
+                intent1.putExtra("find_name",sk_order_input_goodname.getText().toString());
+                startActivity(intent1);
                 break;
         }
 

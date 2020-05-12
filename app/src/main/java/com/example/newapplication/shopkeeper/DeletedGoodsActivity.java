@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,12 +32,13 @@ import java.util.Map;
 
 public class DeletedGoodsActivity extends AppCompatActivity implements View.OnClickListener  {
 
-    ImageButton skd_title_back;
-    String  myshop_id,my_pagename;
-    String pagenumber;
+    private ImageButton skd_title_back;
+    private String  myshop_id,my_pagename;
+    private String pagenumber;
     private Shopkeeper_goodAdapter shopkeeper_goodAdapter;
-    RecyclerView skd_recycle_view;
-    TextView gdd_pageneme;
+    private RecyclerView skd_recycle_view;
+    private TextView gdd_pageneme;
+    private ImageView sk_de_good_find;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +46,7 @@ public class DeletedGoodsActivity extends AppCompatActivity implements View.OnCl
         skd_title_back=findViewById(R.id.skd_title_back);
         skd_recycle_view=findViewById(R.id.skd_recycle_view);
         gdd_pageneme=findViewById(R.id.gdd_pageneme);
+        sk_de_good_find=findViewById(R.id.sk_de_good_find);
         //
 
         //从ShopkeeperActivity接受数据
@@ -98,6 +101,7 @@ public class DeletedGoodsActivity extends AppCompatActivity implements View.OnCl
     private void OnClickListener() {
 
         skd_title_back.setOnClickListener(this);
+        sk_de_good_find.setOnClickListener(this);
     }
 
     @Override
@@ -122,6 +126,12 @@ public class DeletedGoodsActivity extends AppCompatActivity implements View.OnCl
         switch (v.getId()){
             case R.id.skd_title_back:
                 DeletedGoodsActivity.this.finish();
+                break;
+            case R.id.sk_de_good_find:
+                Intent intent = new Intent(DeletedGoodsActivity.this, Sk_select_goods.class);
+                intent.putExtra("my_shop_id", myshop_id);
+                intent.putExtra("my_pagenumber", pagenumber);
+                startActivityForResult(intent,1);
                 break;
         }
 

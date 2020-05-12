@@ -20,12 +20,20 @@
             android:id="@+id/gdd_pageneme"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:paddingLeft="40dp"
+            android:gravity="left"
             android:layout_weight="1"
             android:layout_gravity="center"
             android:text="商 品 下 架"
             android:textColor="#6A5ACD"
-            android:textSize="28sp"/>
+            android:textSize="22sp"/>
+        <ImageView
+            android:id="@+id/sk_de_good_find"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="@mipmap/sousuo"/>
         <ImageButton
             android:id="@+id/sk_addgood"
             android:layout_width="35dp"

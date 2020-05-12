@@ -55,7 +55,7 @@ public class All_orderActivity extends AppCompatActivity implements View.OnClick
         orderAdapter.setOnItemClickListener(new OnItemClickListener<OrderBean>() {
             @Override
             public void onItemClick(RecyclerViewHolder viewHolder, OrderBean data, int position) {
-                Toast.makeText(All_orderActivity.this, data.getGoods_id(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(All_orderActivity.this, data.getOrder_id(), Toast.LENGTH_SHORT).show();
                 String da = data.getGoods_id();
                 Intent intent = new Intent(All_orderActivity.this, OrderDetailActivity.class);
                 intent.putExtra("hgoodid", da);
@@ -66,12 +66,15 @@ public class All_orderActivity extends AppCompatActivity implements View.OnClick
                 intent.putExtra("number",data.getGood_number());
                 intent.putExtra("totalprice",data.getTotal_price());
                 intent.putExtra("address",data.getAddress());
+                Log.d("地址编号为",data.getAddress());
                 intent.putExtra("shop_name",data.getShop_id());
                 intent.putExtra("deliver",data.getDeliver());
                 intent.putExtra("crateTime",data.getOrder_creat_time());
                 intent.putExtra("startTime",data.getOrder_rent_validation_time());
                 intent.putExtra("finishTime",data.getOrder_rent_finesh_time());
                 intent.putExtra("order_code",data.getOrder_code());
+                intent.putExtra("order_id",data.getOrder_id());
+
                 startActivityForResult(intent,1);
             }
         });

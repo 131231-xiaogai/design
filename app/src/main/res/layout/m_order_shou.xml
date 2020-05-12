@@ -17,6 +17,35 @@
         android:layout_height="0dp"
         android:layout_weight="18">
         <include layout="@layout/m_order"/>
+        <!--搜索框-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/my_select_order_find_shou"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@mipmap/sousuo"/>
+            <EditText
+                android:id="@+id/input_order_mygoodname_shou"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="请输入"/>
+            <TextView
+                android:id="@+id/money_yue_total"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,6 +57,7 @@
                 android:layout_height="match_parent">
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/order_shou_recycle_view"
+                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                 </androidx.recyclerview.widget.RecyclerView>

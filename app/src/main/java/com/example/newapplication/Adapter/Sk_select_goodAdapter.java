@@ -9,8 +9,8 @@ import com.example.newapplication.R;
 import com.example.newapplication.entity.GoodBean;
 import com.example.newapplication.viewhandle.RecyclerViewHolder;
 
-public class Shopkeeper_goodAdapter extends BaseRecyclerViewAdapter<GoodBean, RecyclerViewHolder> {
-    public Shopkeeper_goodAdapter(Context context) {
+public class Sk_select_goodAdapter extends BaseRecyclerViewAdapter<GoodBean, RecyclerViewHolder> {
+    public Sk_select_goodAdapter(Context context) {
         super(context);
     }
 

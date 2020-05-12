@@ -30,7 +30,7 @@ import java.util.Map;
 public class OrderDetailActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageButton title_back,notic;
-    private String  da,address,deliver;
+    private String  da,address,deliver,orderid;
     private TextView  uname, phone, de_address,gsize,gprice,gtotal,order_code,startTime,gfinishTime,order_de_shopname;
     private TextView  gname;
     private ImageView gimg;
@@ -78,6 +78,8 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
         String startTime =goodid_integer.getStringExtra("startTime");
         String finishTime =goodid_integer.getStringExtra("finishTime");
         gfinishTime.setText("租期结束时间："+finishTime);
+        //order_id
+       orderid =goodid_integer.getStringExtra("order_id");
         //ordercode
         String ordercode =goodid_integer.getStringExtra("order_code");
 
@@ -89,7 +91,7 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
 
     private void find_address() {
         Map map = new HashMap();
-        map.put("address_id",da);
+        map.put("address_id",address);
         OkHttp.get(this, Constant.select_address_by_addressId, map, new OkCallback<Result<AddressBean>>() {
             @Override
             public void onResponse(Result<AddressBean> response) {
@@ -107,7 +109,7 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
 
     private void find_pingfen() {
         Map map = new HashMap();
-        map.put("order_id",address);
+        map.put("order_id",orderid);
         OkHttp.get(this, Constant.select_evaluate_by_orderid, map, new OkCallback<Result<EvaluateBean>>() {
             @Override
             public void onResponse(Result<EvaluateBean> response) {

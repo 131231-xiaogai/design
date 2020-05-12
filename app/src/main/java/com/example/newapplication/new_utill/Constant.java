@@ -79,4 +79,12 @@ public class Constant {
     public static String select_address_by_addressId =BASE_URL+"/Select_address_by_addressId";
     //select_evaluate_by_orderid
     public static String select_evaluate_by_orderid =BASE_URL+"/Select_evaluate_by_orderid";
+    //select_Order_byMonth
+    public static String select_shopOrder_byMonth =BASE_URL+"/Select_shopOrder_byMonth";
+    //select_good_bylikeName
+    public static String select_good_bylikeName =BASE_URL+"/Select_good_bylikeName";
+    //select_order_byShopidAndOrderStstus_likeName
+    public static String select_order_byShopidAndOrderStstus_likeName =BASE_URL+"/Select_order_byShopidAndOrderStstus_likeName";
+    //select_order_byUseridAndOrderStstus_likeName
+    public static String select_order_byUseridAndOrderStstus_likeName =BASE_URL+"/Select_order_byUseridAndOrderStstus_likeName";
 }

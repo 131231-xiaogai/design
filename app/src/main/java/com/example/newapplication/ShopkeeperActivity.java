@@ -31,6 +31,8 @@ import com.example.newapplication.shopkeeper.My_Order_huanActivity;
 import com.example.newapplication.shopkeeper.My_Order_shouActivity;
 import com.example.newapplication.shopkeeper.Register_shopActivity;
 import com.example.newapplication.shopkeeper.Sk_All_orderActivity;
+import com.example.newapplication.shopkeeper.Sk_more_maney;
+import com.example.newapplication.shopkeeper.Sk_select_goods;
 
 import java.util.HashMap;
 import java.util.List;
@@ -40,7 +42,8 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
     private String myshop_id,pagename,myshop_name;
     private String pagenumber,isshop;
     private TextView my_shop_name,my_shop_address,me_shop_register_time,me_shop_phone,my_shop_sorc,sk_huan;
-    private TextView k_add,k_delete,k_change,me_shop_name,me_shop_blance,s_totalprice,sk_all_order,sk_user_setup;
+    private TextView k_add,k_delete,k_change,me_shop_name,me_shop_blance,s_totalprice,sk_all_order,sk_user_setup,k_select;
+    private TextView more_maney;
     private ImageButton btn_notice,title_back;
     private TextView fu,fa,shou;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -66,6 +69,8 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         s_totalprice=findViewById(R.id.s_totalprice);
         sk_all_order=findViewById(R.id.sk_all_order);
         sk_user_setup=findViewById(R.id.sk_user_setup);
+        more_maney=findViewById(R.id.more_maney);
+        k_select=findViewById(R.id.k_select);
         //****----//
         swipeRefreshLayout=findViewById(R.id.swipeRefreshLayout_sk);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -187,12 +192,27 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         title_back.setOnClickListener(this);
         sk_all_order.setOnClickListener(this);
         sk_user_setup.setOnClickListener(this);
+        more_maney.setOnClickListener(this);
+        k_select.setOnClickListener(this);
+
     }
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.k_select:
+                Intent intent8 = new Intent(ShopkeeperActivity.this, Sk_select_goods.class);
+                intent8.putExtra("my_shop_id",myshop_id);
+                pagenumber="1";
+                intent8.putExtra("my_pagenumber", pagenumber);
+                startActivity(intent8);
+                break;
+            case R.id.more_maney:
+                Intent intent7 = new Intent(ShopkeeperActivity.this, Sk_more_maney.class);
+                intent7.putExtra("my_shop_id",myshop_id);
+                startActivity(intent7);
+                break;
             case R.id. sk_fa:
                 Intent intent2 = new Intent(ShopkeeperActivity.this, My_OrderActivity.class);
                 intent2.putExtra("my_shop_id",myshop_id);

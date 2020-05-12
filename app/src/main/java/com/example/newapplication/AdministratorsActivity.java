@@ -17,6 +17,7 @@ import com.example.newapplication.Administrators.Adm_qxdj_guke;
 import com.example.newapplication.Administrators.Adm_qxdj_sj;
 import com.example.newapplication.Administrators.AllShopkeeperActivity;
 import com.example.newapplication.Administrators.AllUserActivity;
+import com.example.newapplication.Administrators.DeleteUserActivity;
 import com.example.newapplication.Administrators.Deleted_ShopkeeperActivity;
 import com.example.newapplication.entity.OrderBean;
 import com.example.newapplication.entity.UsersBean;
@@ -128,24 +129,25 @@ public class AdministratorsActivity extends AppCompatActivity implements View.On
                 deleted_number="0";
                 intent = new Intent(AdministratorsActivity.this, AllUserActivity.class);
                 intent.putExtra("p_pagename", p_pagename);
+                intent.putExtra("p_deleted_number", deleted_number);
                 startActivity(intent);
-                AdministratorsActivity.this.finish();
+
                 break;
             case R.id.adm_allShopkeeper:
                 p_pagename="查 看 商 家";
                 intent = new Intent(AdministratorsActivity.this, AllShopkeeperActivity.class);
                 intent.putExtra("p_pagename", p_pagename);
                 startActivity(intent);
-                AdministratorsActivity.this.finish();
+
                 break;
             case R.id.adm_deletedUser:
                 p_pagename="注 销 顾 客";
-                deleted_number="1";
+
                 intent = new Intent(AdministratorsActivity.this, AllUserActivity.class);
                 intent.putExtra("p_pagename", p_pagename);
                 intent.putExtra("p_deleted_number", deleted_number);
                 startActivity(intent);
-                AdministratorsActivity.this.finish();
+
                 break;
             case R.id.adm_deletedShopkeeper:
                 p_pagename="注 销 商 家";
@@ -153,35 +155,35 @@ public class AdministratorsActivity extends AppCompatActivity implements View.On
                 intent = new Intent(AdministratorsActivity.this, Deleted_ShopkeeperActivity.class);
                 intent.putExtra("p_pagename", p_pagename);
                 startActivity(intent);
-                AdministratorsActivity.this.finish();
+
                 break;
             case R.id.adm_dj_gk:
                 p_pagename ="冻结顾客";
                 intent = new Intent(AdministratorsActivity.this, Adm_dj_gk.class);
                 intent.putExtra("p_pagename", p_pagename);
                 startActivity(intent);
-                AdministratorsActivity.this.finish();
+
                 break;
             case R.id.adm_dj_sj:
                 p_pagename ="冻结商家";
                 intent = new Intent(AdministratorsActivity.this, Adm_dj_sj.class);
                 intent.putExtra("p_pagename", p_pagename);
                 startActivity(intent);
-                AdministratorsActivity.this.finish();
+
                 break;
             case R.id. adm_qxdj_guke:
                 p_pagename ="取消冻结顾客";
                 intent = new Intent(AdministratorsActivity.this, Adm_qxdj_guke.class);
                 intent.putExtra("p_pagename", p_pagename);
                 startActivity(intent);
-                AdministratorsActivity.this.finish();
+
                 break;
             case R.id. adm_qxdj_sj:
                 p_pagename ="取消冻结商家";
                 intent = new Intent(AdministratorsActivity.this, Adm_qxdj_sj.class);
                 intent.putExtra("p_pagename", p_pagename);
                 startActivity(intent);
-                AdministratorsActivity.this.finish();
+
                 break;
             case R.id.ad_user_setup:
                 startActivity(new Intent(AdministratorsActivity.this, MySetUpActivility.class));

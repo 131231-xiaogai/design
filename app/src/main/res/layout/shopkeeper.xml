@@ -79,7 +79,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="30dp"
                     android:textSize="16sp"
-                    android:text="全 部 订 单 "
+                    android:text="全部订单 "
                     android:gravity="center"/>
             </LinearLayout>
 
@@ -108,6 +108,7 @@
                     android:id="@+id/sk_huan"
                     style="@style/sk_ui"
                     android:layout_weight="1"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginRight="30dp"
                     android:text="还"
                     />
@@ -115,7 +116,6 @@
                     android:id="@+id/sk_shou"
                     style="@style/sk_ui"
                     android:layout_weight="1"
-                    android:layout_marginLeft="15dp"
                     android:layout_marginRight="30dp"
                     android:text="收"
                     />
@@ -134,19 +134,30 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
                     android:gravity="center"
-                    android:textSize="19sp"
-                    android:text=" 我 的 收 入 :"
+                    android:textSize="18sp"
+                    android:text=" 我的收入:"
                     android:background="#fff"/>
                 <TextView
                     android:id="@+id/s_totalprice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:textSize="19sp"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
                     android:gravity="left"
                     android:text=" ￥ 2.00 "
                     />
+                <TextView
+                    android:id="@+id/more_maney"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:textSize="16sp"
+                    android:text=" 更多详情"
+                    android:layout_marginRight="30dp"
+                    android:background="#fff"/>
             </LinearLayout>
 
         </LinearLayout>

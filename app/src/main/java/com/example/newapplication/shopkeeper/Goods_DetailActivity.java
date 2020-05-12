@@ -55,7 +55,7 @@ public class Goods_DetailActivity extends AppCompatActivity implements View.OnCl
         myshop_id  =  goodid_integer.getStringExtra("myshop_id");
         l_goodid.setText(da);
         Log.d("Goods_DetailActivity",da);
-        Log.d("Goods_DetailActivity",pagenumber);
+
         //
         if (pagenumber.equals("11")){
             to_deleted.setBackground(getResources().getDrawable(R.drawable.button_bg1));

@@ -17,8 +17,6 @@ import com.example.newapplication.Adapter.Select_userAdapter;
 import com.example.newapplication.R;
 import com.example.newapplication.entity.UsersBean;
 import com.example.newapplication.inteface.OnItemClickListener;
-import com.example.newapplication.me.My_select_order_fa;
-import com.example.newapplication.me.Order_fa;
 import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
@@ -27,24 +25,21 @@ import com.example.newapplication.viewhandle.RecyclerViewHolder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import static com.example.newapplication.new_utill.Constant.select_all_user;
 
-public class AllUserActivity extends AppCompatActivity implements View.OnClickListener {
-    private ImageButton adm_back;
+public class DeleteUserActivity extends AppCompatActivity implements View.OnClickListener {
+    ImageButton adm_back;
     private Select_userAdapter select_userAdapter;
-    private RecyclerView recyclerView;
-    private TextView adm_pageneme;
-    private TextView ad_select;
-    private String deleted_number;
-    private UsersBean data;
+    RecyclerView recyclerView;
+    TextView adm_pageneme;
+    String deleted_number;
+    UsersBean data;
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.adm_re_view);
         adm_back=findViewById(R.id.adm_title_back);
         adm_pageneme=findViewById(R.id.adm_pageneme);
-        ad_select=findViewById(R.id.ad_select_user);
-        ad_select.setOnClickListener(this);
-
         //
         Intent pagename_integer = getIntent();
         String  data = pagename_integer.getStringExtra("p_pagename");
@@ -68,7 +63,7 @@ public class AllUserActivity extends AppCompatActivity implements View.OnClickLi
                     String Idnumber = data.getId_number();
                     String sex =data.getSex();
                     String blance = data.getBalance();
-                    Intent intent = new Intent(AllUserActivity.this, Adm_ItemDetailActivity.class);
+                    Intent intent = new Intent(DeleteUserActivity.this, Adm_ItemDetailActivity.class);
                     intent.putExtra("userId",userId);
                     intent.putExtra("name", name);
                     intent.putExtra("phone", phone);
@@ -95,13 +90,7 @@ public class AllUserActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.adm_title_back:
-                AllUserActivity.this.finish();
-                break;
-            case R.id.ad_select_user:
-                Intent intent1 = new Intent(AllUserActivity.this, Ad_select_user.class);
-                //intent1.putExtra("order_status","2");
-                //intent1.putExtra("find_name",input_order_mygoodname.getText().toString());
-                startActivity(intent1);
+                DeleteUserActivity.this.finish();
                 break;
 
         }
@@ -138,7 +127,7 @@ public class AllUserActivity extends AppCompatActivity implements View.OnClickLi
             }
             @Override
             public void onFailure(String state, String msg) {
-                Toast.makeText(AllUserActivity.this, msg, Toast.LENGTH_SHORT).show();
+                Toast.makeText(DeleteUserActivity.this, msg, Toast.LENGTH_SHORT).show();
             }
         });
 

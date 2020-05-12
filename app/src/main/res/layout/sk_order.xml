@@ -11,7 +11,37 @@
         android:layout_weight="1.3">
         <include layout="@layout/title"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+       android:layout_margin="6dp"
+        android:layout_weight="1.2">
+        <!--搜索框-->
 
+            <ImageView
+                android:id="@+id/sk_order_good_find"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@mipmap/sousuo"/>
+            <EditText
+                android:id="@+id/sk_order_input_goodname"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="请输入"/>
+            <TextView
+                android:id="@+id/money_yue_total"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                />
+
+    </LinearLayout>
     <!--中-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,24 +53,21 @@
             android:layout_weight="1"
             android:layout_height="0dp">
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:id="@+id/swipeRefreshLayout_fa"
+                android:id="@+id/swipeRefreshLayout_sk_shuaxin"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/sk_order_recycleView"
                 android:layout_width="match_parent"
+                android:padding="10dp"
                 android:layout_height="match_parent">
             </androidx.recyclerview.widget.RecyclerView>
+
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
         </LinearLayout>
     </LinearLayout>
     <!--底部-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.2">
 
-    </LinearLayout>
 
 
 

@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +41,8 @@ public class Order_tui extends AppCompatActivity implements View.OnClickListener
     private Order_tui_Adapter order_tui_adapter;
     RecyclerView s_recycle_view;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private ImageView my_select_order_find;
+    private EditText input_order_mygoodname;
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.m_order_tui);
@@ -47,6 +51,8 @@ public class Order_tui extends AppCompatActivity implements View.OnClickListener
         fu=findViewById(R.id.ord_fu);
         tui=findViewById(R.id.ord_tui);
         shou=findViewById(R.id.ord_shou);
+        my_select_order_find=findViewById(R.id.my_select_order_find_tui);
+        input_order_mygoodname=findViewById(R.id.input_order_mygoodname_tui);
         s_recycle_view=findViewById(R.id.order_tui_recycle_view);
         //-------------------------------/
         tui.setBackground(getResources().getDrawable(R.drawable.button_bg3));
@@ -105,6 +111,7 @@ public class Order_tui extends AppCompatActivity implements View.OnClickListener
         fu.setOnClickListener(this);
         tui.setOnClickListener(this);
         shou.setOnClickListener(this);
+        my_select_order_find.setOnClickListener(this);
        // title_back.setOnClickListener(this);
     }
     public void finish_reback(View v){
@@ -128,6 +135,12 @@ public class Order_tui extends AppCompatActivity implements View.OnClickListener
             case R.id.ord_shou:
                 startActivity(new Intent(Order_tui.this, Order_shou.class));
                 Order_tui.this.finish();
+                break;
+            case R.id.my_select_order_find_tui:
+                Intent intent1 = new Intent(Order_tui.this, My_select_order_fa.class);
+                intent1.putExtra("order_status","4");
+                intent1.putExtra("find_name",input_order_mygoodname.getText().toString());
+                startActivity(intent1);
                 break;
         }
 

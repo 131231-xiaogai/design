@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +41,8 @@ public class Order_shou extends AppCompatActivity implements View.OnClickListene
     private Order_shou_Adapter order_shou_adapter;
     RecyclerView s_recycle_view;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private ImageView my_select_order_find;
+    private EditText input_order_mygoodname;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +51,10 @@ public class Order_shou extends AppCompatActivity implements View.OnClickListene
         fa=findViewById(R.id.ord_fa);
         fu=findViewById(R.id.ord_fu);
         tui=findViewById(R.id.ord_tui);
-        shou=findViewById(R.id.ord_shou);//
+        shou=findViewById(R.id.ord_shou);
+        my_select_order_find=findViewById(R.id.my_select_order_find_shou);
+        input_order_mygoodname=findViewById(R.id.input_order_mygoodname_shou);
+        //
         s_recycle_view=findViewById(R.id.order_shou_recycle_view);
         swipeRefreshLayout=findViewById(R.id.swipeRefreshLayout);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -110,6 +117,7 @@ public class Order_shou extends AppCompatActivity implements View.OnClickListene
         fu.setOnClickListener(this);
         tui.setOnClickListener(this);
         shou.setOnClickListener(this);
+        my_select_order_find.setOnClickListener(this);
 
         //title_back.setOnClickListener(this);
     }
@@ -131,6 +139,12 @@ public class Order_shou extends AppCompatActivity implements View.OnClickListene
                 break;
             case R.id.ord_shou:
                 Toast.makeText(Order_shou.this, "您 正 在 当 前 页 。", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.my_select_order_find_shou:
+                Intent intent1 = new Intent(Order_shou.this, My_select_order_fa.class);
+                intent1.putExtra("order_status","3");
+                intent1.putExtra("find_name",input_order_mygoodname.getText().toString());
+                startActivity(intent1);
                 break;
         }
 

@@ -81,6 +81,18 @@
         <activity android:name=".newpage.All_orderActivity"/>
         <activity android:name=".shopkeeper.Sk_All_orderActivity"/>
         <activity android:name=".newpage.OrderDetailActivity"/>
+        <activity android:name=".shopkeeper.Sk_more_maney"/>
+        <activity android:name=".shopkeeper.Sk_yue_order"/>
+        <activity android:name=".shopkeeper.Sk_select_goods"/>
+        <activity android:name=".shopkeeper.Sk_select_order"/>
+        <activity android:name=".shopkeeper.Sk_select_order_fa"/>
+        <activity android:name=".shopkeeper.Sk_select_order_shou"/>
+        <activity android:name=".shopkeeper.Sk_select_order_huan"/>
+        <activity android:name=".me.My_select_order_fa"/>
+        <activity android:name=".me.My_select_order_fu"/>
+        <activity android:name=".me.My_select_order_tui"/>
+        <activity android:name=".me.My_select_order_shou"/>
+
     </application>
 
 </manifest>
