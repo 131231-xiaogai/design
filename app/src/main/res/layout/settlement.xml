@@ -22,10 +22,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:gravity="left"
             android:text="确 认 订 单"
             android:textColor="#6A5ACD"
-            android:textSize="28sp" />
+            android:textSize="22sp" />
 
     </LinearLayout>
 

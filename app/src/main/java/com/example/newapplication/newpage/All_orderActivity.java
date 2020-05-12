@@ -38,6 +38,7 @@ public class All_orderActivity extends AppCompatActivity implements View.OnClick
     private All_OrderAdapter orderAdapter;
     private RecyclerView s_recycle_view;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private String shop_id;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,8 +57,21 @@ public class All_orderActivity extends AppCompatActivity implements View.OnClick
             public void onItemClick(RecyclerViewHolder viewHolder, OrderBean data, int position) {
                 Toast.makeText(All_orderActivity.this, data.getGoods_id(), Toast.LENGTH_SHORT).show();
                 String da = data.getGoods_id();
-                Intent intent = new Intent(All_orderActivity.this, ItemDetailActivity.class);
+                Intent intent = new Intent(All_orderActivity.this, OrderDetailActivity.class);
                 intent.putExtra("hgoodid", da);
+                intent.putExtra("img",data.getGood_img());
+                intent.putExtra("name",data.getGood_name());
+                intent.putExtra("price",data.getGood_price());
+                intent.putExtra("yajin",data.getGoods_yajin());
+                intent.putExtra("number",data.getGood_number());
+                intent.putExtra("totalprice",data.getTotal_price());
+                intent.putExtra("address",data.getAddress());
+                intent.putExtra("shop_name",data.getShop_id());
+                intent.putExtra("deliver",data.getDeliver());
+                intent.putExtra("crateTime",data.getOrder_creat_time());
+                intent.putExtra("startTime",data.getOrder_rent_validation_time());
+                intent.putExtra("finishTime",data.getOrder_rent_finesh_time());
+                intent.putExtra("order_code",data.getOrder_code());
                 startActivityForResult(intent,1);
             }
         });

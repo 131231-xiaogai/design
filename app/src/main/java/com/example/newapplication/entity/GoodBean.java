@@ -6,10 +6,10 @@ public class GoodBean {
 	private String goods_price;
 	private String goods_status;
 	private String goods_yajin;
-	private String Clothing_length;
-	private String Sleeve_length;
-	private String Shoulder_width;
-	private String Leg_width;
+	private String clothing_length;
+	private String sleeve_length;
+	private String shoulder_width;
+	private String leg_width;
 	private String trousers_length;
 	private String meterial_id;
 	private String size;
@@ -80,30 +80,39 @@ public class GoodBean {
 	public void setGoods_yajin(String goods_yajin) {
 		this.goods_yajin = goods_yajin;
 	}
+
 	public String getClothing_length() {
-		return Clothing_length;
+		return clothing_length;
 	}
+
 	public void setClothing_length(String clothing_length) {
-		Clothing_length = clothing_length;
+		this.clothing_length = clothing_length;
 	}
+
 	public String getSleeve_length() {
-		return Sleeve_length;
+		return sleeve_length;
 	}
+
 	public void setSleeve_length(String sleeve_length) {
-		Sleeve_length = sleeve_length;
+		this.sleeve_length = sleeve_length;
 	}
+
 	public String getShoulder_width() {
-		return Shoulder_width;
+		return shoulder_width;
 	}
+
 	public void setShoulder_width(String shoulder_width) {
-		Shoulder_width = shoulder_width;
+		this.shoulder_width = shoulder_width;
 	}
+
 	public String getLeg_width() {
-		return Leg_width;
+		return leg_width;
 	}
+
 	public void setLeg_width(String leg_width) {
-		Leg_width = leg_width;
+		this.leg_width = leg_width;
 	}
+
 	public String getTrousers_length() {
 		return trousers_length;
 	}

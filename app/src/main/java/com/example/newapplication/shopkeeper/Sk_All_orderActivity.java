@@ -25,6 +25,7 @@ import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.new_utill.SharePrefrenceUtil;
 import com.example.newapplication.newpage.Notice;
+import com.example.newapplication.newpage.OrderDetailActivity;
 import com.example.newapplication.viewhandle.RecyclerViewHolder;
 
 import java.util.HashMap;
@@ -55,8 +56,21 @@ public class Sk_All_orderActivity extends AppCompatActivity implements View.OnCl
             public void onItemClick(RecyclerViewHolder viewHolder, OrderBean data, int position) {
                 Toast.makeText(Sk_All_orderActivity.this, data.getGoods_id(), Toast.LENGTH_SHORT).show();
                 String da = data.getGoods_id();
-                Intent intent = new Intent(Sk_All_orderActivity.this, ItemDetailActivity.class);
+                Intent intent = new Intent(Sk_All_orderActivity.this, OrderDetailActivity.class);
                 intent.putExtra("hgoodid", da);
+                intent.putExtra("img",data.getGood_img());
+                intent.putExtra("name",data.getGood_name());
+                intent.putExtra("price",data.getGood_price());
+                intent.putExtra("yajin",data.getGoods_yajin());
+                intent.putExtra("number",data.getGood_number());
+                intent.putExtra("totalprice",data.getTotal_price());
+                intent.putExtra("address",data.getAddress());
+                intent.putExtra("shop_name",data.getShop_id());
+                intent.putExtra("deliver",data.getDeliver());
+                intent.putExtra("crateTime",data.getOrder_creat_time());
+                intent.putExtra("startTime",data.getOrder_rent_validation_time());
+                intent.putExtra("finishTime",data.getOrder_rent_finesh_time());
+                intent.putExtra("order_code",data.getOrder_code());
                 startActivityForResult(intent,1);
             }
         });

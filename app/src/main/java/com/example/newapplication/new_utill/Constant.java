@@ -75,4 +75,8 @@ public class Constant {
     public static String select_allOrder_byUserid =BASE_URL+"/Select_allOrder_byUserid";
     //select_allOrder_byShopId
     public static String select_allOrder_byShopId =BASE_URL+"/Select_allOrder_byShopId";
+    //select_address_by_addressId
+    public static String select_address_by_addressId =BASE_URL+"/Select_address_by_addressId";
+    //select_evaluate_by_orderid
+    public static String select_evaluate_by_orderid =BASE_URL+"/Select_evaluate_by_orderid";
 }
