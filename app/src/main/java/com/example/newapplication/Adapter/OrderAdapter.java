@@ -34,13 +34,13 @@ public class OrderAdapter extends BaseRecyclerViewAdapter<OrderBean, RecyclerVie
         name.setText("#"+data.getGood_name()+"#");
 
         TextView tiame =holder.getView(R.id.order_fa_goodNumber);
-        tiame.setText("订单结束时间："+data.getOrder_rent_finesh_time());
+        tiame.setText("订单于："+data.getOrder_rent_finesh_time()+"结束");
 
         ImageView imageView = holder.getView(R.id.order_fa_img);
         Glide.with(mContext).load(data.getGood_img()).into(imageView);
 
         TextView price = holder.getView(R.id.order_fa_price);
-        price.setText("租金/件：￥"+data.getGood_price()+"/ 租 金：￥"+data.getGoods_yajin()+"/ 数 量："+data.getGood_number());
+        price.setText("租金/件: ￥"+data.getGood_price()+"/租 金：￥"+data.getGoods_yajin()+"/数 量："+data.getGood_number());
 
         TextView total = holder.getView(R.id.order_fa_total);
         total.setText("总 金 额 ：￥"+data.getTotal_price());

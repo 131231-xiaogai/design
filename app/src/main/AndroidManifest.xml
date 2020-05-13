@@ -92,6 +92,13 @@
         <activity android:name=".me.My_select_order_fu"/>
         <activity android:name=".me.My_select_order_tui"/>
         <activity android:name=".me.My_select_order_shou"/>
+        <activity android:name=".Administrators.Ad_select_user"/>
+        <activity android:name=".Administrators.Ad_select_shop"/>
+        <activity android:name=".Administrators.Ad_select_shop_qxdj"/>
+        <activity android:name=".Administrators.Ad_select_shop_dj"/>
+        <activity android:name=".Administrators.Ad_select_user_qxdj"/>
+        <activity android:name=".Administrators.Ad_select_user_dj"/>
+        <activity android:name=".home.Home_select_goods"/>
 
     </application>
 

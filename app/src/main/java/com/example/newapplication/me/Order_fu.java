@@ -28,6 +28,7 @@ import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.new_utill.SharePrefrenceUtil;
+import com.example.newapplication.newpage.Notice;
 import com.example.newapplication.viewhandle.RecyclerViewHolder;
 
 import java.util.HashMap;
@@ -35,13 +36,13 @@ import java.util.List;
 import java.util.Map;
 
 public class Order_fu extends AppCompatActivity implements View.OnClickListener {
-    ImageButton title_back;
-    TextView ord_fu;
-    TextView fa,tui,shou;
+    private ImageButton title_back;
+    private TextView ord_fu;
+    private TextView fa,tui,shou;
     private SwipeRefreshLayout swipeRefreshLayout;
-
+    private  ImageButton btn_fa;
     private Order_fu_Adapter order_fu_adapter;
-    RecyclerView s_recycle_view;
+    private RecyclerView s_recycle_view;
     private ImageView my_select_order_find;
     private EditText input_order_mygoodname;
 
@@ -53,6 +54,8 @@ public class Order_fu extends AppCompatActivity implements View.OnClickListener 
         s_recycle_view=findViewById(R.id.orderFU_recycle_view);
         tui=findViewById(R.id.ord_tui);
         shou=findViewById(R.id.ord_shou);
+        btn_fa=findViewById(R.id.btn_notice);
+        btn_fa.setOnClickListener(this);
         my_select_order_find=findViewById(R.id.my_select_order_find_fu);
         input_order_mygoodname=findViewById(R.id.input_order_mygoodname_fu);
         //-------------------------------/
@@ -146,6 +149,9 @@ public class Order_fu extends AppCompatActivity implements View.OnClickListener 
                 intent1.putExtra("order_status","1");
                 intent1.putExtra("find_name",input_order_mygoodname.getText().toString());
                 startActivity(intent1);
+                break;
+            case R.id.btn_notice:
+                startActivity(new Intent(Order_fu.this, Notice.class));
                 break;
         }
 

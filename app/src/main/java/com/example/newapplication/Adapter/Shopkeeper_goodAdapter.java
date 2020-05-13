@@ -34,7 +34,7 @@ public class Shopkeeper_goodAdapter extends BaseRecyclerViewAdapter<GoodBean, Re
         kd_goood_yajin.setText(data.getGoods_yajin());
 
         TextView kd_goood_type =holder.getView(R.id.kd_goood_type);
-        kd_goood_type.setText(data.getGoods_yajin());
+       // kd_goood_type.setText(data.getg());
 
         TextView kd_good_number =holder.getView(R.id.kd_good_number);
         kd_good_number.setText(data.getGoods_number());

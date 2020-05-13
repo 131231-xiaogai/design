@@ -28,6 +28,7 @@ import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.new_utill.SharePrefrenceUtil;
+import com.example.newapplication.newpage.Notice;
 import com.example.newapplication.shopkeeper.My_Order_huanActivity;
 import com.example.newapplication.shopkeeper.Sk_select_order_huan;
 import com.example.newapplication.viewhandle.RecyclerViewHolder;
@@ -40,7 +41,7 @@ public class Order_fa extends AppCompatActivity implements View.OnClickListener 
 
     private  ImageButton title_back;
     private  TextView fa,fu,tui,shou;
-    private  Button btn_fa;
+    private  ImageButton btn_fa;
     private OrderAdapter orderAdapter;
     private  RecyclerView s_recycle_view;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -58,6 +59,8 @@ public class Order_fa extends AppCompatActivity implements View.OnClickListener 
         s_recycle_view=findViewById(R.id.order_recycle_view);
         my_select_order_find=findViewById(R.id.my_select_order_find_fa);
         input_order_mygoodname=findViewById(R.id.input_order_mygoodname_fa);
+        btn_fa=findViewById(R.id.btn_notice);
+        btn_fa.setOnClickListener(this);
         //
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         s_recycle_view.setLayoutManager(layoutManager);
@@ -147,6 +150,9 @@ public class Order_fa extends AppCompatActivity implements View.OnClickListener 
                 intent1.putExtra("order_status","2");
                 intent1.putExtra("find_name",input_order_mygoodname.getText().toString());
                 startActivity(intent1);
+                break;
+            case R.id.btn_notice:
+                startActivity(new Intent(Order_fa.this, Notice.class));
                 break;
         }
 

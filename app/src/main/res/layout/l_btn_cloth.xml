@@ -3,17 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="20dp"
-    android:paddingLeft="100dp"
-    android:paddingRight="100dp"
+    android:paddingLeft="80dp"
+    android:paddingRight="80dp"
     >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
-
+        android:gravity="center"
+        android:layout_weight="2">
         <ImageView
-
             android:id="@+id/xizhuang"
             style="@style/list_item_image"
             android:scaleType="centerCrop"
@@ -32,7 +30,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp">
+        android:layout_marginTop="0dp"
+        android:layout_weight="1">
         <TextView
             style="@style/list_item_text"
             android:text="西装"/>
@@ -49,7 +48,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:gravity="center"
+        android:layout_weight="2">
         <ImageView
             android:id="@+id/katongfu"
             style="@style/list_item_image"
@@ -67,6 +67,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:layout_marginTop="0dp">
         <TextView
             style="@style/list_item_text"
@@ -84,7 +85,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:gravity="center"
+        android:layout_weight="2">
         <ImageView
             android:id="@+id/hanfu"
             style="@style/list_item_image"
@@ -101,6 +103,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:layout_marginTop="0dp">
         <TextView
             style="@style/list_item_text"
@@ -108,7 +111,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            />
         <TextView
             style="@style/list_item_text"
             android:text="首饰"/>
@@ -116,8 +120,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:layout_weight="2">
         <ImageView
             android:id="@+id/xiezi"
             style="@style/list_item_image"
@@ -135,6 +140,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:layout_marginTop="0dp">
         <TextView
             style="@style/list_item_text"

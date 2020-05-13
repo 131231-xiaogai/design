@@ -27,11 +27,12 @@ import java.util.List;
 import java.util.Map;
 
 public class Goods_DetailActivity extends AppCompatActivity implements View.OnClickListener {
-    TextView l_goodid,l_goodname,gdd_yajin,good_price,good_size,back,gdd_goood_type,gdd_good_number;
-    ImageView l_img;
-    Button go_to_update,to_deleted;
+    private TextView l_goodid,l_goodname,gdd_yajin,good_price,good_size,back,gdd_goood_type,gdd_good_number
+            ,gdd_good_clothing_length, gdd_good_sleeve_length, gdd_good_shoulder_width, gdd_good_trousers_length;
+    private ImageView l_img;
+    private Button go_to_update,to_deleted;
     private GoodBean data;
-    String pagenumber,myshop_id;
+    private String pagenumber,myshop_id;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,10 @@ public class Goods_DetailActivity extends AppCompatActivity implements View.OnCl
         go_to_update =findViewById(R.id.go_to_update);
         gdd_good_number=findViewById(R.id.gdd_good_number);
         to_deleted = findViewById(R.id.to_deleted);
+        gdd_good_clothing_length=findViewById(R.id.gdd_good_clothing_length);
+        gdd_good_sleeve_length=findViewById(R.id.gdd_good_sleeve_length);
+        gdd_good_shoulder_width=findViewById(R.id.gdd_good_shoulder_width);
+        gdd_good_trousers_length=findViewById(R.id.gdd_good_trousers_length);
         //
         //从DeletedGoodsActivity接收数据
         Intent goodid_integer = getIntent();
@@ -75,7 +80,7 @@ public class Goods_DetailActivity extends AppCompatActivity implements View.OnCl
                 if (data != null) {
                     String gname = data.getGoods_name();
                     String pice = data.getGoods_price();
-                    String goood_type = data.getType_id();
+                    String goood_type = data.getSize();
                     String yajin = data.getGoods_yajin();
                     String good_number = data.getGoods_number();
 
@@ -105,6 +110,24 @@ public class Goods_DetailActivity extends AppCompatActivity implements View.OnCl
                     } else {
                         gdd_goood_type.setText(goood_type);
                     }
+                    if (data.getClothing_length()==null || data.getClothing_length().isEmpty()){
+                        gdd_good_clothing_length.setText("暂无该参数");
+                    }else {gdd_good_clothing_length.setText(data.getClothing_length());
+                    }//1
+                    if (data.getSleeve_length()==null || data.getSleeve_length().isEmpty()){
+                        gdd_good_sleeve_length.setText("暂无该参数");
+                    }else {gdd_good_sleeve_length.setText(data.getSleeve_length());
+                    }//2
+                    if (data.getShoulder_width()==null || data.getShoulder_width().isEmpty()){
+                        gdd_good_shoulder_width.setText("暂无该参数");
+                    }else {
+                        gdd_good_shoulder_width.setText(data.getShoulder_width());
+                    }//3
+                    if (data.getTrousers_length()==null || data.getTrousers_length().isEmpty()){
+                        gdd_good_trousers_length.setText("暂无该参数");
+                    }else {
+                        gdd_good_trousers_length.setText(data.getTrousers_length());
+                    }//4
                     Glide.with(Goods_DetailActivity.this).load(data.getGood_img()).into(l_img);
                 }
             }

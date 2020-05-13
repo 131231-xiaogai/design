@@ -1,5 +1,7 @@
 package com.example.newapplication.Administrators;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,9 +19,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.newapplication.Adapter.Select_userAdapter;
-import com.example.newapplication.Adapter.Sk_Order_fuAdapter;
 import com.example.newapplication.R;
-import com.example.newapplication.entity.OrderBean;
 import com.example.newapplication.entity.UsersBean;
 import com.example.newapplication.inteface.OnItemClickListener;
 import com.example.newapplication.new_utill.Constant;
@@ -27,20 +27,18 @@ import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.newpage.Notice;
-import com.example.newapplication.shopkeeper.Sk_select_order;
 import com.example.newapplication.viewhandle.RecyclerViewHolder;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.example.newapplication.new_utill.Constant.select_all_user;
 import static com.example.newapplication.new_utill.Constant.select_all_user_likeNane;
 
-public class Ad_select_user extends AppCompatActivity implements View.OnClickListener {
+public class Ad_select_shop_dj extends AppCompatActivity implements View.OnClickListener {
     private TextView title_page;
     private ImageButton title_back,btn_notice;
-    private String shop_id,status,my_find_name;
+    private String user_id,status,my_find_name;
     private Select_userAdapter sk_orderAdapter;
     private RecyclerView s_recycle_view;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -64,21 +62,42 @@ public class Ad_select_user extends AppCompatActivity implements View.OnClickLis
         sk_orderAdapter.setOnItemClickListener(new OnItemClickListener<UsersBean>() {
             @Override
             public void onItemClick(RecyclerViewHolder viewHolder, UsersBean data, int position) {
-                Toast.makeText(Ad_select_user.this, data.getUerid(), Toast.LENGTH_SHORT).show();
-                String userId = data.getUerid();
-                String name = data.getNickname();
-                String phone =data.getPhone();
-                String Idnumber = data.getId_number();
-                String sex =data.getSex();
-                String blance = data.getBalance();
-                Intent intent = new Intent(Ad_select_user.this, Adm_ItemDetailActivity.class);
-                intent.putExtra("userId",userId);
-                intent.putExtra("name", name);
-                intent.putExtra("phone", phone);
-                intent.putExtra("Idnumber",Idnumber);
-                intent.putExtra("sex",sex);
-                intent.putExtra("blance",blance);
-                startActivityForResult(intent,1);
+                Toast.makeText(Ad_select_shop_dj.this, data.getUerid(), Toast.LENGTH_SHORT).show();
+                user_id=data.getUerid();
+                AlertDialog.Builder dialog;
+                dialog = new AlertDialog.Builder(Ad_select_shop_dj.this);
+                dialog.setTitle("提示");
+                dialog.setMessage(String.format("是否冻结该用户？"));
+                dialog.setCancelable(false);
+                dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String role_id="4";
+                        Map map = new HashMap();
+                        map.put("user_id",user_id);
+                        map.put("role_id",role_id);
+                        OkHttp.get(Ad_select_shop_dj.this, Constant.update_user_role, map, new OkCallback<Result<String>>() {
+                            @Override
+                            public void onResponse(Result<String> response) {
+                                Toast.makeText(Ad_select_shop_dj.this, "已经冻结该用户。", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent();
+                                intent.putExtra("data_return","已经冻结该用户");
+                                setResult(RESULT_OK,intent);
+                                Ad_select_shop_dj.this.finish();
+                            }
+                            @Override
+                            public void onFailure(String state, String msg) {
+                                Toast.makeText(Ad_select_shop_dj.this, msg, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+                dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                dialog.show();
             }
         });
 
@@ -99,10 +118,10 @@ public class Ad_select_user extends AppCompatActivity implements View.OnClickLis
                 loadData();
                 break;
             case R.id.ad_select_user_back:
-                Ad_select_user.this.finish();
+                Ad_select_shop_dj.this.finish();
                 break;
             case R.id.ad_select_user_notice:
-                startActivity(new Intent(Ad_select_user.this, Notice.class));
+                startActivity(new Intent(Ad_select_shop_dj.this, Notice.class));
                 break;
 
         }
@@ -110,10 +129,10 @@ public class Ad_select_user extends AppCompatActivity implements View.OnClickLis
     }
 
     private void loadData() {
-        String role_id="1";
+        String role_id="2";
         Map map = new HashMap();
         map.put("role_id",role_id);
-        map.put("role_status","1");
+        map.put("role_status","2");
         map.put("nickname",sk_input_goodname.getText().toString());
         Log.d("AllUserActivity",role_id);
 
@@ -124,7 +143,7 @@ public class Ad_select_user extends AppCompatActivity implements View.OnClickLis
             }
             @Override
             public void onFailure(String state, String msg) {
-                Toast.makeText(Ad_select_user.this, msg, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Ad_select_shop_dj.this, msg, Toast.LENGTH_SHORT).show();
             }
         });
     }

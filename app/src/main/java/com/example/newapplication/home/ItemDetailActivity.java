@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.newapplication.HomeActivity;
 import com.example.newapplication.R;
+import com.example.newapplication.ShopcarActivity;
 import com.example.newapplication.entity.GoodBean;
 import com.example.newapplication.entity.UsersBean;
 import com.example.newapplication.new_utill.Constant;
@@ -28,7 +29,8 @@ import java.util.List;
 import java.util.Map;
 
 public class ItemDetailActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView l_goodid,l_goodname,l_shopname,good_price,good_size,back;
+    private TextView l_goodid,l_goodname,l_shopname,good_price,good_size,back,to_shopcar,
+            gdd_good_clothing_length, gdd_good_sleeve_length, gdd_good_shoulder_width, gdd_good_trousers_length;
     private ImageView l_img;
     private  Button add_to_shopcar,to_pay;
     private GoodBean data;
@@ -41,9 +43,14 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
         l_img=findViewById(R.id.l_img);
         l_shopname=findViewById(R.id.l_shopname);
         good_price=findViewById(R.id.l_goodprice);
+        gdd_good_clothing_length=findViewById(R.id.l_clothing_length);
+        gdd_good_sleeve_length=findViewById(R.id.l_sleeve_length);
+        gdd_good_shoulder_width=findViewById(R.id.l_shoulder_width);
+        gdd_good_trousers_length=findViewById(R.id.l_trousers_length);
         good_size=findViewById(R.id.good_size);
         back=findViewById(R.id.back);
         add_to_shopcar =findViewById(R.id.add_to_shopcar);
+        to_shopcar=findViewById(R.id.to_shopcar);
         //
         Intent goodid_integer = getIntent();
         da = goodid_integer.getStringExtra("hgoodid");
@@ -78,14 +85,37 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
                     if (pice == null || pice.isEmpty()) {
                         good_price.setText("无");
                     } else {
-                        good_price.setText("单价：￥"+pice+"   "+"押金"+data.getGoods_yajin());
+                        good_price.setText("租金（件）：￥"+pice+"/"+"押金"+data.getGoods_yajin());
                     }
                     if (size == null || size.isEmpty()) {
                         good_size.setText("无");
                     } else {
                         good_size.setText("商品尺码"+size);
                     }
+                    if (data.getClothing_length()==null || data.getClothing_length().isEmpty()){
+                        gdd_good_clothing_length.setText("衣服长度：暂无该参数");
+                    }else {gdd_good_clothing_length.setText("衣服长度："+data.getClothing_length()+"cm");
+                    }//1
+                    if (data.getSleeve_length()==null || data.getSleeve_length().isEmpty()){
+                        gdd_good_sleeve_length.setText("袖子长度：暂无该参数");
+                    }else {gdd_good_sleeve_length.setText("袖子长度："+data.getSleeve_length()+"cm");
+                    }//2
+                    if (data.getShoulder_width()==null || data.getShoulder_width().isEmpty()){
+                        gdd_good_shoulder_width.setText("肩膀宽度：暂无该参数");
+                    }else {
+                        gdd_good_shoulder_width.setText("肩膀宽度："+data.getShoulder_width()+"cm");
+                    }//3
+                    if (data.getTrousers_length()==null || data.getTrousers_length().isEmpty()){
+                        gdd_good_trousers_length.setText("裤子长度：暂无该参数");
+                    }else {
+                        gdd_good_trousers_length.setText("裤子长度："+data.getTrousers_length()+"cm");
+                    }//4
                     Glide.with(ItemDetailActivity.this).load(data.getGood_img()).into(l_img);
+
+                    if(Integer.valueOf(data.getGoods_number())<0 ){
+                        add_to_shopcar.setBackground(getResources().getDrawable(R.drawable.button_bg1));
+                        add_to_shopcar.setText("该商品已售罄");
+                    }
                 }
             }
             @Override
@@ -98,7 +128,7 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
     private void OnClickListener() {
         back.setOnClickListener(this);
         add_to_shopcar.setOnClickListener(this);
-
+        to_shopcar.setOnClickListener(this);
     }
 
     @Override
@@ -110,6 +140,10 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
             case R.id.add_to_shopcar:
                 addto_shopcar();
                 break;
+            case R.id.to_shopcar:
+                startActivity(new Intent(ItemDetailActivity.this, ShopcarActivity.class));
+                ItemDetailActivity.this.finish();
+                break;
 
         }
     }
@@ -118,9 +152,7 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
         String userid=SharePrefrenceUtil.getObject(ItemDetailActivity.this, UsersBean.class).getUerid();
         String goodid=da;
         String good_number ="1";
-
         Map map = new HashMap();
-
         map.put("user_id",userid);
         map.put("goods_id",goodid);
         map.put("good_number",good_number);
@@ -131,7 +163,7 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
         map.put("shop_name","");
         map.put("shop_car_status","0");//0未形成订单，1为已形成订单
         map.put("goods_yajin",data.getGoods_yajin());
-
+        map.put("good_size",data.getSize());
         OkHttp.get(this, Constant.add_to_shopcar, map, new OkCallback<Result<String>>() {
             @Override
             public void onResponse(Result<String> response) {

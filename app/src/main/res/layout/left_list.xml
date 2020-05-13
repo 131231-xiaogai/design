@@ -4,24 +4,26 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:gravity="center">
-    <Button
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
         android:id="@+id/l_btn_cloth"
-        android:background="@drawable/shape_l_btn"
         android:text="  按衣服分类  "
-        android:textColor="#6A5ACD"
-        android:textSize="16sp"
+        android:background="@color/teal"
+        android:textColor="#fff"
+        android:textSize="19sp"
        />
-    <Button
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
         android:id="@+id/l_btn_activity"
-        android:background="@drawable/shape_l_btn"
+        android:layout_weight="1"
         android:text="  按活动分类  "
-        android:textColor="#6A5ACD"
-        android:textSize="16sp"
+        android:textColor="#008080"
+        android:textSize="19sp"
         />
 
 </LinearLayout>

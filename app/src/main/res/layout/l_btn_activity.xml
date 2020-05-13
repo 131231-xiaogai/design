@@ -3,17 +3,19 @@
     android:id="@+id/a1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingTop="20dp"
-    android:paddingLeft="100dp"
-    android:paddingRight="100dp">
+    android:paddingLeft="80dp"
+    android:paddingRight="80dp"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="2">
         <ImageView
             android:id="@+id/bianlunsai"
             style="@style/list_item_image"
-            android:background="@mipmap/bianlun_sai" />
+            android:background="@mipmap/bianlun_sai"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,6 +29,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:layout_marginTop="5dp">
         <TextView
            style="@style/list_item_text"
@@ -44,7 +47,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:layout_weight="2"
        >
         <ImageView
             android:id="@+id/yinyuelei"
@@ -64,6 +68,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:layout_marginTop="5dp">
         <TextView
             style="@style/list_item_text"
@@ -80,7 +85,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp">
+        android:gravity="center"
+        android:layout_weight="2">
         <ImageView
             android:id="@+id/huaju_xiaopin"
             style="@style/list_item_image"
@@ -98,6 +104,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:layout_marginTop="5dp">
 
         <TextView

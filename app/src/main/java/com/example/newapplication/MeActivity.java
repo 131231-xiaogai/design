@@ -34,9 +34,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public  class MeActivity extends AppCompatActivity implements View.OnClickListener{
-    ImageButton btn_list, btn_date, btn_shop, btn_home;
-    ImageView btn_notice;
-    TextView fa,fu,tui,shou,m_username,m_wallet,m_adress,m_setup,m_bodysize,evaluate,all_order;
+    private  ImageButton btn_list, btn_date, btn_shop, btn_home,b_me;
+    private  ImageView btn_notice;
+    private TextView fa,fu,tui,shou,m_username,m_wallet,m_adress,m_setup,m_bodysize,evaluate,all_order;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,6 +58,8 @@ public  class MeActivity extends AppCompatActivity implements View.OnClickListen
         m_bodysize =findViewById(R.id.m_bodysize);
         evaluate =findViewById(R.id.evaluate);
         all_order=findViewById(R.id.all_order);
+        b_me=findViewById(R.id.b_me);
+        b_me.setBackground(getResources().getDrawable(R.mipmap.me_red));
         OnClickListener();
         loadData();
     }

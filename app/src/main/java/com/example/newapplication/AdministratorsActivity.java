@@ -142,7 +142,7 @@ public class AdministratorsActivity extends AppCompatActivity implements View.On
                 break;
             case R.id.adm_deletedUser:
                 p_pagename="注 销 顾 客";
-
+                deleted_number="1";
                 intent = new Intent(AdministratorsActivity.this, AllUserActivity.class);
                 intent.putExtra("p_pagename", p_pagename);
                 intent.putExtra("p_deleted_number", deleted_number);

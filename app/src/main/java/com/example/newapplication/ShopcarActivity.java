@@ -41,8 +41,8 @@ import static android.view.View.GONE;
 
 public class ShopcarActivity extends AppCompatActivity implements View.OnClickListener {
 
-    ImageButton btn_list, btn_date, btn_home, btn_me;
-    ImageView btn_notice;
+    private ImageButton btn_list, btn_date, btn_home, btn_me,b_shopcar;
+    private ImageView btn_notice;
     private ImageView ivAllSelect, iv_all_select2;
     private TextView tvTotalPrice, sc_tv_del, sc_tv_ok;
     private Button btnPay;
@@ -66,13 +66,14 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
         ivAllSelect = (ImageView) findViewById(R.id.iv_all_select);
         tvTotalPrice = (TextView) findViewById(R.id.tv_total_price);
         btnPay = (Button) findViewById(R.id.btn_pay);
-        iv_all_select2 = findViewById(R.id.iv_all_select2);
+        iv_all_select2 = findViewById(R.id.iv_all_select2);//编辑
+        b_shopcar=findViewById(R.id.b_shopcar);
+        b_shopcar.setBackground(getResources().getDrawable(R.mipmap.shopcar_red));
 
-
+        //编辑的全选
         iv_all_select2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 isAllSelect = !isAllSelect;
                 if (isAllSelect) {
                     iv_all_select2.setImageResource(R.mipmap.select);
@@ -91,7 +92,7 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
 
-
+        //正常购物的全选
         ivAllSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

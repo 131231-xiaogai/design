@@ -35,7 +35,7 @@ public class Order_shou_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recyc
         name.setText("#"+data.getGood_name()+"#");
 
         TextView tiame =holder.getView(R.id.order_shou_goodNumber);
-        tiame.setText("订单结束时间："+data.getOrder_rent_finesh_time());
+        tiame.setText("订单于："+data.getOrder_rent_finesh_time()+"结束");
 
         ImageView imageView = holder.getView(R.id.order_shou_img);
         Glide.with(mContext).load(data.getGood_img()).into(imageView);

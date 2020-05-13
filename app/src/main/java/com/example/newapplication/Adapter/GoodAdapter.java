@@ -20,17 +20,16 @@ public class GoodAdapter extends BaseRecyclerViewAdapter<GoodBean, RecyclerViewH
 
 
         ImageView imageView = holder.getView(R.id.h_photo_image);
-        // imageView.setIm(data.getGood_img());
         Glide.with(mContext).load(data.getGood_img()).into(imageView);
 
         TextView textView = holder.getView(R.id.h_photo_name);
         textView.setText(data.getGoods_name());
 
         TextView price = holder.getView(R.id.h_price);
-        price.setText("￥"+data.getGoods_price());
+        price.setText("每件租金：￥"+data.getGoods_price()+"/ 押金：￥"+data.getGoods_yajin()+"/ 商品尺码："+data.getSize());
 
         TextView goodid = holder.getView(R.id.h_goodid);
-        goodid.setText(data.getGoods_id());
+        goodid.setText(data.getShop_name());
 
 
     }

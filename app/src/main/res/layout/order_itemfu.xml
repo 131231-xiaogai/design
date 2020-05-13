@@ -38,7 +38,7 @@
             <TextView
                 android:id="@+id/order_fu_goodNumber"
                 android:layout_width="match_parent"
-                android:gravity="center"
+                android:gravity="left"
                 android:text="订单结束时间"
                 android:layout_weight="1"
                 android:textColor="#000"
@@ -53,9 +53,8 @@
                     android:id="@+id/order_fu_price"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_gravity="right"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="left"
                     android:text="￥0.0"
                     android:textColor="#000"
                     android:textSize="16sp" />
@@ -70,7 +69,6 @@
                     android:id="@+id/order_fu_total"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_gravity="right"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="￥0.0"

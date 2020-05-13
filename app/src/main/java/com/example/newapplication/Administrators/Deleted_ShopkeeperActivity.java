@@ -29,16 +29,19 @@ import java.util.Map;
 import static com.example.newapplication.new_utill.Constant.select_all_user;
 
 public class Deleted_ShopkeeperActivity extends AppCompatActivity implements View.OnClickListener {
-    ImageButton adm_back;
+    private ImageButton adm_back;
     private Select_userAdapter select_userAdapter;
-    RecyclerView recyclerView;
-    TextView adm_pageneme;
+    private  RecyclerView recyclerView;
+    private  TextView adm_pageneme;
+    private TextView ad_select;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.adm_re_view);
         adm_back=findViewById(R.id.adm_title_back);
         adm_pageneme=findViewById(R.id.adm_pageneme);
+        ad_select=findViewById(R.id.ad_select_user);
+        ad_select.setOnClickListener(this);
         //添加适配器
         recyclerView =findViewById(R.id.adm_recycle_view);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
@@ -104,6 +107,12 @@ public class Deleted_ShopkeeperActivity extends AppCompatActivity implements Vie
         switch (v.getId()){
             case R.id.adm_title_back:
                 Deleted_ShopkeeperActivity.this.finish();
+                break;
+            case R.id.ad_select_user:
+                Intent intent1 = new Intent(Deleted_ShopkeeperActivity.this, Ad_select_shop.class);
+                //intent1.putExtra("order_status","2");
+                //intent1.putExtra("find_name",input_order_mygoodname.getText().toString());
+                startActivity(intent1);
                 break;
 
         }

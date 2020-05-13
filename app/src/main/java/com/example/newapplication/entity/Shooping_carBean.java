@@ -19,6 +19,15 @@ public class Shooping_carBean implements Serializable {
 	private String cancle_time;
 	private String shop_car_status;
 	private String goods_yajin;
+	private String good_size;
+
+	public String getGood_size() {
+		return good_size;
+	}
+
+	public void setGood_size(String good_size) {
+		this.good_size = good_size;
+	}
 
 	public String getGoods_yajin() {
 		return goods_yajin;

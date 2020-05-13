@@ -44,16 +44,16 @@ public class DateActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "DateActivity";
     public static final int PERMISSION_RQUEST_CODE = 1;
     private Eventdapter eventdapter;
-    RecyclerView s_recycle_view;
-    ImageButton btn_list, btn_home, btn_shop, btn_me;
-    CalendarView calendarView;
-    ContentResolver contentResolver;
+    private RecyclerView s_recycle_view;
+    private ImageButton btn_list, btn_home, btn_shop, btn_me,b_date;
+    private CalendarView calendarView;
+    private ContentResolver contentResolver;
     //
     private static String CALANDER_URL = "content://com.android.calendar/calendars";
     private static String CALANDER_EVENT_URL = "content://com.android.calendar/events";
     private static String CALANDER_REMIDER_URL = "content://com.android.calendar/reminders";
-    Cursor query;
-    ImageView btn_notice;
+    private Cursor query;
+    private ImageView btn_notice;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -61,6 +61,7 @@ public class DateActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.date);
         calendarView = findViewById(R.id.calendarView);
+
         //日历布局添加监听器
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -80,6 +81,8 @@ public class DateActivity extends AppCompatActivity implements View.OnClickListe
         btn_list = findViewById(R.id.b_list);
         btn_me = findViewById(R.id.b_me);
         btn_shop = findViewById(R.id.b_shopcar);
+        b_date=findViewById(R.id.b_date);
+        b_date.setBackground(getResources().getDrawable(R.mipmap.date_red));
         //
         btn_notice = findViewById(R.id.btn_notice);
         s_recycle_view=findViewById(R.id.dateEvent_recycle_view);

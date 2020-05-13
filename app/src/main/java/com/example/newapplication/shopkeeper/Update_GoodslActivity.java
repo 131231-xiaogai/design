@@ -26,7 +26,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Update_GoodslActivity extends AppCompatActivity implements View.OnClickListener {
-    EditText l_goodname,gdd_yajin,good_price,good_size,gdd_goood_type,gdd_good_number;
+    EditText l_goodname,gdd_yajin,good_price,good_size,gdd_goood_type,gdd_good_number,
+            clothing_length, sleeve_length, shoulder_width, trousers_length;
     TextView l_goodid;
     ImageView l_img;
     ImageButton back;
@@ -46,6 +47,11 @@ public class Update_GoodslActivity extends AppCompatActivity implements View.OnC
         back=findViewById(R.id.gup_back);
         to_save_update =findViewById(R.id.to_save_update);
         gdd_good_number=findViewById(R.id.gup_good_number);
+        clothing_length=findViewById(R.id.gup_good_clothing_length);
+        sleeve_length=findViewById(R.id.gup_good_sleeve_length);
+        shoulder_width=findViewById(R.id.gup_good_shoulder_width);
+        trousers_length=findViewById(R.id.gup_good_trousers_length);
+
         to_deleted = findViewById(R.id.to_deleted);
         to_deleted.setBackground(getResources().getDrawable(R.drawable.button_bg1));
         //
@@ -98,6 +104,24 @@ public class Update_GoodslActivity extends AppCompatActivity implements View.OnC
                     } else {
                         gdd_goood_type.setText(goood_type);
                     }
+                    if (data.getClothing_length()==null || data.getClothing_length().isEmpty()){
+                        clothing_length.setText("暂无该参数");
+                    }else {clothing_length.setText(data.getClothing_length());
+                    }//1
+                    if (data.getSleeve_length()==null || data.getSleeve_length().isEmpty()){
+                        sleeve_length.setText("暂无该参数");
+                    }else {sleeve_length.setText(data.getSleeve_length());
+                    }//2
+                    if (data.getShoulder_width()==null || data.getShoulder_width().isEmpty()){
+                        shoulder_width.setText("暂无该参数");
+                    }else {
+                        shoulder_width.setText(data.getShoulder_width());
+                    }//3
+                    if (data.getTrousers_length()==null || data.getTrousers_length().isEmpty()){
+                        trousers_length.setText("暂无该参数");
+                    }else {
+                        trousers_length.setText(data.getTrousers_length());
+                    }//4
                     Glide.with(Update_GoodslActivity.this).load(data.getGood_img()).into(l_img);
                 }
             }
@@ -138,6 +162,10 @@ public class Update_GoodslActivity extends AppCompatActivity implements View.OnC
         map.put("goods_yajin",gdd_yajin.getText().toString());
         map.put("goods_number",gdd_good_number.getText().toString());
         map.put("goods_type",gdd_goood_type.getText().toString());
+        map.put("clothing_length",clothing_length.getText().toString());
+        map.put("sleeve_length",sleeve_length.getText().toString());
+        map.put("shoulder_width",shoulder_width.getText().toString());
+        map.put("trousers_length",trousers_length.getText().toString());
 
         OkHttp.get(this, Constant.update_good_by_goodId, map, new OkCallback<Result<String>>() {
             @Override

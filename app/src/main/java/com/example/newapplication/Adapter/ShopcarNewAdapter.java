@@ -28,31 +28,39 @@ public class ShopcarNewAdapter extends BaseRecyclerViewAdapter<Shooping_carBean,
     @Override
     protected void convert(RecyclerViewHolder holder, Shooping_carBean data, int position, int viewType) {
 
-        ImageView ivIsSelect = (ImageView) holder.getView(R.id.iv_is_select);
-        ImageView ivShop = (ImageView) holder.getView(R.id.iv_shop);
-        TextView tvShopName = (TextView) holder.getView(R.id.tv_shop_name);
-        TextView tvPrice = (TextView) holder.getView(R.id.tv_price);
-        ImageView ivMinus = (ImageView) holder.getView(R.id.iv_minus);
-        TextView tvCount = (TextView) holder.getView(R.id.tv_count);
-        ImageView ivAdd = (ImageView) holder.getView(R.id.iv_add);
+        ImageView ivIsSelect =  holder.getView(R.id.iv_is_select);
+        ImageView ivShop =  holder.getView(R.id.iv_shop);
+        TextView tvShopName =  holder.getView(R.id.tv_shop_name);
+        TextView tvPrice =  holder.getView(R.id.tv_price);
+        ImageView ivMinus =  holder.getView(R.id.iv_minus);
+        TextView tvCount =  holder.getView(R.id.tv_count);
+        ImageView ivAdd =  holder.getView(R.id.iv_addNumbwe);
 
 
-        if (data.isSelect()) {
-            ivIsSelect.setImageResource(R.mipmap.select);
-        } else {
-            ivIsSelect.setImageResource(R.mipmap.unselect);
-        }
+
         Glide.with(mContext).load(data.getGood_img()).into(ivShop);
         tvShopName.setText(data.getGood_name());
-        tvPrice.setText("商 品 单 价 ：￥"+data.getGood_price()+"  "+"押 金 ："+"￥"+data.getGoods_yajin());
+        tvPrice.setText("商品单价:￥"+data.getGood_price()+"/"+"押金: "+"￥"+data.getGoods_yajin()+"/尺码："+data.getGood_size());
         tvCount.setText(data.getGood_number());
 
-        holder.addOnClickListener(R.id.iv_is_select);
+                if (data.isSelect()) {
+                    ivIsSelect.setImageResource(R.mipmap.select);
+                    ivMinus.setEnabled(false);
+                    ivAdd.setEnabled(false);
+                } else {
+                    ivIsSelect.setImageResource(R.mipmap.unselect);
+                    ivMinus.setEnabled(true);
+                    ivAdd.setEnabled(true);
+                }
+
+
+
+
 //        ivAdd.setEnabled(false);
         ivMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.valueOf(tvCount.getText().toString()) <1) {
+                if (Integer.valueOf(tvCount.getText().toString()) <=1) {
                     Toast.makeText(mContext, "不能再减少了", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
@@ -99,7 +107,7 @@ public class ShopcarNewAdapter extends BaseRecyclerViewAdapter<Shooping_carBean,
             }
         });
 
-
+        holder.addOnClickListener(R.id.iv_is_select);
     }
 
 

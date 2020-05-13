@@ -5,6 +5,7 @@ public class Constant {
 //    public static String BASE_URL = "http://192.168.0.105:8088/clothService";//换网络时记得换ip
     public static String BASE_URL = "http://192.168.0.108:8088/clothService";//换网络时记得换ip
 
+
     /**
      * 查询所有商品
      */
@@ -87,4 +88,8 @@ public class Constant {
     public static String select_order_byShopidAndOrderStstus_likeName =BASE_URL+"/Select_order_byShopidAndOrderStstus_likeName";
     //select_order_byUseridAndOrderStstus_likeName
     public static String select_order_byUseridAndOrderStstus_likeName =BASE_URL+"/Select_order_byUseridAndOrderStstus_likeName";
+    //select_all_user_likeNane
+    public static String select_all_user_likeNane =BASE_URL+"/Select_all_user_likeNane";
+    //select_all_good_likeName
+    public static String select_all_good_likeName =BASE_URL+"/Select_all_good_likeName";
 }

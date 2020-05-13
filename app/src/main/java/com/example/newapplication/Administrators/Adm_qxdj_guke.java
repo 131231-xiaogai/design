@@ -40,11 +40,14 @@ public class Adm_qxdj_guke extends AppCompatActivity implements View.OnClickList
     private String deleted_number;
     private UsersBean data;
     private String user_id;
+    private TextView ad_select;
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.adm_re_view);
         adm_back=findViewById(R.id.adm_title_back);
         adm_pageneme=findViewById(R.id.adm_pageneme);
+        ad_select=findViewById(R.id.ad_select_user);
+        ad_select.setOnClickListener(this);
         //
         Intent pagename_integer = getIntent();
         String  data = pagename_integer.getStringExtra("p_pagename");
@@ -105,6 +108,21 @@ public class Adm_qxdj_guke extends AppCompatActivity implements View.OnClickList
     private void OnClickListener() {
         adm_back.setOnClickListener(this);
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    String data_return = data.getStringExtra("data_return");
+                    Log.d("my_address",data_return);
+                    loadData();
+                }
+                break;
+            default:
+        }
+    }
 
     @Override
     public void onClick(View v) {
@@ -112,7 +130,12 @@ public class Adm_qxdj_guke extends AppCompatActivity implements View.OnClickList
             case R.id.adm_title_back:
                 Adm_qxdj_guke.this.finish();
                 break;
-
+            case R.id.ad_select_user:
+                Intent intent1 = new Intent(Adm_qxdj_guke.this, Ad_select_user_qxdj.class);
+                //intent1.putExtra("order_status","2");
+                //intent1.putExtra("find_name",input_order_mygoodname.getText().toString());
+                startActivityForResult(intent1,1);
+                break;
         }
     }
     private void loadData() {

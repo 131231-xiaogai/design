@@ -26,6 +26,7 @@ import com.example.newapplication.entity.ConsumerBean;
 import com.example.newapplication.entity.GoodBean;
 import com.example.newapplication.entity.Photo;
 import com.example.newapplication.entity.UsersBean;
+import com.example.newapplication.home.Home_select_goods;
 import com.example.newapplication.home.ItemDetailActivity;
 import com.example.newapplication.inteface.OnItemClickListener;
 import com.example.newapplication.me.Update_bodyData;
@@ -46,11 +47,11 @@ import java.util.Map;
 import java.util.Random;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, MyViewPager.OnViewPageTouchListener, ViewPager.OnPageChangeListener {
-    ImageButton btn_list, btn_date, btn_shop, btn_me;
-    MyViewPager loopPagers;
-    LoopAdapter loopAdapter;
-    RecyclerView recyclerView;
-    ImageView btn_notice;
+    private ImageButton btn_list, btn_date, btn_shop, btn_me,b_home;
+    private MyViewPager loopPagers;
+    private LoopAdapter loopAdapter;
+    private RecyclerView recyclerView;
+    private ImageView btn_notice,home_select;
     private List<Photo> photoList = new ArrayList<>();
     private static List<Integer> sPics = new ArrayList<>();
     static {
@@ -72,8 +73,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.home);
         initView();
         handler = new Handler();
-        btn_notice = (ImageView) findViewById(R.id.btn_notice);
+        btn_notice =  findViewById(R.id.home_btn_notice);
         btn_notice.setOnClickListener(this);
+        home_select =findViewById(R.id.home_select);
+        home_select.setOnClickListener(this);
         //list
         initPhoto();
         recyclerView =findViewById(R.id.h_recycle_view);
@@ -102,6 +105,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btn_shop.setOnClickListener(this);
         btn_me = (ImageButton) findViewById(R.id.b_me);
         btn_me.setOnClickListener(this);
+        b_home=findViewById(R.id.b_home);
+        b_home.setBackground(getResources().getDrawable(R.mipmap.home_red));
 
     }
 
@@ -253,9 +258,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(HomeActivity.this, DateActivity.class));
 
                 break;
-            case R.id.btn_notice:
+            case R.id.home_btn_notice:
                 startActivity(new Intent(HomeActivity.this, Notice.class));
 
+                break;
+            case R.id.home_select:
+                startActivity(new Intent(HomeActivity.this, Home_select_goods.class));
                 break;
         }
     }

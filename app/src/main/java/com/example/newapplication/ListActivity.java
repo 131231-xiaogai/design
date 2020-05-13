@@ -22,9 +22,9 @@ import com.example.newapplication.newpage.Notice;
 
 public class ListActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button l_btn_activity,l_btn_cloth;
-    ImageButton btn_home, btn_date, btn_shop, btn_me;
-    ImageView btn_notice,xizhuang;
+    private TextView l_btn_activity,l_btn_cloth;
+    private ImageButton btn_home, btn_date, btn_shop, btn_me,b_list;
+    private ImageView btn_notice,xizhuang;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -37,13 +37,15 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         btn_shop = findViewById(R.id.b_shopcar);
         btn_me = findViewById(R.id.b_me);
         //左侧碎片的按钮
-        l_btn_cloth = (Button) findViewById(R.id.l_btn_cloth);
-        l_btn_activity = (Button)findViewById(R.id.l_btn_activity);
+        l_btn_cloth =  findViewById(R.id.l_btn_cloth);
+        l_btn_activity = findViewById(R.id.l_btn_activity);
         replaceFragment(new RightFragment());
         //右侧碎片的按钮
         //xizhuang =findViewById(R.id.xizhuang);
         //
         btn_notice=findViewById(R.id.btn_notice);
+        b_list=findViewById(R.id.b_list);
+        b_list.setBackground(getResources().getDrawable(R.mipmap.list_red));
         OnClickListener();
     }
 
@@ -75,9 +77,17 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             //左侧碎片的按钮
             case R.id.l_btn_cloth:
+                l_btn_cloth.setBackground(getResources().getDrawable(R.color.teal));
+                l_btn_cloth.setTextColor(this.getResources().getColor(R.color.white));
+                l_btn_activity.setBackground(getResources().getDrawable(R.color.white));
+                l_btn_activity.setTextColor(this.getResources().getColor(R.color.teal));
                 replaceFragment(new RightFragment());
                 break;
             case R.id.l_btn_activity:
+                l_btn_cloth.setBackground(getResources().getDrawable(R.color.white));
+                l_btn_cloth.setTextColor(this.getResources().getColor(R.color.teal));
+                l_btn_activity.setBackground(getResources().getDrawable(R.color.teal));
+                l_btn_activity.setTextColor(this.getResources().getColor(R.color.white));
                 replaceFragment(new RightFragmenttz());
                 break;
                 //底部导航栏按钮

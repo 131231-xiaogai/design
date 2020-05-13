@@ -32,7 +32,7 @@ public class Sk_Order_fuAdapter extends BaseRecyclerViewAdapter<OrderBean, Recyc
         name.setText("#"+data.getGood_name()+"#");
 
         TextView tiame =holder.getView(R.id.sk_order_fu_goodNumber);
-        tiame.setText("订单结束时间："+data.getOrder_rent_finesh_time());
+        tiame.setText("订单于："+data.getOrder_rent_finesh_time()+"结束");
 
         ImageView imageView = holder.getView(R.id.sk_order_fu_img);
         Glide.with(mContext).load(data.getGood_img()).into(imageView);
