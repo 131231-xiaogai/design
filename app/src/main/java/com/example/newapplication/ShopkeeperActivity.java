@@ -264,7 +264,7 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
 
                 break;
             case R.id.title_back:
-
+                ShopkeeperActivity.this.finish();
                 break;
             case R.id.sk_all_order:
                 Intent intent6 = new Intent(ShopkeeperActivity.this, Sk_All_orderActivity.class);
@@ -274,6 +274,8 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
             case R.id.sk_user_setup:
                 startActivity(new Intent(ShopkeeperActivity.this, MySetUpActivility.class));
                 break;
+
+
         }
     }
 

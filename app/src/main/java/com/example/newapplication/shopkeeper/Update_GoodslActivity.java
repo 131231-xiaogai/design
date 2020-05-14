@@ -13,8 +13,10 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
+import com.example.newapplication.Adapter.Shopkeeper_goodAdapter;
 import com.example.newapplication.R;
 import com.example.newapplication.entity.GoodBean;
 import com.example.newapplication.new_utill.Constant;
@@ -26,14 +28,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Update_GoodslActivity extends AppCompatActivity implements View.OnClickListener {
-    EditText l_goodname,gdd_yajin,good_price,good_size,gdd_goood_type,gdd_good_number,
+    private EditText l_goodname,gdd_yajin,good_price,good_size,gdd_goood_type,gdd_good_number,
             clothing_length, sleeve_length, shoulder_width, trousers_length;
-    TextView l_goodid;
-    ImageView l_img;
-    ImageButton back;
-    Button to_save_update,to_deleted;
+    private TextView l_goodid;
+    private ImageView l_img;
+    private ImageButton back;
+    private  Button to_save_update,to_deleted;
     private GoodBean data;
-    String myshop_id,da;
+    private  String myshop_id,da;
+
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +63,8 @@ public class Update_GoodslActivity extends AppCompatActivity implements View.OnC
         myshop_id =goodid_integer.getStringExtra("myshop_id");
         l_goodid.setText(da);
         Log.d("Goods_DetailActivity",da);
+        //
+
         //
         OnClickListener();
         loadData();
@@ -143,6 +148,7 @@ public class Update_GoodslActivity extends AppCompatActivity implements View.OnC
         switch (v.getId()){
             case R.id.gup_back:
                 Update_GoodslActivity.this.finish();
+
                 break;
             case R.id.to_deleted:
                 Toast.makeText(Update_GoodslActivity.this, "请在“下架商品”页面使用此按钮。", Toast.LENGTH_SHORT).show();
@@ -161,7 +167,7 @@ public class Update_GoodslActivity extends AppCompatActivity implements View.OnC
         map.put("goods_price",good_price.getText().toString());
         map.put("goods_yajin",gdd_yajin.getText().toString());
         map.put("goods_number",gdd_good_number.getText().toString());
-        map.put("goods_type",gdd_goood_type.getText().toString());
+        map.put("size",gdd_goood_type.getText().toString());
         map.put("clothing_length",clothing_length.getText().toString());
         map.put("sleeve_length",sleeve_length.getText().toString());
         map.put("shoulder_width",shoulder_width.getText().toString());

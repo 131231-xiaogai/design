@@ -23,9 +23,10 @@
             <TextView
                 android:id="@+id/type_goodid"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="8dp"
-                android:text="86"/>
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:text="店铺名称"
+                android:layout_gravity="left"/>
         </LinearLayout>
 
     <TextView
@@ -34,16 +35,18 @@
         android:layout_height="20dp"
         android:gravity="center_horizontal"
         android:text="12345649874548461031984"
+        android:minLines="1"
+        android:maxLines="3"
         android:layout_gravity="left"/>
         <TextView
             android:id="@+id/type_good__price"
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:gravity="center_horizontal"
+            android:layout_height="wrap_content"
             android:layout_marginRight="12dp"
             android:text="86"
-            android:layout_gravity="right"/>
-            />
+            android:minLines="1"
+            android:maxLines="3"/>
+
     </LinearLayout>
 
 </LinearLayout>

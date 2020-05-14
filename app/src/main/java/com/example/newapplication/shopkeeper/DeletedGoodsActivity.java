@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.newapplication.Adapter.Shopkeeper_goodAdapter;
 import com.example.newapplication.R;
@@ -36,9 +37,11 @@ public class DeletedGoodsActivity extends AppCompatActivity implements View.OnCl
     private String  myshop_id,my_pagename;
     private String pagenumber;
     private Shopkeeper_goodAdapter shopkeeper_goodAdapter;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView skd_recycle_view;
     private TextView gdd_pageneme;
     private ImageView sk_de_good_find;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +78,16 @@ public class DeletedGoodsActivity extends AppCompatActivity implements View.OnCl
                 startActivityForResult(intent,1);
             }
         });
+        //
+        swipeRefreshLayout=findViewById(R.id.swipeRefreshLayout_goodDital);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadData();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+        //
         loadData();
 
         OnClickListener();

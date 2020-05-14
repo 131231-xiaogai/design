@@ -58,12 +58,25 @@
             android:layout_height="30dp"
             android:orientation="horizontal">
             <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text=" 按服装分类 ："/>
+            <Spinner
+                android:id="@+id/add_type"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:spinnerMode="dialog">
+            </Spinner>
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text=" 择商品类型 ："/>
+                android:text=" 按活动分类 ："/>
             <Spinner
-                android:id="@+id/add_type"
+                android:id="@+id/add_type_activity"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -115,7 +128,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:layout_marginTop="5dp"
-            android:hint="商品size  :xxs, xs, s, m, l, xl, xxl"
+            android:hint="商品size:(无改参数填无)"
             android:layout_gravity="center"/>
         <!--
 Sleeve_length

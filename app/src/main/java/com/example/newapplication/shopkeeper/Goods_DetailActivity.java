@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
 import com.example.newapplication.R;
@@ -33,6 +34,7 @@ public class Goods_DetailActivity extends AppCompatActivity implements View.OnCl
     private Button go_to_update,to_deleted;
     private GoodBean data;
     private String pagenumber,myshop_id;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +62,8 @@ public class Goods_DetailActivity extends AppCompatActivity implements View.OnCl
         myshop_id  =  goodid_integer.getStringExtra("myshop_id");
         l_goodid.setText(da);
         Log.d("Goods_DetailActivity",da);
+
+
 
         //
         if (pagenumber.equals("11")){

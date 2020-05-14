@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text=" 编 辑 "
+            android:text="           "
             android:textSize="20sp" />
     </LinearLayout>
     <LinearLayout
@@ -77,25 +77,37 @@
     </LinearLayout>
     <!-- 购物车内容-->
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="14"
-        android:background="#e6e6fa"
         android:orientation="vertical">
-
+        <!--结算的列表-->
         <LinearLayout
+            android:id="@+id/ll_review_pay"
             android:layout_width="match_parent"
+            android:visibility="visible"
             android:layout_height="match_parent">
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/s_recycle_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
             </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
-
+        <!--删除的列表-->
+            <LinearLayout
+                android:id="@+id/ll_review_del"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="match_parent">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/s_recycle_view_del"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
     </LinearLayout>
-
+    <!--结算底部-->
     <LinearLayout
         android:id="@+id/l1_pay"
         android:layout_width="match_parent"
@@ -105,13 +117,11 @@
         android:orientation="horizontal"
         android:visibility="visible"
         android:padding="10dp">
-
         <ImageView
             android:id="@+id/iv_all_select"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@mipmap/unselect" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -119,7 +129,6 @@
             android:text="全选"
             android:textColor="@color/black"
             android:textSize="20dp" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -127,7 +136,6 @@
             android:text="总计:"
             android:textColor="@color/black"
             android:textSize="20dp" />
-
         <TextView
             android:id="@+id/tv_total_price"
             android:layout_width="0dp"
@@ -137,7 +145,6 @@
             android:text="￥0.00"
             android:textColor="@color/red"
             android:textSize="20dp" />
-
         <Button
             android:id="@+id/btn_pay"
             android:layout_width="wrap_content"
@@ -149,6 +156,7 @@
             android:text="结   算"
             android:textSize="20sp" />
     </LinearLayout>
+    <!--删除底部-->
     <LinearLayout
         android:id="@+id/l1_del"
         android:layout_width="match_parent"
@@ -158,13 +166,11 @@
         android:orientation="horizontal"
         android:visibility="gone"
         android:padding="10dp">
-
         <ImageView
             android:id="@+id/iv_all_select2"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@mipmap/unselect" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -173,9 +179,6 @@
             android:text="全选"
             android:textColor="@color/black"
             android:textSize="20dp" />
-
-
-
         <Button
             android:id="@+id/btn_deleted"
             android:layout_width="wrap_content"

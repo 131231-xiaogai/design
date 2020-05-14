@@ -47,9 +47,9 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
     private TextView tvTotalPrice, sc_tv_del, sc_tv_ok;
     private Button btnPay;
     private boolean isAllSelect;
-    private LinearLayout l1_pay, l1del, l_del, l_ok;
+    private LinearLayout l1_pay, l1del, l_del, l_ok,ll_review_pay,ll_review_del;
 
-    private ShopcarNewAdapter shopcarAdapter;
+    private ShopcarNewAdapter shopcarAdapter_pay,shopcarAdapter_delete;
     RecyclerView s_recycle_view;
 
     @Override
@@ -77,17 +77,17 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
                 isAllSelect = !isAllSelect;
                 if (isAllSelect) {
                     iv_all_select2.setImageResource(R.mipmap.select);
-                    for (Shooping_carBean allDatum : shopcarAdapter.getAllData()) {
+                    for (Shooping_carBean allDatum : shopcarAdapter_pay.getAllData()) {
                         allDatum.setSelect(true);
                     }
-                    shopcarAdapter.notifyDataSetChanged();
+                    shopcarAdapter_pay.notifyDataSetChanged();
 
                 } else {
                     iv_all_select2.setImageResource(R.mipmap.unselect);
-                    for (Shooping_carBean allDatum : shopcarAdapter.getAllData()) {
+                    for (Shooping_carBean allDatum : shopcarAdapter_pay.getAllData()) {
                         allDatum.setSelect(false);
                     }
-                    shopcarAdapter.notifyDataSetChanged();
+                    shopcarAdapter_pay.notifyDataSetChanged();
                 }
             }
         });
@@ -99,18 +99,18 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
                 isAllSelect = !isAllSelect;
                 if (isAllSelect) {
                     ivAllSelect.setImageResource(R.mipmap.select);
-                    for (Shooping_carBean allDatum : shopcarAdapter.getAllData()) {
+                    for (Shooping_carBean allDatum : shopcarAdapter_pay.getAllData()) {
                         allDatum.setSelect(true);
                     }
-                    shopcarAdapter.notifyDataSetChanged();
-                    double totalPrice = shopcarAdapter.totalPrice();
+                    shopcarAdapter_pay.notifyDataSetChanged();
+                    double totalPrice = shopcarAdapter_pay.totalPrice();
                     tvTotalPrice.setText("￥" + totalPrice);
                 } else {
                     ivAllSelect.setImageResource(R.mipmap.unselect);
-                    for (Shooping_carBean allDatum : shopcarAdapter.getAllData()) {
+                    for (Shooping_carBean allDatum : shopcarAdapter_pay.getAllData()) {
                         allDatum.setSelect(false);
                     }
-                    shopcarAdapter.notifyDataSetChanged();
+                    shopcarAdapter_pay.notifyDataSetChanged();
                     tvTotalPrice.setText("￥0.00");
                 }
             }
@@ -130,29 +130,29 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
         sc_tv_ok.setOnClickListener(this);
         btnPay.setOnClickListener(this);
 
+        //结算适配器
         s_recycle_view = findViewById(R.id.s_recycle_view);
-
         s_recycle_view.setLayoutManager(new LinearLayoutManager(this));
-        shopcarAdapter = new ShopcarNewAdapter(this);
-        s_recycle_view.setAdapter(shopcarAdapter);
-        shopcarAdapter.setOnItemChildClickListener(new OnItemChildClickListener() {
+        shopcarAdapter_pay = new ShopcarNewAdapter(this);
+        s_recycle_view.setAdapter(shopcarAdapter_pay);
+        shopcarAdapter_pay.setOnItemChildClickListener(new OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseRecyclerViewAdapter adapter, View view, int position) {
-                Shooping_carBean shopcarAdapterItem = shopcarAdapter.getItem(position);
+                Shooping_carBean shopcarAdapterItem = shopcarAdapter_pay.getItem(position);
                 if (view.getId() == R.id.iv_is_select) {
                     if (shopcarAdapterItem.isSelect()) {
                         shopcarAdapterItem.setSelect(false);
                     } else {
                         shopcarAdapterItem.setSelect(true);
                     }
-                    shopcarAdapter.notifyDataSetChanged();
-                    double totalPrice = shopcarAdapter.totalPrice();
+                    shopcarAdapter_pay.notifyDataSetChanged();
+                    double totalPrice = shopcarAdapter_pay.totalPrice();
                     tvTotalPrice.setText(totalPrice + "");
 
                 }
             }
         });
-        shopcarAdapter.setOnItemClickListener(new OnItemClickListener<Shooping_carBean>() {
+        shopcarAdapter_pay.setOnItemClickListener(new OnItemClickListener<Shooping_carBean>() {
             @Override
             public void onItemClick(RecyclerViewHolder viewHolder, Shooping_carBean data, int position) {
                 Toast.makeText(ShopcarActivity.this, data.getGoods_id(), Toast.LENGTH_SHORT).show();
@@ -162,6 +162,7 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
                 startActivityForResult(intent, 1);
             }
         });
+        //结算适配器结束
         loadData();
         OnClickListener();
     }
@@ -207,7 +208,7 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
         OkHttp.get(this, Constant.select_shopcar_by_userid, map, new OkCallback<Result<List<Shooping_carBean>>>() {
             @Override
             public void onResponse(Result<List<Shooping_carBean>> response) {
-                shopcarAdapter.setNewData(response.getData());
+                shopcarAdapter_pay.setNewData(response.getData());
             }
 
             @Override
@@ -226,16 +227,20 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.sc_tv_ok:
-                l1_pay.setVisibility(View.VISIBLE);
-                l1del.setVisibility(GONE);
-                l_del.setVisibility(View.VISIBLE);
-                l_ok.setVisibility(GONE);
+                l1_pay.setVisibility(View.VISIBLE);//结算
+                l1del.setVisibility(GONE);//删除
+                l_del.setVisibility(View.VISIBLE);//结算
+                l_ok.setVisibility(GONE);//删除 ll_review_pay,ll_review_del
+//                ll_review_pay.setVisibility(View.VISIBLE);//结算
+//                ll_review_del.setVisibility(GONE);//删除
                 break;
             case R.id.sc_tv_del:
-                l1_pay.setVisibility(GONE);
-                l1del.setVisibility(View.VISIBLE);
-                l_del.setVisibility(GONE);
-                l_ok.setVisibility(View.VISIBLE);
+                l1_pay.setVisibility(GONE);//结算
+                l1del.setVisibility(View.VISIBLE);//删除
+                l_del.setVisibility(GONE);//结算
+                l_ok.setVisibility(View.VISIBLE);//
+//                ll_review_pay.setVisibility(GONE);//结算
+//                ll_review_del.setVisibility(View.VISIBLE);//删除
                 break;
             case R.id.b_home:
                 startActivity(new Intent(ShopcarActivity.this, HomeActivity.class));
@@ -269,7 +274,7 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
 
     private List<Shooping_carBean> getShopCards() {
         List<Shooping_carBean> shooping_carBeans = new ArrayList<>();
-        for (Shooping_carBean allDatum : shopcarAdapter.getAllData()) {
+        for (Shooping_carBean allDatum : shopcarAdapter_pay.getAllData()) {
             if (allDatum.isSelect()) {
                 shooping_carBeans.add(allDatum);
             }

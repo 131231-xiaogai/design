@@ -48,7 +48,7 @@
             android:minLines="1"
             android:maxLines="3"
            />
-            />
+
     </LinearLayout>
 
 </LinearLayout>
