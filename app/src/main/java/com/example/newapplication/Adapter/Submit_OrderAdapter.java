@@ -35,7 +35,7 @@ public class Submit_OrderAdapter extends BaseRecyclerViewAdapter<Shooping_carBea
         TextView tvPrice = (TextView) holder.getView(R.id.tv_price);
         ImageView ivMinus = (ImageView) holder.getView(R.id.iv_minus);
         TextView tvCount = (TextView) holder.getView(R.id.tv_count);
-        ImageView ivAdd = (ImageView) holder.getView(R.id.iv_add);
+        ImageView ivAdd = (ImageView) holder.getView(R.id.iv_addNumbwe);
 
 
         if (data.isSelect()) {
@@ -45,7 +45,7 @@ public class Submit_OrderAdapter extends BaseRecyclerViewAdapter<Shooping_carBea
         }
         Glide.with(mContext).load(data.getGood_img()).into(ivShop);
         tvShopName.setText(data.getGood_name());
-        tvPrice.setText("单价：￥"+data.getGood_price()+"  "+"押 金："+data.getGoods_yajin());
+        tvPrice.setText("商品单价:￥"+data.getGood_price()+"/"+"押金: "+"￥"+data.getGoods_yajin()+"/尺码："+data.getGood_size());
         tvCount.setText(data.getGood_number());
         holder.addOnClickListener(R.id.iv_is_select);
         ivAdd.setEnabled(false);

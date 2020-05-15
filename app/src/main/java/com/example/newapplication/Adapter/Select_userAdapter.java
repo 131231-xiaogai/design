@@ -25,7 +25,7 @@ public class Select_userAdapter extends BaseRecyclerViewAdapter<UsersBean, Recyc
         adm_phone.setText(data.getPhone());
 
         TextView adm_IDnumber = holder.getView(R.id.adm_IDnumber);
-        adm_IDnumber.setText(data.getId_number());
+       // adm_IDnumber.setText(data.getId_number());
 
         TextView adm_sex = holder.getView(R.id.adm_sex);
         adm_sex.setText(data.getSex());

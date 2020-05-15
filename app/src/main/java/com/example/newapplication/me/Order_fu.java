@@ -134,7 +134,7 @@ public class Order_fu extends AppCompatActivity implements View.OnClickListener 
                 break;
             case R.id.ord_fu:
                 Toast.makeText(Order_fu.this, "您 正 在 当 前 页 。", Toast.LENGTH_SHORT).show();
-                Order_fu.this.finish();
+
                 break;
             case R.id.ord_tui:
                 startActivity(new Intent(Order_fu.this, Order_tui.class));

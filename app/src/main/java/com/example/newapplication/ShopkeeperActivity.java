@@ -131,17 +131,16 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
     private void shop_evaluate() {
         Map map = new HashMap();
         map.put("shop_id",myshop_id);
-
         OkHttp.get(this, Constant.selece_shop_evaluate, map, new OkCallback<Result<List<EvaluateBean>>>() {
             @Override
             public void onResponse(Result<List<EvaluateBean>> response) {
-                double evaluate=0;
-                for (int i = 0; i < response.getData().size(); i++) {
-                    evaluate= evaluate+Double.valueOf(response.getData().get(i).getP_content());
-                }
-                evaluate=evaluate/response.getData().size();
-                my_shop_sorc.setText(evaluate+"分");
 
+                  double evaluate = 0;
+                  for (int i = 0; i < response.getData().size(); i++) {
+                      evaluate = evaluate + Double.valueOf(response.getData().get(i).getP_content());
+                  }
+                  evaluate = evaluate / response.getData().size();
+                  my_shop_sorc.setText(evaluate + "分");
 
             }
             @Override
@@ -165,7 +164,6 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
                     totalPrice= totalPrice+Double.valueOf(response.getData().get(i).getTotal_price());
                 }
                 s_totalprice.setText("￥"+totalPrice);
-
                 shop_evaluate();
         }
             @Override
