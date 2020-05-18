@@ -92,4 +92,9 @@ public class Constant {
     public static String select_all_user_likeNane =BASE_URL+"/Select_all_user_likeNane";
     //select_all_good_likeName
     public static String select_all_good_likeName =BASE_URL+"/Select_all_good_likeName";
+    //select_allOrder_byShopIdandLikename
+    public static String select_allOrder_byShopIdandLikename =BASE_URL+"/Select_allOrder_byShopIdandLikename";
+    //select_order_byUseridAndlikeName
+    public static String select_order_byUseridAndlikeName =BASE_URL+"/Select_order_byUseridAndlikeName";
+
 }

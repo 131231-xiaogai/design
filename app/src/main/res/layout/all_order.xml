@@ -30,6 +30,12 @@
             android:paddingLeft="20dp"
             android:textColor="#6A5ACD"
             android:textSize="20sp"/>
+        <ImageView
+            android:id="@+id/sk_allorder_find"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:background="@mipmap/sousuo"/>
         <ImageButton
             android:id="@+id/order_all_notice"
             android:layout_width="50dp"

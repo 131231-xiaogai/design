@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -26,6 +27,7 @@ import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.new_utill.SharePrefrenceUtil;
 import com.example.newapplication.newpage.Notice;
 import com.example.newapplication.newpage.OrderDetailActivity;
+import com.example.newapplication.newpage.Sk_Notice;
 import com.example.newapplication.viewhandle.RecyclerViewHolder;
 
 import java.util.HashMap;
@@ -39,12 +41,14 @@ public class Sk_All_orderActivity extends AppCompatActivity implements View.OnCl
     private RecyclerView s_recycle_view;
     private SwipeRefreshLayout swipeRefreshLayout;
     private String shop_id;
+    private ImageView sk_allorder_find;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.all_order);
         title_back=findViewById(R.id.order_all_back);
         notic=findViewById(R.id.order_all_notice);
+        sk_allorder_find=findViewById(R.id.sk_allorder_find);
         //--********--//
         s_recycle_view=findViewById(R.id.all_order_recycle_view);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
@@ -54,7 +58,7 @@ public class Sk_All_orderActivity extends AppCompatActivity implements View.OnCl
         orderAdapter.setOnItemClickListener(new OnItemClickListener<OrderBean>() {
             @Override
             public void onItemClick(RecyclerViewHolder viewHolder, OrderBean data, int position) {
-                Toast.makeText(Sk_All_orderActivity.this, data.getOrder_id(), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(Sk_All_orderActivity.this, data.getOrder_id(), Toast.LENGTH_SHORT).show();
                 String da = data.getGoods_id();
                 Intent intent = new Intent(Sk_All_orderActivity.this, OrderDetailActivity.class);
                 intent.putExtra("hgoodid", da);
@@ -103,6 +107,7 @@ public class Sk_All_orderActivity extends AppCompatActivity implements View.OnCl
     private void OnClickListener() {
         notic.setOnClickListener(this);
         title_back.setOnClickListener(this);
+        sk_allorder_find.setOnClickListener(this);
     }
 
     @Override
@@ -112,7 +117,15 @@ public class Sk_All_orderActivity extends AppCompatActivity implements View.OnCl
                 Sk_All_orderActivity.this.finish();
                 break;
             case R.id.order_all_notice:
-                startActivity(new Intent(Sk_All_orderActivity.this, Notice.class));
+                Intent intent5 = new Intent(Sk_All_orderActivity.this, Sk_Notice.class);
+                intent5.putExtra("my_shop_id",shop_id);
+                startActivity(intent5);
+                break;
+            case R.id.sk_allorder_find:
+                Intent intent1 = new Intent(Sk_All_orderActivity.this, Sk_select_allorder.class);
+                intent1.putExtra("my_shop_id",shop_id);
+                startActivity(intent1);
+
                 break;
         }
     }

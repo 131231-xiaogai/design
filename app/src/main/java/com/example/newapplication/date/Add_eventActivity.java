@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ public class Add_eventActivity extends AppCompatActivity implements View.OnClick
     TextView eva_date;
     String  date;
 
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_event);
@@ -45,6 +47,7 @@ public class Add_eventActivity extends AppCompatActivity implements View.OnClick
         Intent integer = getIntent();
         date = integer.getStringExtra("date");
         eva_date.setText(date);
+
         //
         OnClickListener();
 

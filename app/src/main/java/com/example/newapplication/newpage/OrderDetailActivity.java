@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.newapplication.R;
+import com.example.newapplication.ShopkeeperActivity;
 import com.example.newapplication.entity.AddressBean;
 import com.example.newapplication.entity.EvaluateBean;
 import com.example.newapplication.entity.OrderBean;
@@ -29,7 +30,7 @@ import java.util.Map;
 
 public class OrderDetailActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageButton title_back,notic;
+    private ImageButton title_back,notic,order_de_toHome;
     private String  da,address,deliver,orderid;
     private TextView  uname, phone, de_address,gsize,gprice,gtotal,order_code,startTime,gfinishTime,order_de_shopname;
     private TextView  gname;
@@ -51,6 +52,7 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
         order_code=findViewById(R.id.order_de_code);
         startTime=findViewById(R.id.order_de_sartTime);
         gfinishTime=findViewById(R.id.order_de_finish_Time);
+        order_de_toHome=findViewById(R.id.order_de_toHome);
 
         //*****************//
 
@@ -131,6 +133,7 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
     private void OnClickListener() {
         notic.setOnClickListener(this);
         title_back.setOnClickListener(this);
+        order_de_toHome.setOnClickListener(this);
     }
 
     public void onClick(View v) {
@@ -140,6 +143,10 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                 break;
             case R.id.order_de_notice:
                 startActivity(new Intent(OrderDetailActivity.this, Notice.class));
+                break;
+            case R.id.order_de_toHome:
+                startActivity(new Intent(OrderDetailActivity.this, ShopkeeperActivity.class));
+                OrderDetailActivity.this.finish();
                 break;
         }
     }

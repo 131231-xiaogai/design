@@ -15,6 +15,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
 import com.example.newapplication.R;
+import com.example.newapplication.ShopkeeperActivity;
 import com.example.newapplication.entity.GoodBean;
 import com.example.newapplication.entity.UsersBean;
 import com.example.newapplication.new_utill.Constant;
@@ -29,7 +30,7 @@ import java.util.Map;
 
 public class Goods_DetailActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView l_goodid,l_goodname,gdd_yajin,good_price,good_size,back,gdd_goood_type,gdd_good_number
-            ,gdd_good_clothing_length, gdd_good_sleeve_length, gdd_good_shoulder_width, gdd_good_trousers_length;
+            ,gdd_good_clothing_length, gdd_good_sleeve_length, gdd_good_shoulder_width, gdd_good_trousers_length,gdd_toHome;
     private ImageView l_img;
     private Button go_to_update,to_deleted;
     private GoodBean data;
@@ -54,6 +55,7 @@ public class Goods_DetailActivity extends AppCompatActivity implements View.OnCl
         gdd_good_sleeve_length=findViewById(R.id.gdd_good_sleeve_length);
         gdd_good_shoulder_width=findViewById(R.id.gdd_good_shoulder_width);
         gdd_good_trousers_length=findViewById(R.id.gdd_good_trousers_length);
+        gdd_toHome=findViewById(R.id.gdd_toHome);
         //
         //从DeletedGoodsActivity接收数据
         Intent goodid_integer = getIntent();
@@ -146,6 +148,7 @@ public class Goods_DetailActivity extends AppCompatActivity implements View.OnCl
         back.setOnClickListener(this);
         go_to_update.setOnClickListener(this);
         to_deleted.setOnClickListener(this);
+        gdd_toHome.setOnClickListener(this);
     }
 
     @Override
@@ -167,6 +170,10 @@ public class Goods_DetailActivity extends AppCompatActivity implements View.OnCl
                 intent.putExtra("myshop_id",myshop_id);
                 startActivityForResult(intent,1);
                 break;
+                case R.id.gdd_toHome:
+                    startActivity(new Intent(Goods_DetailActivity.this, ShopkeeperActivity.class));
+                    Goods_DetailActivity.this.finish();
+                    break ;
         }
     }
     private void deleted_to_goods() {

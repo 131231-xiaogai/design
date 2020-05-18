@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -21,6 +22,7 @@ import com.example.newapplication.entity.UsersBean;
 import com.example.newapplication.home.ItemDetailActivity;
 import com.example.newapplication.inteface.OnItemClickListener;
 import com.example.newapplication.me.Order_fa;
+import com.example.newapplication.me.Select_allorder;
 import com.example.newapplication.new_utill.Constant;
 import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
@@ -39,6 +41,7 @@ public class All_orderActivity extends AppCompatActivity implements View.OnClick
     private RecyclerView s_recycle_view;
     private SwipeRefreshLayout swipeRefreshLayout;
     private String shop_id;
+    private ImageView sk_allorder_find;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,6 +49,7 @@ public class All_orderActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.all_order);
         title_back=findViewById(R.id.order_all_back);
         notic=findViewById(R.id.order_all_notice);
+        sk_allorder_find=findViewById(R.id.sk_allorder_find);
         //--********--//
         s_recycle_view=findViewById(R.id.all_order_recycle_view);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
@@ -55,7 +59,6 @@ public class All_orderActivity extends AppCompatActivity implements View.OnClick
         orderAdapter.setOnItemClickListener(new OnItemClickListener<OrderBean>() {
             @Override
             public void onItemClick(RecyclerViewHolder viewHolder, OrderBean data, int position) {
-                Toast.makeText(All_orderActivity.this, data.getOrder_id(), Toast.LENGTH_SHORT).show();
                 String da = data.getGoods_id();
                 Intent intent = new Intent(All_orderActivity.this, OrderDetailActivity.class);
                 intent.putExtra("hgoodid", da);
@@ -103,6 +106,7 @@ public class All_orderActivity extends AppCompatActivity implements View.OnClick
     private void OnClickListener() {
         notic.setOnClickListener(this);
         title_back.setOnClickListener(this);
+        sk_allorder_find.setOnClickListener(this);
     }
 
     @Override
@@ -113,6 +117,9 @@ public class All_orderActivity extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.order_all_notice:
                 startActivity(new Intent(All_orderActivity.this, Notice.class));
+                break;
+            case R.id.sk_allorder_find:
+                startActivity(new Intent(All_orderActivity.this, Select_allorder.class));
                 break;
         }
     }

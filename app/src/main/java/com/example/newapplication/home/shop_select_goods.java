@@ -1,4 +1,4 @@
-package com.example.newapplication.shopkeeper;
+package com.example.newapplication.home;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,13 +24,14 @@ import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.newpage.Notice;
 import com.example.newapplication.newpage.Sk_Notice;
+import com.example.newapplication.shopkeeper.Goods_DetailActivity;
 import com.example.newapplication.viewhandle.RecyclerViewHolder;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Sk_select_goods extends AppCompatActivity implements View.OnClickListener  {
+public class shop_select_goods extends AppCompatActivity implements View.OnClickListener  {
 
     private ImageButton title_back,notic;
     private RecyclerView s_recycle_view;
@@ -54,7 +55,6 @@ public class Sk_select_goods extends AppCompatActivity implements View.OnClickLi
         //接收数据
         Intent pagename_integer = getIntent();
         shop_id = pagename_integer.getStringExtra("my_shop_id");
-        my_pagenumber= pagename_integer.getStringExtra("my_pagenumber");
         Log.d("商店编号",shop_id);
         //--********--//
         //添加适配器
@@ -66,13 +66,10 @@ public class Sk_select_goods extends AppCompatActivity implements View.OnClickLi
         shopkeeper_goodAdapter.setOnItemClickListener(new OnItemClickListener<GoodBean>() {
             @Override
             public void onItemClick(RecyclerViewHolder viewHolder, GoodBean data, int position) {
-                Toast.makeText(Sk_select_goods.this, data.getGoods_id(), Toast.LENGTH_SHORT).show();
                 String da = data.getGoods_id();
-                Intent intent = new Intent(Sk_select_goods.this, Goods_DetailActivity.class);
+                Intent intent = new Intent(shop_select_goods.this, ItemDetailActivity.class);
                 intent.putExtra("hgoodid", da);
-                intent.putExtra("myshop_id", shop_id);
-                intent.putExtra("my_pagenumber", my_pagenumber);
-                startActivityForResult(intent,1);
+                startActivity(intent);
             }
         });
         //----************----//
@@ -97,7 +94,7 @@ public class Sk_select_goods extends AppCompatActivity implements View.OnClickLi
             }
             @Override
             public void onFailure(String state, String msg) {
-                Toast.makeText(Sk_select_goods.this, msg, Toast.LENGTH_SHORT).show();
+                Toast.makeText(shop_select_goods.this, msg, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -116,11 +113,11 @@ public class Sk_select_goods extends AppCompatActivity implements View.OnClickLi
                 loadData();
                 break;
             case R.id.sk_select_good_back:
-                Sk_select_goods.this.finish();
+                shop_select_goods.this.finish();
                 break;
             case R.id.sk_select_good_notice:
-                Intent intent5 = new Intent(Sk_select_goods.this, Sk_Notice.class);
-                intent5.putExtra("my_shop_id",shop_id);
+                Intent intent5 = new Intent(shop_select_goods.this, Notice.class);
+
                 startActivity(intent5);
                 break;
 

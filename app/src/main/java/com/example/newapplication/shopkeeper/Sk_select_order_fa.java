@@ -25,6 +25,7 @@ import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
 import com.example.newapplication.newpage.Notice;
+import com.example.newapplication.newpage.Sk_Notice;
 import com.example.newapplication.viewhandle.RecyclerViewHolder;
 
 import java.util.HashMap;
@@ -114,7 +115,9 @@ public class Sk_select_order_fa extends AppCompatActivity implements View.OnClic
                 Sk_select_order_fa.this.finish();
                 break;
             case R.id.sk_select_order_notice:
-                startActivity(new Intent(Sk_select_order_fa.this, Notice.class));
+                Intent intent5 = new Intent(Sk_select_order_fa.this, Sk_Notice.class);
+                intent5.putExtra("my_shop_id",shop_id);
+                startActivity(intent5);
                 break;
 
         }

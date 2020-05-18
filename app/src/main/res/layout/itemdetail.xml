@@ -181,13 +181,38 @@
         android:orientation="horizontal"
         android:layout_weight="1.2"
         android:padding="5dp">
+        <TextView
+            android:id="@+id/to_shop"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="15dp"
+            android:background="@mipmap/shop"
+            />
+        <TextView
+            android:id="@+id/to_mysixe"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="5dp"
+            android:background="@mipmap/size"
+            />
+        <TextView
+            android:id="@+id/to_shop_mes"
+            android:layout_width="40dp"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:layout_marginRight="5dp"
+            android:background="@mipmap/shop_mes"
+            />
         <Button
             android:id="@+id/add_to_shopcar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="     加 入 购 物 车    "
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
             android:background="@drawable/button_bg"/>

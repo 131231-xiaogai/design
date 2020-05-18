@@ -28,6 +28,14 @@
             android:textColor="#6A5ACD"
             android:textSize="20sp"/>
         <ImageButton
+            android:id="@+id/order_de_toHome"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:background="@mipmap/home"
+            />
+        <ImageButton
             android:id="@+id/order_de_notice"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -35,6 +43,7 @@
             android:layout_margin="5dp"
             android:background="@mipmap/notice"
             />
+
     </LinearLayout>
     <!--收货地址-->
     <LinearLayout

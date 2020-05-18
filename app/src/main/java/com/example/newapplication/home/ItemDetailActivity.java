@@ -18,6 +18,8 @@ import com.example.newapplication.R;
 import com.example.newapplication.ShopcarActivity;
 import com.example.newapplication.entity.GoodBean;
 import com.example.newapplication.entity.UsersBean;
+import com.example.newapplication.me.MyBodySizeActivility;
+import com.example.newapplication.me.ShopDital;
 import com.example.newapplication.new_utill.Constant;
 import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
@@ -30,11 +32,12 @@ import java.util.Map;
 
 public class ItemDetailActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView l_goodid,l_goodname,l_shopname,good_price,good_size,back,to_shopcar,
-            gdd_good_clothing_length, gdd_good_sleeve_length, gdd_good_shoulder_width, gdd_good_trousers_length;
+            gdd_good_clothing_length, gdd_good_sleeve_length, gdd_good_shoulder_width, gdd_good_trousers_length,
+            to_shop,to_mysixe,to_shop_mes;
     private ImageView l_img;
     private  Button add_to_shopcar,to_pay;
     private GoodBean data;
-    private String  da;
+    private String  da,shop_id,shopname;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,11 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
         back=findViewById(R.id.back);
         add_to_shopcar =findViewById(R.id.add_to_shopcar);
         to_shopcar=findViewById(R.id.to_shopcar);
+        to_shop=findViewById(R.id.to_shop);
+        to_mysixe=findViewById(R.id.to_mysixe);
+        to_shop_mes=findViewById(R.id.to_shop_mes);
+
+
         //
         Intent goodid_integer = getIntent();
         da = goodid_integer.getStringExtra("hgoodid");
@@ -70,7 +78,8 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
                     String gname = data.getGoods_name();
                     String pice = data.getGoods_price();
                     String size = data.getSize();
-                    String shopname = data.getShop_name();
+                     shopname = data.getShop_name();
+                    shop_id=data.getShop_id();
 
                     if (shopname == null || shopname.isEmpty()) {
                         l_shopname.setText("无");
@@ -129,6 +138,9 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
         back.setOnClickListener(this);
         add_to_shopcar.setOnClickListener(this);
         to_shopcar.setOnClickListener(this);
+        to_shop.setOnClickListener(this);
+        to_mysixe.setOnClickListener(this);
+        to_shop_mes.setOnClickListener(this);
     }
 
     @Override
@@ -143,6 +155,22 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
             case R.id.to_shopcar:
                 startActivity(new Intent(ItemDetailActivity.this, ShopcarActivity.class));
                 ItemDetailActivity.this.finish();
+                break;
+            case R.id.to_shop:
+                Intent intent1 = new Intent(ItemDetailActivity.this, Shop.class);
+                intent1.putExtra("shop_id",shop_id);
+                //shopname
+                intent1.putExtra("shopname",shopname);
+                startActivity(intent1);
+                break;
+            case R.id.to_mysixe:
+                //MyBodySizeActivility
+                startActivity(new Intent(ItemDetailActivity.this, MyBodySizeActivility.class));
+                break;
+            case R.id.to_shop_mes:
+                Intent intent2 = new Intent(ItemDetailActivity.this, ShopDital.class);
+                intent2.putExtra("shop_id",shop_id);
+                startActivity(intent2);
                 break;
 
         }

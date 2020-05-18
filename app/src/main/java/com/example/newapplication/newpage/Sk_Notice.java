@@ -1,9 +1,12 @@
 package com.example.newapplication.newpage;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.newapplication.Adapter.MessageAdapter;
+import com.example.newapplication.MainActivity;
 import com.example.newapplication.R;
 import com.example.newapplication.entity.MssageBean;
 import com.example.newapplication.entity.UsersBean;
@@ -35,6 +39,7 @@ public class Sk_Notice extends AppCompatActivity implements View.OnClickListener
     private RecyclerView  my_notic_recycle_view;
     private MessageAdapter messageAdapter1,messageAdapter2;
     private String shop_id;
+    private Button login_out;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +49,7 @@ public class Sk_Notice extends AppCompatActivity implements View.OnClickListener
         my_notic_recycle_view =findViewById(R.id.my_notic_recycle_view);
         sys_notic_recycle_view =findViewById(R.id.sys_notic_recycle_view);
         n_sys_notic =findViewById(R.id.n_sys_notic);
+        login_out=findViewById(R.id.login_out);
         //添加适配器
         StaggeredGridLayoutManager layoutManager1 = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         StaggeredGridLayoutManager layoutManager2 = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
@@ -64,6 +70,7 @@ public class Sk_Notice extends AppCompatActivity implements View.OnClickListener
         n_title_back.setOnClickListener(this);
         your_notic.setOnClickListener(this);
         n_sys_notic.setOnClickListener(this);
+        login_out.setOnClickListener(this);
     }
 
 
@@ -79,7 +86,32 @@ public class Sk_Notice extends AppCompatActivity implements View.OnClickListener
             case R.id.n_sys_notic:
                 select_systemnoties();
                 break;
+            case R.id.login_out:
+                long_out();
+                break;
         }
+    }
+
+    private void long_out() {
+        AlertDialog.Builder dialog;
+        dialog = new AlertDialog.Builder(Sk_Notice.this);
+        dialog.setTitle("提示");
+        dialog.setMessage(String.format("确定要退出登陆吗？"));
+        dialog.setCancelable(false);
+        dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(Sk_Notice.this, MainActivity.class));
+                Sk_Notice.this.finish();
+            }
+        });
+        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        dialog.show();
     }
 
     //商家查询系统消息 2-1

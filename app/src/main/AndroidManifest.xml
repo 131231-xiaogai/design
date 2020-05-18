@@ -98,7 +98,12 @@
         <activity android:name=".Administrators.Ad_select_shop_dj"/>
         <activity android:name=".Administrators.Ad_select_user_qxdj"/>
         <activity android:name=".Administrators.Ad_select_user_dj"/>
+        <activity android:name=".shopkeeper.Sk_select_allorder"/>
         <activity android:name=".home.Home_select_goods"/>
+        <activity android:name=".me.Select_allorder"/>
+        <activity android:name=".me.ShopDital"/>
+        <activity android:name=".home.Shop"/>
+        <activity android:name=".home.shop_select_goods"/>
 
     </application>
 
