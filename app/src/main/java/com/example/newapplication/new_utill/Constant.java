@@ -9,6 +9,9 @@ public class Constant {
     /**
      * 查询所有商品
      */
+    //select_shop_likeaddress
+    public static String select_shop_likeaddress=BASE_URL+"/Select_shop_likeaddress";
+    //
     public static String select_all_good=BASE_URL+"/SelectAllGoodServlet";
     public static String select_all_user=BASE_URL+"/SelectAllUserServlet";
     public static String select_user_by_phone=BASE_URL+"/Select_user_by_phoneServlet";

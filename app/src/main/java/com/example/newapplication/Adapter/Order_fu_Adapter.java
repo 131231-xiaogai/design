@@ -115,6 +115,7 @@ public class Order_fu_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recycle
                                 Toast.makeText(mContext, "付款成功。", Toast.LENGTH_SHORT).show();
                                 String order_id =data.getOrder_id();
                                 change_order(order_id);
+                                add_message(data.getTotal_price() );
                             }
                             @Override
                             public void onFailure(String state, String msg) {
@@ -131,6 +132,31 @@ public class Order_fu_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recycle
                 dialog.show();
             }
         });
+    }
+    private void add_message( String totalPrice) {
+
+        String userID = SharePrefrenceUtil.getObject(mContext, UsersBean.class).getUerid();//顾客id
+        String title ="付款成功提醒";
+        Map map = new HashMap();
+
+        map.put("shop_id", "0");//商家id
+        map.put("message_title", title);
+        map.put("message_context", "支付￥"+totalPrice+"成功。");
+        map.put("message_status", "1");//1给用户看；2给商家看
+        map.put("user_id", userID);
+        map.put("message_type","1");//消息类型：1系统消息；2用户消息
+        Log.d("id",title);
+        OkHttp.get(mContext, Constant.insert_message, map, new OkCallback<Result<String>>() {
+            @Override
+            public void onResponse(Result<String> response) {
+                // Toast.makeText(SettlementActivity.this, "付款成功提醒。", Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     private void change_goodNumber(String ruturn_goodNumber,String good_id) {

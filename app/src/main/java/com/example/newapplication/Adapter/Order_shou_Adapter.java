@@ -18,6 +18,7 @@ import com.example.newapplication.new_utill.Constant;
 import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
+import com.example.newapplication.new_utill.SharePrefrenceUtil;
 import com.example.newapplication.viewhandle.RecyclerViewHolder;
 
 import java.util.HashMap;
@@ -101,8 +102,8 @@ public class Order_shou_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recyc
             public void onResponse(Result<ShopBean> response) {
                 //给商家加钱
                 String user_id = response.getData().getUser_id();
-
                 select_userblance(c,user_id);
+                add_message(c,shop_id);
             }
             @Override
             public void onFailure(String state, String msg) {
@@ -123,13 +124,38 @@ public class Order_shou_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recyc
                 double old_user_blance =Double.valueOf(response.getData().getBalance());
                 double new_user_blance = Double.valueOf(c)+old_user_blance;
                 add_shopbalance(new_user_blance+"",user_id);
+
             }
             @Override
             public void onFailure(String state, String msg) {
                 Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
+    private void add_message( String totalPrice,String shop_id) {
+
+        String userID = SharePrefrenceUtil.getObject(mContext, UsersBean.class).getNickname();//顾客id
+        String title ="收款成功提醒";
+        Map map = new HashMap();
+
+        map.put("shop_id", shop_id);//商家id
+        map.put("message_title", title);
+        map.put("message_context","向用户"+ userID+"收款￥"+totalPrice+"成功。");
+        map.put("message_status", "2");//1给用户看；2给商家看
+        map.put("user_id", "0");
+        map.put("message_type","1");//消息类型：1系统消息；2用户消息
+        Log.d("id",title);
+        OkHttp.get(mContext, Constant.insert_message, map, new OkCallback<Result<String>>() {
+            @Override
+            public void onResponse(Result<String> response) {
+                // Toast.makeText(SettlementActivity.this, "付款成功提醒。", Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -141,6 +167,7 @@ public class Order_shou_Adapter extends BaseRecyclerViewAdapter<OrderBean, Recyc
             @Override
             public void onResponse(Result<String> response) {
                 Log.d("已经向商家付款，商家总金额是",new_user_blance);
+
             }
 
             @Override

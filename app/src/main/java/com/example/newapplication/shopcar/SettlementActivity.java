@@ -195,6 +195,8 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
         OkHttp.get(this, Constant.update_user_balance, map, new OkCallback<Result<String>>() {
             @Override
             public void onResponse(Result<String> response) {
+
+                add_message(totalPrice );
                 submit_order(list);
             }
 
@@ -203,6 +205,32 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
                 Toast.makeText(SettlementActivity.this, msg, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void add_message( String totalPrice) {
+
+        String userID = SharePrefrenceUtil.getObject(SettlementActivity.this, UsersBean.class).getUerid();//顾客id
+        String title ="付款成功提醒";
+        Map map = new HashMap();
+
+        map.put("shop_id", "0");//商家id
+        map.put("message_title", title);
+        map.put("message_context", "支付￥"+totalPrice+"成功。");
+        map.put("message_status", "1");//1给用户看；2给商家看
+        map.put("user_id", userID);
+        map.put("message_type","1");//消息类型：1系统消息；2用户消息
+        Log.d("id",title);
+        OkHttp.get(SettlementActivity.this, Constant.insert_message, map, new OkCallback<Result<String>>() {
+            @Override
+            public void onResponse(Result<String> response) {
+               // Toast.makeText(SettlementActivity.this, "付款成功提醒。", Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(SettlementActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     //付款成功生成的订单

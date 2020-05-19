@@ -17,6 +17,7 @@ import com.example.newapplication.new_utill.Constant;
 import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
 import com.example.newapplication.new_utill.Result;
+import com.example.newapplication.new_utill.SharePrefrenceUtil;
 import com.example.newapplication.viewhandle.RecyclerViewHolder;
 
 import java.util.HashMap;
@@ -99,8 +100,6 @@ public class Sk_Order_huanAdapter extends BaseRecyclerViewAdapter<OrderBean, Rec
                 Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
     public void add_shopbalance(String new_user_blance){
         Map map = new HashMap();
@@ -110,7 +109,33 @@ public class Sk_Order_huanAdapter extends BaseRecyclerViewAdapter<OrderBean, Rec
             @Override
             public void onResponse(Result<String> response) {
                 Log.d("已经向顾客退还押金",goods_yajin);
+                add_message();
 
+            }
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void add_message() {
+
+        String user = SharePrefrenceUtil.getObject(mContext, UsersBean.class).getNickname();//顾客id
+        String title ="退还押金成功提醒";
+        Map map = new HashMap();
+
+        map.put("shop_id", "0");//商家id
+        map.put("message_title", title);
+        map.put("message_context","退还押金￥"+goods_yajin+"成功。");
+        map.put("message_status", "1");//1给用户看；2给商家看
+        map.put("user_id", user_id);
+        map.put("message_type","1");//消息类型：1系统消息；2用户消息
+        Log.d("id",title);
+        OkHttp.get(mContext, Constant.insert_message, map, new OkCallback<Result<String>>() {
+            @Override
+            public void onResponse(Result<String> response) {
+                // Toast.makeText(SettlementActivity.this, "付款成功提醒。", Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onFailure(String state, String msg) {
@@ -119,6 +144,7 @@ public class Sk_Order_huanAdapter extends BaseRecyclerViewAdapter<OrderBean, Rec
         });
 
     }
+
 
     @Override
     protected int getItemLayoutId(int viewType) {
