@@ -162,6 +162,7 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
                 //shopname
                 intent1.putExtra("shopname",shopname);
                 startActivity(intent1);
+                ItemDetailActivity.this.finish();
                 break;
             case R.id.to_mysixe:
                 //MyBodySizeActivility

@@ -81,7 +81,7 @@ public class Update_GoodslActivity extends AppCompatActivity implements View.OnC
                 if (data != null) {
                     String gname = data.getGoods_name();
                     String pice = data.getGoods_price();
-                    String goood_type = data.getType_id();
+                    String goood_type = data.getSize();
                     String yajin = data.getGoods_yajin();
                     String good_number = data.getGoods_number();
                     if (good_number == null || good_number.isEmpty()) {

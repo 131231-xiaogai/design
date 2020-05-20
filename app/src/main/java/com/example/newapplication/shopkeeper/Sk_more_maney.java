@@ -101,7 +101,7 @@ public class Sk_more_maney extends AppCompatActivity implements View.OnClickList
                 orderAdapter.setNewData(response.getData());
                 double totalPrice=0;
                 for (int i = 0; i < response.getData().size(); i++) {
-                    totalPrice= totalPrice+Double.valueOf(response.getData().get(i).getTotal_price());
+                    totalPrice= totalPrice+Double.valueOf(response.getData().get(i).getGood_price());
                 }
                 money_yue_total.setText("该月收入总计：￥"+totalPrice);
             }

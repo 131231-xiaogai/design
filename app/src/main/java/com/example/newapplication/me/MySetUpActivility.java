@@ -28,6 +28,8 @@ public class MySetUpActivility extends AppCompatActivity implements View.OnClick
     TextView mUser_sex,muser_name;
     ImageButton u_title_back,u_notice;
     LinearLayout setup_name,setup_sex;
+    String nickname3;
+
     Intent intent;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,14 +101,14 @@ public class MySetUpActivility extends AppCompatActivity implements View.OnClick
             @Override
             public void onResponse(Result<UsersBean> response) {
 
-                String nickname = response.getData().getNickname();
+                 nickname3 = response.getData().getNickname();
                 String usersex = response.getData().getSex();
                 if (response.getData() != null) {
                     //Toast.makeText(MySetUpActivility.this, "保存成功！", Toast.LENGTH_SHORT).show(); cleanObject
-                    if (nickname == null || nickname.isEmpty()){
+                    if (nickname3 == null || nickname3.isEmpty()){
                         muser_name.setText("暂无");
                     }else{
-                        muser_name.setText(nickname);
+                        muser_name.setText(nickname3);
                     }
                     if (usersex == null || usersex.isEmpty()){
                         mUser_sex.setText("暂无");
@@ -138,11 +140,15 @@ public class MySetUpActivility extends AppCompatActivity implements View.OnClick
                 startActivityForResult(intent,1);
                 break;
             case R.id.u_title_back:
+                Intent intent = new Intent();
+                intent.putExtra("data_return",nickname3);
+                setResult(RESULT_OK,intent);
                 MySetUpActivility.this.finish();
                 break;
             case  R.id.user_sex:
                 intent =new Intent(MySetUpActivility.this, SetUserSexActivity.class);
                 startActivityForResult(intent,1);
+               // MySetUpActivility.this.finish();
                 break;
             case R.id.u_notice:
                 startActivity(new Intent(MySetUpActivility.this, Notice.class));

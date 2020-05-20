@@ -145,7 +145,7 @@ public class Order_shou extends AppCompatActivity implements View.OnClickListene
                 Toast.makeText(Order_shou.this, "您 正 在 当 前 页 。", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.my_select_order_find_shou:
-                Intent intent1 = new Intent(Order_shou.this, My_select_order_fa.class);
+                Intent intent1 = new Intent(Order_shou.this, My_select_order_shou.class);
                 intent1.putExtra("order_status","3");
                 intent1.putExtra("find_name",input_order_mygoodname.getText().toString());
                 startActivity(intent1);

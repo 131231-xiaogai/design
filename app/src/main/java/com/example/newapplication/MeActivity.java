@@ -3,6 +3,7 @@ package com.example.newapplication;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -90,6 +91,51 @@ public  class MeActivity extends AppCompatActivity implements View.OnClickListen
         m_bodysize.setOnClickListener(this);
         evaluate.setOnClickListener(this);
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    String data_return = data.getStringExtra("data_return");
+                    Log.d("name",data_return);
+                    re_select_user();
+                }
+                break;
+            default:
+        }
+    }
+
+    private void re_select_user() {
+        String user_ID = SharePrefrenceUtil.getObject(MeActivity.this, UsersBean.class).getUerid();
+        Log.d("用户编号",user_ID);
+        Map map = new HashMap();
+        map.put("muser_id",user_ID);
+
+        OkHttp.get(this, Constant.select_user_by_id, map, new OkCallback<Result<UsersBean>>() {
+            @Override
+            public void onResponse(Result<UsersBean> response) {
+
+                String nickname = response.getData().getNickname();
+                String usersex = response.getData().getSex();
+                if (response.getData() != null) {
+                    //Toast.makeText(MySetUpActivility.this, "保存成功！", Toast.LENGTH_SHORT).show(); cleanObject
+                    if (nickname == null || nickname.isEmpty()){
+                        m_username.setText("暂无");
+                    }else{
+                        m_username.setText(nickname);
+                    }
+                }
+            }
+            @Override
+            public void onFailure(String state, String msg) {
+                Toast.makeText(MeActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+    }
 
     public void finish_reback(View v){
         MeActivity.this.finish();
@@ -143,7 +189,8 @@ public  class MeActivity extends AppCompatActivity implements View.OnClickListen
               startActivity(new Intent(MeActivity.this, MyaddressActivility.class));
               break;
           case R.id.m_setup:
-              startActivity(new Intent(MeActivity.this, MySetUpActivility.class));
+              intent =new Intent(MeActivity.this, MySetUpActivility.class);
+              startActivityForResult(intent,1);
               break;
           case R.id.m_bodysize:
               startActivity(new Intent(MeActivity.this, MyBodySizeActivility.class));

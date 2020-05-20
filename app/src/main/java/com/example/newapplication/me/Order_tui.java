@@ -141,7 +141,7 @@ public class Order_tui extends AppCompatActivity implements View.OnClickListener
                 Order_tui.this.finish();
                 break;
             case R.id.my_select_order_find_tui:
-                Intent intent1 = new Intent(Order_tui.this, My_select_order_fa.class);
+                Intent intent1 = new Intent(Order_tui.this, My_select_order_tui.class);
                 intent1.putExtra("order_status","4");
                 intent1.putExtra("find_name",input_order_mygoodname.getText().toString());
                 startActivity(intent1);

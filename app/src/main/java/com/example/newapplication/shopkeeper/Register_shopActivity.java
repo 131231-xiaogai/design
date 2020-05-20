@@ -113,14 +113,7 @@ public class Register_shopActivity extends AppCompatActivity implements View.OnC
             @Override
             public void onResponse(Result<String> response) {
                 Toast.makeText(Register_shopActivity.this, "注 册 成 功 ！", Toast.LENGTH_SHORT).show();
-//                String shop_name = insert_shopname.getText().toString();
-//                String shop_dresss =insert_shop_address.getText().toString();
-//                String shop_phone =insert_shop_phone.getText().toString();
-//                Intent intent = new Intent(Register_shopActivity.this, ShopkeeperActivity.class);
-//                intent.putExtra("shop_name", shop_name);
-//                intent.putExtra("shop_dresss", shop_dresss);
-//                intent.putExtra("shop_phone", shop_phone);
-//                startActivity(intent);
+
 
                 Intent intent = new Intent();
                 intent.putExtra("data_return","updata_goods");

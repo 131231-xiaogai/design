@@ -145,7 +145,7 @@ public class Order_fu extends AppCompatActivity implements View.OnClickListener 
                 Order_fu.this.finish();
                 break;
             case R.id.my_select_order_find_fu:
-                Intent intent1 = new Intent(Order_fu.this, My_select_order_fa.class);
+                Intent intent1 = new Intent(Order_fu.this, My_select_order_fu.class);
                 intent1.putExtra("order_status","1");
                 intent1.putExtra("find_name",input_order_mygoodname.getText().toString());
                 startActivity(intent1);

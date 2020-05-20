@@ -39,7 +39,7 @@ public class WalletpagaActivity extends AppCompatActivity implements View.OnClic
         private ImageButton P_notice;
         private TextView mpageneme,mbalance,add_balance,to_balance;
         private EditText chongzhi;
-        private String m;
+        private String m,new_balance;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +63,9 @@ public class WalletpagaActivity extends AppCompatActivity implements View.OnClic
             lodata();
         }
         public void finish_reback(View v){
+            Intent intent = new Intent();
+            intent.putExtra("data_return",new_balance);
+            setResult(RESULT_OK,intent);
             WalletpagaActivity.this.finish();
         }
 
@@ -110,7 +113,7 @@ public class WalletpagaActivity extends AppCompatActivity implements View.OnClic
         m = chongzhi.getText().toString();
         String uerid = SharePrefrenceUtil.getObject(WalletpagaActivity.this, UsersBean.class).getUerid();
         String old_balance = SharePrefrenceUtil.getObject(WalletpagaActivity.this, UsersBean.class).getBalance();
-        String new_balance =Double.valueOf(m)+Double.valueOf(old_balance)+"";
+         new_balance =Double.valueOf(m)+Double.valueOf(old_balance)+"";
         AlertDialog.Builder dialog;
         dialog = new AlertDialog.Builder(WalletpagaActivity.this);
         dialog.setTitle("提示");

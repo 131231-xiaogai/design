@@ -52,7 +52,7 @@ public class Home_select_goods extends AppCompatActivity implements View.OnClick
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sk_select_goods);
+        setContentView(R.layout.hpme_select_goods);
 
         ll_et_goodname=findViewById(R.id.ll_et_goodname);
         ll_et_shopaddress=findViewById(R.id.ll_et_shopaddress);
@@ -60,17 +60,17 @@ public class Home_select_goods extends AppCompatActivity implements View.OnClick
         ll_et_shopid=findViewById(R.id.ll_et_shopid);//
 
 
-        input_yue=findViewById(R.id.input_goodname);//输入框
+        input_yue=findViewById(R.id.input_goodname1);//输入框
         input_shopaddress=findViewById(R.id.input_shopaddress);
         input_shopname=findViewById(R.id.input_shopname);
         input_shopid=findViewById(R.id.input_shopid);
 
-        sk_select_good_find=findViewById(R.id.sk_select_good_find);//搜索图标
+        sk_select_good_find=findViewById(R.id.sk_select_good_find1);//搜索图标
         sk_select_shopaddress =findViewById(R.id.sk_select_shopaddress);
         sk_select_shopname =findViewById(R.id.sk_select_shopname);
         sk_select_shopid =findViewById(R.id.sk_select_shopid);
 
-        home_good_total=findViewById(R.id.home_good_total);//搜索后的统计
+        home_good_total=findViewById(R.id.home_good_total1);//搜索后的统计
         home_shopaddress =findViewById(R.id.home_shopaddress);
         home_shopname =findViewById(R.id.home_shopname);
         home_shopid =findViewById(R.id.home_shopid);
@@ -81,10 +81,10 @@ public class Home_select_goods extends AppCompatActivity implements View.OnClick
         select_shop_byshopname =findViewById(R.id.select_shop_byshopname);
         select_shop_byshopid =findViewById(R.id.select_shop_byshopid);
 
-        s_recycle_view=findViewById(R.id.sk_select_good_recycle_view);
+        s_recycle_view=findViewById(R.id.sk_select_good_recycle_view1);
         sk_select_shop_recycle_view=findViewById(R.id.sk_select_shop_recycle_view);//瀑布列表
-        title_back=findViewById(R.id.sk_select_good_back);//返回按钮
-        notic=findViewById(R.id.sk_select_good_notice);//通知
+        title_back=findViewById(R.id.sk_select_good_back1);//返回按钮
+        notic=findViewById(R.id.sk_select_good_notice1);//通知
 
         //添加适配器
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
@@ -149,13 +149,13 @@ public class Home_select_goods extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.sk_select_good_find:
+            case R.id.sk_select_good_find1:
                 loadData();
                 break;
-            case R.id.sk_select_good_back:
+            case R.id.sk_select_good_back1:
                 Home_select_goods.this.finish();
                 break;
-            case R.id.sk_select_good_notice:
+            case R.id.sk_select_good_notice1:
                 startActivity(new Intent(Home_select_goods.this, Notice.class));
                 break;
             case R.id.select_good_bygoodname:

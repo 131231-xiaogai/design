@@ -101,6 +101,7 @@ public class Shop extends AppCompatActivity implements View.OnClickListener{
                 Intent intent2 = new Intent(Shop.this, shop_select_goods.class);
                 intent2.putExtra("my_shop_id",shop_id);
                 startActivity(intent2);
+                Shop.this.finish();
                 break;
         }
 

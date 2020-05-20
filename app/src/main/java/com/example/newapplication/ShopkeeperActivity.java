@@ -16,6 +16,7 @@ import com.example.newapplication.entity.OrderBean;
 import com.example.newapplication.entity.ShopBean;
 import com.example.newapplication.entity.UsersBean;
 import com.example.newapplication.me.MySetUpActivility;
+import com.example.newapplication.me.WalletpagaActivity;
 import com.example.newapplication.new_utill.Constant;
 import com.example.newapplication.new_utill.OkCallback;
 import com.example.newapplication.new_utill.OkHttp;
@@ -81,14 +82,17 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
             }
         });
         //---****-//
+        String user_blance = SharePrefrenceUtil.getObject(ShopkeeperActivity.this, UsersBean.class).getBalance();
+        me_shop_blance.setText("￥"+user_blance);
+        String user_name = SharePrefrenceUtil.getObject(ShopkeeperActivity.this, UsersBean.class).getNickname();
+        me_shop_name.setText(user_name);
         OnClickListener();
         loadData();
     }
 
     private void loadData() {
         String user_id = SharePrefrenceUtil.getObject(ShopkeeperActivity.this, UsersBean.class).getUerid();
-        String user_name = SharePrefrenceUtil.getObject(ShopkeeperActivity.this, UsersBean.class).getNickname();
-        String user_blance = SharePrefrenceUtil.getObject(ShopkeeperActivity.this, UsersBean.class).getBalance();
+
         Map map = new HashMap();
         map.put("user_id",user_id);
         OkHttp.get(this, Constant.select_shop_by_userid, map, new OkCallback<Result<ShopBean>>() {
@@ -106,12 +110,17 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
                     } else {
                         my_shop_name.setText(myshop_name);
                     }
+                    if (myshop_sorc == null || myshop_sorc.equals("0")) {
+                        my_shop_sorc.setText("0 分");
+                    } else {
+                        my_shop_sorc.setText(myshop_sorc);
+                    }
                     my_shop_address.setText(myshop_dress);
                     me_shop_register_time.setText(myshop_register_time);
-                    my_shop_sorc.setText(myshop_sorc);
+
                     me_shop_phone.setText(myshop_phone);
-                    me_shop_name.setText(user_name);
-                    me_shop_blance.setText("￥"+user_blance);
+
+
 
                     isshop="1";
                 }else {
@@ -129,48 +138,63 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void shop_evaluate() {
-        Map map = new HashMap();
-        map.put("shop_id",myshop_id);
-        OkHttp.get(this, Constant.selece_shop_evaluate, map, new OkCallback<Result<List<EvaluateBean>>>() {
-            @Override
-            public void onResponse(Result<List<EvaluateBean>> response) {
+        if (myshop_id!=null){ Map map = new HashMap();
+            map.put("shop_id",myshop_id);
+            OkHttp.get(this, Constant.selece_shop_evaluate, map, new OkCallback<Result<List<EvaluateBean>>>() {
+                @Override
+                public void onResponse(Result<List<EvaluateBean>> response) {
+                    if (response==null){
+                        double evaluate = 0;
+                        for (int i = 0; i < response.getData().size(); i++) {
+                            evaluate = evaluate + Double.valueOf(response.getData().get(i).getP_content());
+                        }
+                        evaluate = evaluate / response.getData().size();
+                        my_shop_sorc.setText(evaluate + "分");
+                    }else {
+                        my_shop_sorc.setText("暂无评分");
+                    }
 
-                  double evaluate = 0;
-                  for (int i = 0; i < response.getData().size(); i++) {
-                      evaluate = evaluate + Double.valueOf(response.getData().get(i).getP_content());
-                  }
-                  evaluate = evaluate / response.getData().size();
-                  my_shop_sorc.setText(evaluate + "分");
 
-            }
-            @Override
-            public void onFailure(String state, String msg) {
-                Toast.makeText(ShopkeeperActivity.this, msg, Toast.LENGTH_SHORT).show();
-            }
-        });
+                }
+                @Override
+                public void onFailure(String state, String msg) {
+                    Toast.makeText(ShopkeeperActivity.this, msg, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }else {
+            my_shop_sorc.setText("暂无评分");
 
+        }
 
     }
 
     private void shop_totoprice() {
-        Map map = new HashMap();
-        map.put("shop_id",myshop_id);
+        if (myshop_id !=null){ Map map = new HashMap();
+            map.put("shop_id",myshop_id);
 
-        OkHttp.get(this, Constant.selece_order_totalprice, map, new OkCallback<Result<List<OrderBean>>>() {
-            @Override
-            public void onResponse(Result<List<OrderBean>> response) {
-                double totalPrice=0;
-                for (int i = 0; i < response.getData().size(); i++) {
-                    totalPrice= totalPrice+Double.valueOf(response.getData().get(i).getTotal_price());
+            OkHttp.get(this, Constant.selece_order_totalprice, map, new OkCallback<Result<List<OrderBean>>>() {
+                @Override
+                public void onResponse(Result<List<OrderBean>> response) {
+                    if (response!=null){
+                        double totalPrice=0;
+                        for (int i = 0; i < response.getData().size(); i++) {
+                            totalPrice= totalPrice+Double.valueOf(response.getData().get(i).getGood_price());
+                        }
+                        s_totalprice.setText("￥"+totalPrice);
+                    }else{
+                        s_totalprice.setText("￥0.0");
+                    }
+                    shop_evaluate();
                 }
-                s_totalprice.setText("￥"+totalPrice);
-                shop_evaluate();
+                @Override
+                public void onFailure(String state, String msg) {
+                    Toast.makeText(ShopkeeperActivity.this, msg, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }else{
+            s_totalprice.setText("￥0.0");
         }
-            @Override
-            public void onFailure(String state, String msg) {
-                Toast.makeText(ShopkeeperActivity.this, msg, Toast.LENGTH_SHORT).show();
-            }
-        });
+
     }
 
     private void OnClickListener() {
@@ -192,13 +216,42 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         sk_user_setup.setOnClickListener(this);
         more_maney.setOnClickListener(this);
         k_select.setOnClickListener(this);
+        me_shop_blance.setOnClickListener(this);
 
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 2:
+                if (resultCode == RESULT_OK) {
+                    String data_return = data.getStringExtra("data_return");
+                    Log.d("name",data_return);
+                    me_shop_blance.setText("￥"+data_return);
+                }
+                break;
+            case 3:
+                if (resultCode == RESULT_OK) {
+                    String data_return = data.getStringExtra("data_return");
+                    Log.d("name",data_return);
+                    me_shop_name.setText(data_return);
+                }
+                break;
+            default:
+        }
     }
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.me_shop_blance:
+                String data = "我 的 钱 包";
+                Intent intent = new Intent(ShopkeeperActivity.this, WalletpagaActivity.class);
+                intent.putExtra("balance", data);
+                startActivityForResult(intent,2);
+                break;
             case R.id.k_select:
                 Intent intent8 = new Intent(ShopkeeperActivity.this, Sk_select_goods.class);
                 intent8.putExtra("my_shop_id",myshop_id);
@@ -270,8 +323,11 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
                 startActivity(intent6);
                 break;
             case R.id.sk_user_setup:
-                startActivity(new Intent(ShopkeeperActivity.this, MySetUpActivility.class));
+                Intent intent11 = new Intent(ShopkeeperActivity.this, MySetUpActivility.class);
+                intent11.putExtra("my_shop_id",myshop_id);
+                startActivityForResult(intent11,3);
                 break;
+
 
 
         }
@@ -318,19 +374,5 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         startActivityForResult(myshop_intent,1);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
 
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case 1:
-                if (resultCode == RESULT_OK) {
-                    String data_return = data.getStringExtra("data_return");
-                    Log.d("updata_goods",data_return);
-                    loadData();
-                }
-                break;
-            default:
-        }
-    }
 }
