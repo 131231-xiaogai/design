@@ -80,6 +80,24 @@ public class Ad_select_shop extends AppCompatActivity implements View.OnClickLis
         OnClickListener();
 
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    String data_return = data.getStringExtra("data_return");
+                    Log.d("my_address",data_return);
+                    Intent intent = new Intent();
+                    intent.putExtra("data_return","模糊查询商家");
+                    setResult(RESULT_OK,intent);
+                    Ad_select_shop.this.finish();
+                }
+                break;
+            default:
+        }
+    }
 
     private void OnClickListener() {
         title_back.setOnClickListener(this);

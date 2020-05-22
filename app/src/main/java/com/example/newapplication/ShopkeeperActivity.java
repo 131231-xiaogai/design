@@ -86,13 +86,13 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         me_shop_blance.setText("￥"+user_blance);
         String user_name = SharePrefrenceUtil.getObject(ShopkeeperActivity.this, UsersBean.class).getNickname();
         me_shop_name.setText(user_name);
+        my_shop_sorc.setText("暂无评分");
         OnClickListener();
         loadData();
     }
 
     private void loadData() {
         String user_id = SharePrefrenceUtil.getObject(ShopkeeperActivity.this, UsersBean.class).getUerid();
-
         Map map = new HashMap();
         map.put("user_id",user_id);
         OkHttp.get(this, Constant.select_shop_by_userid, map, new OkCallback<Result<ShopBean>>() {
@@ -110,18 +110,11 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
                     } else {
                         my_shop_name.setText(myshop_name);
                     }
-                    if (myshop_sorc == null || myshop_sorc.equals("0")) {
-                        my_shop_sorc.setText("0 分");
-                    } else {
-                        my_shop_sorc.setText(myshop_sorc);
-                    }
+
                     my_shop_address.setText(myshop_dress);
                     me_shop_register_time.setText(myshop_register_time);
 
                     me_shop_phone.setText(myshop_phone);
-
-
-
                     isshop="1";
                 }else {
                     Toast.makeText(ShopkeeperActivity.this, "您还没有注册商铺。", Toast.LENGTH_SHORT).show();
@@ -138,23 +131,27 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void shop_evaluate() {
-        if (myshop_id!=null){ Map map = new HashMap();
+        if (myshop_id!=null){
+            Map map = new HashMap();
             map.put("shop_id",myshop_id);
             OkHttp.get(this, Constant.selece_shop_evaluate, map, new OkCallback<Result<List<EvaluateBean>>>() {
                 @Override
                 public void onResponse(Result<List<EvaluateBean>> response) {
-                    if (response==null){
+                    if (response==null ){
+                        my_shop_sorc.setText( "暂无评分");
+                    }else {
                         double evaluate = 0;
                         for (int i = 0; i < response.getData().size(); i++) {
                             evaluate = evaluate + Double.valueOf(response.getData().get(i).getP_content());
                         }
-                        evaluate = evaluate / response.getData().size();
-                        my_shop_sorc.setText(evaluate + "分");
-                    }else {
-                        my_shop_sorc.setText("暂无评分");
+                        if (evaluate==0){
+                            my_shop_sorc.setText( "暂无评分");
+                        }else {
+                            evaluate = evaluate / response.getData().size();
+                            my_shop_sorc.setText(evaluate + "分");}
+
+
                     }
-
-
                 }
                 @Override
                 public void onFailure(String state, String msg) {
@@ -181,10 +178,12 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
                             totalPrice= totalPrice+Double.valueOf(response.getData().get(i).getGood_price());
                         }
                         s_totalprice.setText("￥"+totalPrice);
+                        shop_evaluate();
                     }else{
                         s_totalprice.setText("￥0.0");
+                        shop_evaluate();
                     }
-                    shop_evaluate();
+
                 }
                 @Override
                 public void onFailure(String state, String msg) {
@@ -193,6 +192,7 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
             });
         }else{
             s_totalprice.setText("￥0.0");
+            shop_evaluate();
         }
 
     }
@@ -224,6 +224,12 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
 
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
+//            case 1:
+//                if (resultCode == RESULT_OK) {
+//                    String data_return = data.getStringExtra("data_return");
+//                    Log.d("name",data_return);
+//                    loadData();
+//                }
             case 2:
                 if (resultCode == RESULT_OK) {
                     String data_return = data.getStringExtra("data_return");
@@ -337,7 +343,7 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         Intent addgood_intent = new Intent(ShopkeeperActivity.this, AddGoodsActivity.class);
         addgood_intent.putExtra("my_shop_id",myshop_id);
         addgood_intent.putExtra("myshop_name",myshop_name);
-        startActivityForResult(addgood_intent,1);
+        startActivity(addgood_intent);
     }
 
     private void change_goods() {
@@ -357,6 +363,7 @@ public class ShopkeeperActivity extends AppCompatActivity implements View.OnClic
         intent.putExtra("myshop_id", myshop_id);
         intent.putExtra("my_pagename", pagename);
         intent.putExtra("my_pagenumber", pagenumber);
+        intent.putExtra("myshop_name", myshop_name);
         startActivity(intent);
     }
 

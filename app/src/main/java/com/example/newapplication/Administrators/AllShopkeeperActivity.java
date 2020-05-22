@@ -65,6 +65,21 @@ public class AllShopkeeperActivity extends AppCompatActivity implements View.OnC
         loadData();
 
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    String data_return = data.getStringExtra("data_return");
+                    Log.d("my_address",data_return);
+                    loadData();
+                }
+                break;
+            default:
+        }
+    }
 
     private void OnClickListener() {
         adm_back.setOnClickListener(this);
@@ -80,7 +95,7 @@ public class AllShopkeeperActivity extends AppCompatActivity implements View.OnC
                 Intent intent1 = new Intent(AllShopkeeperActivity.this, Ad_select_shop.class);
                 //intent1.putExtra("order_status","2");
                 //intent1.putExtra("find_name",input_order_mygoodname.getText().toString());
-                startActivity(intent1);
+                startActivityForResult(intent1,1);
                 break;
 
         }

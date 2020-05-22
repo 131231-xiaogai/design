@@ -71,26 +71,26 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
         b_shopcar.setBackground(getResources().getDrawable(R.mipmap.shopcar_red));
 
         //编辑的全选
-        iv_all_select2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isAllSelect = !isAllSelect;
-                if (isAllSelect) {
-                    iv_all_select2.setImageResource(R.mipmap.select);
-                    for (Shooping_carBean allDatum : shopcarAdapter_pay.getAllData()) {
-                        allDatum.setSelect(true);
-                    }
-                    shopcarAdapter_pay.notifyDataSetChanged();
-
-                } else {
-                    iv_all_select2.setImageResource(R.mipmap.unselect);
-                    for (Shooping_carBean allDatum : shopcarAdapter_pay.getAllData()) {
-                        allDatum.setSelect(false);
-                    }
-                    shopcarAdapter_pay.notifyDataSetChanged();
-                }
-            }
-        });
+//        iv_all_select2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                isAllSelect = !isAllSelect;
+//                if (isAllSelect) {
+//                    iv_all_select2.setImageResource(R.mipmap.select);
+//                    for (Shooping_carBean allDatum : shopcarAdapter_pay.getAllData()) {
+//                        allDatum.setSelect(true);
+//                    }
+//                    shopcarAdapter_pay.notifyDataSetChanged();
+//
+//                } else {
+//                    iv_all_select2.setImageResource(R.mipmap.unselect);
+//                    for (Shooping_carBean allDatum : shopcarAdapter_pay.getAllData()) {
+//                        allDatum.setSelect(false);
+//                    }
+//                    shopcarAdapter_pay.notifyDataSetChanged();
+//                }
+//            }
+//        });
 
         //正常购物的全选
         ivAllSelect.setOnClickListener(new View.OnClickListener() {
@@ -159,7 +159,7 @@ public class ShopcarActivity extends AppCompatActivity implements View.OnClickLi
                 String da = data.getGoods_id();
                 Intent intent = new Intent(ShopcarActivity.this, ItemDetailActivity.class);
                 intent.putExtra("hgoodid", da);
-                startActivityForResult(intent, 1);
+                startActivity(intent);
             }
         });
         //结算适配器结束

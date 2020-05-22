@@ -101,7 +101,7 @@ public class AllUserActivity extends AppCompatActivity implements View.OnClickLi
                 Intent intent1 = new Intent(AllUserActivity.this, Ad_select_user.class);
                 //intent1.putExtra("order_status","2");
                 //intent1.putExtra("find_name",input_order_mygoodname.getText().toString());
-                startActivity(intent1);
+                startActivityForResult(intent1,1);
                 break;
 
         }

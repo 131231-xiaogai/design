@@ -33,8 +33,8 @@ import java.util.Map;
 
 public class DeletedGoodsActivity extends AppCompatActivity implements View.OnClickListener  {
 
-    private ImageButton skd_title_back;
-    private String  myshop_id,my_pagename;
+    private ImageButton skd_title_back,sk_addgood;
+    private String  myshop_id,my_pagename,myshop_name;
     private String pagenumber;
     private Shopkeeper_goodAdapter shopkeeper_goodAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -50,6 +50,7 @@ public class DeletedGoodsActivity extends AppCompatActivity implements View.OnCl
         skd_recycle_view=findViewById(R.id.skd_recycle_view);
         gdd_pageneme=findViewById(R.id.gdd_pageneme);
         sk_de_good_find=findViewById(R.id.sk_de_good_find);
+        sk_addgood=findViewById(R.id.sk_addgood);
         //
 
         //从ShopkeeperActivity接受数据
@@ -57,7 +58,8 @@ public class DeletedGoodsActivity extends AppCompatActivity implements View.OnCl
          myshop_id = pagename_integer.getStringExtra("myshop_id");
          my_pagename = pagename_integer.getStringExtra("my_pagename");
          gdd_pageneme.setText(my_pagename);
-         pagenumber=  pagename_integer.getStringExtra("my_pagenumber");
+         pagenumber=  pagename_integer.getStringExtra("my_pagenumber");//myshop_name
+        myshop_name=pagename_integer.getStringExtra("myshop_name");
          Log.d("DeletedGoodsActivity",myshop_id);
 
         //添加适配器
@@ -115,6 +117,7 @@ public class DeletedGoodsActivity extends AppCompatActivity implements View.OnCl
 
         skd_title_back.setOnClickListener(this);
         sk_de_good_find.setOnClickListener(this);
+        sk_addgood.setOnClickListener(this);
     }
 
     @Override
@@ -145,6 +148,13 @@ public class DeletedGoodsActivity extends AppCompatActivity implements View.OnCl
                 intent.putExtra("my_shop_id", myshop_id);
                 intent.putExtra("my_pagenumber", pagenumber);
                 startActivityForResult(intent,1);
+                break;
+            case R.id.sk_addgood:
+                Intent intent1 = new Intent(DeletedGoodsActivity.this, AddGoodsActivity.class);
+                intent1.putExtra("my_shop_id",myshop_id);
+                intent1.putExtra("myshop_name",myshop_name);
+                startActivity(intent1);
+                DeletedGoodsActivity.this.finish();
                 break;
         }
 

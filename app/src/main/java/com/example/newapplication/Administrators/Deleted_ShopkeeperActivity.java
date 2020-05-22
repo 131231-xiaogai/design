@@ -112,7 +112,7 @@ public class Deleted_ShopkeeperActivity extends AppCompatActivity implements Vie
                 Intent intent1 = new Intent(Deleted_ShopkeeperActivity.this, Ad_select_shop.class);
                 //intent1.putExtra("order_status","2");
                 //intent1.putExtra("find_name",input_order_mygoodname.getText().toString());
-                startActivity(intent1);
+                startActivityForResult(intent1,1);
                 break;
 
         }

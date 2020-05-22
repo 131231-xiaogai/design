@@ -185,11 +185,11 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
         map.put("user_id",userid);
         map.put("goods_id",goodid);
         map.put("good_number",good_number);
-        map.put("shop_id","1");
+        map.put("shop_id",shop_id);
         map.put("good_name",data.getGoods_name());
         map.put("good_price",data.getGoods_price());
         map.put("good_img",data.getGood_img());
-        map.put("shop_name","");
+        map.put("shop_name",shopname);
         map.put("shop_car_status","0");//0未形成订单，1为已形成订单
         map.put("goods_yajin",data.getGoods_yajin());
         map.put("good_size",data.getSize());

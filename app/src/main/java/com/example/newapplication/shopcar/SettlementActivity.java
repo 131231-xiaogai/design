@@ -196,8 +196,8 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onResponse(Result<String> response) {
 
-                add_message(totalPrice );
-                submit_order(list);
+                add_message( list,totalPrice );
+
             }
 
             @Override
@@ -207,7 +207,7 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
         });
     }
 
-    private void add_message( String totalPrice) {
+    private void add_message(List<Shooping_carBean> list, String totalPrice) {
 
         String userID = SharePrefrenceUtil.getObject(SettlementActivity.this, UsersBean.class).getUerid();//顾客id
         String title ="付款成功提醒";
@@ -224,6 +224,7 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onResponse(Result<String> response) {
                // Toast.makeText(SettlementActivity.this, "付款成功提醒。", Toast.LENGTH_SHORT).show();
+                submit_order(list);
             }
             @Override
             public void onFailure(String state, String msg) {
@@ -266,14 +267,10 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
                     Toast.makeText(SettlementActivity.this, "付款成功。", Toast.LENGTH_SHORT).show();
                     String good_id=shooping_carBean.getGoods_id();
                     String car_good_number=shooping_carBean.getGood_number();
-                    change_goodnumber(good_id,car_good_number);
-                    change_shopcarStatus(shooping_carBean.getId());
+                    change_goodnumber(good_id,car_good_number,shooping_carBean.getId());
+
                     //
-                    Intent intent = new Intent();
-                    intent.putExtra("data_return","从付款成功返回购物车页面");
-                    setResult(RESULT_OK,intent);
-                    Log.d("从付款成功返回购物车页面","shopcar");
-                    SettlementActivity.this.finish();
+
                 }
                 @Override
                 public void onFailure(String state, String msg) {
@@ -292,6 +289,11 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onResponse(Result<String> response) {
                 Log.d("形成订单的购物车编号",shopacrId);
+                Intent intent = new Intent();
+                intent.putExtra("data_return","从付款成功返回购物车页面");
+                setResult(RESULT_OK,intent);
+                Log.d("从付款成功返回购物车页面","shopcar");
+                SettlementActivity.this.finish();
             }
             @Override
             public void onFailure(String state, String msg) {
@@ -302,7 +304,7 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
     }
 
     //修改商品数量
-    private void change_goodnumber(String good_id,String car_good_number) {
+    private void change_goodnumber(String good_id,String car_good_number,String shopcar_id) {
         Map map = new HashMap();
         map.put("good_id", good_id);
         map.put("car_good_number", car_good_number);
@@ -310,6 +312,7 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onResponse(Result<String> response) {
                 Log.d("顾客租走的数量",car_good_number);
+                change_shopcarStatus(shopcar_id);
             }
 
             @Override
@@ -353,15 +356,9 @@ public class SettlementActivity extends AppCompatActivity implements View.OnClic
                     Toast.makeText(SettlementActivity.this, "您已经取消付款，可以到待付款界面查看该订单。", Toast.LENGTH_SHORT).show();
                     String good_id=shooping_carBean.getGoods_id();
                     String car_good_number=shooping_carBean.getGood_number();
-                    change_goodnumber(good_id,car_good_number);
-                    change_shopcarStatus(shooping_carBean.getId());
-                    //
+                    change_goodnumber(good_id,car_good_number,shooping_carBean.getId());
 
-                    Intent intent = new Intent();
-                    intent.putExtra("data_return","从取消付款返回购物车页面");
-                    setResult(RESULT_OK,intent);
-                    Log.d("从取消付款返回购物车页面","shopcar");
-                    SettlementActivity.this.finish();
+
                 }
                 @Override
                 public void onFailure(String state, String msg) {

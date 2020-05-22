@@ -99,7 +99,7 @@ public  class MeActivity extends AppCompatActivity implements View.OnClickListen
             case 1:
                 if (resultCode == RESULT_OK) {
                     String data_return = data.getStringExtra("data_return");
-                    Log.d("name",data_return);
+                   // Log.d("name",data_return);
                     re_select_user();
                 }
                 break;

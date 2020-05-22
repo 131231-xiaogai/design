@@ -79,6 +79,7 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
         Intent goodid_integer = getIntent();
         shop_name = goodid_integer.getStringExtra("myshop_name");
         shop_id = goodid_integer.getStringExtra("my_shop_id");
+        Log.d("my_shop_id",shop_id);
         //
         OnClickListener();
         //----------------------//add_type_activity

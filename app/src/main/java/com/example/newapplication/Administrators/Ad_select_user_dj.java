@@ -105,6 +105,21 @@ public class Ad_select_user_dj extends AppCompatActivity implements View.OnClick
         OnClickListener();
 
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    String data_return = data.getStringExtra("data_return");
+                    Log.d("my_address",data_return);
+                    loadData();
+                }
+                break;
+            default:
+        }
+    }
 
     private void OnClickListener() {
         title_back.setOnClickListener(this);
